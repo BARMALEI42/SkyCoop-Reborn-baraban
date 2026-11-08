@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: SkyCoop
+  m_EditorClassIdentifier: 
+  m_GroupName: SkyCoop
+  m_GUID: 65883fe2772ea8348b9759289a701bce
+  m_SerializeEntries:
+  - m_GUID: 00d1a0f44deb7374393d41a7d68fe122
+    m_Address: PaperDoll_POT
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 925e778fb9c003f49a058aebe477d66a
+    m_Address: ico_GearItem__SCPresent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4e8941e7b620244fb2dab6bf0856073
+    m_Address: GEAR_SCPresent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3ace995e6b00bb469be852aac7f36bb
+    m_Address: Titles_SkyCoopReborn_Texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bac5c98130623374daeb83767ace981e
+    m_Address: ico_GearItem__FishKnife
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d45cf8470f7f01f46b06144a35a8acee
+    m_Address: PaperDoll_POT_F
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4af4964cd8024a4e872820dbe6a04a4
+    m_Address: GEAR_FishKnife
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: efa755aa14ecd584594da22fb5be160b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c92656df59bf03e48bbe92bb32359edd, type: 2}

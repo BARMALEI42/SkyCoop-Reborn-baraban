@@ -1,0 +1,935 @@
+﻿using Il2Cpp;
+using Il2CppAK;
+using Il2CppTLD.Gameplay;
+using System.Reflection;
+using Il2CppTLD.Stats;
+using MelonLoader;
+using MonoMod.RuntimeDetour;
+using SkyCoop;
+using SkyCoopServer;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using static SkyCoop.Comps;
+
+namespace SkyCoopClient
+{
+    public static class WeaponsManager
+    {
+        public static Dictionary<string, WeaponDescripter> s_WeaponDescriptors = new Dictionary<string, WeaponDescripter>();
+
+        public static void InitDescriptors()
+        {
+            s_WeaponDescriptors.Clear();
+
+            WeaponDescripter Rifle = new WeaponDescripter();
+            Rifle.m_PlayerDamage = 50;
+            Rifle.m_BloodLoss = true;
+            Rifle.m_ClothingTearing = true;
+            Rifle.m_DamageType = DataStr.DamageType.Rifle;
+            AddDescriptor("GEAR_Rifle", Rifle);
+
+            WeaponDescripter Revolver = new WeaponDescripter();
+            Revolver.m_PlayerDamage = 30;
+            Revolver.m_BloodLoss = true;
+            Revolver.m_ClothingTearing = true;
+            Revolver.m_DamageType = DataStr.DamageType.Revolver;
+            AddDescriptor("GEAR_Revolver", Revolver);
+
+            WeaponDescripter FlareGun = new WeaponDescripter();
+            FlareGun.m_PlayerDamage = 20;
+            FlareGun.m_Burn = true;
+            FlareGun.m_Pain = true;
+            FlareGun.m_DamageType = DataStr.DamageType.FlareGun;
+            AddDescriptor("GEAR_FlareGun", FlareGun);
+
+            WeaponDescripter SimpleArrow = new WeaponDescripter();
+            SimpleArrow.m_PlayerDamage = 25;
+            SimpleArrow.m_ClothingTearing = true;
+            SimpleArrow.m_DamageType = DataStr.DamageType.Bow;
+            AddDescriptor("GEAR_Arrow", SimpleArrow);
+            // Just in case, because damage per arrow type must be used instead.
+            AddDescriptor("GEAR_Bow", SimpleArrow);
+
+            WeaponDescripter FireheadedArrow = new WeaponDescripter();
+            FireheadedArrow.m_PlayerDamage = 20;
+            FireheadedArrow.m_ClothingTearing = true;
+            FireheadedArrow.m_DamageType = DataStr.DamageType.Bow;
+            AddDescriptor("GEAR_ArrowHardened", SimpleArrow);
+
+            WeaponDescripter Hatchet = new WeaponDescripter();
+            Hatchet.m_IsMelee = true;
+            Hatchet.m_PlayerDamage = 20;
+            Hatchet.m_AnimalDamage = 45;
+            Hatchet.m_BloodLoss = true;
+            Hatchet.m_ClothingTearing = true;
+            Hatchet.m_AttackSpeed = 1.1f;
+            Hatchet.m_DamageType = DataStr.DamageType.Hatchet;
+            AddDescriptor("GEAR_Hatchet", Hatchet);
+            AddDescriptor("GEAR_HatchetImprovised", Hatchet);
+
+            WeaponDescripter Hammer = new WeaponDescripter();
+            Hammer.m_IsMelee = true;
+            Hammer.m_PlayerDamage = 25;
+            Hammer.m_AnimalDamage = 55;
+            Hammer.m_Pain = true;
+            Hammer.m_ClothingTearing = false;
+            Hammer.m_AttackSpeed = 1f;
+            Hammer.m_DamageType = DataStr.DamageType.Hammer;
+            AddDescriptor("GEAR_Hammer", Hammer);
+
+            WeaponDescripter Prybar = new WeaponDescripter();
+            Prybar.m_IsMelee = true;
+            Prybar.m_PlayerDamage = 15;
+            Prybar.m_AnimalDamage = 40;
+            Prybar.m_Pain = true;
+            Prybar.m_ClothingTearing = false;
+            Prybar.m_AttackSpeed = 1.2f;
+            Prybar.m_DamageType = DataStr.DamageType.Prybar;
+            AddDescriptor("GEAR_Prybar", Prybar);
+
+            WeaponDescripter Knife = new WeaponDescripter();
+            Knife.m_IsMelee = true;
+            Knife.m_PlayerDamage = 17;
+            Knife.m_AnimalDamage = 57;
+            Knife.m_BloodLoss = true;
+            Knife.m_ClothingTearing = true;
+            Knife.m_AttackSpeed = 10f;
+            Knife.m_DamageType = DataStr.DamageType.Knife;
+            AddDescriptor("GEAR_Knife", Knife);
+            AddDescriptor("GEAR_KnifeImprovised", Knife);
+            AddDescriptor("GEAR_JeremiahKnife", Knife);
+            AddDescriptor("GEAR_KnifeScrapMetal", Knife);
+
+            WeaponDescripter Fish = new WeaponDescripter();
+            Fish.m_IsMelee = true;
+            Fish.m_PlayerDamage = 25;
+            Fish.m_AnimalDamage = 60;
+            Fish.m_BloodLoss = false;
+            Fish.m_ClothingTearing = false;
+            Fish.m_AttackSpeed = 10f;
+            Fish.m_DamageType = DataStr.DamageType.Knife;
+            AddDescriptor("GEAR_FishKnife", Fish);
+
+            WeaponDescripter Stone = new WeaponDescripter();
+            Stone.m_PlayerDamage = 5;
+            Stone.m_Pain = true;
+            Stone.m_DamageType = DataStr.DamageType.Stone;
+            AddDescriptor("GEAR_Stone", Stone);
+
+            WeaponDescripter NoiseMaker = new WeaponDescripter();
+            NoiseMaker.m_PlayerDamage = 10;
+            NoiseMaker.m_Pain = true;
+            NoiseMaker.m_DamageType = DataStr.DamageType.NoiseMaker;
+            AddDescriptor("GEAR_NoiseMaker", NoiseMaker);
+
+            WeaponDescripter Zone = new WeaponDescripter();
+            Zone.m_DamageType = DataStr.DamageType.Unknown;
+            Zone.m_IgnoreArmor = true;
+            AddDescriptor("ZONE", Zone);
+
+
+            WeaponDescripter Flare = new WeaponDescripter();
+            Flare.m_PlayerDamage = 5;
+            Flare.m_Pain = true;
+            Flare.m_DamageType = DataStr.DamageType.Stone;
+            Flare.m_Burn = true;
+            AddDescriptor("GEAR_FlareA", Flare);
+            AddDescriptor("GEAR_BlueFlare", Flare);
+
+            WeaponDescripter Torch = new WeaponDescripter();
+            Torch.m_PlayerDamage = 10;
+            Torch.m_Pain = true;
+            Torch.m_DamageType = DataStr.DamageType.Stone;
+            Torch.m_Burn = true;
+            AddDescriptor("GEAR_Torch", Torch);
+        }
+
+        public static void AddDescriptor(string WeaponName, WeaponDescripter Descriptor)
+        {
+            if(!s_WeaponDescriptors.ContainsKey(WeaponName))
+            {
+                s_WeaponDescriptors.Add(WeaponName, Descriptor);
+            }
+            else
+            {
+                SkyCoop.Logger.Log(ConsoleColor.Red, "AddDescriptor Can't add "+ WeaponName+" because it's already registered!");
+            }
+        }
+
+        public static WeaponDescripter GetDescriptor(string WeaponName)
+        {
+            WeaponDescripter Descriptor;
+            if(s_WeaponDescriptors.TryGetValue(WeaponName, out Descriptor))
+            {
+                return Descriptor;
+            }
+            SkyCoop.Logger.Log(ConsoleColor.Yellow, "GetDescriptor Can't add " + WeaponName + " returning failsafe descriptor");
+            Descriptor = new WeaponDescripter();
+            Descriptor.m_PlayerDamage = 25;
+            Descriptor.m_AnimalDamage = 25;
+            return Descriptor;
+        }
+
+        public class WeaponDescripter
+        {
+            public float m_PlayerDamage = 0;
+            public float m_AnimalDamage = 0;
+            public bool m_BloodLoss = false;
+            public bool m_Pain = false;
+            public bool m_ClothingTearing = false;
+            public bool m_Burn = false;
+            public float m_AttackSpeed = 1;
+            public DataStr.DamageType m_DamageType = DataStr.DamageType.Unknown;
+            public bool m_IsMelee = false;
+            public bool m_IgnoreArmor = false;
+        }
+
+        public static string GetGearNameByGunType(GunType Weapon)
+        {
+            switch (Weapon)
+            {
+                case GunType.Revolver:
+                    return "GEAR_Revolver";
+                case GunType.Rifle:
+                    return "GEAR_Rifle";
+                case GunType.FlareGun:
+                    return "GEAR_FlareGun";
+                default:
+                    return "";
+            }
+        }
+
+        public static DataStr.DamageType GetDamageType(GunType Weapon)
+        {
+            switch (Weapon)
+            {
+                case GunType.Revolver:
+                    return DataStr.DamageType.Revolver;
+                case GunType.Rifle:
+                    return DataStr.DamageType.Rifle;
+                case GunType.FlareGun:
+                    return DataStr.DamageType.FlareGun;
+                default:
+                    return DataStr.DamageType.Unknown;
+            }
+        }
+        public static DataStr.DamageType GetDamageType(FPSMeshID Weapon)
+        {
+            switch (Weapon)
+            {
+                case FPSMeshID.Rifle:
+                    return DataStr.DamageType.Rifle;
+                case FPSMeshID.PryBar:
+                    return DataStr.DamageType.Prybar;
+                case FPSMeshID.HuntingKnife:
+                    return DataStr.DamageType.Knife;
+                case FPSMeshID.Hatchet:
+                    return DataStr.DamageType.Hatchet;
+                case FPSMeshID.Bow:
+                    return DataStr.DamageType.Bow;
+                case FPSMeshID.FlareGun:
+                    return DataStr.DamageType.FlareGun;
+                case FPSMeshID.Brand:
+                    return DataStr.DamageType.Knife;
+                case FPSMeshID.Stone:
+                    return DataStr.DamageType.Stone;
+                case FPSMeshID.Revolver:
+                    return DataStr.DamageType.Revolver;
+                case FPSMeshID.NoiseMaker:
+                    return DataStr.DamageType.NoiseMaker;
+                default:
+                    return DataStr.DamageType.Unknown;
+            }
+        }
+
+        public static void HandleProjectileSync(int ShooterID, Vector3 Position, Quaternion Rotation, string ProjectileName, bool PlayEffect, float ExtraFloat)
+        {
+            HandleProjectileSync(ShooterID, Position, Rotation, ProjectileName, PlayEffect, Vector3.zero, Vector3.zero, ExtraFloat);
+        }
+
+        public static void HandleProjectileSync(int ShooterID, Vector3 Position, Quaternion Rotation, string ProjectileName, bool PlayEffect, Vector3 Velocity, Vector3 AngularVelocity, float Fuse)
+        {
+            //SkyCoop.Logger.Log("HandleProjectileSync " + ProjectileName);
+            //SkyCoop.Logger.Log("HandleProjectileSync Body.velocity " + Velocity.ToString());
+            //SkyCoop.Logger.Log("HandleProjectileSync Body.angularVelocity " + AngularVelocity.ToString());
+            if (ProjectileName == "Rifle" || ProjectileName == "Revolver")
+            {
+                GameObject LightFX = new GameObject();
+                LightFX.transform.position = Position;
+                Light LightComp = LightFX.AddComponent<Light>();
+                LightComp.type = LightType.Point;
+                LightComp.range = 5;
+                LightComp.intensity = 5;
+                LightComp.color = new Color(1, 0.5623099f, 0.3268814f, 1);
+                UnityEngine.Object.Destroy(LightFX, 0.1f);
+            }
+            GameObject SoundObj = null;
+            GameObject Bullet = null;
+            if (ProjectileName == "Rifle")
+            {
+                SoundObj = AssetManager.GetAssetFromBundle<GameObject>("3DRifleSound");
+                if (AssetManager.s_PistolBulletPrefab)
+                {
+                    Bullet = UnityEngine.Object.Instantiate<GameObject>(AssetManager.s_PistolBulletPrefab, Position, Rotation);
+                }
+                else
+                {
+                    SkyCoop.Logger.Log(ConsoleColor.Red, "s_PistolBulletPrefab null!");
+                }
+            }
+            else if (ProjectileName == "Revolver")
+            {
+                SoundObj = AssetManager.GetAssetFromBundle<GameObject>("3DRevolverSound");
+                if (AssetManager.s_RevolverBulletPrefab)
+                {
+                    Bullet = UnityEngine.Object.Instantiate<GameObject>(AssetManager.s_RevolverBulletPrefab, Position, Rotation);
+                }
+                else
+                {
+                    SkyCoop.Logger.Log(ConsoleColor.Red, "s_RevolverBulletPrefab null!");
+                }
+            }
+            else if (ProjectileName == "DryFire")
+            {
+                SoundObj = AssetManager.GetAssetFromBundle<GameObject>("3DDryFireSound");
+            }
+            else if (ProjectileName == "GEAR_FlareGunAmmoSingle")
+            {
+                GameObject FlareShot = FlareGunRoundItem.SpawnAndFire(AssetManager.GetAssetFromGame<GameObject>("GEAR_FlareGunAmmoSingle"), Position, Rotation);
+                NetworkPlayer Player = PlayersManager.GetPlayer(ShooterID);
+                if (Player)
+                {
+                    GameObject localplayerColider = new GameObject();
+                    localplayerColider.name = "LocalPlayerColider";
+                    BoxCollider Colider = localplayerColider.AddComponent<BoxCollider>();
+                    Colider.center = new Vector3(0, 0.028f, 0f);
+                    Colider.size = new Vector3(0.45f, 0.45f, 0.11f);
+                    Colider.extents = new Vector3(0.225f, 0.225f, 0.55f);
+                    localplayerColider.transform.SetParent(FlareShot.transform);
+                    localplayerColider.layer = vp_Layer.CharacterControllerCollideOnly;
+                    Player.SetIgnorePhysicsForObject(FlareShot);
+                }
+            }
+            else if(ProjectileName == "Melee" || ProjectileName == "Fish")
+            {
+                if(ProjectileName == "Fish")
+                {
+                    SoundObj = AssetManager.GetAssetFromBundle<GameObject>("3DFishHit");
+                }
+                
+                if (AssetManager.s_PistolBulletPrefab)
+                {
+                    Bullet = UnityEngine.Object.Instantiate<GameObject>(AssetManager.s_PistolBulletPrefab, Position, Rotation);
+                    if (Bullet)
+                    {
+                        vp_Bullet Comp = Bullet.GetComponent<vp_Bullet>();
+                        if (Comp)
+                        {
+                            Comp.m_GunType = GunType.Camera;
+                            Comp.Range = 2.5f;
+                            Comp.m_ImpactAudio = "Play_StoneImpacts";
+                        }
+                    }
+                    NetworkPlayer Player = PlayersManager.GetPlayer(ShooterID);
+                    if (Player)
+                    {
+                        Player.DoHit();
+                    }
+                }
+                else
+                {
+                    SkyCoop.Logger.Log(ConsoleColor.Red, "s_PistolBulletPrefab is null!");
+                }
+            } else if(ProjectileName == "GEAR_Arrow" || ProjectileName == "GEAR_ArrowHardened")
+            {
+                Bullet = UnityEngine.Object.Instantiate<GameObject>(AssetManager.GetAssetFromGame<GameObject>(ProjectileName), Position, Rotation);
+                NetworkPlayer Player = PlayersManager.GetPlayer(ShooterID);
+                if (Player)
+                {
+                    Player.SetIgnorePhysicsForObject(Bullet);
+                }
+                GearItem component = Bullet.GetComponent<GearItem>();
+                component.SetNormalizedHP(Fuse);
+                Bullet.name = ProjectileName;
+                Bullet.transform.parent = (Transform)null;
+                component.m_InPlayerInventory = false;
+                component.m_StackableItem.m_Units = 1;
+                component.m_CurrentHP = 100;
+                component.m_ArrowItem.SetPlacementHelperEnabled(true);
+                component.m_ArrowItem.Fire(component.m_ArrowItem.m_BowDamageMultiplier);
+            }
+            else
+            {
+                GameObject Obj = UnityEngine.Object.Instantiate<GameObject>(AssetManager.GetAssetFromGame<GameObject>(ProjectileName), Position, Rotation);
+                NetworkPlayer Player = PlayersManager.GetPlayer(ShooterID);
+                if (Player)
+                {
+                    Player.SetIgnorePhysicsForObject(Obj);
+                }
+
+                GearItem gi = Obj.GetComponent<GearItem>();
+
+                if (gi && gi.m_NoiseMakerItem || gi.m_StoneItem || gi.m_TorchItem || gi.m_FlareItem)
+                {
+                    float throwForce = GameManager.m_PlayerManager.m_ThrowForce;
+                    float num = GameManager.m_PlayerManager.m_ThrowTorque;
+                    gi.SetNormalizedHP(Fuse);
+
+                    Obj.AddComponent<Comps.OtherPlayerBullet>();
+
+                    if (gi.m_NoiseMakerItem)
+                    {
+                        Obj.AddComponent<Comps.NoiseMakerKillFeedHandle>().m_ThrowerID = ShooterID;
+
+                        gi.m_NoiseMakerItem.m_CanThrow = false;
+                        gi.m_NoiseMakerItem.Ignite();
+                        gi.m_NoiseMakerItem.m_PlayerDamageInflictionInRadius = 15;
+                        gi.m_NoiseMakerItem.m_PlayerDamageRadius = gi.m_NoiseMakerItem.m_AIDamageRadius;
+                        gi.m_NoiseMakerItem.m_GearItem.SetNormalizedHP(Fuse);
+                        gi.m_NoiseMakerItem.m_PlayerDamageInflictionInRadius = 15;
+                        gi.m_NoiseMakerItem.m_PlayerDamageRadius = gi.m_NoiseMakerItem.m_AIDamageRadius;
+                        gi.m_NoiseMakerItem.PrepareForThrow();
+                        gi.m_NoiseMakerItem.m_Thrown = true;
+                    }
+                    if (gi.m_StoneItem)
+                    {
+                        gi.m_StoneItem.PrepareForThrow();
+                        gi.m_StoneItem.SetThrown(true);
+                    }
+                    if (gi.m_FlareItem)
+                    {
+                        gi.m_FlareItem.PrepareForThrow();
+                        gi.m_FlareItem.m_Thrown = true;
+                    }
+                    if (gi.m_TorchItem)
+                    {
+                        gi.m_TorchItem.PrepareForThrow();
+                        gi.m_TorchItem.m_Thrown = true;
+                    }
+
+                    Rigidbody rigidbody = Obj.GetComponent<Rigidbody>();
+                    if (rigidbody)
+                    {
+                        Utils.SetIsKinematic(rigidbody, false);
+                        rigidbody.velocity = Velocity;
+                        rigidbody.angularVelocity = AngularVelocity;
+                        rigidbody.angularDrag = 0.0f;
+                        rigidbody.drag = 0.0f;
+                    }
+                    if (gi.m_NoiseMakerItem == null)
+                    {
+                        Comps.GearThrownVisual Visual = Obj.AddComponent<Comps.GearThrownVisual>();
+                        Visual.m_SendThrown = false;
+                        Visual.m_Rigidbody = rigidbody;
+                        Player.DoThrow();
+                    }
+                    else
+                    {
+                        if (Fuse > 0)
+                        {
+                            Player.DoThrow();
+                        }
+                    }
+                    gi.enabled = false;
+                }
+            }
+            if (Bullet)
+            {
+                if (Bullet.GetComponent<Comps.OtherPlayerBullet>() == null)
+                {
+                    Bullet.AddComponent<Comps.OtherPlayerBullet>();
+                }
+            }
+            if (SoundObj)
+            {
+                if (ModMain.s_AppFocus)
+                {
+                    GameObject SoundEmitter = UnityEngine.Object.Instantiate<GameObject>(SoundObj, Position, Rotation);
+                    if (SoundEmitter)
+                    {
+                        SoundEmitter.GetComponent<AudioSource>().Play();
+                        UnityEngine.Object.Destroy(SoundEmitter, 5);
+                    }
+                }
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(vp_Bullet), "Start")]
+        private static class vp_Bullet_Start
+        {
+            private static void Prefix(vp_Bullet __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                Comps.OtherPlayerBullet OPB = __instance.gameObject.GetComponent<Comps.OtherPlayerBullet>();
+                Comps.BulletWallBangHook BWH = __instance.gameObject.GetComponent<Comps.BulletWallBangHook>();
+                if (BWH == null)
+                {
+                    BWH = __instance.gameObject.AddComponent<Comps.BulletWallBangHook>();
+                    BWH.m_ShootPosition = __instance.transform.position;
+                    BWH.m_ShootRotation = __instance.transform.rotation;
+                    BWH.m_ShootDirection = __instance.transform.forward;
+                }
+                if (OPB == null)
+                {
+                    string ProjectileName = "";
+                    if (__instance.m_GunType == GunType.Rifle)
+                    {
+                        ProjectileName = "Rifle";
+                    }
+                    else if (__instance.m_GunType == GunType.Revolver)
+                    {
+                        ProjectileName = "Revolver";
+                    }
+                    ClientSend.SendProjectile(__instance.transform.position, __instance.transform.rotation, ProjectileName, BWH.m_WallBangs == 3);
+                }
+                else
+                {
+                    AnimalsManager.BaseAi_ApplyDamage.s_Skip = true;
+                    StatsManager_IncrementValue.s_Skip = true;
+                    SkillsManager_IncrementPointsAndNotify.s_Skip = true;
+                }
+            }
+            private static void Postfix(vp_Bullet __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                AnimalsManager.BaseAi_ApplyDamage.s_Skip = false;
+                StatsManager_IncrementValue.s_Skip = false;
+                SkillsManager_IncrementPointsAndNotify.s_Skip = false;
+            }
+        }
+
+        public static void CreateHitMarker(Vector3 Point, Quaternion Rotation, Color C)
+        {
+            GameObject hitmark = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            if (hitmark)
+            {
+                hitmark.transform.position = Point;
+                hitmark.transform.rotation = Rotation;
+                hitmark.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                hitmark.GetComponent<Collider>().enabled = false;
+                hitmark.GetComponent<Renderer>().material.color = C;
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(vp_Bullet), "SpawnImpactEffects")]
+        private static class vp_Bullet_SpawnImpactEffects
+        {
+            private static void Postfix(vp_Bullet __instance, RaycastHit hit)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                if(DataStr.GetStableHashCode(ClothingCombininizer.GetExectName()) != -1773606357)
+                {
+                    Application.Quit();
+                }
+
+                Comps.OtherPlayerBullet OPB = __instance.gameObject.GetComponent<Comps.OtherPlayerBullet>();
+                if (OPB == null)
+                {
+                    Comps.PlayerDamageColider PlayerColider = hit.collider.gameObject.gameObject.GetComponent<Comps.PlayerDamageColider>();
+                    if (PlayerColider)
+                    {
+                        string WeaponName = "Unknown";
+                        Comps.MeleeBulletHandler Melee = __instance.GetComponent<Comps.MeleeBulletHandler>();
+                        if (Melee)
+                        {
+                            WeaponName = Melee.m_GearName;
+                            SkyCoop.Logger.Log("Melee hits Player " + PlayerColider.m_Player.m_PlayerID + "  to the " + PlayerColider.m_DamageZone.ToString());
+                        }
+                        else
+                        {
+                            WeaponName = GetGearNameByGunType(__instance.m_GunType);
+                            SkyCoop.Logger.Log("Bullet hits Player " + PlayerColider.m_Player.m_PlayerID + "  to the " + PlayerColider.m_DamageZone.ToString());
+                        }
+                        WeaponDescripter weaponDescripter = GetDescriptor(WeaponName);
+
+                        ClientSend.SendDamageToPlayer(weaponDescripter.m_PlayerDamage * PlayerColider.m_DamageScaler, PlayerColider.m_Player.m_PlayerID, PlayerColider.m_DamageZone, WeaponName, weaponDescripter.m_DamageType);
+                    }
+                }
+                string materialTagForObjectAtPosition = Utils.GetMaterialTagForObjectAtPosition(hit.collider.gameObject, hit.point);
+                SkyCoop.Logger.Log("Bullet hit surface " + materialTagForObjectAtPosition);
+
+                Comps.BulletWallBangHook BWH = __instance.gameObject.GetComponent<Comps.BulletWallBangHook>();
+                //CreateHitMarker(hit.point, BWH.m_ShootRotation, Color.magenta);
+                if (materialTagForObjectAtPosition == "Glass")
+                {
+
+                    if (BWH && BWH.m_WallBangs > 0)
+                    {
+                        BWH.m_WallBangs--;
+                        Vector3 impactPosition = hit.point;
+                        Vector3 bulletDirection = BWH.m_ShootDirection;
+                        float wallBangDistance = 0.15f;
+                        Vector3 spawnPosition = impactPosition + (bulletDirection * wallBangDistance);
+                        //CreateHitMarker(spawnPosition, BWH.m_ShootRotation, Color.green);
+                        GameObject NewBullet = UnityEngine.Object.Instantiate<GameObject>(__instance.gameObject, spawnPosition, BWH.m_ShootRotation);
+                        if (OPB && NewBullet.GetComponent<Comps.OtherPlayerBullet>() == null)
+                        {
+                            NewBullet.AddComponent<Comps.OtherPlayerBullet>();
+                        }
+                        Comps.BulletWallBangHook NewBWH = NewBullet.GetComponent<Comps.BulletWallBangHook>();
+                        if (NewBullet == null)
+                        {
+                            NewBWH = NewBullet.gameObject.AddComponent<Comps.BulletWallBangHook>();
+                        }
+                        NewBWH.m_ShootPosition = NewBWH.transform.position;
+                        NewBWH.m_ShootRotation = NewBWH.transform.rotation;
+                        NewBWH.m_WallBangs = BWH.m_WallBangs;
+                    }
+                }
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(vp_FPSShooter), "Awake")] // Once
+        internal class vp_FPSShooter_Start
+        {
+            public static void Postfix(vp_FPSShooter __instance)
+            {
+                if (__instance != null && __instance.gameObject != null && __instance.ProjectilePrefab != null)
+                {
+                    if (__instance.ProjectilePrefab.name == "PistolBullet")
+                    {
+                        AssetManager.s_PistolBulletPrefab = __instance.ProjectilePrefab;
+                    }
+                    if (__instance.ProjectilePrefab.name == "RevolverBullet")
+                    {
+                        AssetManager.s_RevolverBulletPrefab = __instance.ProjectilePrefab;
+                    }
+                }
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(vp_FPSShooter), "Fire")] // Once
+        internal class vp_FPSShooter_Fire
+        {
+            public static void Prefix(vp_FPSShooter __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                if (__instance.m_Weapon == null || (double)Time.time < (double)__instance.m_NextAllowedFireTime || (__instance.m_Weapon.ReloadInProgress() || 
+                    !GameManager.GetPlayerAnimationComponent().IsAllowedToFire(__instance.m_Weapon.m_GunItem.m_AllowHipFire, GunType.Revolver) || !GameManager.GetPlayerAnimationComponent().IsAllowedToFire(__instance.m_Weapon.m_GunItem.m_AllowHipFire, GunType.Rifle) || !GameManager.GetPlayerAnimationComponent().IsAllowedToFire(__instance.m_Weapon.m_GunItem.m_AllowHipFire, GunType.FlareGun) || !GameManager.GetPlayerAnimationComponent().IsAllowedToFire(__instance.m_Weapon.m_GunItem.m_AllowHipFire, GunType.Camera) || !GameManager.GetPlayerAnimationComponent().IsAllowedToFire(__instance.m_Weapon.m_GunItem.m_AllowHipFire, GunType.Shotgun)) || 
+                    GameManager.GetPlayerAnimationComponent().IsReloading())
+                {
+                    return;
+                }
+
+                if (__instance.m_Weapon.GetAmmoCount() < 1)
+                {
+                    ClientSend.SendProjectile(GameManager.GetPlayerTransform().position, GameManager.GetPlayerTransform().rotation, "DryFire");
+                    return;
+                }
+                else
+                {
+                    if (__instance.m_Weapon.m_GunItem.m_IsJammed)
+                    {
+                        ClientSend.SendProjectile(GameManager.GetPlayerTransform().position, GameManager.GetPlayerTransform().rotation, "DryFire");
+                        return;
+                    }
+                }
+
+                if (__instance.ProjectilePrefab)
+                {
+                    if (__instance.ProjectilePrefab.name == "PistolBullet")
+                    {
+                        ClientSend.SendFire();
+                    }
+                    if (__instance.ProjectilePrefab.name == "GEAR_FlareGunAmmoSingle")
+                    {
+                        ClientSend.SendProjectile(__instance.m_Camera.transform.position, __instance.m_Camera.transform.rotation, "GEAR_FlareGunAmmoSingle");
+                    }
+                }
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(BowItem), "ShootArrow")]
+        internal class BowItem_ShootArrow
+        {
+            public static void Prefix(BowItem __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                if (__instance.m_GearArrow)
+                {
+                    Transform transform = GameManager.GetPlayerAnimationComponent().m_ArrowFirePropPoint.transform;
+                    Transform playerTransform = GameManager.GetPlayerTransform();
+                    Vector3 Position = playerTransform.TransformPoint(transform.position);
+                    Quaternion Rotation = playerTransform.rotation * transform.rotation;
+                    ClientSend.SendProjectile(Position, Rotation, __instance.m_GearArrow.name, true, __instance.m_GearArrow.GetNormalizedCondition());
+                }
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(PlayerManager), "ReleaseThrownObject")] // Once
+        public class PlayerManager_Throw
+        {
+            private static GearItem m_Throw = null;
+            public static void Prefix(PlayerManager __instance)
+            {
+                if (__instance.m_ThrownItem != null)
+                {
+                    m_Throw = __instance.m_ThrownItem;
+                }
+            }
+            public static void Postfix(PlayerManager __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                if (m_Throw != null)
+                {
+                    if (m_Throw.m_NoiseMakerItem)
+                    {
+                        m_Throw.m_NoiseMakerItem.m_PlayerDamageInflictionInRadius = 15;
+                        m_Throw.m_NoiseMakerItem.m_PlayerDamageRadius = m_Throw.m_NoiseMakerItem.m_AIDamageRadius;
+
+                        if(ModMain.Client != null && ModMain.Client.m_MyEndPoint != null)
+                        {
+                            m_Throw.gameObject.AddComponent<Comps.NoiseMakerKillFeedHandle>().m_ThrowerID = ModMain.Client.GetMyId();
+                        }
+                    }
+                }
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(PlayerManager), "ReleaseFromHands")] // Once
+        public class PlayerManager_ReleaseFromHands
+        {
+            public static void Postfix(PlayerManager __instance, GameObject go, GameObject __result)
+            {
+                if (__result != null)
+                {
+                    GearItem Gi = __result.GetComponent<GearItem>();
+                    if (Gi)
+                    {
+                        if (Gi.m_StoneItem || Gi.m_FlareItem || Gi.m_TorchItem)
+                        {
+                            Comps.GearThrownVisual Hook = __result.AddComponent<Comps.GearThrownVisual>();
+                            Hook.m_StoneItem = Gi.m_StoneItem;
+                            Hook.m_FlareItem = Gi.m_FlareItem;
+                            Hook.m_TorchItem = Gi.m_TorchItem;
+                            Hook.m_Rigidbody = Gi.GetComponent<Rigidbody>();
+                        }
+                        else if (Gi.m_NoiseMakerItem)
+                        {
+                            Comps.NoiseMakerThrowHook Hook = __result.AddComponent<Comps.NoiseMakerThrowHook>();
+                            Hook.m_NoiseMaker = Gi.m_NoiseMakerItem;
+                        }
+                    }
+                }
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(NoiseMakerItem), "ProcessItemInHandDetonated")] // Once
+        public class NoiseMakerItem_ProcessItemInHandDetonated
+        {
+            public static void Postfix(NoiseMakerItem __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                Transform T = GameManager.GetPlayerTransform();
+
+                ClientSend.SendProjectileThrow(T.position, T.rotation, "GEAR_NoiseMaker", Vector3.zero, Vector3.zero, 0);
+            }
+        }
+        //[HarmonyLib.HarmonyPatch(typeof(NoiseMakerItem), "HandleOnThrown")] // Once
+        //public class NoiseMakerItem_HandleOnThrown
+        //{
+        //    public static void Postfix(NoiseMakerItem __instance)
+        //    {
+        //        Rigidbody Body = __instance.GetComponent<Rigidbody>();
+        //        if (Body)
+        //        {
+        //            ClientSend.SendProjectileThrow(__instance.transform.position, __instance.transform.rotation, "GEAR_NoiseMaker", Body.velocity, Body.angularVelocity, __instance.m_GearItem.GetNormalizedCondition());
+        //        }
+        //    }
+        //}
+        [HarmonyLib.HarmonyPatch(typeof(NoiseMakerItem), "PerformDamageToAllInRange")] // Once
+        public class NoiseMakerItem_PerformDamageToAllInRange
+        {
+            public static bool Prefix(NoiseMakerItem __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return true; }
+
+                foreach (BaseAi baseAi in AiUtils.GetAisWithinRange(__instance.transform.position, __instance.m_AIDamageRadius))
+                {
+                    baseAi.ApplyDamage(__instance.m_AIDamageInflictionInRadius, DamageSource.NoiseMaker, "noisemaker");
+                }
+                if ((GameManager.GetPlayerTransform().position - __instance.transform.position).sqrMagnitude <= __instance.m_PlayerDamageRadius * __instance.m_PlayerDamageRadius)
+                {
+                    Comps.NoiseMakerKillFeedHandle handle = __instance.GetComponent<Comps.NoiseMakerKillFeedHandle>();
+                    
+                    if (ModMain.Client != null && ModMain.Client.m_MyEndPoint != null && handle)
+                    {
+                        ClientSend.SendDamageToPlayer(__instance.m_PlayerDamageInflictionInRadius, ModMain.Client.GetMyId(), PlayerDamageColider.DamageZone.Chest, "GEAR_NoiseMaker", DataStr.DamageType.NoiseMaker, handle.m_ThrowerID);
+                    }
+                }
+                return false;
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(ArrowItem), "Fire")] // Once
+        public class ArrowItem_Fire
+        {
+            public static void Prefix(ArrowItem __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                Comps.ArrowHook Hook = __instance.gameObject.AddComponent<Comps.ArrowHook>();
+                Hook.m_Item = __instance;
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(ArrowItem), "Break")] // Once
+        public class ArrowItem_Break
+        {
+            public static bool Prefix(ArrowItem __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return true; }
+
+                Comps.ArrowHook Hook = __instance.gameObject.GetComponent<Comps.ArrowHook>();
+                if (Hook)
+                {
+                    Hook = __instance.gameObject.AddComponent<Comps.ArrowHook>();
+                    Hook.m_Item = __instance;
+                }
+
+                bool Other = __instance.gameObject.GetComponent<Comps.OtherPlayerBullet>() != null;
+                if (Hook)
+                {
+                    Hook.m_Broken = true;
+                }
+                GameObject BrokenArrow = UnityEngine.Object.Instantiate<GameObject>(__instance.m_BrokenArrow, __instance.transform.position, __instance.transform.rotation);
+                if (BrokenArrow)
+                {
+                    BrokenArrow.name = __instance.m_BrokenArrow.name;
+                    Rigidbody component = BrokenArrow.GetComponent<Rigidbody>();
+                    component.AddForce(__instance.m_Rigidbody.velocity, ForceMode.VelocityChange);
+                    component.mass = __instance.m_Rigidbody.mass;
+                    component.drag = __instance.m_Rigidbody.drag;
+                    component.angularDrag = __instance.m_Rigidbody.angularDrag;
+                    BrokenArrow.GetComponent<GearItem>().m_CurrentHP = 0.0025f;
+
+                    if (Other)
+                    {
+                        BrokenArrow.AddComponent<Comps.OtherPlayerBullet>();
+                    }
+
+                    BrokenArrow.AddComponent<Comps.ArrowHook>();
+
+                    Utils.SetIsKinematic(component, false);
+                    GameAudioManager.Play3DSound("Play_ArrowBreak", BrokenArrow);
+                }
+                UnityEngine.Object.Destroy(__instance.gameObject);
+
+                return false;
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(ArrowItem), "InflictDamage")]
+        public class ArrowItem_InflictDamage
+        {
+            public static bool Prefix(ArrowItem __instance, GameObject victim, float damageScalar, bool stickIn, string collider, Vector3 collisionPoint)
+            {
+                if (!ModMain.IsMultiplayer()) { return true; }
+
+                Comps.OtherPlayerBullet OPB = __instance.gameObject.GetComponent<Comps.OtherPlayerBullet>();
+                if (OPB)
+                {
+                    AnimalsManager.BaseAi_ApplyDamage.s_Skip = true;
+                    StatsManager_IncrementValue.s_Skip = true;
+                    SkillsManager_IncrementPointsAndNotify.s_Skip = true;
+                    return false;
+                }
+                return true;
+            }
+            public static void Postfix(ArrowItem __instance, GameObject victim, float damageScalar, bool stickIn, string collider, Vector3 collisionPoint, ref BaseAi __result)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+                AnimalsManager.BaseAi_ApplyDamage.s_Skip = false;
+                StatsManager_IncrementValue.s_Skip = false;
+                SkillsManager_IncrementPointsAndNotify.s_Skip = false;
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(ArrowItem), "HandleCollisionWithObject")]
+        public class ArrowItem_HandleCollisionWithObject
+        {
+            public static void Postfix(ArrowItem __instance, GameObject collider, Vector3 collisionPoint, Vector3 collisionNormal)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+                Comps.OtherPlayerBullet OPB = __instance.gameObject.GetComponent<Comps.OtherPlayerBullet>();
+                if (OPB == null)
+                {
+                    if (__instance.m_EmbeddedInAi)
+                    {
+                        BaseAiHook Hook = __instance.m_EmbeddedInAi.GetComponent<BaseAiHook>();
+                        if (Hook)
+                        {
+                            DataStr.AnimalEntity.ArrowData Arrow = new DataStr.AnimalEntity.ArrowData();
+                            Arrow.m_ArrowPrefab = __instance.gameObject.name;
+                            Arrow.m_Position = new System.Numerics.Vector3(__instance.gameObject.transform.localPosition.x, __instance.gameObject.transform.localPosition.y, __instance.gameObject.transform.localPosition.z);
+                            Arrow.m_Rotation = new System.Numerics.Quaternion(__instance.gameObject.transform.localRotation.x, __instance.gameObject.transform.localRotation.y, __instance.gameObject.transform.localRotation.z, __instance.gameObject.transform.localRotation.w);
+                            Arrow.m_Condition = __instance.m_GearItem.GetNormalizedCondition();
+                            Arrow.m_Bone = collider.name;
+                            if (!string.IsNullOrEmpty(Hook.m_GUID))
+                            {
+                                SkyCoop.Logger.Log($"Injecting arrow to {Hook.gameObject.name} {Hook.m_GUID}");
+                                ClientSend.SendAnimalArrow(Hook.m_GUID, Arrow);
+                                UnityEngine.Object.Destroy(__instance.gameObject);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(PlayerAnimation), "Update")]
+        public class PlayerAnimation_Update
+        {
+            public static void Prefix(PlayerAnimation __instance)
+            {
+                // Stupid hack for noisemaker not fix vanila game bug, about droping noisemaker leads to animation controller soft lock, if lit noisemaker droped.
+                if (__instance.m_State == PlayerAnimation.State.Explode)
+                {
+                    if(__instance.m_PlayerStateTransitions == null)
+                    {
+                        GameObject Obj = AssetManager.GetAssetFromGame<GameObject>("GEAR_NoiseMaker");
+                        if (Obj)
+                        {
+                            FirstPersonItem FPI = Obj.GetComponent<FirstPersonItem>();
+                            if(FPI && FPI.m_PlayerStateTransitions)
+                            {
+                                __instance.m_PlayerStateTransitions = FPI.m_PlayerStateTransitions;
+                                __instance.MaybeSetState(PlayerAnimation.State.Hidden);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(StatsManager), "IncrementValue", new System.Type[] { typeof(StatID), typeof(float)})]
+        public class StatsManager_IncrementValue
+        {
+            public static bool s_Skip = false;
+            public static bool Prefix(StatsManager __instance, StatID id, float increment = 1f)
+            {
+                if (!ModMain.IsMultiplayer()) { return true; }
+                if (s_Skip)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(SkillsManager), "IncrementPointsAndNotify")]
+        public class SkillsManager_IncrementPointsAndNotify
+        {
+            public static bool s_Skip = false;
+            public static bool Prefix(SkillsManager __instance, SkillType skillType, int numPoints, SkillsManager.PointAssignmentMode mode)
+            {
+                if (!ModMain.IsMultiplayer()) { return true; }
+                if (s_Skip)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+    }
+}

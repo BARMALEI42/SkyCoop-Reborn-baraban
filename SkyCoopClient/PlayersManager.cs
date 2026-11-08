@@ -1,0 +1,1706 @@
+﻿using Il2Cpp;
+using Il2CppInterop.Runtime;
+using Il2CppRewired;
+using Il2CppSystem.Linq;
+using Il2CppTLD.Interactions;
+using Il2CppTLD.PDID;
+using Il2CppTLD.Stats;
+using LiteNetLib;
+using SkyCoopClient;
+using SkyCoopServer;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.UIElements;
+using static Il2Cpp.BaseAi;
+using static Il2Cpp.PlayerManager;
+using static SkyCoop.Comps.PlayerDamageColider;
+using static SkyCoopServer.DataStr;
+
+namespace SkyCoop
+{
+    public static class PlayersManager
+    {
+        public static List<Comps.NetworkPlayer> s_Players = new List<Comps.NetworkPlayer>();
+        public static LocalPlayerData m_LocalPlayerData = new LocalPlayerData();
+        public static DataStr.DamageType m_LastDamageType = DataStr.DamageType.Unknown;
+        public static Comps.PlayerDamageColider.DamageZone m_LastDamageZone = Comps.PlayerDamageColider.DamageZone.Chest;
+        public static MonoBehaviour s_LastTryInteractionComponent = null;
+        public static bool s_ForceUpdateClothing = false;
+        public static bool s_Spectator = false;
+        public static int s_SpectateID = -1;
+        public static bool s_InSquad = false;
+        public static Comps.NetworkPlayer s_ReviveTarget = null;
+
+        public class LocalPlayerData
+        {
+            public Vector3 m_LastSentPosition = Vector3.zero;
+            public Quaternion m_LastSentRotation = Quaternion.identity;
+            public float m_LastSentTilt = 0;
+
+            public string m_GearName = "";
+            public int m_GearVariant = 0;
+            public string m_HeadGear = "";
+            public string m_BodyGear = "";
+            public int m_Tier = -1; // -1 so, when we loads for first time, we not treat it like updated tier yet, but wait for respawn.
+
+            public float m_Health = 100;
+            public bool m_HasDebuffs = false;
+            public bool m_KnockedDown = false;
+
+            public bool m_LastSentCrouch = false;
+            public bool m_LastSentInVehicle = false;
+            public Comps.NetworkPlayer.Actions m_LastSentAction = Comps.NetworkPlayer.Actions.None;
+            public DataStr.ClothingData m_ClothingData = new DataStr.ClothingData();
+
+            public int m_BloodLosses = 0;
+
+            public bool m_LastSentWorking = false;
+        }
+
+        public static Comps.NetworkPlayer ApplyPlayer(GameObject PlayerObj, int PlayerID)
+        {
+            Comps.NetworkPlayer NP = PlayerObj.AddComponent<Comps.NetworkPlayer>();
+            NP.m_Animator = PlayerObj.GetComponent<Animator>();
+
+            NP.m_TiltTarget = NP.m_Animator.GetBoneTransform(HumanBodyBones.Spine);
+
+            NP.CreateColiders();
+            NP.LoadEquipment();
+            NP.AddInteraction();
+            NP.AddAudioSource();
+            NP.UpdateClothing();
+            NP.AddSpectatorTarget();
+
+            NP.m_PlayerID = PlayerID;
+            return NP;
+        }
+
+        public static Comps.NetworkPlayer CreatePlayer(int PlayerID, bool DDON = true)
+        {
+            GameObject Reference = AssetManager.GetAssetFromBundle<GameObject>("SkyCoopPlayer");
+
+            if(Reference)
+            {
+                GameObject Player = GameObject.Instantiate(Reference);
+                if(Player)
+                {
+                    if (DDON)
+                    {
+                        UnityEngine.Object.DontDestroyOnLoad(Player); // if scence change, this object won't be destroyed.
+                    }
+                    Player.SetActive(false);
+                    return ApplyPlayer(Player, PlayerID);
+                }
+            }
+
+            return null;
+        }
+
+        public static Comps.NetworkPlayer GetPlayer(int Index)
+        {
+            return s_Players[Index];
+        }
+        public static string GetPlayerName(int Index)
+        {
+            if(Index < 0 || Index > s_Players.Count)
+            {
+                return "";
+            }
+            
+            Comps.NetworkPlayer Player = s_Players[Index];
+            if (Player)
+            {
+                return Player.m_PlayerName;
+            }
+            return "";
+        }
+        public static void SetPlayerName(int Index, string Name)
+        {
+            Comps.NetworkPlayer Player = s_Players[Index];
+            if (Player)
+            {
+                Player.m_PlayerName = Name;
+                Player.UpdateName();
+            }
+        }
+
+        public static void DestoryPlayers()
+        {
+            for (int i = s_Players.Count-1; i >= 0; i--)
+            {
+                Comps.NetworkPlayer NetPlayer = s_Players[i];
+                if (NetPlayer)
+                {
+                    UnityEngine.Object.Destroy(NetPlayer.gameObject);
+                }
+            }
+            s_Players.Clear();
+        }
+
+        public static void InitilizePlayers(int PlayersCount)
+        {
+            m_LocalPlayerData = new LocalPlayerData();
+            m_LastDamageType = DataStr.DamageType.Unknown;
+            m_LastDamageZone = Comps.PlayerDamageColider.DamageZone.Chest;
+            s_LastTryInteractionComponent = null;
+            s_ForceUpdateClothing = false;
+            s_Spectator = false;
+            s_SpectateID = -1;
+            s_InSquad = false;
+            SquadHUD.s_SquadMembers.Clear();
+            SleepHook.SetEveryoneIsSleeping(false);
+
+            // Trying to re-use such complex objects as much as possible.
+            // So in for some reason we have less or more characters already exist
+            // (for example join server with less/more Max Players), we just add/remove 
+            // Instead of re-creating whole list of objects.
+            while (s_Players.Count != PlayersCount)
+            {
+                if (s_Players.Count > PlayersCount)
+                {
+                    int Index = s_Players.Count - 1;
+                    Comps.NetworkPlayer Player = s_Players[Index];
+                    if (Player != null)
+                    {
+                        UnityEngine.Object.Destroy(Player.gameObject);
+                    }
+                    s_Players.RemoveAt(Index);
+                } else if (s_Players.Count < PlayersCount)
+                {
+                    int Index = s_Players.Count;
+                    Comps.NetworkPlayer Player = CreatePlayer(Index);
+                    if (Player == null)
+                    {
+                        Logger.Log(ConsoleColor.Red, "[PlayersManager][InitilizePlayers] Wasn't able to create player object!");
+                        break; // Else, we going to go to infinite loop.
+                    }
+                    s_Players.Add(Player);
+                }
+            }
+        }
+
+        public static bool IsCurrentWorking()
+        {
+            Panel_Inventory_Examine Panel_Inventory_Examine = InterfaceManager.GetPanel<Panel_Inventory_Examine>();
+            if (Panel_Inventory_Examine)
+            {
+                if(Panel_Inventory_Examine.m_ActionInProgressWindow.activeSelf && !Panel_Inventory_Examine.IsReading())
+                {
+                    return true;
+                }
+            }
+            Panel_BreakDown Panel_BreakDown = InterfaceManager.GetPanel<Panel_BreakDown>();
+            if (Panel_BreakDown)
+            {
+                if (Panel_BreakDown.IsAcceleratingTime())
+                {
+                    return true;
+                }
+            }
+            Panel_Crafting Panel_Crafting = InterfaceManager.GetPanel<Panel_Crafting>();
+            if (Panel_Crafting)
+            {
+                if (Panel_Crafting.IsAcceleratingTime())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static Comps.NetworkPlayer.Actions GetCurrentAction()
+        {
+            if (GameManager.GetConditionComponent().IsConsideredDead())
+            {
+                return Comps.NetworkPlayer.Actions.Death;
+            }
+            if (SleepHook.s_PassingTime)
+            {
+                return Comps.NetworkPlayer.Actions.Sleep;
+            }
+            if (GameManager.GetRestComponent().IsSleeping())
+            {
+                return Comps.NetworkPlayer.Actions.Sleep;
+            }
+            if (GameManager.GetBrokenBody().HasAffliction)
+            {
+                return Comps.NetworkPlayer.Actions.Knocked;
+            }
+            Panel_BreakDown bk = InterfaceManager.GetPanel<Panel_BreakDown>();
+            if (bk && bk.IsBreakingDown())
+            {
+                return Comps.NetworkPlayer.Actions.Harvesting;
+            }
+            Panel_Diagnosis Diagnos = InterfaceManager.GetPanel<Panel_Diagnosis>();
+            if (Diagnos && Diagnos.TreatmentInProgress())
+            {
+                return Comps.NetworkPlayer.Actions.Harvesting;
+            }
+            Panel_BodyHarvest bh = InterfaceManager.GetPanel<Panel_BodyHarvest>();
+            if(bh && bh.m_BodyHarvest)
+            {
+                return Comps.NetworkPlayer.Actions.Harvesting;
+            }
+            PlayerManager PM = GameManager.GetPlayerManagerComponent();
+
+            if (PM.ActiveInteraction != null && PM.ActiveInteraction.GetInteractiveObject() != null && PM.ActiveInteraction.GetInteractiveObject().GetComponent<HarvestableInteraction>())
+            {
+                return Comps.NetworkPlayer.Actions.Harvesting;
+            }
+
+            PlayerControlMode CMode = PM.GetControlMode();
+            if (CMode == PlayerControlMode.AimRevolver)
+            {
+                return Comps.NetworkPlayer.Actions.PistolAim;
+            }
+            if(CMode == PlayerControlMode.StartingFire)
+            {
+                return Comps.NetworkPlayer.Actions.Igniting;
+            }
+            if(CMode == PlayerControlMode.DeployRope || CMode == PlayerControlMode.TakeRope)
+            {
+                return Comps.NetworkPlayer.Actions.Harvesting;
+            }
+            if (PM.m_ItemInHands)
+            {
+                if(PM.m_ItemInHands.name == "GEAR_Rifle")
+                {
+                    if (PM.m_ItemInHands.m_GunItem.IsAiming())
+                    {
+                        return Comps.NetworkPlayer.Actions.RifleAim;
+                    }
+                }else if(PM.m_ItemInHands.name == "GEAR_FlareGun")
+                {
+                    if (PM.m_ItemInHands.m_GunItem.IsAiming())
+                    {
+                        return Comps.NetworkPlayer.Actions.PistolAim;
+                    }
+                }
+                else if (PM.m_ItemInHands.name == "GEAR_Camera")
+                {
+                    return Comps.NetworkPlayer.Actions.PistolAim;
+                }
+                else if (PM.m_ItemInHands.name == "GEAR_Placeholder")
+                {
+                    return Comps.NetworkPlayer.Actions.PistolAim;
+                }
+            }
+
+            return Comps.NetworkPlayer.Actions.None;
+        }
+
+        public static string GetClothForSlot(ClothingRegion s, ClothingLayer l)
+        {
+            if(GameManager.m_PlayerManager)
+            {
+                GearItem gi = GameManager.GetPlayerManagerComponent().GetClothingInSlot(s, l);
+                if (gi != null)
+                {
+                    string dummyN = gi.name;
+                    string finalN = "";
+                    if (dummyN.Contains("(Clone)")) //If it has ugly (Clone), cutting it.
+                    {
+                        int L = dummyN.Length - 7;
+                        finalN = dummyN.Remove(L, 7);
+                    }
+                    else
+                    {
+                        finalN = dummyN;
+                    }
+                    return finalN;
+                }
+            }
+            return "";
+        }
+
+        public static void UpdateLocalPlayer()
+        {
+            if(!GameManager.s_IsGameplaySuspended)
+            {
+                string Scene = ModMain.GetCurrentSceneName();
+                if (ModMain.IsGameplayScene(Scene))
+                {
+                    if (GameManager.m_PlayerObject)
+                    {
+                        Transform T = GameManager.GetPlayerTransform();
+
+                        Transform BedTransfrorm = null;
+
+                        if(GameManager.m_PlayerInVehicle && !GameManager.m_PlayerInVehicle.m_InVehicle)
+                        {
+                            if (GameManager.m_Rest && GameManager.m_Rest.m_Bed)
+                            {
+                                BedTransfrorm = GameManager.m_Rest.m_Bed.m_BodyPlacementTransform;
+                            }
+                            else if (GameManager.m_PassTime && GameManager.m_PassTime.m_Bed)
+                            {
+                                BedTransfrorm = GameManager.m_PassTime.m_Bed.m_BodyPlacementTransform;
+                            }
+                        }
+
+                        if (BedTransfrorm)
+                        {
+                            Vector3 BedPosition = BedTransfrorm.position;
+                            Quaternion BedRotation = BedTransfrorm.rotation * Quaternion.Euler(0, -180, 0);
+
+                            if (m_LocalPlayerData.m_LastSentPosition != BedPosition)
+                            {
+                                m_LocalPlayerData.m_LastSentPosition = BedPosition;
+                                ClientSend.SendPosition(BedPosition);
+                            }
+                            if (m_LocalPlayerData.m_LastSentRotation != BedRotation)
+                            {
+                                m_LocalPlayerData.m_LastSentRotation = BedRotation;
+                                ClientSend.SendRotation(BedRotation);
+                            }
+                        }
+                        else
+                        {
+                            if (m_LocalPlayerData.m_LastSentPosition != T.position)
+                            {
+                                m_LocalPlayerData.m_LastSentPosition = T.position;
+                                ClientSend.SendPosition(T.position);
+                            }
+                            if (m_LocalPlayerData.m_LastSentRotation != T.rotation)
+                            {
+                                m_LocalPlayerData.m_LastSentRotation = T.rotation;
+                                ClientSend.SendRotation(T.rotation);
+                            }
+                        }
+
+                        vp_FPSCamera Cam = GameManager.GetVpFPSCamera();
+                        if (Cam)
+                        {
+                            if(m_LocalPlayerData.m_LastSentTilt != GameManager.GetVpFPSCamera().transform.localEulerAngles.x)
+                            {
+                                m_LocalPlayerData.m_LastSentTilt = GameManager.GetVpFPSCamera().transform.localEulerAngles.x;
+                                ClientSend.SendTilt(m_LocalPlayerData.m_LastSentTilt);
+                            }
+                        }
+
+                        
+                        PlayerManager PM = GameManager.GetPlayerManagerComponent();
+                        if (PM)
+                        {
+                            GearItem Gi = PM.m_ItemInHands;
+                            string HoldingGear = Gi ? Gi.name : "";
+                            if (PM.IsHoldingWildlifeItem())
+                            {
+                                WildlifeItem Wi = Gi.m_WildlifeItem;
+                                if (Wi)
+                                {
+                                    if(Wi.m_BaseAi && Wi.m_BaseAi.m_CarcassPrefab)
+                                    {
+                                        HoldingGear = Wi.m_BaseAi.m_CarcassPrefab.name;
+                                    }
+                                }
+                            }
+                            if (m_LocalPlayerData.m_GearName != HoldingGear)
+                            {
+                                m_LocalPlayerData.m_GearName = HoldingGear;
+                                ClientSend.SendHoldingGear(HoldingGear, m_LocalPlayerData.m_GearVariant);
+                            }
+                            if (m_LocalPlayerData.m_LastSentCrouch != PM.PlayerIsCrouched())
+                            {
+                                m_LocalPlayerData.m_LastSentCrouch = PM.PlayerIsCrouched();
+                                ClientSend.SendCrouch(m_LocalPlayerData.m_LastSentCrouch);
+                            }
+                            if (m_LocalPlayerData.m_LastSentInVehicle != GameManager.GetPlayerInVehicle().m_InVehicle)
+                            {
+                                m_LocalPlayerData.m_LastSentInVehicle = GameManager.GetPlayerInVehicle().m_InVehicle;
+                                ClientSend.SendInVehicle(m_LocalPlayerData.m_LastSentInVehicle);
+                            }
+                            Comps.NetworkPlayer.Actions Action = GetCurrentAction();
+                            if(m_LocalPlayerData.m_LastSentAction != Action)
+                            {
+                                m_LocalPlayerData.m_LastSentAction = Action;
+                                ClientSend.SendAction((int)Action);
+                            }
+
+                            float CurrentHealth = GameManager.GetConditionComponent().m_CurrentHP;
+                            float Change = CurrentHealth-m_LocalPlayerData.m_Health;
+                            bool HasDebuffs = GameManager.GetConditionComponent().HasAffliction();
+                            bool KnockedDown = GameManager.GetBrokenBody().HasAffliction;
+
+                            if (Change > 1 || Change < 1 || HasDebuffs != m_LocalPlayerData.m_HasDebuffs || KnockedDown != m_LocalPlayerData.m_KnockedDown)
+                            {
+                                m_LocalPlayerData.m_Health = CurrentHealth;
+                                m_LocalPlayerData.m_HasDebuffs = HasDebuffs;
+                                m_LocalPlayerData.m_KnockedDown = KnockedDown;
+
+                                if (s_InSquad)
+                                {
+                                    ClientSend.SendSquadHealth(CurrentHealth, HasDebuffs, KnockedDown);
+                                }
+                            }
+
+                            if(m_LocalPlayerData.m_BloodLosses != GameManager.GetBloodLossComponent().m_CausesLocIDs.Count)
+                            {
+                                m_LocalPlayerData.m_BloodLosses = GameManager.GetBloodLossComponent().m_CausesLocIDs.Count;
+                                ClientSend.SendBloodLosses(m_LocalPlayerData.m_BloodLosses);
+                            }
+                            bool CurrentlyWorking = IsCurrentWorking();
+                            if(m_LocalPlayerData.m_LastSentWorking != CurrentlyWorking)
+                            {
+                                m_LocalPlayerData.m_LastSentWorking = CurrentlyWorking;
+                                ClientSend.SendIsWorking(CurrentlyWorking);
+
+                                if (!CurrentlyWorking)
+                                {
+                                    if (GameManager.m_Rest && !GameManager.m_Rest.IsSleeping())
+                                    {
+                                        SleepHook.SetEveryoneIsSleeping(false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                DataStr.ClothingData NewClothingData = ClothingCombininizer.GetClothing();
+                if (!m_LocalPlayerData.m_ClothingData.Equals(NewClothingData) || s_ForceUpdateClothing)
+                {
+                    m_LocalPlayerData.m_ClothingData = NewClothingData;
+                    ClientSend.SendClothing(NewClothingData);
+                    SkyCoop.Logger.Log(ConsoleColor.Green, "m_LocalPlayerData SendClothing");
+                    s_ForceUpdateClothing = false;
+                }
+            }
+        }
+
+        public static void AddLocalizedSprain(AfflictionBodyArea location, string causeID)
+        {
+            bool Legs = false;
+            if (location == AfflictionBodyArea.LegLeft)
+            {
+                location = AfflictionBodyArea.FootLeft;
+                Legs = true;
+            }
+            else if (location == AfflictionBodyArea.LegRight)
+            {
+                location = AfflictionBodyArea.FootRight;
+                Legs = true;
+            }
+            else if (location == AfflictionBodyArea.ArmLeft)
+            {
+                location = AfflictionBodyArea.HandLeft;
+            }
+            else if (location == AfflictionBodyArea.ArmRight)
+            {
+                location = AfflictionBodyArea.HandRight;
+            }
+
+            if (Legs)
+            {
+                SprainedAnkle Spr = GameManager.GetSprainedAnkleComponent();
+
+                GameManager.GetPlayerVoiceComponent().Play(Spr.m_SprainedAnkleAudioEvent, Il2CppVoice.Priority.Critical);
+                GameAudioManager.PlaySound(Spr.m_SprainedAnkleSFXEvent, Spr.gameObject);
+                Spr.DoStumbleEffects();
+
+                for (int i = 0; i < Spr.m_Locations.Count; i++)
+                {
+                    if (Spr.m_Locations[i] == (int)location)
+                    {
+                        return;
+                    }
+                }
+
+                Spr.m_CausesLocIDs.Add(causeID);
+                Spr.m_Locations.Add((int)location);
+                Spr.m_ElapsedHoursList.Add(0.0f);
+                Spr.m_DurationHoursList.Add(UnityEngine.Random.Range(Spr.m_DurationHoursMin, Spr.m_DurationHoursMax));
+                Spr.m_ElapsedRestList.Add(0.0f);
+                Spr.m_SecondsSinceLastPainAudio = 0.0f;
+                PlayerDamageEvent.SpawnDamageEvent(Spr.m_LocalizedDisplayName.m_LocalizationID, "GAMEPLAY_Affliction", "ico_injury_sprainedAnkle", InterfaceManager.m_FirstAidRedColor, true, 5, 2);
+                GameManager.GetLogComponent().AddAffliction(AfflictionType.SprainedAnkle, causeID);
+                StatsManager.IncrementValue(StatID.Sprains_Ankle);
+            }
+            else
+            {
+                SprainedWrist Spr = GameManager.GetSprainedWristComponent();
+                GameManager.GetPlayerVoiceComponent().Play(Spr.m_SprainedWristVO, Il2CppVoice.Priority.Critical);
+                GameAudioManager.PlaySound(Spr.m_SprainedWristSFX, Spr.gameObject);
+                Spr.DoStumbleEffects();
+
+                for (int i = 0; i < Spr.m_Locations.Count; i++)
+                {
+                    if (Spr.m_Locations[i] == (int)location)
+                    {
+                        return;
+                    }
+                }
+
+                GearItem Item = GameManager.GetPlayerManagerComponent().m_ItemInHands;
+                if (Item)
+                {
+                    GameManager.GetPlayerManagerComponent().UnequipItemInHands();
+                }
+
+                Spr.m_CausesLocIDs.Add(causeID);
+                Spr.m_Locations.Add((int)location);
+                Spr.m_ElapsedHoursList.Add(0.0f);
+                Spr.m_DurationHoursList.Add(UnityEngine.Random.Range(Spr.m_DurationHoursMin, Spr.m_DurationHoursMax));
+                Spr.m_ElapsedRestList.Add(0.0f);
+                PlayerDamageEvent.SpawnDamageEvent(Spr.m_LocalizedDisplayName.m_LocalizationID, "GAMEPLAY_Affliction", "ico_injury_sprainedWrist", InterfaceManager.m_FirstAidRedColor, true, 5, 2);
+                GameManager.GetLogComponent().AddAffliction(AfflictionType.SprainedWrist, causeID);
+                StatsManager.IncrementValue(StatID.Sprains_Wrist);
+            }
+            GameManager.GetSprainPainComponent().ApplyAffliction(location, causeID, AfflictionOptions.PlayFX);
+        }
+
+        public static float GetProtectionForBodyArea(ClothingRegion Region)
+        {
+            Il2CppSystem.Collections.Generic.List<GearItem> Gears = new Il2CppSystem.Collections.Generic.List<GearItem>();
+            GameManager.GetPlayerManagerComponent().GetAllClothingInRegion(Region, Gears);
+
+            float Protection = 0;
+
+            foreach (GearItem Gear in Gears)
+            {
+                if(Gear && Gear.m_ClothingItem)
+                {
+                    Protection += Gear.m_ClothingItem.m_Toughness;
+                }
+            }
+            return Protection / 100;
+        }
+
+        public static void OtherPlayerDamageMe(float damage, int from, Comps.PlayerDamageColider.DamageZone bodypart, string Weapon)
+        {
+            if (damage <= 0)
+            {
+                return;
+            }
+
+            WeaponsManager.WeaponDescripter DmgInfo = WeaponsManager.GetDescriptor(Weapon);
+
+            string DamageCase = "Player";
+            string Extra = " shoot you";
+            if (DmgInfo.m_IsMelee)
+            {
+                Extra = " hit you";
+            }
+            DamageCase = DamageCase + Extra;
+
+            bool HasArmor = GameManager.GetDamageProtection().HasBallisticVest();
+            bool HasHelemet = GetClothForSlot(ClothingRegion.Head, ClothingLayer.Mid) == "GEAR_CookingPot";
+
+
+            m_LastDamageType = DmgInfo.m_DamageType;
+            m_LastDamageZone = bodypart;
+            AfflictionBodyArea BodyArea = AfflictionBodyArea.Head;
+
+            switch (bodypart)
+            {
+                case Comps.PlayerDamageColider.DamageZone.Head:
+                    BodyArea = AfflictionBodyArea.Head;
+                    break;
+                case Comps.PlayerDamageColider.DamageZone.Chest:
+                    BodyArea = AfflictionBodyArea.Chest;
+                    break;
+                case Comps.PlayerDamageColider.DamageZone.RightArm:
+                    BodyArea = AfflictionBodyArea.ArmRight;
+                    break;
+                case Comps.PlayerDamageColider.DamageZone.LeftArm:
+                    BodyArea = AfflictionBodyArea.ArmLeft;
+                    break;
+                case Comps.PlayerDamageColider.DamageZone.RightLeg:
+                    BodyArea = AfflictionBodyArea.LegRight;
+                    break;
+                case Comps.PlayerDamageColider.DamageZone.LeftLeg:
+                    BodyArea = AfflictionBodyArea.LegLeft;
+                    break;
+            }
+
+            ClothingRegion Region = ClothingRegion.Chest;
+
+            switch (BodyArea)
+            {
+                case AfflictionBodyArea.Head:
+                    Region = ClothingRegion.Head;
+                    break;
+                case AfflictionBodyArea.ArmLeft:
+                    Region = ClothingRegion.Hands;
+                    break;
+                case AfflictionBodyArea.ArmRight:
+                    Region = ClothingRegion.Hands;
+                    break;
+                case AfflictionBodyArea.Chest:
+                    Region = ClothingRegion.Chest;
+                    break;
+                case AfflictionBodyArea.LegLeft:
+                    Region = ClothingRegion.Legs;
+                    break;
+                case AfflictionBodyArea.LegRight:
+                    Region = ClothingRegion.Legs;
+                    break;
+            }
+
+            float Protection = GetProtectionForBodyArea(Region);
+
+            switch (Region)
+            {
+                case ClothingRegion.Head:
+                    Protection = GetProtectionForBodyArea(ClothingRegion.Face) + GetProtectionForBodyArea(ClothingRegion.Neck) + GetProtectionForBodyArea(ClothingRegion.Head);
+                    break;
+                case ClothingRegion.Hands:
+                case ClothingRegion.Chest:
+                    Protection = GetProtectionForBodyArea(ClothingRegion.Hands) + GetProtectionForBodyArea(ClothingRegion.Chest);
+                    break;
+                case ClothingRegion.Legs:
+                case ClothingRegion.Feet:
+                    Protection = GetProtectionForBodyArea(ClothingRegion.Legs) + GetProtectionForBodyArea(ClothingRegion.Feet);
+                    break;
+                default:
+                    break;
+            }
+
+            if(Region == ClothingRegion.Chest)
+            {
+                if (HasArmor)
+                {
+                    Protection = Protection+0.5f;
+                }
+            }
+
+            if (DmgInfo.m_IgnoreArmor)
+            {
+                Protection = 0;
+            }
+
+
+            if (Protection > 0)
+            {
+                float NewDamage = damage - (damage * Protection);
+
+                SkyCoop.Logger.Log($"Сlothing blocked {Protection * 100}% of damaged, delt to {bodypart.ToString()} damage: {damage} -> {NewDamage}");
+
+                float Blocked = damage-NewDamage;
+
+                if (Blocked > 0)
+                {
+                    string Number = "";
+                    if (Blocked > 1)
+                    {
+                        Number = Math.Round(Blocked).ToString();
+                    }
+                    else
+                    {
+                        Number = Blocked.ToString("F1");
+                    }
+                    PlayerDamageEvent.SpawnAfflictionEvent($"Damage blocked {Number}", "GAMEPLAY_ClothingProtection", "ico_clothingStats_toughness", Color.cyan);
+                }
+
+                damage = NewDamage;
+            }
+
+            SkyCoop.Logger.Log("OtherPlayerDamageMe Damage: " + damage + " from " + from + " to the " + bodypart.ToString() + " using " + Weapon + " dealing damage type " + DmgInfo.m_DamageType);
+            GameManager.GetConditionComponent().AddHealth(-damage, DamageSource.BulletWound);
+
+            if (BodyArea == AfflictionBodyArea.Chest && HasArmor)
+            {
+                DmgInfo.m_BloodLoss = false;
+                DmgInfo.m_ClothingTearing = false;
+                DmgInfo.m_Burn = false;
+                DmgInfo.m_Pain = false;
+
+                var RNG = new System.Random(); int ribBroke = RNG.Next(0, 100);
+                if (!DmgInfo.m_IsMelee && ribBroke <= 5)
+                {
+                    GameManager.GetBrokenRibComponent().BrokenRibStart(DamageCase, true, false, true, false);
+                }
+            }
+            if (BodyArea == AfflictionBodyArea.Head && HasHelemet)
+            {
+                DmgInfo.m_BloodLoss = false;
+                DmgInfo.m_ClothingTearing = false;
+                DmgInfo.m_Burn = false;
+                DmgInfo.m_Pain = true;
+            }
+
+            if (DmgInfo.m_BloodLoss)
+            {
+                GameManager.GetBloodLossComponent().BloodLossStartOverrideArea(BodyArea, DamageCase, true, AfflictionOptions.PlayFX);
+            }
+
+            if (DmgInfo.m_Pain)
+            {
+                if (BodyArea == AfflictionBodyArea.Head)
+                {
+                    if (!GameManager.GetHeadacheComponent().HasHeadache())
+                    {
+                        HeadacheData Stock = GameManager.GetHeadacheComponent().m_LegacyHeadacheData;
+                        HeadacheData headacheData = new HeadacheData();
+                        headacheData.m_Cause = HeadacheCause.None;
+                        LocalizedString Case = new LocalizedString();
+                        Case.m_LocalizationID = DamageCase;
+                        headacheData.m_CausedByLocalizedId = Case;
+                        headacheData.m_TreatmentRequiredDescription = Stock.m_TreatmentRequiredDescription;
+                        headacheData.m_HoursRequiredOutdoorToGetAffliction = Stock.m_HoursRequiredOutdoorToGetAffliction;
+                        headacheData.m_HoursRequiredIndoorToExitAffliction = Stock.m_HoursRequiredIndoorToExitAffliction;
+                        headacheData.m_HealedAfflictionLocalizedId = Stock.m_HealedAfflictionLocalizedId;
+                        headacheData.m_HeadacheStartAudio = Stock.m_HeadacheStartAudio;
+                        headacheData.m_HeadachePulseFrequencyStart = Stock.m_HeadachePulseFrequencyStart;
+                        headacheData.m_HeadachePulseFrequencyEnd = Stock.m_HeadachePulseFrequencyEnd;
+                        headacheData.m_HeadachePulseEvent = Stock.m_HeadachePulseEvent;
+                        headacheData.m_HeadacheDurationHours = Stock.m_HeadacheDurationHours;
+                        headacheData.m_HeadacheDescription = Stock.m_HeadacheDescription;
+                        headacheData.m_HeadacheAfflictionIcoName = Stock.m_HeadacheAfflictionIcoName;
+                        headacheData.m_HeadacheLocalizedId = Stock.m_HeadacheLocalizedId;
+
+                        GameManager.GetHeadacheComponent().ApplyHeadache(headacheData);
+                    }
+                }
+                else if (BodyArea == AfflictionBodyArea.ArmRight
+                    || BodyArea == AfflictionBodyArea.ArmLeft
+                    || BodyArea == AfflictionBodyArea.LegLeft
+                    || BodyArea == AfflictionBodyArea.LegRight)
+                {
+                    AddLocalizedSprain(BodyArea, DamageCase);
+                }
+            }
+            if (DmgInfo.m_ClothingTearing)
+            {
+                var RNG = new System.Random(); int clothingRNG = RNG.Next(20, 40);
+                GameManager.GetPlayerManagerComponent().ApplyDamageToWornClothingRegion(Region, clothingRNG);
+            }
+
+            if (DmgInfo.m_Burn)
+            {
+                GameManager.GetBurnsComponent().BurnsStart(DamageCase, true, true, AfflictionOptions.PlayFX);
+            }
+
+            if(Weapon == "GEAR_Bow" || Weapon == "GEAR_Arrow" || Weapon == "GEAR_ArrowHardened")
+            {
+                AddArrowAffiction(BodyArea, DamageCase, Weapon);
+            }
+
+            if(Weapon == "ZONE")
+            {
+                CanvasUI.DoZoneDamageOverlay();
+                SprainedAnkle Spr = GameManager.GetSprainedAnkleComponent();
+
+                if (Spr)
+                {
+                    GameManager.GetPlayerVoiceComponent().Play(Spr.m_SprainedAnkleAudioEvent, Il2CppVoice.Priority.Critical);
+                    GameAudioManager.PlaySound(Spr.m_SprainedAnkleSFXEvent, Spr.gameObject);
+                    GameManager.GetPlayerAnimationComponent().Trigger_WolfPassBite();
+                }
+            }
+
+            GameManager.GetPlayerVoiceComponent().Play("PLAY_PLAYERDAMAGE", Il2CppVoice.Priority.Critical, PlayerVoice.Options.None);
+
+            Transform V3 = GameManager.GetPlayerTransform();
+            GameObject Player = GameManager.GetPlayerObject();
+
+            GameAudioManager.SetMaterialSwitch("Flesh", Player);
+            int num = (int)AkSoundEngine.PostEvent(Il2CppAK.EVENTS.PLAY_BULLETIMPACTS, GameAudioManager.GetSoundEmitterFromGameObject(GameManager.GetPlayerObject()));
+            GameAudioManager.SetAudioSourceTransform(Player, V3);
+        }
+
+        public static void AddArrowAffiction(AfflictionBodyArea Area, string Case, string ArrowName)
+        {
+            string CaseHack = "_ARROW_";
+            string GameplayString = "GAMEPLAY_ARROW";
+            string Ico = "ico_ammo_arrow";
+
+            if (ArrowName == "GEAR_ArrowHardened")
+            {
+                CaseHack = "_ARROW2_";
+                GameplayString = "GAMEPLAY_ArrowHardened";
+                Ico = "ico_ammo_arrowHardened";
+            }
+
+            BloodLoss bloodLossComponent = GameManager.GetBloodLossComponent();
+            bloodLossComponent.m_Locations.Add((int)Area);
+            bloodLossComponent.m_CausesLocIDs.Add(CaseHack);
+            bloodLossComponent.m_ElapsedHoursList.Add(0.0f);
+            bloodLossComponent.m_DurationHoursList.Add(UnityEngine.Random.Range(bloodLossComponent.m_DurationHoursMin, bloodLossComponent.m_DurationHoursMax));
+
+            PlayerDamageEvent.SpawnDamageEvent(GameplayString, "GAMEPLAY_Affliction", Ico, InterfaceManager.m_FirstAidRedColor, true, 5f, 3f);
+
+            GameManager.GetLogComponent().AddAffliction(AfflictionType.BloodLoss, CaseHack);
+            GameManager.GetPlayerVoiceComponent().Play(bloodLossComponent.m_SoundToPlayBelowThreshold, Il2CppVoice.Priority.Critical);
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(vp_FPSCamera), "Awake")]
+        private static class vp_FPSCamera_Awake
+        {
+            private static void Postfix(vp_FPSCamera __instance)
+            {
+                if (__instance.GetComponent<AudioListener>() == null)
+                {
+                    __instance.gameObject.AddComponent<AudioListener>();
+                }
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(ConsoleManager), "CONSOLE_god")]
+        private static class ConsoleManager_CONSOLE_god
+        {
+            private static void Postfix()
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                GameManager.GetPlayerMovementComponent().SetForceCrouch(false);
+                ClientSend.SendEraceAllInjectedItems();
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(EmergencyStim), "ApplyEmergencyStim")]
+        private static class EmergencyStim_ApplyEmergencyStim
+        {
+            private static void Postfix(EmergencyStim __instance)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                if (GameManager.GetBrokenBody().HasAffliction)
+                {
+                    RevivedViaEmergencyStim();
+                }
+            }
+        }
+
+        public static GearItem GiveItemToPlayer(string GearName, int units = 1)
+        {
+            GameObject reference = AssetManager.GetAssetFromGame<GameObject>(GearName);
+            if (reference)
+            {
+                GearItem gearItem = reference.GetComponent<GearItem>();
+                if (gearItem)
+                {
+                    GearItem given = GameManager.GetPlayerManagerComponent().InstantiateItemInPlayerInventory(gearItem, units, 1f, InventoryInstantiateFlags.None);
+                    if (given)
+                    {
+                        return given;
+                    }
+                    else
+                    {
+                        GameObject GearObj = UnityEngine.Object.Instantiate<GameObject>(reference);
+                        if (GearObj)
+                        {
+                            given = GearObj.GetComponent<GearItem>();
+                            if (given)
+                            {
+                                GameManager.GetPlayerManagerComponent().ProcessPickupItemInteraction(given, false, false, true);
+                            }
+                            else
+                            {
+                                SkyCoop.Logger.Log(ConsoleColor.Red, $"GiveItemToPlayer can't give {GearName}, it has no GearItem component. [Instantiated variant]");
+                                UnityEngine.Object.Destroy(GearObj);
+                            }
+                        }
+                        else
+                        {
+                            SkyCoop.Logger.Log(ConsoleColor.Red, $"GiveItemToPlayer can't give {GearName}, wasn't able to instantiate in inventory.");
+                        }
+                    }
+                }
+                else
+                {
+                    SkyCoop.Logger.Log(ConsoleColor.Red, $"GiveItemToPlayer can't give {GearName}, it has no GearItem component.");
+                }
+            }
+            else
+            {
+                SkyCoop.Logger.Log(ConsoleColor.Red, $"GiveItemToPlayer can't give {GearName} it not exist.");
+            }
+            return null;
+        }
+
+        public static void FullyCure()
+        {
+            GameManager.GetEmergencyStimComponent().ResetEmergencyStim();
+            GameManager.GetDiminishedState().Cure(AfflictionOptions.None);
+            GameManager.GetPlayerMovementComponent().AddSprintStamina(GameManager.GetPlayerMovementComponent().DefaultMaxStamina);
+            PlayersManager.m_LastDamageType = DataStr.DamageType.Unknown;
+            PlayersManager.m_LastDamageZone = Comps.PlayerDamageColider.DamageZone.Chest;
+            GameManager.GetBrokenBody().Cure();
+            GameManager.GetConditionComponent().m_CurrentHP = GameManager.GetConditionComponent().GetAdjustedMaxHP();
+            ConsoleManager.CONSOLE_afflictions_cure();
+            GameManager.GetSprainedAnkleComponent().Cure();
+            GameManager.GetSprainedWristComponent().Cure();
+            GameManager.GetHeadacheComponent().Cure();
+
+            GameManager.GetBloodLossComponent().Cure();
+        }
+
+        public static void RespawnAsSpecator()
+        {
+            GameManager.GetConditionComponent().m_NeverDie = false;
+            s_Spectator = true;
+            GameManager.GetPlayerMovementComponent().SetForceCrouch(false);
+            GameManager.GetPlayerManagerComponent().SetControlMode(PlayerControlMode.Locked);
+
+            ExitVehicleForced();
+            FullyCure();
+
+            MenuHook.RemovePleaseWait();
+            InterfaceManager.TrySetPanelEnabled<Panel_LifeAfterDeath>(false);
+        }
+
+        public static void ExitVehicleForced()
+        {
+            if (GameManager.GetPlayerInVehicle().m_VehicleDoorUsed)
+            {
+                GameManager.GetPlayerInVehicle().m_VehicleDoorUsed = null;
+                GameManager.GetPlayerInVehicle().ExitVehicleAfterFadeOut();
+                ClientSend.SendVehicleSeat("");
+                ClientSend.SendFinishInteract();
+            }
+        }
+
+        public static void RespawnOnPoint(Vector3 Position, Quaternion Rotation, bool RespawnAnim)
+        {
+            GameManager.GetConditionComponent().m_NeverDie = false;
+            s_Spectator = false;
+
+            if(Position != Vector3.zero)
+            {
+                GameManager.GetPlayerManagerComponent().TeleportPlayer(Position, Rotation);
+            }
+            
+            ExitVehicleForced();
+
+            GameManager.GetPlayerMovementComponent().SetForceCrouch(false);
+            GameManager.GetPlayerManagerComponent().SetControlMode(PlayerControlMode.Normal);
+
+            if (!GameManager.GetPlayerManagerComponent().m_StartGearApplied)
+            {
+                GameManager.GetPlayerManagerComponent().m_StartGear.AddAllToInventory();
+                DoWeaponSwitch(!RespawnAnim);
+            }
+
+            if (RespawnAnim)
+            {
+                FullyCure();
+                GameManager.GetLifeAfterDeathManager().PlayRespawnTimeline();
+            }
+
+            ClientSend.SendPosition(Position);
+            ClientSend.SendRevived(-2);
+
+            MenuHook.RemovePleaseWait();
+            InterfaceManager.TrySetPanelEnabled<Panel_LifeAfterDeath>(false);
+        }
+
+        public static void RevivedViaEmergencyStim(int ReviverID = -1)
+        {
+            PlayersManager.m_LastDamageType = DataStr.DamageType.Unknown;
+            PlayersManager.m_LastDamageZone = Comps.PlayerDamageColider.DamageZone.Chest;
+            GameManager.GetBrokenBody().Cure();
+            GameManager.GetPlayerMovementComponent().SetForceCrouch(false);
+            GameManager.GetDiminishedState().Cure();
+            if (ReviverID == -1)
+            {
+                ClientSend.SendRevived(ModMain.Client.GetMyId());
+                HUDMessage.AddMessage("You revived yourself!", true, true);
+            }
+            else
+            {
+                ClientSend.SendRevived(ReviverID);
+                HUDMessage.AddMessage($"{CanvasUI.GetPlayerName(ReviverID)} revived you!", true, true);
+            }
+        }
+
+        public static void ToKnockedState(DataStr.DamageType DeathCase = DataStr.DamageType.Unknown, Comps.PlayerDamageColider.DamageZone DamageZone = Comps.PlayerDamageColider.DamageZone.Chest)
+        {
+            PlayersManager.m_LastDamageType = DataStr.DamageType.Unknown;
+            PlayersManager.m_LastDamageZone = Comps.PlayerDamageColider.DamageZone.Chest;
+            GameManager.GetConditionComponent().m_CurrentHP = 30;
+            //GameManager.GetBloodLossComponent().Cure();
+            GameManager.GetBloodLossComponent().BloodLossStartOverrideArea(AfflictionBodyArea.Chest, "Knocked down", true, AfflictionOptions.PlayFX);
+            GameManager.GetBrokenBody().ApplyBrokenBody(AfflictionOptions.None);
+            GameManager.GetDiminishedState().Apply(2, AfflictionOptions.None);
+            GameManager.GetPlayerMovementComponent().SetForceCrouch(true);
+
+            ClientSend.SendDeath(DeathCase, true, DamageZone == Comps.PlayerDamageColider.DamageZone.Head);
+            ClientSend.SendRevived(-1);
+        }
+
+        public static void Death(DataStr.DamageType DeathCase = DataStr.DamageType.Unknown, Comps.PlayerDamageColider.DamageZone DamageZone = Comps.PlayerDamageColider.DamageZone.Chest)
+        {
+            ClientSend.SendDeath(DeathCase, false, DamageZone == Comps.PlayerDamageColider.DamageZone.Head);
+        }
+
+        public static void EmptyFn()
+        {
+
+        }
+
+        public static void HandleTryInteract(bool Result)
+        {
+            if (s_LastTryInteractionComponent)
+            {
+                if (Result)
+                {
+                    if(s_LastTryInteractionComponent is VehicleDoor)
+                    {
+                        VehicleDoor Door = s_LastTryInteractionComponent as VehicleDoor;
+                        if (Door)
+                        {
+                            if (GameManager.GetPlayerInVehicle().IsInside())
+                            {
+                                GameManager.GetPlayerInVehicle().ExitVehicle(Door);
+                            }
+                            else
+                            {
+                                GameManager.GetPlayerInVehicle().EnterVehicle(Door);
+                            }
+                            return;
+                        }
+                    }
+                    if(s_LastTryInteractionComponent is Container)
+                    {
+                        Container Container = s_LastTryInteractionComponent as Container;
+                        if (Container)
+                        {
+                            if (!Container.m_OpenInProgress)
+                            {
+                                Container.BeginContainerOpen();
+                            }
+                            MenuHook.DoPleaseWait("Please wait...", "Downloading container data...");
+                            ClientSend.RequestContainerContent(Container.GetComponent<ObjectGuid>().GetPDID());
+                            return;
+                        }
+                    }
+                    if (s_LastTryInteractionComponent is Bed)
+                    {
+                        Bed Bed = s_LastTryInteractionComponent as Bed;
+                        if (Bed)
+                        {
+                            if (SleepHook.s_PassTimeMode)
+                            {
+                                if (SleepHook.DoPassTime())
+                                {
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                if (SleepHook.DoRest())
+                                {
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    if(s_LastTryInteractionComponent is BreakDown)
+                    {
+                        BreakDown BreakDown = s_LastTryInteractionComponent as BreakDown;
+                        if (BreakDown)
+                        {
+                            BreakDownHook.DoBreak(BreakDown);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    HUDMessage.AddMessage("Failed, interaction blocked by other player!", true, true);
+
+                    if (s_LastTryInteractionComponent)
+                    {
+                        Harvestable Harvestable = s_LastTryInteractionComponent.GetComponent<Harvestable>();
+                        if (Harvestable)
+                        {
+                            HarvestHook.CancleHarvest(Harvestable);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                HUDMessage.AddMessage("Failed, interaction object no longer exist!", true, true);
+                ClientSend.SendFinishInteract();
+                return;
+            }
+            ClientSend.SendFinishInteract();
+        }
+
+        public static void DeactivateAllSpectatingTargets()
+        {
+            foreach (Comps.NetworkPlayer Player in s_Players)
+            {
+                if (Player && Player.m_CameraAttention)
+                {
+                    Player.m_CameraAttention.enabled = false; 
+                }
+            }
+        }
+
+        public static bool SetFirstValidSpectatingTarget(int StartIndex = 0, bool Reverse = false)
+        {
+            if (!Reverse)
+            {
+                for (int i = StartIndex; i < s_Players.Count; i++)
+                {
+                    Comps.NetworkPlayer Player = s_Players[i];
+                    if (Player && Player.m_CameraAttention)
+                    {
+                        if (!Player.m_CameraAttention.enabled && Player.gameObject.activeSelf && Player.m_Action != Comps.NetworkPlayer.Actions.Death)
+                        {
+                            DeactivateAllSpectatingTargets();
+                            HUDMessage.AddMessage($"YOU SPECTATING {Player.m_PlayerName}");
+                            GameAudioManager.PlayGuiConfirm();
+                            Player.m_CameraAttention.enabled = true;
+                            s_SpectateID = Player.m_PlayerID;
+                            return true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = StartIndex; i >= 0; i--)
+                {
+                    Comps.NetworkPlayer Player = s_Players[i];
+                    if (Player && Player.m_CameraAttention)
+                    {
+                        if (!Player.m_CameraAttention.enabled && Player.gameObject.activeSelf && Player.m_Action != Comps.NetworkPlayer.Actions.Death)
+                        {
+                            DeactivateAllSpectatingTargets();
+                            HUDMessage.AddMessage($"YOU SPECTATING {Player.m_PlayerName}");
+                            GameAudioManager.PlayGuiConfirm();
+                            Player.m_CameraAttention.enabled = true;
+                            s_SpectateID = Player.m_PlayerID;
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static int GetSpectatorIndex()
+        {
+            for (int i = 0; i < s_Players.Count; i++)
+            {
+                Comps.NetworkPlayer Player = s_Players[i];
+                if (Player && Player.m_CameraAttention)
+                {
+                    if (Player.m_CameraAttention.enabled)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return 0;
+        }
+
+        public static void NextSpectatingTarget()
+        {
+            int CurrentSpectatingTarget = GetSpectatorIndex();
+
+            bool Result = SetFirstValidSpectatingTarget(CurrentSpectatingTarget);
+            if (!Result)
+            {
+                bool Result2 = SetFirstValidSpectatingTarget();
+                if (!Result2)
+                {
+                    HUDMessage.AddMessage($"NO PLAYERS TO SPECTATE", true, true);
+                    GameAudioManager.PlayGUIError();
+                    s_SpectateID = -1;
+                }
+            }
+        }
+
+        public static void PreviousSpectatingTarget()
+        {
+            int CurrentSpectatingTarget = GetSpectatorIndex();
+
+            bool Result = SetFirstValidSpectatingTarget(CurrentSpectatingTarget, true);
+            if (!Result)
+            {
+                bool Result2 = SetFirstValidSpectatingTarget(s_Players.Count-1, true);
+                if (!Result2)
+                {
+                    HUDMessage.AddMessage($"NO PLAYERS TO SPECTATE", true, true);
+                    GameAudioManager.PlayGUIError();
+                    s_SpectateID = -1;
+                }
+            }
+        }
+
+        public static void SpectatorControls()
+        {
+            if (s_Spectator)
+            {
+                if (Il2Cpp.InputManager.GetFirePressed(Il2Cpp.InputManager.m_CurrentContext))
+                {
+                    NextSpectatingTarget();
+                }else if (Il2Cpp.InputManager.GetAltFirePressed(Il2Cpp.InputManager.m_CurrentContext))
+                {
+                    PreviousSpectatingTarget();
+                }
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(AfflictionButton), "SetCauseAndEffect")]
+        private static class AfflictionButton_SetCauseAndEffect
+        {
+            private static void Postfix(AfflictionButton __instance, string causeStr, AfflictionType affType, AfflictionBodyArea location, int index, string effectName, string spriteName)
+            {
+                if (causeStr == "_ARROW_" || causeStr == "_ARROW2_")
+                {
+                    __instance.m_SpriteEffect.spriteName = "ico_ammo_arrow";
+                    if(causeStr == "_ARROW_")
+                    {
+                        __instance.m_LabelEffect.text = Localization.Get("GAMEPLAY_Arrow");
+                    }
+                    else
+                    {
+                        __instance.m_LabelEffect.text = Localization.Get("GAMEPLAY_ArrowHardened");
+                    }
+                    __instance.m_LabelCause.text = "Player shot you";
+                }
+
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(AfflictionCoverflow), "SetAffliction")]
+        private static class AfflictionCoverflow_SetAffliction
+        {
+            private static void Postfix(AfflictionCoverflow __instance, Affliction affliction)
+            {
+                if (affliction.m_Cause == "_ARROW_")
+                {
+                    __instance.m_SpriteEffect.spriteName = "ico_ammo_arrow";
+                }
+                else if (affliction.m_Cause == "_ARROW2_")
+                {
+                    __instance.m_SpriteEffect.spriteName = "ico_ammo_arrowHardened";
+                }
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(Panel_Affliction), "UpdateSelectedAffliction", new Type[] { typeof(Affliction) })]
+        private static class Panel_Affliction_UpdateSelectedAffliction
+        {
+            private static void Postfix(Panel_Affliction __instance, Affliction affliction)
+            {
+                if (affliction.m_Cause == "_ARROW_" || affliction.m_Cause == "_ARROW2_")
+                {
+                    if (affliction.m_Cause == "_ARROW_")
+                    {
+                        __instance.m_Label.text = Localization.Get("GAMEPLAY_Arrow");
+                    }
+                    else
+                    {
+                        __instance.m_Label.text = Localization.Get("GAMEPLAY_ArrowHardened");
+                    }
+                    __instance.m_LabelCause.text = "Player shot you";
+                }
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(BloodLoss), "BloodLossEnd")]
+        private static class BloodLoss_BloodLossEnd
+        {
+            private static bool Prefix(BloodLoss __instance, int index)
+            {
+                if (index < 0 || index >= __instance.m_CausesLocIDs.Count)
+                    return true;
+
+
+                string Cause = __instance.m_CausesLocIDs[index];
+                int Location = __instance.m_Locations[index];
+
+                if(Cause != "_ARROW_" && Cause != "_ARROW2_")
+                {
+                    return true;
+                }
+
+                string GearName = "GEAR_Arrow";
+                string GamePlayString = "GAMEPLAY_Arrow";
+                string Ico = "ico_ammo_arrow";
+
+                if(Cause == "_ARROW2_")
+                {
+                    GearName = "GEAR_ArrowHardened";
+                    GamePlayString = "GAMEPLAY_ArrowHardened";
+                    Ico = "ico_ammo_arrowHardened";
+                }
+
+                __instance.m_CausesLocIDs.RemoveAt(index);
+                __instance.m_Locations.RemoveAt(index);
+                __instance.m_ElapsedHoursList.RemoveAt(index);
+                __instance.m_DurationHoursList.RemoveAt(index);
+
+                PlayerDamageEvent.SpawnAfflictionEvent(GamePlayString, "GAMEPLAY_Healed", Ico, InterfaceManager.m_FirstAidBuffColor);
+
+
+                Panel_FirstAid panelFirstAid;
+                if (InterfaceManager.TryGetPanel<Panel_FirstAid>(out panelFirstAid))
+                    panelFirstAid.UpdateDueToAfflictionHealed();
+                GameObject Reference = Addressables.LoadAssetAsync<GameObject>(GearName).WaitForCompletion();
+                if (Reference)
+                {
+                    GameObject GearObject = GameObject.Instantiate<GameObject>(Reference, GameManager.GetPlayerTransform().position, GameManager.GetPlayerTransform().rotation);
+                    GameManager.GetPlayerAnimationComponent().Trigger_WolfPassBite();
+                    GameManager.GetPlayerVoiceComponent().Play(GameManager.GetFallDamageComponent().m_HeavyDamage, Il2CppVoice.Priority.Critical, PlayerVoice.Options.None, null);
+                    GearObject.SetActive(true);
+                    GearItem component = GearObject.GetComponent<GearItem>();
+                    component.CompleteSpawnFromCONSOLE();
+                    GameManager.GetPlayerManagerComponent().EnterInspectGearMode(component);
+                    AfflictionBodyArea BodyArea = (AfflictionBodyArea)Location;
+                    Comps.PlayerDamageColider.DamageZone DamageZone = DamageZone.Head;
+
+                    switch (BodyArea)
+                    {
+                        case AfflictionBodyArea.Head:
+                            DamageZone = DamageZone.Head;
+                            break;
+                        case AfflictionBodyArea.Chest:
+                            DamageZone = DamageZone.Chest;
+                            break;
+                        case AfflictionBodyArea.ArmRight:
+                            DamageZone = DamageZone.RightArm;
+                            break;
+                        case AfflictionBodyArea.ArmLeft:
+                            DamageZone = DamageZone.LeftArm;
+                            break;
+                        case AfflictionBodyArea.LegRight:
+                            DamageZone = DamageZone.RightLeg;
+                            break;
+                        case AfflictionBodyArea.LegLeft:
+                            DamageZone = DamageZone.LeftLeg;
+                            break;
+                    }
+
+                    if (ModMain.IsMultiplayer())
+                    {
+                        if (ModMain.Client != null && ModMain.Client.m_MyEndPoint != null)
+                        {
+                            ClientSend.SendRemoveInjectedItem(ModMain.Client.GetMyId(), GearName, DamageZone);
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(VehicleDoor), "Awake")]
+        private static class VehicleDoor_Awake
+        {
+            private static void Postfix(VehicleDoor __instance)
+            {
+                ObjectGuid ObjGUID = __instance.GetComponent<ObjectGuid>();
+                if (ObjGUID == null)
+                {
+                    ObjGUID = __instance.gameObject.AddComponent<ObjectGuid>();
+                }
+                PdidTable.RuntimeRegister(ObjGUID, ModMain.GenerateSeededGUID(0, __instance.m_ExitPoint.transform.position));
+            }
+        }
+
+        //[HarmonyLib.HarmonyPatch(typeof(TimedHoldInteraction), "PerformHold")]
+        //private static class TimedHoldInteraction_PerformHold
+        //{
+        //    private static bool Prefix(TimedHoldInteraction __instance)
+        //    {
+        //        __instance.
+        //    }
+        //}
+
+        public static bool TryInteract(VehicleDoor Door)
+        {
+            string DoorGUID = "";
+            ObjectGuid ObjGUID = Door.GetComponent<ObjectGuid>();
+            if (ObjGUID)
+            {
+                DoorGUID = ObjGUID.GetPDID();
+            }
+            s_LastTryInteractionComponent = Door;
+            SkyCoop.Logger.Log($"VehicleDoor PerformHold {DoorGUID}");
+
+            ClientSend.SendTryInteract(DoorGUID);
+            return true;
+        }
+
+        public static bool TryInteract(Container container)
+        {
+            if (container.m_Inspected)
+            {
+                string ContainerGUID = "";
+                ObjectGuid ObjGUID = container.GetComponent<ObjectGuid>();
+                if (ObjGUID)
+                {
+                    ContainerGUID = ObjGUID.GetPDID();
+                }
+                s_LastTryInteractionComponent = container;
+                SkyCoop.Logger.Log($"Container PerformHold {ContainerGUID}");
+
+                ClientSend.SendTryInteract(ContainerGUID, true);
+                return true;
+            }
+            return false;
+        }
+
+        public static bool TryInteract(HarvestableInteraction Harvest)
+        {
+            if (Harvest)
+            {
+                string GUID = "";
+                ObjectGuid ObjGUID = Harvest.GetComponent<ObjectGuid>();
+                if (ObjGUID)
+                {
+                    GUID = ObjGUID.GetPDID();
+                }
+                s_LastTryInteractionComponent = Harvest;
+                SkyCoop.Logger.Log($"Harvest {GUID}");
+
+                ClientSend.SendTryInteract(GUID, true);
+                return true;
+            }
+            return false;
+        }
+
+        public static bool TryInteract(BreakDown Breakdown)
+        {
+            string GUID = "";
+            ObjectGuid ObjGUID = Breakdown.GetComponent<ObjectGuid>();
+            if (ObjGUID)
+            {
+                GUID = ObjGUID.GetPDID();
+            }
+            s_LastTryInteractionComponent = Breakdown;
+            SkyCoop.Logger.Log($"BreakDown {GUID}");
+
+            ClientSend.SendTryInteract(GUID, true);
+            return true;
+        }
+
+        public static bool GiveoutStartingGear(int Tier = 0)
+        {
+
+            List<DataStr.StartingGearData> StartingGear = new List<DataStr.StartingGearData>();
+            List<List<DataStr.StartingGearData>> StartingGearByTier = new List<List<DataStr.StartingGearData>>();
+
+            if (ModMain.Client != null)
+            {
+                StartingGear = ModMain.Client.m_Rules.m_StartingItems;
+                StartingGearByTier = ModMain.Client.m_Rules.m_StartingItemsByTier;
+            }
+
+            if ((StartingGear == null || StartingGear.Count == 0) && (StartingGearByTier == null || StartingGearByTier.Count == 0))
+            {
+                s_ForceUpdateClothing = true;
+                return true;
+            }
+
+
+            SafelyRemoveGearFromHands();
+
+            GameManager.GetInventoryComponent().DestroyAllGear();
+
+            // Starting gear that given to everyone.
+            if(StartingGear != null)
+            {
+                GiveoutKit(StartingGear);
+            }
+
+            // Addtional gear that given based on tier. For example in GunGame.
+            if(StartingGearByTier != null)
+            {
+                if(Tier >= 0 && Tier < StartingGearByTier.Count)
+                {
+                    GiveoutKit(StartingGearByTier[Tier]);
+                }
+            }
+            s_ForceUpdateClothing = true;
+            return false; // Return false, vanila starting kit won't be given.
+        }
+
+        public static void GiveoutKit(List<StartingGearData> StartingKit)
+        {
+            foreach (DataStr.StartingGearData Gear in StartingKit)
+            {
+                string GearName = Gear.Get();
+
+                if (!string.IsNullOrEmpty(GearName))
+                {
+                    GearItem GearItem = PlayersManager.GiveItemToPlayer(GearName, Gear.Units);
+                    if (GearItem)
+                    {
+                        if (GearItem.m_GunItem)
+                        {
+                            GearItem.m_GunItem.FillClipAtCondition(100);
+                        }
+                        if (GearItem.m_ClothingItem)
+                        {
+                            GearItem.m_ClothingItem.PutOn();
+
+                            if(ModMain.Client != null && !ModMain.Client.m_Rules.m_Clothing)
+                            {
+                                GearItem.m_NarrativeCollectibleItem = GearItem.gameObject.AddComponent<NarrativeCollectibleItem>();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static GearItem GetAutoSwitchGear()
+        {
+            Inventory Inv = GameManager.GetInventoryComponent();
+            foreach (var item in Inv.m_Items)
+            {
+                if(item != null && item.m_GearItem != null)
+                {
+                    if (item.m_GearItem.m_FirstPersonItem || MeleeManager.IsMeleeWeapon(item.m_GearItemName))
+                    {
+                        return item.m_GearItem;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public static void SafelyRemoveGearFromHands()
+        {
+            PlayerManager PM = GameManager.GetPlayerManagerComponent();
+            PM.UnequipItemInHandsSkipAnimation();
+            PM.ClearLastUnequippedItem();
+            PM.ClearRestoreItemInHandsAfterInteraction();
+            PM.OnUnequipItemInHandInternalCompleteResetWeapon();
+            PM.m_LastUnequippedItem = null;
+            PM.m_StoredWeapon = null;
+        }
+
+        public static void PrepareWeaponSwitch()
+        {
+            PlayerManager PM = GameManager.GetPlayerManagerComponent();
+
+            GearItem Gear = GetAutoSwitchGear();
+
+            if (Gear)
+            {
+                PM.m_LastUnequippedItem = Gear;
+                PM.m_HasSavedItemInHands = true;
+            }
+        }
+
+        public static void DoWeaponSwitch(bool Now = false)
+        {
+            if (Now)
+            {
+                PrepareWeaponSwitch();
+                PlayerManager PM = GameManager.GetPlayerManagerComponent();
+
+                PM.AutoEquipItemInHandsAfterInteraction();
+
+                // Fix for melee weapon.
+                if(PM.m_ItemInHands && MeleeManager.IsMeleeWeapon(PM.m_ItemInHands.name))
+                {
+                    MeleeManager.MeleeUnstove();
+                }
+            }
+            else
+            {
+                PrepareWeaponSwitch();
+            }
+        }
+
+        public static void RevivedOtherPlayer()
+        {
+            if (s_ReviveTarget != null)
+            {
+                ClientSend.SendReviveSomeone(s_ReviveTarget.m_PlayerID);
+            }
+            s_ReviveTarget = null;
+        }
+
+        public static void TryReviveOtherPlayer(Comps.NetworkPlayer Player)
+        {
+            Panel_GenericProgressBar Panel;
+            if (InterfaceManager.TryGetPanel<Panel_GenericProgressBar>(out Panel))
+            {                
+                s_ReviveTarget = Player;
+                Panel.Launch("Reviving...", 10f, 0.0f, 0.0f, "", null, true, true, null);
+            }
+        }
+
+        public static void TryLeaveFootprint(Vector3 footPos, Transform Transform, bool leftfoot = false, bool playsound = false)
+        {
+            float FootPrintSideOffset = 0;
+
+            if (GameManager.GetWeatherComponent().IsIndoorEnvironment())
+            {
+                ++footPos.y;
+                Vector3 vector3 = Transform.right * (!leftfoot ? FootPrintSideOffset : -FootPrintSideOffset);
+                Vector3 offset = Transform.forward * 0;
+                Vector3 heelPos = footPos - offset + vector3;
+                Vector3 point;
+                Vector3 normal;
+                if (GameManager.GetFootstepTrailManager().IsFootprintPositionValid(heelPos, offset, 0, out point, out normal))
+                {
+                    if (SnowPatchManager.m_Active)
+                    {
+                        GameManager.GetFootstepTrailManager().AddPlayerFootstep(Transform.position, point, normal, Transform.rotation.eulerAngles.y, leftfoot, 0);
+                    }
+                }
+            }
+
+            if (playsound)
+            {
+                string ground_Tag = Utils.GetMaterialTagForObjectAtPosition(Transform.gameObject, Transform.position);
+                GameAudioManager.Play3DSound(Il2CppAK.EVENTS.PLAY_FOOTSTEPSWOLFWALK, Transform.gameObject);
+            }
+        }
+
+        [HarmonyLib.HarmonyPatch(typeof(PlayerInVehicle), "EnterVehicle")]
+        private static class PlayerInVehicle_EnterVehicle
+        {
+            private static void Postfix(PlayerInVehicle __instance, VehicleDoor vd)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                string DoorGUID = "";
+                ObjectGuid ObjGUID = vd.GetComponent<ObjectGuid>();
+                if (ObjGUID)
+                {
+                    DoorGUID = ObjGUID.GetPDID();
+                }
+                SkyCoop.Logger.Log($"VehicleDoor EnterVehicle {DoorGUID}");
+                ClientSend.SendVehicleSeat(DoorGUID);
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(PlayerInVehicle), "ExitVehicle")]
+        private static class PlayerInVehicle_ExitVehicle
+        {
+            private static void Postfix(PlayerInVehicle __instance, VehicleDoor vd)
+            {
+                if (!ModMain.IsMultiplayer()) { return; }
+
+                string DoorGUID = "";
+                ObjectGuid ObjGUID = vd.GetComponent<ObjectGuid>();
+                if (ObjGUID)
+                {
+                    DoorGUID = ObjGUID.GetPDID();
+                }
+                SkyCoop.Logger.Log($"VehicleDoor ExitVehicle {DoorGUID}");
+                ClientSend.SendVehicleSeat("");
+            }
+        }
+        [HarmonyLib.HarmonyPatch(typeof(Panel_GenericProgressBar), "ProgressBarEnded")]
+        internal static class Panel_GenericProgressBar_ProgressBarEnded
+        {
+            private static void Postfix(Panel_GenericProgressBar __instance, bool success, bool playerCancel)
+            {
+                if (PresentsGear.s_PresentOpenGear && success)
+                {
+                    PresentsGear.OpenPresentFinished();
+                }
+                if(s_ReviveTarget && success)
+                {
+                    RevivedOtherPlayer();
+                }
+
+                PresentsGear.s_PresentOpenGear = null;
+                s_ReviveTarget = null;
+            }
+        }
+    }
+}

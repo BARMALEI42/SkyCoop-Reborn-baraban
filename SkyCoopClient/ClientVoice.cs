@@ -1,0 +1,480 @@
+﻿using Il2Cpp;
+using LiteNetLib.Utils;
+using LiteNetLib;
+using NAudio.Wave;
+using OpenVoiceSharp;
+using SkyCoop;
+using SkyCoopServer;
+using System.Net;
+using UnityEngine;
+
+namespace SkyCoopClient
+{
+    public class ClientVoice : IDisposable
+    {
+        public NetPacketProcessor m_PacketProcessor = new NetPacketProcessor();
+        public EventBasedNetListener m_Listener;
+        public NetManager m_Instance;
+        public bool m_IsReady = false;
+        public NetPeer m_HostEndPoint;
+
+        public VoiceChatInterface VoiceInterface = new VoiceChatInterface(stereo: false, enableNoiseSuppression: Settings.m_Options.m_NoiseSuppression);
+        public BasicMicrophoneRecorder MicrophoneRecorder = new BasicMicrophoneRecorder(stereo: false);
+        public int BufferSamples = VoiceUtilities.GetSampleSize(1) / 2;
+        public Dictionary<int, CircularAudioBuffer<float>> VoiceBuffer3D = new Dictionary<int, CircularAudioBuffer<float>>();
+        public Dictionary<int, CircularAudioBuffer<float>> VoiceBuffer2D = new Dictionary<int, CircularAudioBuffer<float>>();
+        public Dictionary<int, CircularAudioBuffer<float>> VoiceBufferRadio = new Dictionary<int, CircularAudioBuffer<float>>();
+        public CircularAudioBuffer<float> m_AnnouncerBuffer = new CircularAudioBuffer<float>();
+
+        public AudioSource m_AnnoncerAudioSource = null;
+
+        public bool m_IsSpeakingFlag = false;
+
+        private static bool s_LastPushToTalkState = false;
+        private static float s_PushTotalReleaseTime = 0;
+
+        public static void OnNoiseSuppressionChanged()
+        {
+            if (ModMain.ClientVoice != null)
+            {
+                ModMain.ClientVoice.VoiceInterface.EnableNoiseSuppression = Settings.m_Options.m_NoiseSuppression;
+            }
+        }
+
+        public static void OnMicrophoneChanged(int Index)
+        {
+            if(ModMain.ClientVoice != null)
+            {
+                ModMain.ClientVoice.MicrophoneRecorder.SetMicrophone(Index);
+            }
+        }
+
+        public static string GetMicrophoneName(int Index)
+        {
+            if(Index < 0)
+            {
+                return $"Invalid";
+            }
+            WaveInCapabilities[] Array = BasicMicrophoneRecorder.GetMicrophones();
+
+            if (Index >= Array.Length)
+            {
+                return $"Unused {Index}";
+            }
+            else
+            {
+                return Array[Index].ProductName;
+            }
+        }
+
+        public ClientVoice()
+        {
+            m_Listener = new EventBasedNetListener();
+            m_Instance = new NetManager(m_Listener);
+
+            m_AnnouncerBuffer = new CircularAudioBuffer<float>(BufferSamples, RecommendedChunkAmount.Unity);
+
+            CreateAnnoncerAudioSource();
+            StartRecording();
+
+
+            m_Listener.NetworkErrorEvent += (fromPeer, error) =>
+            {
+                SkyCoop.Logger.Log(ConsoleColor.Red, "Voice Connection failed: " + error);
+                m_IsReady = false;
+                m_Instance.Stop();
+            };
+            m_Listener.NetworkLatencyUpdateEvent += (peer, ping) =>
+            {
+                //SkyCoop.Logger.Log(ConsoleColor.Cyan, "Ping to voice server: " + ping);
+            };
+
+            m_Listener.PeerDisconnectedEvent += (peer, message) =>
+            {
+                SkyCoop.Logger.Log(ConsoleColor.Red, "Disconnected: " + message.Reason);
+                SkyCoop.Logger.Log(ConsoleColor.Red, message.AdditionalData);
+
+                if (peer.RemoteId == 0)
+                {
+                    string Message = "Unknown reason";
+
+                    if (message.Reason == DisconnectReason.RemoteConnectionClose)
+                    {
+                        //TODO: Print Host message
+                    }
+                    else
+                    {
+                        switch (message.Reason)
+                        {
+                            case DisconnectReason.ConnectionFailed:
+                                Message = "Wasn't able to connect to the server.";
+                                break;
+                            case DisconnectReason.Timeout:
+                                Message = "Disconnected doe timeout.";
+                                break;
+                            case DisconnectReason.HostUnreachable:
+                                Message = "Server is unreachable.";
+                                break;
+                            case DisconnectReason.NetworkUnreachable:
+                                Message = "Network is unreachable.";
+                                break;
+                            case DisconnectReason.RemoteConnectionClose:
+                                break;
+                            case DisconnectReason.DisconnectPeerCalled:
+                                Message = "Disconnected by my request.";
+                                break;
+                            case DisconnectReason.ConnectionRejected:
+                                break;
+                            case DisconnectReason.InvalidProtocol:
+                                Message = "Invalid connection protocol.";
+                                break;
+                            case DisconnectReason.UnknownHost:
+                                Message = "Unknown host.";
+                                break;
+                            case DisconnectReason.Reconnect:
+                                Message = "Reconnect";
+                                break;
+                            case DisconnectReason.PeerToPeerConnection:
+                                Message = "Peer to Peer Connection";
+                                break;
+                            case DisconnectReason.PeerNotFound:
+                                Message = "Peer not found.";
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    m_IsReady = false;
+                    m_Instance.Stop();
+                }
+            };
+
+            m_Listener.NetworkReceiveEvent += (fromPeer, dataReader, channel, deliveryMethod) =>
+            {
+                m_HostEndPoint = fromPeer;
+                switch((Packet.TypeVoice)dataReader.GetInt())
+                {
+                    case Packet.TypeVoice.Verification:
+                        Verification();
+                        break;
+                    case Packet.TypeVoice.Welcome:
+                        Welcome(dataReader);
+                        break;
+                    case Packet.TypeVoice.Voice:
+                        if (m_IsReady)
+                        {
+                            ExecuteVoice(fromPeer, dataReader);
+                        }
+                        break;
+                }
+                
+
+                dataReader.Recycle();
+            };
+
+            Task.Run(() =>
+            {
+                while (ModMain.Client.m_IsReady) 
+                {
+                    Update();
+                }
+            });
+        }
+
+        public void Connect(IPAddress Ip, int Port)
+        {
+            SkyCoop.Logger.Log(ConsoleColor.Cyan, "Going to connect to voice chat: " + Ip.ToString()+":"+ Port);
+            m_Instance.Start();
+            m_Instance.Connect(Ip.ToString(), Port, Packet.c_Key);
+        }
+
+        public void ExecuteVoice(NetPeer Peer, NetDataReader Reader)
+        {            
+            if(Settings.m_Options.m_ReceivedVoiceVolume == 0)
+            {
+                return;
+            }
+            
+            int SpeakerID = Reader.GetInt(); //ID игрока на сервере
+            DataStr.PlayerHearing Hearing = (DataStr.PlayerHearing)Reader.GetInt();
+            byte[] Data = new byte[Reader.GetInt()];
+            Reader.GetBytes(Data, Data.Length);
+
+
+
+            (byte[] decodedData, int decodedLength) = VoiceInterface.WhenDataReceived(Data, Data.Length);
+            float[] samples = new float[decodedLength / 2];
+            VoiceUtilities.Convert16BitToFloat(decodedData, samples);
+
+            //SkyCoop.Logger.Log("ExecuteVoice Recived " + samples.Length);
+
+            switch (Hearing)
+            {
+                case DataStr.PlayerHearing.Proximity:
+                    if (VoiceBuffer3D.ContainsKey(SpeakerID))
+                    {
+                        CircularAudioBuffer<float> buffer = VoiceBuffer3D[SpeakerID];
+                        buffer.PushChunk(samples);
+                        VoiceBuffer3D[SpeakerID] = buffer;
+                    }
+                    else
+                    {
+                        CircularAudioBuffer<float> buffer = new CircularAudioBuffer<float>(BufferSamples, RecommendedChunkAmount.Unity);
+                        buffer.PushChunk(samples);
+                        VoiceBuffer3D.Add(SpeakerID, buffer);
+                    }
+                    break;
+                case DataStr.PlayerHearing.Global:
+                    if (VoiceBuffer2D.ContainsKey(SpeakerID))
+                    {
+                        CircularAudioBuffer<float> buffer = VoiceBuffer2D[SpeakerID];
+                        buffer.PushChunk(samples);
+                        VoiceBuffer2D[SpeakerID] = buffer;
+                    }
+                    else
+                    {
+                        CircularAudioBuffer<float> buffer = new CircularAudioBuffer<float>(BufferSamples, RecommendedChunkAmount.Unity);
+                        buffer.PushChunk(samples);
+                        VoiceBuffer2D.Add(SpeakerID, buffer);
+                    }
+                    break;
+                case DataStr.PlayerHearing.Radio:
+                    if (VoiceBufferRadio.ContainsKey(SpeakerID))
+                    {
+                        CircularAudioBuffer<float> buffer = VoiceBufferRadio[SpeakerID];
+                        buffer.PushChunk(samples);
+                        VoiceBufferRadio[SpeakerID] = buffer;
+                    }
+                    else
+                    {
+                        CircularAudioBuffer<float> buffer = new CircularAudioBuffer<float>(BufferSamples, RecommendedChunkAmount.Unity);
+                        buffer.PushChunk(samples);
+                        VoiceBufferRadio.Add(SpeakerID, buffer);
+                    }
+                    break;
+            }
+        }
+
+        public void ExecuteAnnoncerAudio(NetDataReader Reader)
+        {
+            byte[] Data = new byte[Reader.GetInt()];
+            Reader.GetBytes(Data, Data.Length);
+
+            (byte[] decodedData, int decodedLength) = VoiceInterface.WhenDataReceived(Data, Data.Length);
+            float[] samples = new float[decodedLength / 2];
+            VoiceUtilities.Convert16BitToFloat(decodedData, samples);
+            m_AnnouncerBuffer.PushChunk(samples);
+        }
+
+        public void CreateAnnoncerAudioSource()
+        {
+            if(m_AnnoncerAudioSource == null)
+            {
+                GameObject Annon = new GameObject();
+                m_AnnoncerAudioSource = Annon.AddComponent<AudioSource>();
+                SceneManager.DontDestroyOnLoad(Annon);
+            }
+        }
+
+        public void Welcome(NetDataReader dataReader)
+        {
+            SkyCoop.Logger.Log(ConsoleColor.Cyan, dataReader.GetString());
+            m_IsReady = true;
+        }
+
+        public void Verification()
+        {
+            SkyCoop.Logger.Log(ConsoleColor.Cyan, "Verification to voice chat...");
+
+            if (ModMain.Client != null && ModMain.Client.m_IsReady)
+            {
+                NetDataWriter writer = new NetDataWriter();
+                writer.Put((int)Packet.TypeVoice.Verification);
+                writer.Put(ModMain.Client.m_MyEndPoint.RemoteId);
+                SendToHost(writer);
+            }
+        }
+
+        public void SendToHost(NetDataWriter writer)
+        {
+            if (m_Instance != null)
+            {
+                m_HostEndPoint.Send(writer, DeliveryMethod.ReliableOrdered);
+            }
+        }
+
+        public static bool IsSpeaking()
+        {
+            if(ModMain.ClientVoice == null)
+            {
+                return false;
+            }
+            return ModMain.ClientVoice.m_IsSpeakingFlag;
+        }
+
+        public static bool PushToTalkisHeldRaw()
+        {
+            return Input.GetKey(Settings.m_Options.m_VoiceButton);
+        }
+
+        public static bool PushToTalkIsHeld()
+        {
+            if (Input.GetKey(Settings.m_Options.m_VoiceButton))
+            {
+                s_LastPushToTalkState = true;
+            }
+            else
+            {
+                if (s_LastPushToTalkState)
+                {
+                    s_PushTotalReleaseTime = Time.time + 0.5f;
+                }
+                s_LastPushToTalkState = false;
+            }
+
+            if (s_LastPushToTalkState)
+            {
+                return true;
+            }
+            else
+            {
+                return s_PushTotalReleaseTime > Time.time;
+            }
+        }
+
+        private void AdjustVolume(byte[] pcmData, float volumeScale)
+        {
+            // Assuming 16-bit PCM data (common for microphone input)
+            for (int i = 0; i < pcmData.Length; i += 2)
+            {
+                // Combine two bytes to form a 16-bit sample
+                short sample = (short)((pcmData[i + 1] << 8) | pcmData[i]);
+
+                // Apply volume scaling
+                sample = (short)(sample * volumeScale);
+
+                // Ensure we don't clip (optional)
+                sample = Math.Max(short.MinValue, Math.Min(short.MaxValue, sample));
+
+                // Split back into bytes
+                pcmData[i] = (byte)(sample & 0xFF);
+                pcmData[i + 1] = (byte)(sample >> 8);
+            }
+        }
+
+        public void StartRecording()
+        {
+            MicrophoneRecorder.DataAvailable += (pcmData, length) =>
+            {
+                m_IsSpeakingFlag = false;
+                if (!m_IsReady)
+                {
+                    return;
+                }
+                if (!VoiceInterface.IsSpeaking(pcmData))
+                {
+                    return;
+                }      
+                if(Settings.m_Options.m_PushToTalk && !PushToTalkIsHeld())
+                {
+                    return;
+                }
+                if(Settings.m_Options.m_MicrophoneVoice == 0)
+                {
+                    return;
+                }
+                m_IsSpeakingFlag = true;
+
+                byte[] adjustedPcmData = new byte[length];
+                Array.Copy(pcmData, adjustedPcmData, length);
+
+                AdjustVolume(adjustedPcmData, Settings.m_Options.m_MicrophoneVoice);
+
+                (byte[] encodedData, int encodedLength) = VoiceInterface.SubmitAudioData(adjustedPcmData, length);
+
+                NetDataWriter writer = new NetDataWriter();
+                writer.Put((int)Packet.TypeVoice.Voice);
+                writer.Put(encodedLength);
+                writer.Put(encodedData);
+                SendToHost(writer);
+            };
+            MicrophoneRecorder.StartRecording();
+        }
+        public void HandleVoiceBuffer(Dictionary<int, CircularAudioBuffer<float>> Buffer, DataStr.PlayerHearing AudioSourceType)
+        {
+            if (Buffer.Count > 0)
+            {
+                foreach (var clientBuffer in Buffer.ToArray())
+                {
+                    //SkyCoop.Logger.Log(ConsoleColor.Magenta, $"VoiceBuffer id:{clientBuffer.Key} has {clientBuffer.Value.ChunksAvailable} chunck");
+                    if (clientBuffer.Value.ChunksAvailable > 0)
+                    {
+                        Comps.NetworkPlayer player = PlayersManager.GetPlayer(clientBuffer.Key);
+
+                        AudioSource audioSource = null;
+
+                        switch (AudioSourceType)
+                        {
+                            case DataStr.PlayerHearing.Proximity:
+                                audioSource = player.m_AudioSource3D;
+                                break;
+                            case DataStr.PlayerHearing.Global:
+                                audioSource = player.m_AudioSource2D;
+                                break;
+                            case DataStr.PlayerHearing.Radio:
+                                audioSource = player.m_AudioSourceRadio;
+                                break;
+                        }
+                        if (audioSource && !audioSource.isPlaying)
+                        {
+                            CircularAudioBuffer<float> buffer = clientBuffer.Value;
+                            AudioClip clip = AudioClip.Create("Voice", buffer.BufferLength, 1, 48000, true, false);
+                            float[] voice = buffer.ReadAllBuffer();
+                            voice[voice.Length - 1] = 0f;
+                            clip.SetData(voice, 0);
+                            audioSource.PlayOneShot(clip, Settings.m_Options.m_ReceivedVoiceVolume);
+                            player.SetVoiceSampleForAnimation(clip, AudioSourceType);
+                            Buffer[clientBuffer.Key] = buffer;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Update()
+        {
+            m_Instance.PollEvents();
+
+            if (m_IsReady)
+            {
+
+                HandleVoiceBuffer(VoiceBuffer3D, DataStr.PlayerHearing.Proximity);
+                HandleVoiceBuffer(VoiceBuffer2D, DataStr.PlayerHearing.Global);
+                HandleVoiceBuffer(VoiceBufferRadio, DataStr.PlayerHearing.Radio);
+
+                if (m_AnnouncerBuffer.ChunksAvailable > 0)
+                {
+                    if (!m_AnnoncerAudioSource.isPlaying)
+                    {
+                        AudioClip clip = AudioClip.Create("Announce", m_AnnouncerBuffer.BufferLength, 1, 48000, true, false);
+                        float[] voice = m_AnnouncerBuffer.ReadAllBuffer();
+                        voice[voice.Length - 1] = 0f;
+                        clip.SetData(voice, 0);
+                        m_AnnoncerAudioSource.PlayOneShot(clip);
+                    }
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            m_IsReady = false;
+
+            if (m_Instance != null)
+            {
+                m_Instance.Stop();
+            }
+            GC.Collect();
+        }
+    }
+}

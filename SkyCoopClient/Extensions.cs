@@ -1,0 +1,560 @@
+﻿using Harmony;
+using Il2Cpp;
+using LiteNetLib.Utils;
+using SkyCoopClient;
+using SkyCoopServer;
+using UnityEngine;
+using static SkyCoopServer.DataStr;
+
+namespace SkyCoop
+{
+    public static class Extensions
+    {
+        public static void Put(this NetDataWriter Writer, UnityEngine.Quaternion quat)
+        {
+            Writer.Put(quat.x);
+            Writer.Put(quat.y);
+            Writer.Put(quat.z);
+            Writer.Put(quat.w);
+        }
+
+        public static void Put(this NetDataWriter Writer, UnityEngine.Vector3 v3)
+        {
+            Writer.Put(v3.x);
+            Writer.Put(v3.y);
+            Writer.Put(v3.z);
+        }
+
+        public static void Put(this NetDataWriter Writer, UnityEngine.Vector2 v2)
+        {
+            Writer.Put(v2.x);
+            Writer.Put(v2.y);
+        }
+
+        // делаем PutAnimator а не просто Put через оверлоад, потому что, почему то Animator может быть интерпритирован в байт уже в юнити
+        public static void PutAnimator(this NetDataWriter Writer, Animator Animator)
+        {
+            AnimatorData AnimatorData = new DataStr.AnimatorData();
+            for (int i = 0; i < Animator.parameterCount; i++)
+            {
+                AnimatorControllerParameter Parameter = Animator.parameters[i];
+                switch (Parameter.m_Type)
+                {
+                    case AnimatorControllerParameterType.Float:
+                        AnimatorData.m_Parameters.Add(new AnimatorData.ParameterData(Animator.GetFloat(Parameter.nameHash), Parameter.nameHash));
+                        break;
+                    case AnimatorControllerParameterType.Int:
+                        AnimatorData.m_Parameters.Add(new AnimatorData.ParameterData(Animator.GetInteger(Parameter.nameHash), Parameter.nameHash));
+                        break;
+                    case AnimatorControllerParameterType.Bool:
+                        AnimatorData.m_Parameters.Add(new AnimatorData.ParameterData(Animator.GetBool(Parameter.nameHash), Parameter.nameHash));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Writer.Put(AnimatorData);
+        }
+
+        public static UnityEngine.Vector3 GetVector3Unity(this NetDataReader Reader)
+        {
+            UnityEngine.Vector3 v3 = new UnityEngine.Vector3(Reader.GetFloat(), Reader.GetFloat(), Reader.GetFloat());
+            return v3;
+        }
+
+        public static UnityEngine.Vector2 GetVector2Unity(this NetDataReader Reader)
+        {
+            UnityEngine.Vector2 v2 = new UnityEngine.Vector2(Reader.GetFloat(), Reader.GetFloat());
+            return v2;
+        }
+
+        public static UnityEngine.Quaternion GetQuaternionUnity(this NetDataReader Reader)
+        {
+            UnityEngine.Quaternion quat = new UnityEngine.Quaternion(Reader.GetFloat(), Reader.GetFloat(), Reader.GetFloat(), Reader.GetFloat());
+            return quat;
+        }
+
+        public static UnityEngine.Vector3 ConvertToUnity(this System.Numerics.Vector3 V3)
+        {
+            UnityEngine.Vector3 Vector = new UnityEngine.Vector3(V3.X, V3.Y, V3.Z);
+            return Vector;
+        }
+        public static UnityEngine.Quaternion ConvertToUnity(this System.Numerics.Quaternion Quat)
+        {
+            UnityEngine.Quaternion Quaternion = new UnityEngine.Quaternion(Quat.X, Quat.Y, Quat.Z, Quat.W);
+            return Quaternion;
+        }
+
+        public static System.Numerics.Vector3 ConvertToSystem(this UnityEngine.Vector3 V3)
+        {
+            System.Numerics.Vector3 Vector = new System.Numerics.Vector3(V3.x, V3.y, V3.z);
+            return Vector;
+        }
+        public static System.Numerics.Quaternion ConvertToSystem(this UnityEngine.Quaternion Quat)
+        {
+            System.Numerics.Quaternion Quaternion = new System.Numerics.Quaternion(Quat.x, Quat.y, Quat.z, Quat.w);
+            return Quaternion;
+        }
+
+        public static UnityEngine.Vector3 GetVector3Unity(this DataStr.Vector3JSON Data)
+        {
+            UnityEngine.Vector3 v3 = new UnityEngine.Vector3(Data.x, Data.y, Data.z);
+            return v3;
+        }
+
+        public static UnityEngine.Quaternion GetQuaternionUnity(this DataStr.QuaternionJSON Data)
+        {
+            UnityEngine.Quaternion q = new UnityEngine.Quaternion(Data.x, Data.y, Data.z, Data.w);
+            return q;
+        }
+
+        public static DataStr.PrefabSpawnData GetData(this PrefabSpawn Spawn)
+        {
+            DataStr.PrefabSpawnData Data = new DataStr.PrefabSpawnData();
+            Data.Gears = new List<DataStr.GearSpawnElementData>();
+            Data.m_NumToSpawnMin = Spawn.m_NumToSpawnMin;
+            Data.m_NumToSpawnMax = Spawn.m_NumToSpawnMax;
+            Data.m_ChanceOfNoSpawn = Spawn.m_ChanceOfNoSpawn;
+            Data.DisabledForXP = new List<string>();
+            Data.EnabledForXP = new List<string>();
+
+            Data.IsDLC = Spawn.gameObject.scene.name.Contains("_DLC");
+
+            Component[] allComponents = Spawn.gameObject.GetComponentsInChildren<Component>(true);
+
+            foreach (Component comp in allComponents)
+            {
+                if(comp is EnableObjectForXPMode)
+                {
+                    EnableObjectForXPMode EnableForXP = comp as EnableObjectForXPMode;
+                    if (EnableForXP)
+                    {
+                        foreach (ExperienceModeType XP in EnableForXP.m_XPModesToEnable)
+                        {
+                            Data.EnabledForXP.Add(XP.ToString());
+                        }
+                    }
+                }
+                else if(comp is DisableObjectForXPMode)
+                {
+                    DisableObjectForXPMode DisableForXP = comp as DisableObjectForXPMode;
+
+                    if (DisableForXP)
+                    {
+                        foreach (ExperienceModeType XP in DisableForXP.m_XPModesToDisable)
+                        {
+                            Data.DisabledForXP.Add(XP.ToString());
+                        }
+                    }
+                }
+            }
+
+
+            foreach (PrefabSpawn.Element Element in Spawn.m_PrefabList)
+            {
+                if(Element.m_Prefab && Element.m_Prefab.name.StartsWith("GEAR_"))
+                {
+                    DataStr.GearSpawnElementData ElementData = new DataStr.GearSpawnElementData();
+                    ElementData.GearName = Element.m_Prefab.name;
+                    ElementData.SpawnWeight = Element.m_SpawnWeight;
+
+                    UnityEngine.Vector3 worldPosition = Spawn.transform.TransformPoint(Element.m_Offset);
+
+                    ElementData.Position = new DataStr.Vector3JSON(worldPosition.x, worldPosition.y, worldPosition.z);
+
+                    UnityEngine.Quaternion localRotation = UnityEngine.Quaternion.Euler(Element.m_Rotation);
+                    UnityEngine.Quaternion worldRotation = Spawn.transform.rotation * localRotation;
+
+                    ElementData.Rotation = new DataStr.QuaternionJSON(worldRotation.x, worldRotation.y, worldRotation.z, worldRotation.w);
+
+                    ElementData.DisabledForXP = new List<string>();
+                    ElementData.EnabledForXP = new List<string>();
+
+                    EnableObjectForXPMode EnableForXP = Element.m_Prefab.GetComponent<EnableObjectForXPMode>();
+
+                    if (EnableForXP)
+                    {
+                        foreach (ExperienceModeType XP in EnableForXP.m_XPModesToEnable)
+                        {
+                            ElementData.EnabledForXP.Add(XP.ToString());
+                        }
+                    }
+
+                    DisableObjectForXPMode DisableForXP = Element.m_Prefab.GetComponent<DisableObjectForXPMode>();
+
+                    if (DisableForXP)
+                    {
+                        foreach (ExperienceModeType XP in DisableForXP.m_XPModesToDisable)
+                        {
+                            ElementData.DisabledForXP.Add(XP.ToString());
+                        }
+                    }
+
+                    ElementData.Chance = 100f;
+                    GearItem Gear = Element.m_Prefab.GetComponent<GearItem>();
+                    if (Gear)
+                    {
+                        ElementData.Chance = Gear.m_SpawnChance;
+                    }
+
+                    Data.Gears.Add(ElementData);
+                }
+            }
+
+            if (Data.Gears.Count == 0)
+            {
+                return null;
+            }
+
+            return Data;
+        }
+
+        public static void GetData(this RandomSpawnObject Spawn, out List<GameObject> GearsToIgnore, out DataStr.RandomSpawnObjectData Data, out DataStr.RandomAnimalSpawnObjectData AnimalsData)
+        {
+            GearsToIgnore = new List<GameObject>();
+
+            Data = new DataStr.RandomSpawnObjectData();
+            Data.Gears = new List<DataStr.GearSpawnElementData>();
+            Data.NumObjectsToSpawnPilgrim = Spawn.m_NumObjectsToEnableByLevel[3];
+            Data.NumObjectsToSpawnVoyageur = Spawn.m_NumObjectsToEnableByLevel[2];
+            Data.NumObjectsToSpawnStalker = Spawn.m_NumObjectsToEnableByLevel[1];
+            Data.NumObjectsToSpawnInterloper = Spawn.m_NumObjectsToEnableByLevel[0];
+            Data.RerollAfterGameHours = Spawn.m_RerollAfterGameHours;
+            Data.DisabledForXP = new List<string>();
+            Data.EnabledForXP = new List<string>();
+
+            AnimalsData = new DataStr.RandomAnimalSpawnObjectData();
+            AnimalsData.SpawnRegions = new List<AnimalSpawnElementData>();
+            AnimalsData.NumObjectsToSpawnPilgrim = Spawn.m_NumObjectsToEnableByLevel[3];
+            AnimalsData.NumObjectsToSpawnVoyageur = Spawn.m_NumObjectsToEnableByLevel[2];
+            AnimalsData.NumObjectsToSpawnStalker = Spawn.m_NumObjectsToEnableByLevel[1];
+            AnimalsData.NumObjectsToSpawnInterloper = Spawn.m_NumObjectsToEnableByLevel[0];
+            AnimalsData.RerollAfterGameHours = Spawn.m_RerollAfterGameHours;
+            AnimalsData.DisabledForXP = new List<string>();
+            AnimalsData.EnabledForXP = new List<string>();
+
+            Data.GUID = "";
+            ObjectGuid Obj = Spawn.gameObject.GetComponent<ObjectGuid>();
+            if (Obj)
+            {
+                Data.GUID = Obj.GetPDID();
+            }
+
+            Data.IsDLC = Spawn.gameObject.scene.name.Contains("_DLC");
+
+            Component[] allComponents = Spawn.gameObject.GetComponentsInChildren<Component>(true);
+
+            foreach (Component comp in allComponents)
+            {
+                if (comp is EnableObjectForXPMode)
+                {
+                    EnableObjectForXPMode EnableForXP = comp as EnableObjectForXPMode;
+                    if (EnableForXP)
+                    {
+                        foreach (ExperienceModeType XP in EnableForXP.m_XPModesToEnable)
+                        {
+                            Data.EnabledForXP.Add(XP.ToString());
+                        }
+                    }
+                }
+                else if (comp is DisableObjectForXPMode)
+                {
+                    DisableObjectForXPMode DisableForXP = comp as DisableObjectForXPMode;
+
+                    if (DisableForXP)
+                    {
+                        foreach (ExperienceModeType XP in DisableForXP.m_XPModesToDisable)
+                        {
+                            Data.DisabledForXP.Add(XP.ToString());
+                        }
+                    }
+                }
+            }
+
+            AnimalsData.DisabledForXP = new List<string>(Data.DisabledForXP);
+            AnimalsData.EnabledForXP = new List<string>(Data.EnabledForXP);
+            AnimalsData.GUID = Data.GUID;
+
+            for (int i = 0; i < Spawn.m_ObjectList.Count; i++)
+            {
+                GameObject Object = Spawn.m_ObjectList[i];
+                int Weight = Spawn.m_Weights[i];
+                if (Object)
+                {
+                    if (Object.name.StartsWith("GEAR_"))
+                    {
+                        DataStr.GearSpawnElementData ElementData = new DataStr.GearSpawnElementData();
+                        ElementData.GearName = GearSpawnsRipper.FixName(Object.name);
+                        ElementData.SpawnWeight = Weight;
+                        ElementData.Position = new DataStr.Vector3JSON(Object.transform.position.x, Object.transform.position.y, Object.transform.position.z);
+                        ElementData.Rotation = new DataStr.QuaternionJSON(Object.transform.rotation.x, Object.transform.rotation.y, Object.transform.rotation.z, Object.transform.rotation.w);
+                        ElementData.Chance = 100f;
+                        GearItem Gear = Object.gameObject.GetComponent<GearItem>();
+                        if (Gear)
+                        {
+                            ElementData.Chance = Gear.m_SpawnChance;
+                        }
+
+                        ElementData.EnabledForXP = new List<string>();
+                        ElementData.DisabledForXP = new List<string>();
+
+                        EnableObjectForXPMode EnableForXP = Object.GetComponent<EnableObjectForXPMode>();
+
+                        if (EnableForXP)
+                        {
+                            foreach (ExperienceModeType XP in EnableForXP.m_XPModesToEnable)
+                            {
+                                ElementData.EnabledForXP.Add(XP.ToString());
+                            }
+                        }
+
+                        DisableObjectForXPMode DisableForXP = Object.GetComponent<DisableObjectForXPMode>();
+
+                        if (DisableForXP)
+                        {
+                            foreach (ExperienceModeType XP in DisableForXP.m_XPModesToDisable)
+                            {
+                                ElementData.DisabledForXP.Add(XP.ToString());
+                            }
+                        }
+
+                        GearsToIgnore.Add(Object);
+                        Data.Gears.Add(ElementData);
+                    }else
+                    {
+                        SpawnRegion[] Spawners = Object.GetComponentsInChildren<SpawnRegion>(true);
+                        foreach (SpawnRegion Spawner in Spawners)
+                        {
+                            if (Spawner.GetComponent<MissionObjectIdentifier>()) // такие вещи вроде для челенджей, пока хз как с этим работать
+                            {
+                                continue;
+                            }
+                            
+                            DataStr.AnimalSpawnElementData ElementData = new DataStr.AnimalSpawnElementData();
+                            ElementData.Spawn = Spawner.GetData();
+                            ElementData.SpawnWeight = Weight;
+                            AnimalsData.SpawnRegions.Add(ElementData);
+                            GearsToIgnore.Add(Spawner.gameObject);
+                        }
+                    }
+                }
+            }
+            if(Data.Gears.Count == 0)
+            {
+                Data = null;
+            }
+            if(AnimalsData.SpawnRegions.Count == 0)
+            {
+                AnimalsData = null;
+            }
+        }
+
+        public static DataStr.RadialObjectSpawnerData GetData(this RadialObjectSpawner Spawn)
+        {
+            DataStr.RadialObjectSpawnerData Data = new DataStr.RadialObjectSpawnerData();
+            Data.Gears = new List<DataStr.RadialObjectSpawnerElementData>();
+            Data.MinToSpawn = Spawn.m_MinToSpawn;
+            Data.MaxToSpawn = Spawn.m_MaxToSpawn;
+
+            Data.MinRespawnTimeGameHours = Spawn.m_MinRespawnTimeGameHours;
+            Data.MaxRespawnTimeGameHours = Spawn.m_MaxRespawnTimeGameHours;
+            Data.PossiblePoints = new List<DataStr.Vector3JSON>();
+            Data.EnabledForXP = new List<string>();
+            Data.DisabledForXP = new List<string>();
+
+            Data.GUID = "";
+            ObjectGuid Obj = Spawn.gameObject.GetComponent<ObjectGuid>();
+            if (Obj)
+            {
+                Data.GUID = Obj.GetPDID();
+            }
+
+            Data.IsDLC = Spawn.gameObject.scene.name.Contains("_DLC");
+
+            Component[] allComponents = Spawn.gameObject.GetComponentsInChildren<Component>(true);
+
+            foreach (Component comp in allComponents)
+            {
+                if (comp is EnableObjectForXPMode)
+                {
+                    EnableObjectForXPMode EnableForXP = comp as EnableObjectForXPMode;
+                    if (EnableForXP)
+                    {
+
+
+                        foreach (ExperienceModeType XP in EnableForXP.m_XPModesToEnable)
+                        {
+                            Data.EnabledForXP.Add(XP.ToString());
+                        }
+                    }
+                }
+                else if (comp is DisableObjectForXPMode)
+                {
+                    DisableObjectForXPMode DisableForXP = comp as DisableObjectForXPMode;
+
+                    if (DisableForXP)
+                    {
+                        foreach (ExperienceModeType XP in DisableForXP.m_XPModesToDisable)
+                        {
+                            Data.DisabledForXP.Add(XP.ToString());
+                        }
+                    }
+                }
+            }
+
+            if (Spawn.m_LootTableData == null)
+            {
+                if (Spawn.m_ObjectToSpawn)
+                {
+                    if (Spawn.m_ObjectToSpawn.name.StartsWith("GEAR_"))
+                    {
+                        DataStr.RadialObjectSpawnerElementData ElementData = new DataStr.RadialObjectSpawnerElementData();
+                        ElementData.GearName = GearSpawnsRipper.FixName(Spawn.m_ObjectToSpawn.name);
+                        ElementData.SpawnWeight = 100;
+                        ElementData.Chance = 100f;
+                        GearItem Gear = Spawn.m_ObjectToSpawn.GetComponent<GearItem>();
+                        if (Gear)
+                        {
+                            ElementData.Chance = Gear.m_SpawnChance;
+                        }
+                        Data.Gears.Add(ElementData);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Spawn.m_LootTableData.m_BaseEntries.Count; i++)
+                {
+                    var Entery = Spawn.m_LootTableData.m_BaseEntries[i];
+
+                    if (Entery != null && Entery.m_Item != null)
+                    {
+                        int Weight = Entery.m_Weight;
+                        GameObject Prefab = Spawn.m_LootTableData.LoadPrefab(Entery.m_Item);
+                        if (Prefab && Prefab.name.StartsWith("GEAR_"))
+                        {
+                            DataStr.RadialObjectSpawnerElementData ElementData = new DataStr.RadialObjectSpawnerElementData();
+                            ElementData.GearName = GearSpawnsRipper.FixName(Prefab.name);
+                            ElementData.SpawnWeight = Weight;
+                            ElementData.Chance = 100f;
+                            GearItem Gear = Prefab.GetComponent<GearItem>();
+                            if (Gear)
+                            {
+                                ElementData.Chance = Gear.m_SpawnChance;
+                            }
+
+                            Data.Gears.Add(ElementData);
+                        }
+                    }
+                }
+                Minimalizer.RadialObjectSpawner_SpawnObjectAttempt.s_ByPass = true;
+            }
+
+            for (int i = 0; i < 40; i++)
+            {
+                UnityEngine.Vector3 vector = UnityEngine.Vector3.zero;
+
+                UnityEngine.Vector3 origin = Spawn.transform.position;
+                if (Spawn.m_Spline)
+                {
+                    origin = Spawn.m_Spline.GetPositionOnSpline(UnityEngine.Random.Range(0f, 1f));
+                }
+                int navmeshArea = AiUtils.GetNavmeshArea(Spawn.transform.position);
+                bool testNavMeshSurfaceOnly = true;
+                if (!AiUtils.GetRandomPointOnNavmesh(out vector, origin, Spawn.m_MinRadius, Spawn.m_MaxRadius, navmeshArea, testNavMeshSurfaceOnly, 0.2f))
+                {
+                    continue;
+                }
+                RaycastHit raycastHit;
+                if (!Physics.Raycast(vector + new UnityEngine.Vector3(0f, 2f, 0f) + Spawn.m_RaycastOffset, UnityEngine.Vector3.down, out raycastHit, float.PositiveInfinity, Utils.m_PhysicalCollisionLayerMask))
+                {
+                    continue;
+                }
+                vector = raycastHit.point;
+                vector += raycastHit.normal * Spawn.m_FloatHeight;
+
+                Data.PossiblePoints.Add(new DataStr.Vector3JSON(vector.x, vector.y, vector.z));
+            }
+
+            if (Data.Gears.Count == 0)
+            {
+                return null;
+            }
+            if(Data.PossiblePoints.Count == 0)
+            {
+                return null;
+            }
+
+            return Data;
+        }
+
+        public static DataStr.SpawnRegionData GetData(this SpawnRegion Spawn)
+        {
+            //string Log = Spawn.gameObject.name;
+
+            //Transform Parent = Spawn.gameObject.transform.parent;
+            //while (Parent != null)
+            //{
+            //    Log = $"{Parent.name}/{Log}";
+            //    Parent = Parent.parent;
+            //}
+            //SkyCoop.Logger.Log(ConsoleColor.Green, $"Spawner location {Log}");
+            DataStr.SpawnRegionData Data = new SpawnRegionData();
+            Data.Animals = new List<SpawnRegionAnimal>();
+
+            foreach (var item in Spawn.m_SpawnList)
+            {
+                SpawnRegionAnimal Animal = new SpawnRegionAnimal();
+
+                Animal.Weight = item.m_Weight;
+                Animal.NormalPrefab = "";
+                if (item.m_Normal != null && !string.IsNullOrEmpty(item.m_Normal.AssetGUID))
+                {
+                    item.m_Normal.LoadAssetAsync().WaitForCompletion();
+                    Animal.NormalPrefab = item.m_Normal.Asset.name;
+                }
+
+                Animal.AuroraPrefab = "";
+                if (item.m_Aurora != null && !string.IsNullOrEmpty(item.m_Aurora.AssetGUID))
+                {
+                    item.m_Aurora.LoadAssetAsync().WaitForCompletion();
+                    Animal.AuroraPrefab = item.m_Aurora.Asset.name;
+                }
+
+                Data.Animals.Add(Animal);
+            }
+            foreach (AreaMarkup item in Spawn.gameObject.GetComponentsInChildren<AreaMarkup>(true))
+            {
+                Data.AddPoint(item.transform.position.x, item.transform.position.y, item.transform.position.z);
+            }
+            if(Data.Points == null || Data.Points.Count == 0)
+            {
+                Data.AddPoint(Spawn.gameObject.transform.position.x, Spawn.gameObject.transform.position.y, Spawn.gameObject.transform.position.z);
+            }
+            Data.ChanceActive = Spawn.m_ChanceActive;
+            Data.CanSpawnInBlizzard = Spawn.m_CanSpawnInBlizzard;
+
+
+            SpawnRegion.DifficultyProperties InterloperDifficulty = Spawn.m_DifficultySettings.ElementAt(0);
+            SpawnRegion.DifficultyProperties StalkerDifficulty = Spawn.m_DifficultySettings.ElementAt(1);
+            SpawnRegion.DifficultyProperties VoyageurDifficulty = Spawn.m_DifficultySettings.ElementAt(2);
+            SpawnRegion.DifficultyProperties PiligrimDifficulty = Spawn.m_DifficultySettings.ElementAt(3);
+
+            Data.Radius = Spawn.m_Radius;
+            Data.AddDifficulty("Pilgrim", PiligrimDifficulty.m_MaxSimultaneousSpawnsDay, PiligrimDifficulty.m_MaxSimultaneousSpawnsNight, 24f / PiligrimDifficulty.m_MaxRespawnsPerDay);
+            Data.AddDifficulty("Voyageur", VoyageurDifficulty.m_MaxSimultaneousSpawnsDay, VoyageurDifficulty.m_MaxSimultaneousSpawnsNight, 24f / VoyageurDifficulty.m_MaxRespawnsPerDay);
+            Data.AddDifficulty("Stalker", StalkerDifficulty.m_MaxSimultaneousSpawnsDay, StalkerDifficulty.m_MaxSimultaneousSpawnsNight, 24f / StalkerDifficulty.m_MaxRespawnsPerDay);
+            Data.AddDifficulty("Interloper", InterloperDifficulty.m_MaxSimultaneousSpawnsDay, InterloperDifficulty.m_MaxSimultaneousSpawnsNight, 24f / InterloperDifficulty.m_MaxRespawnsPerDay);
+
+            Data.GUID = "";
+            ObjectGuid Obj = Spawn.gameObject.GetComponent<ObjectGuid>();
+            if (Obj)
+            {
+                Data.GUID = Obj.GetPDID();
+            }
+
+            Data.Position = new Vector3JSON(Spawn.gameObject.transform.position.x, Spawn.gameObject.transform.position.y, Spawn.gameObject.transform.position.z);
+            return Data;
+        }
+    }
+}

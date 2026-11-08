@@ -1,0 +1,765 @@
+﻿using LiteNetLib.Utils;
+using SkyCoopServer;
+using UnityEngine;
+using static SkyCoopServer.Packet;
+
+namespace SkyCoop
+{
+    public class ClientSend
+    {
+        public static void SendToHost(NetDataWriter writer)
+        {
+            if (ModMain.Client != null && ModMain.Client.m_Instance != null)
+            {
+                ModMain.Client.SendToHost(writer);
+            }
+        }
+
+        public static void Welcome()
+        {
+            //TODO: Send here MAC address and nick name.
+
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.Welcome);
+            writer.Put(ModMain.GetNickName());
+            SendToHost(writer);
+        }
+
+        public static void SendPosition(Vector3 Position)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientPosition);
+            writer.Put(Position);
+            SendToHost(writer);
+        }
+
+        public static void SendRotation(Quaternion Rotation)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientRotation);
+            writer.Put(Rotation);
+            SendToHost(writer);
+        }
+
+        public static void SendHoldingGear(string GearName, int GearVariant)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientHoldigGear);
+            writer.Put(GearName);
+            writer.Put(GearVariant);
+            SendToHost(writer);
+        }
+
+        public static void SendCrouch(bool Crouch)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientCrouch);
+            writer.Put(Crouch);
+            SendToHost(writer);
+        }
+        public static void SendAction(int Action)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientAction);
+            writer.Put(Action);
+            SendToHost(writer);
+        }
+        public static void SendFire()
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientFire);
+            SendToHost(writer);
+        }
+
+        public static void SendDamageToPlayer(float Damage, int Victim, Comps.PlayerDamageColider.DamageZone BodyPart, string Weapon, DataStr.DamageType DamageType, int Killer = -1)
+        {
+            if(ModMain.Client != null && !ModMain.Client.m_Rules.m_PVP)
+            {
+                if(ModMain.Client.GetMyId() != Victim)
+                {
+                    return;
+                }
+            }
+            
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientDamageOtherClient);
+            writer.Put(Damage);
+            writer.Put(Victim);
+            writer.Put((int)BodyPart);
+            writer.Put(Weapon);
+            writer.Put((int)DamageType); // Only for server, this won't be send back to clients.
+            writer.Put(Killer);
+            SendToHost(writer);
+        }
+        public static void SendProjectile(Vector3 Position, Quaternion Rotation, string ProjectileName, bool PlaySound = true, float ExtaFloat = 1)
+        {
+            if (string.IsNullOrEmpty(ProjectileName))
+            {
+                return;
+            }
+            
+            //SkyCoop.Logger.Log("SendProjectile " + ProjectileName);
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientProjectile);
+            writer.Put(Position);
+            writer.Put(Rotation);
+            writer.Put(ProjectileName);
+            writer.Put(ExtaFloat);
+            writer.Put(PlaySound);
+            SendToHost(writer);
+        }
+        public static void SendDeath(DataStr.DamageType DamageType, bool Knocked, bool HeadShot)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientDied);
+
+            writer.Put((int)DamageType);
+            writer.Put(Knocked);
+            writer.Put(HeadShot);
+            SendToHost(writer);
+        }
+        public static void SendRevived(int Reviver)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientRevived);
+            writer.Put(Reviver);
+            SendToHost(writer);
+        }
+        public static void SendProjectileThrow(Vector3 Position, Quaternion Rotation, string ProjectileName, Vector3 Velocity, Vector3 AngularVelocity, float fuseTime)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientProjectileThrow);
+            writer.Put(Position);
+            writer.Put(Rotation);
+            writer.Put(ProjectileName);
+            writer.Put(Velocity);
+            writer.Put(AngularVelocity);
+            writer.Put(fuseTime);
+            SendToHost(writer);
+        }
+        public static void SendRespawnRequest()
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientRequestRespawn);
+            SendToHost(writer);
+        }
+
+        public static void SendInjectedItem(int PlayerID, string GearName, int ObjectIndex, Comps.PlayerDamageColider.DamageZone DamageZone, Vector3 Position, Quaternion Rotation)
+        {
+            if (ModMain.Client != null && !ModMain.Client.m_Rules.m_PVP)
+            {
+                if (ModMain.Client.GetMyId() != PlayerID)
+                {
+                    return;
+                }
+            }
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientInjectedItem);
+
+            writer.Put(PlayerID);
+            writer.Put(GearName);
+            writer.Put(ObjectIndex);
+            writer.Put((int)DamageZone);
+            writer.Put(Position);
+            writer.Put(Rotation);
+
+            SendToHost(writer);
+        }
+        public static void SendRemoveInjectedItem(int PlayerID, string GearName, Comps.PlayerDamageColider.DamageZone DamageZone)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientRemoveInjectedItem);
+
+            writer.Put(PlayerID);
+            writer.Put(GearName);
+            writer.Put((int)DamageZone);
+
+            SendToHost(writer);
+        }
+
+        public static void SendEraceAllInjectedItems()
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientEraceAllInjectedItems);
+            SendToHost(writer);
+        }
+
+        public static void SendGear(string GearName, Vector3 Position, Quaternion Rotation, string JSON, float NormalizedCondition, int Style, string FireGUID = "", int CookingSlot = -1, string CookingResult = "", float Volume = 1, float BeingCookedTime = 0, string CookPotGUID = "", float TimeFinishAt = 0)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientSendGear);
+
+            writer.Put(GearName);
+            writer.Put(Position);
+            writer.Put(Rotation);
+            writer.Put(JSON);
+            writer.Put(NormalizedCondition);
+            writer.Put(Style);
+            writer.Put(CookPotGUID);
+
+            bool HasCookingSlot = !string.IsNullOrEmpty(FireGUID) && CookingSlot != -1;
+
+            writer.Put(HasCookingSlot);
+
+            if (HasCookingSlot)
+            {
+                writer.Put(FireGUID);
+                writer.Put(CookingSlot);
+            }
+
+            bool HasRecipe = !string.IsNullOrEmpty(CookingResult);
+
+            writer.Put(HasRecipe);
+
+            if (HasRecipe || !string.IsNullOrEmpty(CookPotGUID))
+            {
+                writer.Put(CookingResult);
+                writer.Put(Volume);
+                writer.Put(BeingCookedTime);
+            }
+
+            writer.Put(TimeFinishAt);
+
+            //SkyCoop.Logger.Log(ConsoleColor.Green, $"ClientSend.SendGear {GearName}");
+            //SkyCoop.Logger.Log(ConsoleColor.Green, $"JSON: {JSON}");
+
+            SendToHost(writer);
+        }
+
+        public static void SendGearRecipe(string GearGUID = "", string CookingResult = "", float Volume = 0)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientGearSetRecipe);
+
+            writer.Put(GearGUID);
+            writer.Put(CookingResult);
+            writer.Put(Volume);
+
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"ClientSend.SendGearRecipe {GearGUID} {CookingResult} {Volume}");
+
+            SendToHost(writer);
+        }
+
+        public static void SendGearPickUp(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientPickUpGear);
+
+            writer.Put(GUID);
+
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"ClientSend.SendGearPickUp {GUID}");
+
+            SendToHost(writer);
+        }
+        public static void SendNewScene(string SceneName)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientLoadedScene);
+
+            writer.Put(SceneName);
+
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"ClientSend.SendNewScene {SceneName}");
+
+            SendToHost(writer);
+        }
+
+        public static void SendOpenableState(string GUID, bool OpenState)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientOpenableInteraction);
+
+            writer.Put(GUID);
+            writer.Put(OpenState);
+
+            SkyCoop.Logger.Log($"SendOpenableState {GUID} {OpenState}");
+
+            SendToHost(writer);
+        }
+
+        public static void SendClothing(DataStr.ClothingData Data)
+        {
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"m_Hat1 {Data.m_Hat1} {Data.m_Hat1Damage}");
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"m_Hat2 {Data.m_Hat2} {Data.m_Hat2Damage}");
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"m_Body {Data.m_Body} {Data.m_BodyDamage}");
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"m_Gloves {Data.m_Gloves} {Data.m_GlovesDamage}");
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"m_Pants {Data.m_Pants} {Data.m_PantsDamage}");
+            SkyCoop.Logger.Log(ConsoleColor.Green, $"m_Boots {Data.m_Boots} {Data.m_BootsDamage}");
+
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientClothing);
+
+            writer.Put(Data);
+
+            SendToHost(writer);
+        }
+        public static void SendTryInteract(string GUID, bool BindIt = false)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientTryInteract);
+
+            writer.Put(GUID);
+            writer.Put(BindIt);
+
+            SendToHost(writer);
+        }
+        public static void SendVehicleSeat(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientVehicleSeat);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendInVehicle(bool InVehicle)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientInVehicle);
+            writer.Put(InVehicle);
+            SendToHost(writer);
+        }
+
+        public static void SendDeathPack(string Prefab, string GUID, string CompressedJSON, string OwnerName, Vector3 Position, Quaternion Rotation)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientDeathPackAdded);
+
+            DataStr.DeathPack Pack = new DataStr.DeathPack();
+            Pack.m_Prefab = Prefab;
+            Pack.m_GUID = GUID;
+            Pack.m_Position = Position.ConvertToSystem();
+            Pack.m_Rotation = Rotation.ConvertToSystem();
+            Pack.m_Owner = OwnerName;
+
+            writer.Put(Pack);
+            writer.Put(CompressedJSON);
+
+            SendToHost(writer);
+        }
+
+        public static void RequestContainerContent(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientContainerOpen);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendContainerData(string GUID, string JSONCompressed)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientUpdateContainerData);
+
+            writer.Put(GUID);
+            writer.Put(JSONCompressed);
+
+            SendToHost(writer);
+        }
+
+        public static void SendRemoveDeathPack(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientDeathPackRemoved);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendInteractionGUID(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientSetInteraction);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendFinishInteract()
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientFinishInteract);
+
+            SendToHost(writer);
+        }
+
+        public static void SendContainerState(string GUID, int State)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientContainerStateUpdated);
+
+            writer.Put(GUID);
+            writer.Put(State);
+
+            SkyCoop.Logger.Log($"SendContainerState {GUID} {State}");
+
+            SendToHost(writer);
+        }
+
+        public static void SendCardGameAction(string GUID, int State, int GamePlayerID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientCardGameAction);
+
+            writer.Put(GUID);
+            writer.Put(State);
+            writer.Put(GamePlayerID);
+
+            SkyCoop.Logger.Log($"SendCardGameAction {GUID} {State} {GamePlayerID}");
+
+            SendToHost(writer);
+        }
+        public static void SendCardGameAction(string GUID, int State, int GamePlayerID, int Amount)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientCardGameAction);
+
+            writer.Put(GUID);
+            writer.Put(State);
+            writer.Put(GamePlayerID);
+            writer.Put(Amount);
+
+            SkyCoop.Logger.Log($"SendCardGameAction {GUID} {State} {GamePlayerID} {Amount}");
+
+            SendToHost(writer);
+        }
+        public static void SendFishTalk()
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientFishTalk);
+            SendToHost(writer);
+        }
+
+        public static void SendTierRequest()
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientGetTier);
+            SendToHost(writer);
+        }
+
+        public static void SendSV_CMD(string cmd)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientSV_CMD);
+            writer.Put(cmd.ToLower());
+            SendToHost(writer);
+        }
+
+        public static void SendSquadHealth(float Health, bool Debuffs, bool KnockedDown)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientSquadHealth);
+
+            writer.Put(Health);
+            writer.Put(Debuffs);
+            writer.Put(KnockedDown);
+
+            SendToHost(writer);
+        }
+
+        public static void SendTilt(float Tilt)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientTilt);
+            writer.Put(Tilt);
+            SendToHost(writer);
+        }
+
+        public static void SendRequestPresent()
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientRequestPresent);
+            writer.Put(true);
+            SendToHost(writer);
+        }
+
+        public static void SendCreateSquadRequest(string SquadName)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientRequestNewSquad);
+            writer.Put(SquadName);
+            SendToHost(writer);
+        }
+
+        public static void SendLeaveSquadRequest()
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientRequestLeaveSquad);
+            writer.Put(true);
+            SendToHost(writer);
+        }
+
+        public static void SendInviteToSquad(int ClientID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientInviteToSquad);
+            writer.Put(ClientID);
+            SendToHost(writer);
+        }
+
+        public static void SendAcceptSquadInvite(string SquadName)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientAcceptInviteToSquad);
+            writer.Put(SquadName);
+            SendToHost(writer);
+        }
+
+        public static void SendRefuseJoinSquad(string SquadName)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientRefuseJoinToSquad);
+            writer.Put(SquadName);
+            SendToHost(writer);
+        }
+
+        public static void SendBloodLosses(int Count)
+        {
+            NetDataWriter writer = new NetDataWriter();
+
+            writer.Put((int)Packet.Type.ClientBloodLosses);
+            writer.Put(Count);
+            SendToHost(writer);
+        }
+
+        public static void SendReviveSomeone(int ReviveTarget)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientReviveRequest);
+            writer.Put(ReviveTarget);
+            SendToHost(writer);
+        }
+
+        public static void SendChatMessage(string Message)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientChatMessage);
+            writer.Put(Message);
+            SendToHost(writer);
+        }
+
+        public static void SendStartFire(string GUID, float Fuel, float Heat, float InnerRadius, float OutterRadius, float HeatingSpeed, bool IsForge, int CookingSlots, Vector3 Position, Quaternion Rotation)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientStartFire);
+
+            writer.Put(GUID);
+            writer.Put(Fuel);
+            writer.Put(Heat);
+            writer.Put(InnerRadius);
+            writer.Put(OutterRadius);
+            writer.Put(HeatingSpeed);
+            writer.Put(IsForge);
+            writer.Put(CookingSlots);
+            writer.Put(true); // Is Dynamic
+
+            writer.Put(Position);
+            writer.Put(Rotation);
+
+            SendToHost(writer);
+        }
+        public static void SendStartFire(string GUID, float Fuel, float Heat, float InnerRadius, float OutterRadius, float HeatingSpeed, bool IsForge, int CookingSlots)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientStartFire);
+
+            writer.Put(GUID);
+            writer.Put(Fuel);
+            writer.Put(Heat);
+            writer.Put(InnerRadius);
+            writer.Put(OutterRadius);
+            writer.Put(HeatingSpeed);
+            writer.Put(IsForge);
+            writer.Put(CookingSlots);
+            writer.Put(false); // Is Dynamic
+
+            SendToHost(writer);
+        }
+
+        public static void SendAddFuel(string GUID, float Fuel, float Heat, float InnerRadius, float OutterRadius)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientAddFuel);
+
+            writer.Put(GUID);
+            writer.Put(Fuel);
+            writer.Put(Heat);
+            writer.Put(InnerRadius);
+            writer.Put(OutterRadius);
+
+            SendToHost(writer);
+        }
+
+        public static void SendTakeTorch(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientTakeTorch);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendDismantleCampfire(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientDismantleCampfire);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendCharcoalCollect(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientCharcoalCollect);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendRequestFreeCookingSlot(string GUID, int CookingSlot = -1)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientRequestFreeCookingSlot);
+
+            writer.Put(GUID);
+            writer.Put(CookingSlot);
+
+            SendToHost(writer);
+        }
+
+        public static void SendHarvest(string GUID, float RespawnMin, float RespawnMax)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientHarvest);
+
+            writer.Put(GUID);
+            writer.Put(RespawnMin);
+            writer.Put(RespawnMax);
+
+            SendToHost(writer);
+        }
+
+        public static void SendBreakDown(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientBreakDown);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+
+        public static void SendIsWorking(bool IsWorking)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientIsWorking);
+
+            writer.Put(IsWorking);
+
+            SendToHost(writer);
+        }
+
+        public static void SendWaterSource(string GUID, float Min, float Max, float ChanceToBeBad)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientWaterSourceInteraction);
+
+            writer.Put(GUID);
+            writer.Put(Min);
+            writer.Put(Max);
+            writer.Put(ChanceToBeBad);
+
+            SendToHost(writer);
+        }
+        public static void SendTookWaterFromWaterSource(string GUID, float TookWater)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientWaterSourceTakeWater);
+
+            writer.Put(GUID);
+            writer.Put(TookWater);
+
+            SendToHost(writer);
+        }
+        public static void SendAnimalSync(string GUID, Vector3 Position, Quaternion Rotation, int AitState, Animator Animator, bool IsBleeding, float Health, float BleedingOutMinutes, int PreviousState, Vector3 Velocity, float DeathOfBleedingMinutes, bool IsHolding)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientAnimalControlReply);
+
+            writer.Put(GUID);
+            writer.Put(Position);
+            writer.Put(Rotation);
+            writer.Put(AitState);
+            writer.PutAnimator(Animator);
+            writer.Put(IsBleeding);
+            writer.Put(Health);
+            writer.Put(BleedingOutMinutes);
+            writer.Put(PreviousState);
+            writer.Put(Velocity);
+            writer.Put(DeathOfBleedingMinutes);
+            writer.Put(IsHolding);
+
+            SendToHost(writer);
+        }
+
+        public static void SendAnimalSpawnCheat(string Prefab, Vector3 Position)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientCheatSpawnAnimal);
+
+            writer.Put(Prefab);
+            writer.Put(Position);
+
+            SendToHost(writer);
+        }
+        public static void SendAnimalDamage(string GUID, float Damage, float BleedingMinutes, int DamageSource, string Colider)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientAnimalDamage);
+
+            writer.Put(GUID);
+            writer.Put(Damage);
+            writer.Put(BleedingMinutes);
+            writer.Put(DamageSource);
+            writer.Put(Colider);
+
+            SendToHost(writer);
+        }
+        public static void SendAnimalArrow(string GUID, DataStr.AnimalEntity.ArrowData Arrow)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientAnimalAddArrow);
+
+            writer.Put(GUID);
+            writer.Put(Arrow);
+
+            SendToHost(writer);
+        }
+        public static void SendAnimalArrowRequest(string GUID)
+        {
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ClientRequestAnimalArrows);
+
+            writer.Put(GUID);
+
+            SendToHost(writer);
+        }
+    }
+}

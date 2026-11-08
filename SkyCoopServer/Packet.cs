@@ -1,0 +1,724 @@
+﻿using LiteNetLib.Utils;
+using System.Numerics;
+using System.Reflection.Metadata;
+using System.Reflection.PortableExecutable;
+using static SkyCoopServer.DataStr;
+
+namespace SkyCoopServer
+{
+    public static class Packet
+    {
+        public enum Type
+        {
+            Welcome = 0,
+            CFG,
+            ClientPosition,
+            ClientRotation,
+            ClientScene,
+            ClientHoldigGear,
+            ClientCrouch,
+            ClientAction,
+            ClientFire,
+            ClientDamageOtherClient,
+            ClientProjectile,
+            ClientDied,
+            ClientRevived,
+            KillFeedMessage,
+            ClientProjectileThrow,
+            ClientName,
+            ClientRequestRespawn,
+            ClientInjectedItem,
+            ClientRemoveInjectedItem,
+            ClientEraceAllInjectedItems,
+            ClientGettingDamage,
+            ClientSendGear,
+            ClientPickUpGear,
+            ClientRemoveGear,
+            ClientLoadedScene,
+            ClientOpenableInteraction,
+            ClientClothing,
+            ClientZoneUpdated,
+            ClientGameModeTimer,
+            ClientHUDSideBar,
+            ClientHUDSideBarUpdate,
+            ClientFreeze,
+            ServerConfigUpdated,
+            ServerChangesMap,
+            ServerLeaders,
+            ClientTryInteract,
+            ClientVehicleSeat,
+            ClientInVehicle,
+            ClientStatusMessage,
+            ClientDeathPackAdded,
+            ClientDeathPackRemoved,
+            ClientContainerOpen,
+            ClientUpdateContainerData,
+            ServerContainerDataArrived,
+            ClientFinishInteract,
+            ClientSetInteraction,
+            ClientContainerStateUpdated,
+            ClientHUDTimerPrefix,
+            ClientRespawnAsSpectator,
+            ClientSpawnProp,
+            ClientRemoveProp,
+            ClientCardGameAction,
+            ClientCardJoinGame,
+            ClientCardGameTurn,
+            ClientCardGamePokerUpdate,
+            ClientFishTalk,
+            ClientGetTier,
+            ClientSV_CMD,
+            ClientSquadHealth,
+            ClientAssignSquad,
+            ServerRequestSquadHealth,
+            ClientTilt,
+            ServerSquadEliminated,
+            ClientRequestPresent,
+            ServerGearSpawnerMarker,
+            ServerSquadMemberLeft,
+            ClientRequestNewSquad,
+            ServerSquadResponce,
+            ClientRequestLeaveSquad,
+            ServerSquadCreated,
+            ClientInviteToSquad,
+            ClientAcceptInviteToSquad,
+            ClientRefuseJoinToSquad,
+            ClientMoveProp,
+            ClientBloodLosses,
+            ClientReviveRequest,
+            ClientChatMessage,
+            ServerUpdateInGameTime,
+            ClientStartFire,
+            ClientAddFuel,
+            ClientTakeTorch,
+            ClientDismantleCampfire,
+            ClientCharcoalCollect,
+            ClientRequestFreeCookingSlot,
+            ClientGearCookingInteration,
+            ClientGearSetRecipe,
+            ServerGearBeingCookedProgress,
+            ServerWaterRefund,
+            ServerWeather,
+            ClientHarvest,
+            ClientBreakDown,
+            ClientIsWorking,
+            ClientWaterSourceInteraction,
+            ClientWaterSourceTakeWater,
+            ServerAnimalControlRequest,
+            ClientAnimalControlReply,
+            ServerAnimalRemoved,
+            ClientCheatSpawnAnimal,
+            ClientAnimalDamage,
+            ClientAnimalAddArrow,
+            ClientRequestAnimalArrows,
+            ClientAnimalCorpse,
+        }
+
+        public enum SquadResponce
+        {
+            CantCreateSquad,
+            SquadCreated,
+            YouNotInSquad,
+            YouLeftSquad,
+            YouAlreadyInSquad,
+            YouAreNotInvited,
+            InviteSent,
+            SquadNotExist,
+            SquadIsFull,
+            TheyAlreadyInSquad,
+            YouCantInviteThemATM,
+            YouInvitedTooMuch,
+        }
+
+        public const string c_Key = "public1";
+
+        public enum TypeVoice
+        {
+            Verification,
+            Welcome,
+            Voice,
+        }
+
+        public static void Put(this NetDataWriter Writer, Vector3 v3)
+        {
+            Writer.Put(v3.X);
+            Writer.Put(v3.Y);
+            Writer.Put(v3.Z);
+        }
+
+        public static Vector3 GetVector3(this NetDataReader Reader)
+        {
+            Vector3 v3 = new Vector3(Reader.GetFloat(), Reader.GetFloat(), Reader.GetFloat());
+            return v3;
+        }
+
+        public static void Put(this NetDataWriter Writer, Vector2 v2)
+        {
+            Writer.Put(v2.X);
+            Writer.Put(v2.Y);
+        }
+
+        public static Vector2 GetVector2(this NetDataReader Reader)
+        {
+            Vector2 v2 = new Vector2(Reader.GetFloat(), Reader.GetFloat());
+            return v2;
+        }
+
+        public static void Put(this NetDataWriter Writer, Quaternion quat)
+        {
+            Writer.Put(quat.X);
+            Writer.Put(quat.Y);
+            Writer.Put(quat.Z);
+            Writer.Put(quat.W);
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.KillFeedMessage Message)
+        {
+            Writer.Put(Message.m_Killer);
+            Writer.Put(Message.m_Victim);
+            Writer.Put(Message.m_Assist);
+            Writer.Put((int)Message.m_DeathReason);
+            Writer.Put(Message.m_Flags.Count);
+            foreach (DataStr.KillFeedFlag Flag in Message.m_Flags)
+            {
+                Writer.Put((int)Flag);
+            }
+        }
+
+        public static DataStr.KillFeedMessage GetKillFeedMessage(this NetDataReader Reader)
+        {
+            DataStr.KillFeedMessage Message = new DataStr.KillFeedMessage();
+            Message.m_Killer = Reader.GetInt();
+            Message.m_Victim = Reader.GetInt();
+            Message.m_Assist = Reader.GetInt();
+            Message.m_DeathReason = (DataStr.DamageType)Reader.GetInt();
+            int Flags = Reader.GetInt();
+            if(Flags > 0)
+            {
+                for (int i = 0; i < Flags; i++)
+                {
+                    Message.m_Flags.Add((DataStr.KillFeedFlag)Reader.GetInt());
+                }
+            }
+            return Message;
+        }
+
+        public static Quaternion GetQuaternion(this NetDataReader Reader)
+        {
+            Quaternion quat = new Quaternion(Reader.GetFloat(), Reader.GetFloat(), Reader.GetFloat(), Reader.GetFloat());
+            return quat;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.GearDataVisual Visual)
+        {
+            Writer.Put(Visual.m_GearName);
+            Writer.Put(Visual.m_Position);
+            Writer.Put(Visual.m_Rotation);
+            Writer.Put(Visual.m_GUID);
+            Writer.Put(Visual.m_ConditionNormalized);
+            Writer.Put(Visual.m_Style);
+
+            Writer.Put(Visual.m_HasCookingSlot);
+
+            if (Visual.m_HasCookingSlot)
+            {
+                Writer.Put(Visual.m_FireGUID);
+                Writer.Put(Visual.m_CookingSlot);
+            }
+
+            Writer.Put(Visual.m_HasCookingRecipe);
+
+            if (Visual.m_HasCookingRecipe)
+            {
+                Writer.Put(Visual.m_CookingResult);
+                Writer.Put(Visual.m_Volume);
+            }
+
+            Writer.Put(Visual.m_BeingCookedTime);
+            Writer.Put(Visual.m_FinishProcessTime);
+        }
+
+        public static DataStr.GearDataVisual GetGearVisual(this NetDataReader Reader)
+        {
+            DataStr.GearDataVisual Visual = new DataStr.GearDataVisual();
+
+            Visual.m_GearName = Reader.GetString();
+            Visual.m_Position = Reader.GetVector3();
+            Visual.m_Rotation = Reader.GetQuaternion();
+            Visual.m_GUID = Reader.GetString();
+            Visual.m_ConditionNormalized = Reader.GetFloat();
+            Visual.m_Style = Reader.GetInt();
+
+            Visual.m_HasCookingSlot = Reader.GetBool();
+
+            if (Visual.m_HasCookingSlot)
+            {
+                Visual.m_FireGUID = Reader.GetString();
+                Visual.m_CookingSlot = Reader.GetInt();
+            }
+
+            Visual.m_HasCookingRecipe = Reader.GetBool();
+
+            if (Visual.m_HasCookingRecipe)
+            {
+                Visual.m_CookingResult = Reader.GetString();
+                Visual.m_Volume = Reader.GetFloat();
+            }
+
+            Visual.m_BeingCookedTime = Reader.GetFloat();
+            Visual.m_FinishProcessTime = Reader.GetFloat();
+
+            return Visual;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.ServerConfig CFG)
+        {
+            Writer.Put(CFG.m_MaxPlayers);
+            Writer.Put(CFG.m_Seed);
+            Writer.Put(CFG.m_VoicePort);
+            Writer.Put(CFG.m_ExperienceMode);
+            Writer.Put(CFG.m_SceneToSpawn);
+            Writer.Put(CFG.m_GameMode);
+            Writer.Put(CFG.m_CheatsAllowed);
+            Writer.Put(CFG.m_ServerName);
+        }
+
+        public static DataStr.ServerConfig GetConfig(this NetDataReader Reader)
+        {
+            DataStr.ServerConfig CFG = new DataStr.ServerConfig();
+
+            CFG.m_MaxPlayers = Reader.GetInt();
+            CFG.m_Seed = Reader.GetInt();
+            CFG.m_VoicePort = Reader.GetInt();
+            CFG.m_ExperienceMode = Reader.GetString();
+            CFG.m_SceneToSpawn = Reader.GetString();
+            CFG.m_GameMode = Reader.GetString();
+            CFG.m_CheatsAllowed = Reader.GetBool();
+            CFG.m_ServerName = Reader.GetString();
+
+            return CFG;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.GameRules Rules)
+        {
+            Writer.Put(Rules.m_PlayerCanBeKnocked);
+            Writer.Put(Rules.m_PVP);
+            Writer.Put(Rules.m_StartingItems);
+            Writer.Put(Rules.m_StartingItemsByTier);
+            Writer.Put(Rules.m_HUDMode);
+            Writer.Put(Rules.m_DeathPacks);
+            Writer.Put(Rules.m_Respawns);
+            Writer.Put(Rules.m_Clothing);
+            Writer.Put(Rules.m_CanDropItems);
+            Writer.Put(Rules.m_CanUseContainers);
+            Writer.Put(Rules.m_CanUseMap);
+            Writer.Put(Rules.m_AdvancedSpawnPoints);
+            Writer.Put(Rules.m_Fatigue);
+            Writer.Put(Rules.m_Hunger);
+            Writer.Put(Rules.m_Thirst);
+            Writer.Put(Rules.m_Cold);
+            Writer.Put(Rules.m_CanUseBeds);
+            Writer.Put(Rules.m_CanStartFire);
+            Writer.Put(Rules.m_CanUseTransitions);
+            Writer.Put(Rules.m_Weather);
+            Writer.Put(Rules.m_CanCraft);
+        }
+
+        public static DataStr.GameRules GetRules(this NetDataReader Reader)
+        {
+            DataStr.GameRules Rules = new DataStr.GameRules();
+
+            Rules.m_PlayerCanBeKnocked = Reader.GetBool();
+            Rules.m_PVP = Reader.GetBool();
+            Rules.m_StartingItems = Reader.GetStartingGearList();
+            Rules.m_StartingItemsByTier = Reader.GetStartingGearListOfLists();
+            Rules.m_HUDMode = Reader.GetString();
+            Rules.m_DeathPacks = Reader.GetBool();
+            Rules.m_Respawns = Reader.GetInt();
+            Rules.m_Clothing = Reader.GetBool();
+            Rules.m_CanDropItems = Reader.GetBool();
+            Rules.m_CanUseContainers = Reader.GetBool();
+            Rules.m_CanUseMap = Reader.GetBool();
+            Rules.m_AdvancedSpawnPoints = Reader.GetBool();
+            Rules.m_Fatigue = Reader.GetBool();
+            Rules.m_Hunger = Reader.GetBool();
+            Rules.m_Thirst = Reader.GetBool();
+            Rules.m_Cold = Reader.GetBool();
+            Rules.m_CanUseBeds = Reader.GetBool();
+            Rules.m_CanStartFire = Reader.GetBool();
+            Rules.m_CanUseTransitions = Reader.GetBool();
+            Rules.m_Weather = Reader.GetBool();
+            Rules.m_CanCraft = Reader.GetBool();
+
+            return Rules;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.StartingGearData GearData)
+        {
+            Writer.Put(GearData.Variants.Count);
+
+            foreach (string GearVariant in GearData.Variants)
+            {
+                Writer.Put(GearVariant);
+            }
+            Writer.Put(GearData.Units);
+        }
+
+        public static DataStr.StartingGearData GetStartingGear(this NetDataReader Reader)
+        {
+            DataStr.StartingGearData GearData = new DataStr.StartingGearData();
+            int Count = Reader.GetInt();
+            GearData.Variants = new List<string>();
+            for (int i = 0; i < Count; i++)
+            {
+                GearData.Variants.Add(Reader.GetString());
+            }
+            GearData.Units = Reader.GetInt();
+            return GearData;
+        }
+
+        public static void Put(this NetDataWriter Writer, List<DataStr.StartingGearData> GearDataList)
+        {
+            Writer.Put(GearDataList.Count);
+
+            foreach (DataStr.StartingGearData GearData in GearDataList)
+            {
+                Writer.Put(GearData);
+            }
+        }
+
+        public static List<DataStr.StartingGearData> GetStartingGearList(this NetDataReader Reader)
+        {
+            List<DataStr.StartingGearData> GearDataList = new List<DataStr.StartingGearData> ();
+            int Count = Reader.GetInt();
+            for (int i = 0; i < Count; i++)
+            {
+                GearDataList.Add(Reader.GetStartingGear());
+            }
+            return GearDataList;
+        }
+
+        public static void Put(this NetDataWriter Writer, List<List<DataStr.StartingGearData>> GearDataListOfLists)
+        {
+            Writer.Put(GearDataListOfLists.Count);
+
+            foreach (List<DataStr.StartingGearData> ListOfGears in GearDataListOfLists)
+            {
+                Writer.Put(ListOfGears);
+            }
+        }
+
+        public static List<List<DataStr.StartingGearData>> GetStartingGearListOfLists(this NetDataReader Reader)
+        {
+            List<List<DataStr.StartingGearData>> GearDataListOfLists = new List<List<DataStr.StartingGearData>>();
+            int Count = Reader.GetInt();
+            for (int i = 0; i < Count; i++)
+            {
+                GearDataListOfLists.Add(Reader.GetStartingGearList());
+            }
+            return GearDataListOfLists;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.ClothingData Data)
+        {
+            Writer.Put(Data.m_Hat1);
+            Writer.Put(Data.m_Hat2);
+
+            Writer.Put(Data.m_Body);
+            Writer.Put(Data.m_Gloves);
+
+            Writer.Put(Data.m_Pants);
+            Writer.Put(Data.m_Boots);
+
+            Writer.Put(Data.m_Accs1);
+            Writer.Put(Data.m_Accs2);
+
+            Writer.Put(Data.m_Hat1Damage);
+            Writer.Put(Data.m_Hat2Damage);
+
+            Writer.Put(Data.m_BodyDamage);
+            Writer.Put(Data.m_GlovesDamage);
+
+            Writer.Put(Data.m_PantsDamage);
+            Writer.Put(Data.m_BootsDamage);
+
+            Writer.Put(Data.m_TechPack);
+            Writer.Put(Data.m_Respirator);
+
+            Writer.Put(Data.m_Body2);
+            Writer.Put(Data.m_Body2Damage);
+        }
+
+        public static DataStr.ClothingData GetClothingData(this NetDataReader Reader)
+        {
+            DataStr.ClothingData Data = new DataStr.ClothingData();
+
+            Data.m_Hat1 = Reader.GetString();
+            Data.m_Hat2 = Reader.GetString();
+
+            Data.m_Body = Reader.GetString();
+            Data.m_Gloves = Reader.GetString();
+
+            Data.m_Pants = Reader.GetString();
+            Data.m_Boots = Reader.GetString();
+
+            Data.m_Accs1 = Reader.GetString();
+            Data.m_Accs2 = Reader.GetString();
+
+            Data.m_Hat1Damage = Reader.GetFloat();
+            Data.m_Hat2Damage = Reader.GetFloat();
+
+            Data.m_BodyDamage = Reader.GetFloat();
+            Data.m_GlovesDamage = Reader.GetFloat();
+
+            Data.m_PantsDamage = Reader.GetFloat();
+            Data.m_BootsDamage = Reader.GetFloat();
+
+            Data.m_TechPack = Reader.GetBool();
+            Data.m_Respirator = Reader.GetBool();
+
+            Data.m_Body2 = Reader.GetString();
+            Data.m_Body2Damage = Reader.GetFloat();
+
+            return Data;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.DeathPack Data)
+        {
+            Writer.Put(Data.m_Prefab);
+            Writer.Put(Data.m_GUID);
+            Writer.Put(Data.m_Owner);
+
+            Writer.Put(Data.m_Position);
+            Writer.Put(Data.m_Rotation);
+        }
+
+        public static DataStr.DeathPack GetDeathPack(this NetDataReader Reader)
+        {
+            DataStr.DeathPack Data = new DataStr.DeathPack();
+
+            Data.m_Prefab = Reader.GetString();
+            Data.m_GUID = Reader.GetString();
+            Data.m_Owner = Reader.GetString();
+
+            Data.m_Position = Reader.GetVector3();
+            Data.m_Rotation = Reader.GetQuaternion();
+
+            return Data;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.PropData Data)
+        {
+            Writer.Put(Data.position.x);
+            Writer.Put(Data.position.y);
+            Writer.Put(Data.position.z);
+
+            Writer.Put(Data.rotation.x);
+            Writer.Put(Data.rotation.y);
+            Writer.Put(Data.rotation.z);
+            Writer.Put(Data.rotation.w);
+
+            Writer.Put(Data.guid);
+            Writer.Put(Data.prefabname);
+
+            Writer.Put(Data.frombundle);
+        }
+
+        public static DataStr.PropData GetPropData(this NetDataReader Reader)
+        {
+            DataStr.PropData Data = new DataStr.PropData();
+
+            Data.position = new DataStr.Vector3JSON();
+
+            Data.position.x = Reader.GetFloat();
+            Data.position.y = Reader.GetFloat();
+            Data.position.z = Reader.GetFloat();
+
+            Data.rotation = new DataStr.QuaternionJSON();
+            Data.rotation.x = Reader.GetFloat();
+            Data.rotation.y = Reader.GetFloat();
+            Data.rotation.z = Reader.GetFloat();
+            Data.rotation.w = Reader.GetFloat();
+
+            Data.guid = Reader.GetString();
+            Data.prefabname = Reader.GetString();
+            Data.frombundle = Reader.GetBool();
+
+            return Data;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.LeaderData Data)
+        {
+            Writer.Put(Data.m_ID);
+            Writer.Put(Data.m_Score);
+            Writer.Put(Data.m_ClothingData);
+        }
+
+        public static DataStr.LeaderData GetLeaderData(this NetDataReader Reader)
+        {
+            DataStr.LeaderData Data = new DataStr.LeaderData();
+
+            Data.m_ID = Reader.GetInt();
+            Data.m_Score = Reader.GetInt();
+            Data.m_ClothingData = Reader.GetClothingData();
+
+            return Data;
+        }
+
+        public static void Put(this NetDataWriter Writer, DateTime Data)
+        {
+            Writer.Put(Data.ToUniversalTime().Ticks);
+        }
+
+        public static DateTime GetTime(this NetDataReader Reader)
+        {
+            long Ticks = Reader.GetLong();
+
+            return new DateTime(Ticks, DateTimeKind.Utc);
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.DangerCircleShrinkStateData Data)
+        {
+            Writer.Put(Data.m_StartShrinkingTime);
+            Writer.Put(Data.m_EndShrinkingTime);
+
+            Writer.Put(Data.m_PreviousRadius);
+            Writer.Put(Data.m_NewRadius);
+
+            Writer.Put(Data.m_PreviousCenter);
+            Writer.Put(Data.m_NewCenter);
+        }
+
+        public static DataStr.DangerCircleShrinkStateData GetZoneStage(this NetDataReader Reader)
+        {
+            DataStr.DangerCircleShrinkStateData Data = new DataStr.DangerCircleShrinkStateData();
+
+            Data.m_StartShrinkingTime = Reader.GetTime();
+            Data.m_EndShrinkingTime = Reader.GetTime();
+
+            Data.m_PreviousRadius = Reader.GetFloat();
+            Data.m_NewRadius = Reader.GetFloat();
+
+            Data.m_PreviousCenter = Reader.GetVector3();
+            Data.m_NewCenter = Reader.GetVector3();
+
+            return Data;
+        }
+
+        public static DataStr.WeatherSyncData GetWeather(this NetDataReader Reader)
+        {
+            DataStr.WeatherSyncData Data = new DataStr.WeatherSyncData();
+
+            Data.m_WeatherSeed = Reader.GetInt();
+            Data.m_LowTempSeed = Reader.GetInt();
+            Data.m_HighTempSeed = Reader.GetInt();
+            Data.m_WindSeed = Reader.GetInt();
+
+            Data.m_CurrentWeatherType = Reader.GetInt();
+            Data.m_PreviousWeatherType = Reader.GetInt();
+            Data.m_WindDirection = Reader.GetFloat();
+
+            Data.m_Duration = Reader.GetFloat();
+            Data.m_TransitionTime = Reader.GetFloat();
+            Data.m_NormalizedTime = Reader.GetFloat();
+            Data.m_WindDuration = Reader.GetFloat();
+            Data.m_WindElapsedHours = Reader.GetFloat();
+
+            return Data;
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.WeatherSyncData Data)
+        {
+            Writer.Put(Data.m_WeatherSeed);
+            Writer.Put(Data.m_LowTempSeed);
+            Writer.Put(Data.m_HighTempSeed);
+            Writer.Put(Data.m_WindSeed);
+
+            Writer.Put(Data.m_CurrentWeatherType);
+            Writer.Put(Data.m_PreviousWeatherType);
+            Writer.Put(Data.m_WindDirection);
+
+            Writer.Put(Data.m_Duration);
+            Writer.Put(Data.m_TransitionTime);
+            Writer.Put(Data.m_NormalizedTime);
+            Writer.Put(Data.m_WindDuration);
+            Writer.Put(Data.m_WindElapsedHours);
+        }
+
+        public static DataStr.AnimatorData GetAnimatorData(this NetDataReader Reader)
+        {
+            DataStr.AnimatorData Data = new DataStr.AnimatorData();
+
+            int Count = Reader.GetInt();
+            for (int i = 0; i < Count; i++)
+            {
+                int Type = Reader.GetInt();
+                int Hash = Reader.GetInt();
+                switch (Type)
+                {
+                    case 3:
+                        Data.m_Parameters.Add(new AnimatorData.ParameterData(Reader.GetInt(), Hash));
+                        break;
+                    case 1:
+                        Data.m_Parameters.Add(new AnimatorData.ParameterData(Reader.GetFloat(), Hash));
+                        break;
+                    case 4:
+                        Data.m_Parameters.Add(new AnimatorData.ParameterData(Reader.GetBool(), Hash));
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            return Data;
+        }
+
+        public static void Put(this NetDataWriter Writer, AnimatorData AnimatorData)
+        {
+            Writer.Put(AnimatorData.m_Parameters.Count);
+            foreach (AnimatorData.ParameterData Parameter in AnimatorData.m_Parameters)
+            {
+                Writer.Put(Parameter.m_Type);
+                Writer.Put(Parameter.m_Hash);
+                switch (Parameter.m_Type)
+                {
+                    // Нумерация m_Type такая всратая ибо такая в AnimatorControllerParameterType у юнити
+                    case 3:
+                        Writer.Put(Parameter.m_Int);
+                        break;
+                    case 1:
+                        Writer.Put(Parameter.m_Float);
+                        break;
+                    case 4:
+                        Writer.Put(Parameter.m_Bool);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public static void Put(this NetDataWriter Writer, DataStr.AnimalEntity.ArrowData Data)
+        {
+            Writer.Put(Data.m_ArrowPrefab);
+            Writer.Put(Data.m_Position);
+            Writer.Put(Data.m_Rotation);
+            Writer.Put(Data.m_Condition);
+            Writer.Put(Data.m_Bone);
+        }
+
+        public static DataStr.AnimalEntity.ArrowData GetArrowData(this NetDataReader Reader)
+        {
+            DataStr.AnimalEntity.ArrowData Arrow = new AnimalEntity.ArrowData();
+            Arrow.m_ArrowPrefab = Reader.GetString();
+            Arrow.m_Position = Reader.GetVector3();
+            Arrow.m_Rotation = Reader.GetQuaternion();
+            Arrow.m_Condition = Reader.GetFloat();
+            Arrow.m_Bone = Reader.GetString();
+
+            return Arrow;
+        }
+    }
+}
