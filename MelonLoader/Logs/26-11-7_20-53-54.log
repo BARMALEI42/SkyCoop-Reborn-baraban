@@ -1,0 +1,1080 @@
+[20:53:54.554] [MelonLoader.Bootstrap] Using HostFXR Path: C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll
+[20:53:54.555] [MelonLoader.Bootstrap] Using .NET runtime: 'C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll'
+
+[20:53:54.810] ------------------------------
+[20:53:54.811] MelonLoader v0.7.3 Open-Beta
+[20:53:54.812] OS: Windows 11
+[20:53:54.812] Hash Code: BDD43DC0F3893C208C95389B863AB61C967AE14204DA0DD8051647E754C8709B
+[20:53:54.812] ------------------------------
+[20:53:54.813] Game Type: Il2cpp
+[20:53:54.813] Game Arch: x64
+[20:53:54.813] ------------------------------
+[20:53:54.813] Command-Line: 
+[20:53:54.813] ------------------------------
+[20:53:54.814] Core::BasePath = C:\games\The Long Dark
+[20:53:54.814] Game::BasePath = C:\games\The Long Dark
+[20:53:54.814] Game::DataPath = C:\games\The Long Dark\tld_Data
+[20:53:54.814] Game::ApplicationPath = C:\games\The Long Dark\tld.exe
+[20:53:54.814] Runtime Type: net6
+[20:53:54.874] ------------------------------
+[20:53:54.874] Game Name: TheLongDark
+[20:53:54.874] Game Developer: Hinterland
+[20:53:54.876] Unity Version: 6000.0.60f1
+[20:53:54.876] Game Version: 2.59
+[20:53:54.876] ------------------------------
+
+[20:53:55.382] Preferences Loaded!
+
+[20:53:55.394] Loading UserLibs...
+[20:53:55.411] ------------------------------
+[20:53:55.415] Melon Assembly loaded: '.\UserLibs\LiteNetLib.dll'
+[20:53:55.415] SHA256 Hash: 'DA5529085572DF7D3398A0C47AB6D8DE7982C2E06EE4CC17CB475E174A51C168'
+[20:53:55.417] Melon Assembly loaded: '.\UserLibs\Mono.Nat.dll'
+[20:53:55.417] SHA256 Hash: 'A4BEDACA52C52D4DB7AA00533937225C0169C00C29A2BFE6F3C3D63AB3F5148B'
+[20:53:55.420] Melon Assembly loaded: '.\UserLibs\NAudio.Core.dll'
+[20:53:55.421] SHA256 Hash: 'FCF493FC47A2F478A65303886B975FBDBF714CBB1F2D79F7FCE97E4BB16B01A8'
+[20:53:55.422] Melon Assembly loaded: '.\UserLibs\NAudio.WinMM.dll'
+[20:53:55.423] SHA256 Hash: '749A01EBBB5EDD8B1A03C5263B04DE6ACADECF52E4CC84D7412BC6E93F180958'
+[20:53:55.424] Melon Assembly loaded: '.\UserLibs\OpenVoiceSharp.dll'
+[20:53:55.424] SHA256 Hash: '4D3593A390765742CAE12C590D165A4B8C9F80B8008CD00D39944D6490C1434F'
+[20:53:55.425] Melon Assembly loaded: '.\UserLibs\OpusDotNet.dll'
+[20:53:55.425] SHA256 Hash: 'C84A9D5E0F9A1C9A8DDD5515C91F97CDCEB26BD1754BB5214DC91BD1E422057F'
+[20:53:55.426] Melon Assembly loaded: '.\UserLibs\RNNoise.NET.dll'
+[20:53:55.426] SHA256 Hash: 'FFE582224EA821C45E6F9025C56BEC800B905A7A08D90D0186F8A88CDB46C5AD'
+[20:53:55.427] Melon Assembly loaded: '.\UserLibs\WebRtcVadSharp.dll'
+[20:53:55.427] SHA256 Hash: '8FCB7C0752E1C67CB5AF67597DDAF8E77F94A3C3BABA0AB690772D30D94A35C7'
+[20:53:55.428] ------------------------------
+[20:53:55.428] 0 UserLibs loaded.
+
+[20:53:55.428] Loading Plugins...
+[20:53:55.440] ------------------------------
+[20:53:55.442] Melon Assembly loaded: '.\Plugins\AudioCore.dll'
+[20:53:55.442] SHA256 Hash: '36B2F3D44D8FB6CA5D4BAAD7FDCDF8EC73A488B1DE017CE3A1A26D1302D6E426'
+
+[20:53:55.471] ------------------------------
+[20:53:55.472] AudioCore v3.1.5
+[20:53:55.472] by Digitalzombie
+[20:53:55.472] Assembly: AudioCore.dll
+[20:53:55.472] ------------------------------
+[20:53:55.472] ------------------------------
+[20:53:55.473] 1 Plugin loaded.
+
+[20:53:55.478] [AudioCore] Attempting to enable Unity audio...
+[20:53:55.515] [AudioCore] Unity audio already enabled. Skipping ...
+[20:53:56.437] Loading Il2CppAssemblyGenerator...
+[20:53:56.480] [Il2CppAssemblyGenerator] Contacting RemoteAPI...
+[20:53:56.822] [Il2CppAssemblyGenerator] RemoteAPI.DumperVersion = null
+[20:53:56.822] [Il2CppAssemblyGenerator] RemoteAPI.ObfuscationRegex = null
+[20:53:56.823] [Il2CppAssemblyGenerator] RemoteAPI.MappingURL = null
+[20:53:56.823] [Il2CppAssemblyGenerator] RemoteAPI.MappingFileSHA512 = null
+[20:53:56.826] [Il2CppAssemblyGenerator] Using Cpp2IL Version: 2022.1.0-pre-release.21
+[20:53:56.826] [Il2CppAssemblyGenerator] Using Il2CppInterop Version = 1.5.1-ci.845+f03c8f4ae507d47ea814f3d11d1ec6b0391c1576
+[20:53:56.827] [Il2CppAssemblyGenerator] Using Unity Dependencies Version = 6000.0.60
+[20:53:56.827] [Il2CppAssemblyGenerator] Using Deobfuscation Regex = null
+[20:53:56.827] [Il2CppAssemblyGenerator] Cpp2IL is up to date.
+[20:53:56.827] [Il2CppAssemblyGenerator] Cpp2IL.Plugin.StrippedCodeRegSupport is up to date.
+[20:53:56.828] [Il2CppAssemblyGenerator] UnityDependencies is up to date.
+[20:53:56.828] [Il2CppAssemblyGenerator] Checking GameAssembly...
+[20:53:57.028] [Il2CppAssemblyGenerator] Assembly is up to date. No Generation Needed.
+
+[20:53:57.029] Loading Mods...
+[20:53:57.042] ------------------------------
+[20:53:57.046] Melon Assembly loaded: '.\Mods\ModComponent.dll'
+[20:53:57.047] SHA256 Hash: '72182038DD95EA231D562C5DDBCA67F4E608BA5B4DF4119B0844F41C9136AD3D'
+[20:53:57.055] Melon Assembly loaded: '.\Mods\ModSettings.dll'
+[20:53:57.055] SHA256 Hash: '2A688A034D26E4CAC469DD276E8BB966CBB80E806AF4B50EEA189E02A7E806F8'
+[20:53:57.059] Melon Assembly loaded: '.\Mods\SkyCoopClient.dll'
+[20:53:57.059] SHA256 Hash: '0FC4E856457A547AF0116049C7C095B7F874B3058172CEABB1E9A87A97B573C6'
+
+[20:53:57.559] ------------------------------
+[20:53:57.559] ModSettings v2.2.2
+[20:53:57.560] by Digitalzombie, zeobviouslyfakeacc
+[20:53:57.560] Assembly: ModSettings.dll
+[20:53:57.560] ------------------------------
+[20:53:57.563] ------------------------------
+[20:53:57.563] ModComponent v7.0.0
+[20:53:57.563] by STBlade
+[20:53:57.563] Assembly: ModComponent.dll
+[20:53:57.563] ------------------------------
+[20:53:57.566] ------------------------------
+[20:53:57.566] Sky Co-op REBORN v1.0.0
+[20:53:57.566] by Filigrani & REDcat
+[20:53:57.566] Assembly: SkyCoopClient.dll
+[20:53:57.566] ------------------------------
+[20:53:57.566] ------------------------------
+[20:53:57.566] 3 Mods loaded.
+
+[20:53:58.588] [WARNING] [Il2CppInterop] Class::Init signatures have been exhausted, using a substitute!
+[20:53:58.617] [Il2CppInterop] Registered mono type MelonLoader.Support.MonoEnumeratorWrapper in il2cpp domain
+[20:53:58.693] Support Module Loaded: C:\games\The Long Dark\MelonLoader\Dependencies\SupportModules\Il2Cpp.dll
+[20:53:58.751] [Il2CppInterop] Registered mono type ModSettings.ModSettingsGUI in il2cpp domain
+[20:54:03.436] [ModComponent] Release Compilation
+[20:54:03.445] [ModComponent] Reading zip file: 'SkyCoop.modcomponent'
+[20:54:03.516] [ModComponent] Found: SkyCoop  by Filigrani
+[20:54:03.711] [WARNING] [Il2CppInterop] Method Void SetClothing(ClothingData) on type SkyCoop.Comps+NetworkPlayer has unsupported parameter ClothingData Data of type SkyCoopServer.DataStr+ClothingData
+[20:54:03.723] [Il2CppInterop] Registered mono type SkyCoop.Comps+NetworkPlayer in il2cpp domain
+[20:54:03.724] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerGear in il2cpp domain
+[20:54:03.726] [Il2CppInterop] Registered mono type SkyCoop.Comps+PlayerDamageColider in il2cpp domain
+[20:54:03.727] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerBullet in il2cpp domain
+[20:54:03.728] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearThrownVisual in il2cpp domain
+[20:54:03.733] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerThrowHook in il2cpp domain
+[20:54:03.734] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerKillFeedHandle in il2cpp domain
+[20:54:03.735] [Il2CppInterop] Registered mono type SkyCoop.Comps+MeleeBulletHandler in il2cpp domain
+[20:54:03.736] [Il2CppInterop] Registered mono type SkyCoop.Comps+ArrowHook in il2cpp domain
+[20:54:03.737] [Il2CppInterop] Registered mono type SkyCoop.Comps+DroppedGearVisual in il2cpp domain
+[20:54:03.738] [Il2CppInterop] Registered mono type SkyCoop.Comps+BulletWallBangHook in il2cpp domain
+[20:54:03.739] [Il2CppInterop] Registered mono type SkyCoop.Comps+CameraAttention in il2cpp domain
+[20:54:03.740] [Il2CppInterop] Registered mono type SkyCoop.Comps+DeathPackComp in il2cpp domain
+[20:54:03.742] [Il2CppInterop] Registered mono type SkyCoop.Comps+ContainerDescriptorHook in il2cpp domain
+[20:54:03.743] [Il2CppInterop] Registered mono type SkyCoop.Comps+DangerCircleZone in il2cpp domain
+[20:54:03.744] [Il2CppInterop] Registered mono type SkyCoop.Comps+ForcedFire in il2cpp domain
+[20:54:03.745] [Il2CppInterop] Registered mono type SkyCoop.Comps+CardGameProp in il2cpp domain
+[20:54:03.745] [WARNING] [Il2CppInterop] Method System.Collections.Generic.List`1[System.Int32] GetBets() on type SkyCoop.Comps+TexasHoldEmProp has unsupported return type System.Collections.Generic.List`1[System.Int32]
+[20:54:03.747] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmProp in il2cpp domain
+[20:54:03.748] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlayer in il2cpp domain
+[20:54:03.750] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmJoin in il2cpp domain
+[20:54:03.751] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlay in il2cpp domain
+[20:54:03.752] [Il2CppInterop] Registered mono type SkyCoop.Comps+TalkingFish in il2cpp domain
+[20:54:03.753] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropsEditorVisuzlier in il2cpp domain
+[20:54:03.754] [Il2CppInterop] Registered mono type SkyCoop.Comps+GenericStatusBarSpawnerHook in il2cpp domain
+[20:54:03.755] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateBar in il2cpp domain
+[20:54:03.758] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateMapIcon in il2cpp domain
+[20:54:03.759] [Il2CppInterop] Registered mono type SkyCoop.Comps+ZoneMapIcon in il2cpp domain
+[20:54:03.760] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropMovemenetPredict in il2cpp domain
+[20:54:03.761] [Il2CppInterop] Registered mono type SkyCoop.Comps+ChatMessage in il2cpp domain
+[20:54:03.762] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingTarget in il2cpp domain
+[20:54:03.763] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingDummy in il2cpp domain
+[20:54:03.766] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingVisual in il2cpp domain
+[20:54:03.767] [Il2CppInterop] Registered mono type SkyCoop.Comps+CookingSlotVisual in il2cpp domain
+[20:54:03.767] [WARNING] [Il2CppInterop] Method Void SetAnimationData(AnimatorData) on type SkyCoop.Comps+BaseAiHook has unsupported parameter AnimatorData AnimatorData of type SkyCoopServer.DataStr+AnimatorData
+[20:54:03.768] [Il2CppInterop] Registered mono type SkyCoop.Comps+BaseAiHook in il2cpp domain
+[20:54:04.317] [Sky Co-op REBORN] Main Asset Bundle is loaded.
+[20:54:04.327] [Il2CppInterop] Registered mono type Il2CppInterop.Runtime.DelegateSupport+Il2CppToMonoDelegateReference in il2cpp domain
+[20:54:04.432] [Il2CppInterop] Registered mono type MelonLoader.Support.SM_Component in il2cpp domain
+[20:54:04.443] Registered mono icall UnityEngine.Transform::SetAsLastSibling in il2cpp domain
+[20:54:06.139] [Sky Co-op REBORN] uConsole has been reimplemented!
+[20:54:06.144] [SERVER] [FilesManager] Saves folder set to C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves
+[20:54:06.190] [Sky Co-op REBORN] Canvas UI created!
+[20:54:06.194] [Sky Co-op REBORN] KillFeedElement loaded!
+[20:54:06.194] [Sky Co-op REBORN] KillFeedElementKill loaded!
+[20:54:06.195] [Sky Co-op REBORN] KillFeedElementDead loaded!
+[20:54:06.196] [Sky Co-op REBORN] ChatMessagePrefab loaded!
+[20:54:06.905] [ModComponent] Panel_Crafting_Initialize
+[20:54:08.413] Building Mod Settings GUI
+[20:54:08.432] [Il2CppInterop] Registered mono type ModSettings.DescriptionHolder in il2cpp domain
+[20:54:08.465] [Il2CppInterop] Registered mono type ModSettings.CustomKeybinding in il2cpp domain
+[20:54:08.471] Building Custom Mode GUI
+[20:54:08.475] [Il2CppInterop] Registered mono type ModSettings.CustomModeGUIBuilder+HinterlandSettingVisibilityListener in il2cpp domain
+[20:54:08.500] Done! Took 88 ms. Have a nice day!
+[20:54:15.372] [ModComponent] Running Dependency Checks..
+[20:54:17.389] [ModComponent] Console Commands added. The waitlist is empty.
+[20:54:17.491] [ModComponent] Registering pending sound banks.
+[20:54:26.587] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[20:54:27.944] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer_Host
+[20:54:28.841] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride MultiplayerSaves
+[20:54:28.845] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/ServerData
+[20:54:28.849] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1061268846/ServerData
+[20:54:28.849] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/ServerData
+[20:54:31.353] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/ServerData
+[20:54:31.353] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1061268846/ServerData
+[20:54:31.354] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/ServerData
+[20:54:31.354] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride Original
+[20:54:31.355] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/ServerData
+[20:54:31.359] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[20:54:31.365] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[20:54:31.903] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[20:54:31.988] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[20:54:31.988] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[20:54:31.989] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[20:54:32.030] [SERVER] ChangeGameMode Sandbox
+[20:54:32.030] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[20:54:32.031] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[20:54:32.538] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[20:54:32.619] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[20:54:32.619] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[20:54:32.619] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[20:54:32.705] [SERVER] [Server] Starting server
+[20:54:32.708] [SERVER] [Server] Server is started port=37855
+[20:54:32.726] [Sky Co-op REBORN] Trying to connect to localhost:37855 with key: public1
+[20:54:32.726] [Sky Co-op REBORN] m_Instance.DisconnectTimeout 5000
+[20:54:32.733] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[20:54:32.737] [SERVER] Trying to load weather profile...
+[20:54:32.737] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/Weather/Default
+[20:54:32.743] [SERVER] Weather profile loaded!
+[20:54:32.762] [SERVER] [Server] We got connection: 127.0.0.1:60671 assigned them as 0
+[20:54:32.780] [Sky Co-op REBORN] Server welcomes me with my ID: 0
+[20:54:32.792] [SERVER] [ServerHandle] Сlient 0 connected under name: RUNE
+[20:54:32.803] [Sky Co-op REBORN] Server config
+[20:54:32.803] [Sky Co-op REBORN] ServerName: uzbek
+[20:54:32.803] [Sky Co-op REBORN] PlayersMax: 10
+[20:54:32.803] [Sky Co-op REBORN] Seed: 1566385814
+[20:54:32.803] [Sky Co-op REBORN] ExperienceMode: Voyageur
+[20:54:32.803] [Sky Co-op REBORN] VoicePort: 0
+[20:54:32.804] [Sky Co-op REBORN] SceneToSpawn: 
+[20:54:32.804] [Sky Co-op REBORN] GameMode: Sandbox
+[20:54:32.804] [Sky Co-op REBORN] CheatsAllowed: True
+[20:54:33.259] [Sky Co-op REBORN] Looking for save with seed 1566385814
+[20:54:33.296] [Sky Co-op REBORN] LoadSceneWithLoadingScreen
+[20:54:33.351] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[20:54:33.352] [Sky Co-op REBORN] Player: RUNE with ID 0
+[20:54:33.380] [Sky Co-op REBORN] Start loading scenes...
+[20:54:33.380] [Sky Co-op REBORN] ClientSend.SendNewScene Empty
+[20:54:33.394] [SERVER] RUNE transitions from  to Empty Should unload  ? True
+[20:54:33.395] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Unassigned
+[20:54:33.860] [ModComponent] Registering pending sound banks.
+[20:54:34.001] [Sky Co-op REBORN] Scenes loaded
+[20:54:34.003] [GearSpawner] Spawning items for scene 'GreyMothersHouseA' ...
+[20:54:34.004] [GearSpawner] Could not find any spawn entries for 'greymothershousea'
+[20:54:34.005] [GearSpawner] Spawned 'Voyager' items for scene 'GreyMothersHouseA' in 0 ms
+[20:54:34.026] [Sky Co-op REBORN] Gear GEAR_Jeans triggered s_ForceUpdateClothing
+[20:54:34.031] [Sky Co-op REBORN] Gear GEAR_LongUnderwear triggered s_ForceUpdateClothing
+[20:54:34.036] [Sky Co-op REBORN] Gear GEAR_WorkBoots triggered s_ForceUpdateClothing
+[20:54:34.037] [Sky Co-op REBORN] Gear GEAR_PlaidShirt triggered s_ForceUpdateClothing
+[20:54:34.038] [Sky Co-op REBORN] Gear GEAR_WorkGloves triggered s_ForceUpdateClothing
+[20:54:34.040] [Sky Co-op REBORN] Gear GEAR_Toque triggered s_ForceUpdateClothing
+[20:54:34.041] [Sky Co-op REBORN] Gear GEAR_CottonSocks triggered s_ForceUpdateClothing
+[20:54:34.089] [Sky Co-op REBORN] [CustomSaves] Keys save have:
+[20:54:34.090] [Sky Co-op REBORN] boot
+[20:54:34.090] [Sky Co-op REBORN] global
+[20:54:34.090] [Sky Co-op REBORN] MountainTownRegion
+[20:54:34.090] [Sky Co-op REBORN] info
+[20:54:34.090] [Sky Co-op REBORN] sandbox_global
+[20:54:34.090] [Sky Co-op REBORN] skycoop_dupes
+[20:54:34.091] [Sky Co-op REBORN] skycoop_books
+[20:54:34.091] [Sky Co-op REBORN] GreyMothersHouseA
+[20:54:34.173] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6386553
+[20:54:34.173] [Sky Co-op REBORN] m_Hat2  0
+[20:54:34.173] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08150673
+[20:54:34.174] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5244467
+[20:54:34.174] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:54:34.174] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48354942
+[20:54:34.174] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:54:34.175] [SERVER] New Wind seed -573112902 and direction 180 will last for 2.3256273 hours
+[20:54:34.283] [Sky Co-op REBORN] ClientSend.SendNewScene GreyMothersHouseA
+[20:54:34.318] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.63865805
+[20:54:34.319] [Sky Co-op REBORN] m_Hat2  0
+[20:54:34.319] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08151299
+[20:54:34.320] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.52444947
+[20:54:34.320] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:54:34.320] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48354942
+[20:54:34.320] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:54:34.321] [SERVER] RUNE transitions from Empty to GreyMothersHouseA Should unload Empty ? True
+[20:54:34.321] [SERVER] Loading scene GreyMothersHouseA for RUNE
+[20:54:34.322] [SERVER] Trying to load Scene GreyMothersHouseA
+[20:54:34.322] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/Scenes/GreyMothersHouseA
+[20:54:34.337] [SERVER] GreyMothersHouseA has been restored from file
+[20:54:34.422] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 0 Icon  Prefix  Afix 
+[20:54:34.422] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 1 Icon  Prefix  Afix 
+[20:54:34.423] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 2 Icon  Prefix  Afix 
+[20:54:34.423] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 3 Icon  Prefix  Afix 
+[20:54:34.439] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Alive
+[20:54:52.468] [SERVER] [Server] We got connection: 26.77.236.217:50776 assigned them as 1
+[20:54:52.523] [SERVER] Client 1 trying to log in as RUNE, but name is already busy
+[20:54:52.523] [SERVER] Client 1 renamed to RUNE
+[20:54:52.524] [SERVER] [ServerHandle] Сlient 1 connected under name: RUNE (2)
+[20:54:52.533] [Sky Co-op REBORN] Player: RUNE (2) with ID 1
+[20:54:53.151] [SERVER] RUNE (2) transitions from  to Empty Should unload  ? True
+[20:54:53.151] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Unassigned
+[20:54:55.775] [SERVER] RUNE (2) transitions from Empty to MountainTownRegion Should unload Empty ? True
+[20:54:55.776] [SERVER] Loading scene MountainTownRegion for RUNE (2)
+[20:54:55.776] [SERVER] Trying to load Scene MountainTownRegion
+[20:54:55.776] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/Scenes/MountainTownRegion
+[20:54:55.791] [SERVER] MountainTownRegion has been restored from file
+[20:54:57.585] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Alive
+[20:54:58.588] [SERVER] WILDLIFE_Rabbit 4f65f498-856f-4b15-8c00-184ea43a3062 active
+[20:54:58.589] [SERVER] WILDLIFE_Rabbit 81bf3b86-8889-4b29-90a0-e92ab52676da active
+[20:55:44.398] [SERVER] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 active
+[20:55:59.420] [SERVER] WILDLIFE_Rabbit 88a6bdbe-c5f7-4ce0-a2d7-3a67d8248bd2 active
+[20:56:13.436] [SERVER] WILDLIFE_Rabbit fa724281-7f22-4958-8cc1-a7c841481844 active
+[20:56:22.450] [SERVER] WILDLIFE_Rabbit fa724281-7f22-4958-8cc1-a7c841481844 inactive
+[20:56:37.147] [SERVER] WILDLIFE_Rabbit fa724281-7f22-4958-8cc1-a7c841481844 active
+[20:56:43.158] [SERVER] WILDLIFE_Doe 803eefe9-ce52-4029-8b96-94ca36d19486 active
+[20:56:49.165] [SERVER] WILDLIFE_Rabbit 81bf3b86-8889-4b29-90a0-e92ab52676da inactive
+[20:56:51.168] [SERVER] WILDLIFE_Rabbit 4f65f498-856f-4b15-8c00-184ea43a3062 inactive
+[20:56:51.169] [SERVER] WILDLIFE_Rabbit e885c93d-18f7-49ed-94b3-7eaf268fea8f active
+[20:56:51.169] [SERVER] WILDLIFE_Rabbit c427a341-2857-4259-b1d3-e1fde5075d47 active
+[20:57:07.494] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[20:57:08.730] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[20:57:19.700] [SERVER] RUNE (2) transitions from MountainTownRegion to Empty Should unload MountainTownRegion ? True
+[20:57:19.727] [SERVER] MountainTownRegion has been unloaded
+[20:57:19.728] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Unassigned
+[20:57:20.371] [SERVER] RUNE (2) transitions from Empty to GreyMothersHouseA Should unload Empty ? True
+[20:57:20.387] [Sky Co-op REBORN] (ClientSceneNotification) Player ID 1 Visible True
+[20:57:20.547] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Alive
+[20:57:36.390] [Sky Co-op REBORN] HandleStateUpdated 25e102bf-d6d7-4c2f-bc24-12b80d3514de Hook.m_HookState Empty
+[20:57:42.165] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.63874656
+[20:57:42.166] [Sky Co-op REBORN] m_Hat2  0
+[20:57:42.166] [Sky Co-op REBORN] m_Body  0
+[20:57:42.166] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.52453804
+[20:57:42.166] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:42.167] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358572
+[20:57:42.167] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:42.757] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6387471
+[20:57:42.757] [Sky Co-op REBORN] m_Hat2  0
+[20:57:42.758] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08170825
+[20:57:42.758] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5245385
+[20:57:42.758] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:42.758] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358595
+[20:57:42.758] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:43.803] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6387476
+[20:57:43.803] [Sky Co-op REBORN] m_Hat2  0
+[20:57:43.804] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.081709325
+[20:57:43.804] [Sky Co-op REBORN] m_Gloves  0
+[20:57:43.804] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:43.804] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358613
+[20:57:43.804] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:44.100] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6387476
+[20:57:44.100] [Sky Co-op REBORN] m_Hat2  0
+[20:57:44.100] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.081709325
+[20:57:44.101] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.524539
+[20:57:44.101] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:44.101] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358613
+[20:57:44.101] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:45.117] [Sky Co-op REBORN] m_Hat1  0
+[20:57:45.117] [Sky Co-op REBORN] m_Hat2  0
+[20:57:45.118] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08171034
+[20:57:45.118] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5245395
+[20:57:45.118] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:45.118] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.4835863
+[20:57:45.118] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:45.653] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.63874817
+[20:57:45.653] [Sky Co-op REBORN] m_Hat2  0
+[20:57:45.653] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08171141
+[20:57:45.653] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.52453995
+[20:57:45.654] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:45.654] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358655
+[20:57:45.654] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:46.315] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.63874817
+[20:57:46.315] [Sky Co-op REBORN] m_Hat2  0
+[20:57:46.316] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08171141
+[20:57:46.316] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.52453995
+[20:57:46.316] [Sky Co-op REBORN] m_Pants GEAR_LongUnderwear 0
+[20:57:46.316] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358655
+[20:57:46.316] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:46.635] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6387487
+[20:57:46.635] [Sky Co-op REBORN] m_Hat2  0
+[20:57:46.636] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.081712425
+[20:57:46.636] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5245404
+[20:57:46.636] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:46.636] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358673
+[20:57:46.636] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:49.523] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6387496
+[20:57:49.523] [Sky Co-op REBORN] m_Hat2  0
+[20:57:49.524] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08171451
+[20:57:49.524] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5245414
+[20:57:49.524] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:49.524] [Sky Co-op REBORN] m_Boots GEAR_CottonSocks 0.57774246
+[20:57:49.524] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:57:52.475] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6387511
+[20:57:52.475] [Sky Co-op REBORN] m_Hat2  0
+[20:57:52.476] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08171767
+[20:57:52.476] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5245428
+[20:57:52.476] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[20:57:52.476] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48358727
+[20:57:52.476] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[20:58:22.162] [Sky Co-op REBORN] ClientSend.SendGearPickUp dc904ba1-2871-4631-82da-d9c4e6a4d1b2
+[20:58:22.173] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[20:58:22.225] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_KeroseneLampB CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID dc904ba1-2871-4631-82da-d9c4e6a4d1b2
+[20:58:22.229] [Sky Co-op REBORN] EnterInspectGearMode GEAR_KeroseneLampB
+[20:58:22.636] [Sky Co-op REBORN] ExitInspectGearMode GEAR_KeroseneLampB
+[20:58:32.072] [Il2CppInterop] Registered mono type ModSettings.SliderFixPatches+SliderBarDepthFixer in il2cpp domain
+[20:58:47.933] [SERVER] ServerHandle.ClientSendGear GEAR_JerseyHockeyA FireGUID  CookingSlot -1 CookpotGUID 
+[20:58:48.715] [Sky Co-op REBORN] ExitInspectGearMode GEAR_KeroseneLampB
+[20:58:48.715] [Sky Co-op REBORN] ClientSend.SendGearPickUp e9775dac-e515-4462-aad7-637d7bef8234
+[20:58:48.727] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[20:58:48.783] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_JerseyHockeyA CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID e9775dac-e515-4462-aad7-637d7bef8234
+[20:58:48.786] [Sky Co-op REBORN] EnterInspectGearMode GEAR_JerseyHockeyA
+[20:58:49.066] [Sky Co-op REBORN] ExitInspectGearMode GEAR_JerseyHockeyA
+[20:58:50.121] [Sky Co-op REBORN] ExitInspectGearMode GEAR_JerseyHockeyA
+[20:58:50.121] [Sky Co-op REBORN] ClientSend.SendGearPickUp 8093e185-83a6-4f3d-9d56-5297af56ed81
+[20:58:50.135] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[20:58:50.183] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Bow CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 8093e185-83a6-4f3d-9d56-5297af56ed81
+[20:58:50.185] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Bow
+[20:58:50.850] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Bow
+[20:58:51.282] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Bow
+[20:58:51.283] [Sky Co-op REBORN] ClientSend.SendGearPickUp d2838b2b-8677-46de-bb1f-64ec15cc3c68
+[20:58:51.297] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[20:58:51.342] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Arrow CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID d2838b2b-8677-46de-bb1f-64ec15cc3c68
+[20:58:51.344] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Arrow
+[20:58:51.818] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Arrow
+[20:58:57.537] [Sky Co-op REBORN] Arrow colided other player, and dealing damage
+[20:59:34.777] [SERVER] Doing auto save...
+[20:59:34.785] [SERVER] Next auto-save in 300 seconds
+[21:00:43.156] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:00:50.368] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:00:52.040] [Sky Co-op REBORN] ClientSend.SendGearPickUp ba6a3d33-dfcb-4440-b67f-de87fa1249e0
+[21:00:52.051] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:00:52.067] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Water500ml CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID ba6a3d33-dfcb-4440-b67f-de87fa1249e0
+[21:00:52.070] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Water500ml
+[21:00:52.183] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Water500ml
+[21:00:53.985] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:00:58.139] [Sky Co-op REBORN] SendContainerState a7c18dec-3bbc-468d-a580-e4370ae59a70 2
+[21:00:58.166] [Sky Co-op REBORN] HandleStateUpdated a7c18dec-3bbc-468d-a580-e4370ae59a70 Hook.m_HookState Empty
+[21:01:01.033] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Crackers
+[21:01:01.559] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Crackers
+[21:01:01.563] [Sky Co-op REBORN] SendContainerState adfdf108-9a36-49b4-9bb9-93a58caae9af 2
+[21:01:01.585] [Sky Co-op REBORN] HandleStateUpdated adfdf108-9a36-49b4-9bb9-93a58caae9af Hook.m_HookState Empty
+[21:01:02.302] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Crackers
+[21:01:04.306] [Sky Co-op REBORN] SendContainerState 3f86bdb2-735f-46cc-9bde-e277b5f777a0 2
+[21:01:04.334] [Sky Co-op REBORN] HandleStateUpdated 3f86bdb2-735f-46cc-9bde-e277b5f777a0 Hook.m_HookState Empty
+[21:01:04.784] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Crackers
+[21:01:06.789] [Sky Co-op REBORN] SendContainerState 366a02e6-5b7d-46f8-a9e5-1aa4d2a7a095 2
+[21:01:06.822] [Sky Co-op REBORN] HandleStateUpdated 366a02e6-5b7d-46f8-a9e5-1aa4d2a7a095 Hook.m_HookState Empty
+[21:01:07.184] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Crackers
+[21:01:09.187] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Soda
+[21:01:09.632] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Soda
+[21:01:09.635] [Sky Co-op REBORN] SendContainerState 1b037141-2f15-4faa-b9a9-298d5833376a 2
+[21:01:09.661] [Sky Co-op REBORN] HandleStateUpdated 1b037141-2f15-4faa-b9a9-298d5833376a Hook.m_HookState Empty
+[21:01:10.297] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Soda
+[21:01:12.299] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CoffeeTin
+[21:01:12.785] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeTin
+[21:01:12.788] [Sky Co-op REBORN] SendContainerState 6981e22c-340d-47b5-b65b-c6ab6888bedd 2
+[21:01:12.816] [Sky Co-op REBORN] HandleStateUpdated 6981e22c-340d-47b5-b65b-c6ab6888bedd Hook.m_HookState Empty
+[21:01:13.958] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeTin
+[21:01:15.963] [Sky Co-op REBORN] SendContainerState 6f94fa21-4fb5-454c-9f5d-72a068865e2d 2
+[21:01:15.983] [Sky Co-op REBORN] HandleStateUpdated 6f94fa21-4fb5-454c-9f5d-72a068865e2d Hook.m_HookState Empty
+[21:01:16.510] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeTin
+[21:01:16.510] [Sky Co-op REBORN] ClientSend.SendGearPickUp f447b2eb-ac5f-4c23-bda7-375f2374532f
+[21:01:16.527] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:16.546] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Carrot CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID f447b2eb-ac5f-4c23-bda7-375f2374532f
+[21:01:16.547] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Carrot
+[21:01:16.816] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Carrot
+[21:01:16.958] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Carrot
+[21:01:16.959] [Sky Co-op REBORN] ClientSend.SendGearPickUp da72d2e3-59f8-4c9e-835d-22f48d0e0070
+[21:01:16.975] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:17.027] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Potato CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID da72d2e3-59f8-4c9e-835d-22f48d0e0070
+[21:01:17.028] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Potato
+[21:01:17.449] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Potato
+[21:01:17.630] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Potato
+[21:01:17.630] [Sky Co-op REBORN] ClientSend.SendGearPickUp c3947696-2b83-4685-b030-be8699a82a96
+[21:01:17.635] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:17.668] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Carrot CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID c3947696-2b83-4685-b030-be8699a82a96
+[21:01:17.670] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Carrot
+[21:01:17.936] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Carrot
+[21:01:20.000] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Carrot
+[21:01:20.000] [Sky Co-op REBORN] ClientSend.SendGearPickUp 9ef39077-3370-468c-8ceb-f679af164b3d
+[21:01:20.005] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:20.026] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_BookCooking CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 9ef39077-3370-468c-8ceb-f679af164b3d
+[21:01:20.028] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BookCooking
+[21:01:20.127] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BookCooking
+[21:01:21.407] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BookCooking
+[21:01:21.407] [Sky Co-op REBORN] ClientSend.SendGearPickUp 1c374ccb-0320-4e38-b6a8-b63ce341960c
+[21:01:21.415] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:21.466] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Flour CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 1c374ccb-0320-4e38-b6a8-b63ce341960c
+[21:01:21.468] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Flour
+[21:01:21.694] [Sky Co-op REBORN] HandleStateUpdated 5f20424c-4116-4b25-a989-6f54b99309b8 Hook.m_HookState Empty
+[21:01:21.822] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Flour
+[21:01:22.671] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Flour
+[21:01:22.671] [Sky Co-op REBORN] ClientSend.SendGearPickUp fcf7ee3b-1afa-4111-80b3-a4bc25c0d7cf
+[21:01:22.676] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:22.707] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Flour CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID fcf7ee3b-1afa-4111-80b3-a4bc25c0d7cf
+[21:01:22.708] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Flour
+[21:01:22.816] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Flour
+[21:01:24.606] [Sky Co-op REBORN] HandleStateUpdated 98348150-e186-4713-a9f0-6c55deb2a248 Hook.m_HookState Empty
+[21:01:26.908] [Sky Co-op REBORN] HandleStateUpdated adfdf108-9a36-49b4-9bb9-93a58caae9af Hook.m_HookState Empty
+[21:01:32.840] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Flour
+[21:01:32.841] [Sky Co-op REBORN] ClientSend.SendGearPickUp 1116f170-6a7a-488c-bbd5-ac7f8411488d
+[21:01:32.846] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:32.878] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CookingOil CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 1116f170-6a7a-488c-bbd5-ac7f8411488d
+[21:01:32.880] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CookingOil
+[21:01:33.280] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CookingOil
+[21:01:34.081] [Sky Co-op REBORN] HandleStateUpdated f9082aeb-0410-489f-a0e8-8ff672cb0dfb Hook.m_HookState Empty
+[21:01:34.168] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CookingOil
+[21:01:34.168] [Sky Co-op REBORN] ClientSend.SendGearPickUp 551da6fe-ba9d-45e2-9dc3-f4b649e0d988
+[21:01:34.173] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:34.197] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Skillet CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 551da6fe-ba9d-45e2-9dc3-f4b649e0d988
+[21:01:34.199] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Skillet
+[21:01:34.305] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Skillet
+[21:01:35.031] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Skillet
+[21:01:35.032] [Sky Co-op REBORN] ClientSend.SendGearPickUp 3dbfd30e-9cca-4854-ac9e-9835bea36dc4
+[21:01:35.041] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:35.068] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Potato CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 3dbfd30e-9cca-4854-ac9e-9835bea36dc4
+[21:01:35.070] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Potato
+[21:01:35.177] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Potato
+[21:01:36.665] [Sky Co-op REBORN] HandleStateUpdated 7c96d483-2904-4fec-b08d-2857bc6474ac Hook.m_HookState Empty
+[21:01:36.848] [Sky Co-op REBORN] BreakDown b697f6e6-51db-40d8-97fe-5e7899976cd5
+[21:01:39.308] [Sky Co-op REBORN] HandleStateUpdated 327ea967-6476-4b4b-ba86-cfba76fa1a6c Hook.m_HookState Empty
+[21:01:39.742] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Potato
+[21:01:39.742] [Sky Co-op REBORN] ClientSend.SendGearPickUp 3e833c1a-ee37-48a3-a58f-659ca8b6d5fd
+[21:01:39.755] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:39.777] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CannedBeans CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 3e833c1a-ee37-48a3-a58f-659ca8b6d5fd
+[21:01:39.779] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CannedBeans
+[21:01:40.177] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CannedBeans
+[21:01:43.158] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CannedBeans
+[21:01:43.158] [Sky Co-op REBORN] ClientSend.SendGearPickUp c2ef26eb-f847-4821-a4ab-63631b22c72a
+[21:01:43.163] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:43.196] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Salt CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID c2ef26eb-f847-4821-a4ab-63631b22c72a
+[21:01:43.197] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Salt
+[21:01:43.743] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Salt
+[21:01:43.765] [Sky Co-op REBORN] HandleStateUpdated 9176557e-ad4d-48a7-a4df-21a6d3cfb87e Hook.m_HookState Empty
+[21:01:50.471] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Salt
+[21:01:50.471] [Sky Co-op REBORN] ClientSend.SendGearPickUp a9542725-4f7f-4279-abeb-d33765f2be69
+[21:01:50.479] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:50.516] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_BookCooking CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID a9542725-4f7f-4279-abeb-d33765f2be69
+[21:01:50.518] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BookCooking
+[21:01:50.623] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BookCooking
+[21:01:53.324] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BookCooking
+[21:01:53.325] [Sky Co-op REBORN] ClientSend.SendGearPickUp 889794bb-fbf9-44cc-81de-5638a0ca6bb2
+[21:01:53.340] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:53.367] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Broth CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 889794bb-fbf9-44cc-81de-5638a0ca6bb2
+[21:01:53.369] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Broth
+[21:01:53.742] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Broth
+[21:01:58.253] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Broth
+[21:01:58.253] [Sky Co-op REBORN] ClientSend.SendGearPickUp 0818f668-258c-4fef-889e-47fb37848117
+[21:01:58.262] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:01:58.290] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CookingPot CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 0818f668-258c-4fef-889e-47fb37848117
+[21:01:58.293] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CookingPot
+[21:01:58.718] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CookingPot
+[21:02:01.514] [Sky Co-op REBORN] HandleStateUpdated 9f2661a4-4f24-4216-8bf9-f9a826280ae0 Hook.m_HookState Empty
+[21:02:02.767] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CookingPot
+[21:02:02.767] [Sky Co-op REBORN] ClientSend.SendGearPickUp 05af344b-418b-45cb-b4bc-91c7a7a98d06
+[21:02:02.782] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:02:02.817] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_EnergyBar CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 05af344b-418b-45cb-b4bc-91c7a7a98d06
+[21:02:02.819] [Sky Co-op REBORN] EnterInspectGearMode GEAR_EnergyBar
+[21:02:03.103] [Sky Co-op REBORN] ExitInspectGearMode GEAR_EnergyBar
+[21:02:03.451] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:02:14.846] [Sky Co-op REBORN] HandleStateUpdated 4da198dc-4034-4f49-9fbc-af5f2b5dda76 Hook.m_HookState Empty
+[21:02:18.796] [Sky Co-op REBORN] HandleStateUpdated 42c401d1-ab2d-4ce8-9d9a-8e31d62e2a66 Hook.m_HookState Empty
+[21:02:20.815] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:02:25.587] [SERVER] New WeatherSet PartlyCloudy that will last for 2.4629393 hours
+[21:02:27.367] [Sky Co-op REBORN] ExitInspectGearMode GEAR_EnergyBar
+[21:02:27.367] [Sky Co-op REBORN] ClientSend.SendGearPickUp c7aca278-a38c-4f21-b0fd-e360a0da0251
+[21:02:27.384] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:02:27.416] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_SewingKit CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID c7aca278-a38c-4f21-b0fd-e360a0da0251
+[21:02:27.417] [Sky Co-op REBORN] EnterInspectGearMode GEAR_SewingKit
+[21:02:27.814] [Sky Co-op REBORN] HandleStateUpdated 5d6efd0f-6aea-45da-96a5-9fb83cff6ed8 Hook.m_HookState Empty
+[21:02:27.816] [Sky Co-op REBORN] ExitInspectGearMode GEAR_SewingKit
+[21:02:29.014] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:02:33.278] [Sky Co-op REBORN] BreakDown 05ca2803-7c74-4e1e-a2cc-693ee4e13005
+[21:02:36.778] [Sky Co-op REBORN] HandleStateUpdated 0620f42a-8f1b-43c8-88a0-94faa60cd8b8 Hook.m_HookState Empty
+[21:02:50.903] [Sky Co-op REBORN] ClientProjectile DryFire
+[21:02:51.337] [Sky Co-op REBORN] ClientProjectile DryFire
+[21:02:51.878] [Sky Co-op REBORN] ClientProjectile DryFire
+[21:03:03.656] [SERVER] New Wind seed -573112902 and direction 135 will last for 2.8918993 hours
+[21:03:12.877] [Sky Co-op REBORN] ExitInspectGearMode GEAR_SewingKit
+[21:03:12.877] [Sky Co-op REBORN] ClientSend.SendGearPickUp 0c0f6cd1-ce92-4cbb-805b-d8c841fecd97
+[21:03:12.887] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:03:12.927] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_FlareGunAmmoSingle CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 0c0f6cd1-ce92-4cbb-805b-d8c841fecd97
+[21:03:12.928] [Sky Co-op REBORN] EnterInspectGearMode GEAR_FlareGunAmmoSingle
+[21:03:13.311] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FlareGunAmmoSingle
+[21:03:14.845] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FlareGunAmmoSingle
+[21:03:14.846] [Sky Co-op REBORN] ClientSend.SendGearPickUp fd965b70-4613-49d7-9eb4-66edfa8e28d0
+[21:03:14.862] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:03:14.907] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_FlareGun CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID fd965b70-4613-49d7-9eb4-66edfa8e28d0
+[21:03:14.909] [Sky Co-op REBORN] EnterInspectGearMode GEAR_FlareGun
+[21:03:15.248] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FlareGun
+[21:03:15.989] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FlareGun
+[21:03:15.990] [Sky Co-op REBORN] ClientSend.SendGearPickUp a2eca97c-fdcb-42fd-acb4-b831dfb14c65
+[21:03:16.003] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:03:16.047] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_BottlePainKillers CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID a2eca97c-fdcb-42fd-acb4-b831dfb14c65
+[21:03:16.048] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BottlePainKillers
+[21:03:16.396] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:03:18.551] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:03:45.835] [Sky Co-op REBORN] BreakDown c81b18d7-42ce-411d-ae9d-483c5c8c5cd5
+[21:04:02.824] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:02.988] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:04:02.988] [Sky Co-op REBORN] ClientSend.SendGearPickUp 25a4d36f-a922-4c67-8f8f-6e168fe16642
+[21:04:02.993] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:03.018] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_GunpowderCan CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 25a4d36f-a922-4c67-8f8f-6e168fe16642
+[21:04:03.021] [Sky Co-op REBORN] EnterInspectGearMode GEAR_GunpowderCan
+[21:04:03.127] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GunpowderCan
+[21:04:04.164] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:06.154] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:07.764] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:09.963] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GunpowderCan
+[21:04:11.968] [Sky Co-op REBORN] SendContainerState eed2d62c-a247-42c9-834e-944587a12867 2
+[21:04:11.995] [Sky Co-op REBORN] HandleStateUpdated eed2d62c-a247-42c9-834e-944587a12867 Hook.m_HookState Empty
+[21:04:13.205] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GunpowderCan
+[21:04:15.208] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Cloth
+[21:04:15.596] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Cloth
+[21:04:15.600] [Sky Co-op REBORN] SendContainerState 012b2798-4483-4750-9ebe-35e7ab00db35 2
+[21:04:15.624] [Sky Co-op REBORN] HandleStateUpdated 012b2798-4483-4750-9ebe-35e7ab00db35 Hook.m_HookState Empty
+[21:04:19.424] [Sky Co-op REBORN] SendContainerState 1543a075-6630-48cf-919d-bb07536b0b63 2
+[21:04:19.446] [Sky Co-op REBORN] HandleStateUpdated 1543a075-6630-48cf-919d-bb07536b0b63 Hook.m_HookState Empty
+[21:04:22.426] [Sky Co-op REBORN] SendContainerState 32e57878-3092-44fc-9641-a0d4347b3f88 2
+[21:04:22.450] [Sky Co-op REBORN] HandleStateUpdated 32e57878-3092-44fc-9641-a0d4347b3f88 Hook.m_HookState Empty
+[21:04:26.128] [Sky Co-op REBORN] SendContainerState 8c0b3e07-d82a-49ab-9699-15d55388640d 2
+[21:04:26.149] [Sky Co-op REBORN] HandleStateUpdated 8c0b3e07-d82a-49ab-9699-15d55388640d Hook.m_HookState Empty
+[21:04:26.647] [Sky Co-op REBORN] HandleStateUpdated 012b2798-4483-4750-9ebe-35e7ab00db35 Hook.m_HookState Empty
+[21:04:27.851] [Sky Co-op REBORN] HandleStateUpdated 32e57878-3092-44fc-9641-a0d4347b3f88 Hook.m_HookState Empty
+[21:04:28.068] [Sky Co-op REBORN] ClientSend.SendGearPickUp d26b19e3-b6f7-4269-8d9e-14b06ff0de1f
+[21:04:28.081] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:28.099] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CombatPants CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID d26b19e3-b6f7-4269-8d9e-14b06ff0de1f
+[21:04:28.101] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CombatPants
+[21:04:28.340] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CombatPants
+[21:04:30.749] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6389401
+[21:04:30.749] [Sky Co-op REBORN] m_Hat2  0
+[21:04:30.750] [Sky Co-op REBORN] m_Body GEAR_PlaidShirt 0.08213347
+[21:04:30.750] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5247319
+[21:04:30.750] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.218624
+[21:04:30.750] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48366284
+[21:04:30.750] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:04:31.535] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:31.878] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6389411
+[21:04:31.879] [Sky Co-op REBORN] m_Hat2  0
+[21:04:31.879] [Sky Co-op REBORN] m_Body GEAR_JerseyHockeyA 0.7052906
+[21:04:31.879] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5247328
+[21:04:31.879] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.21862453
+[21:04:31.879] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.4836632
+[21:04:31.880] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:04:33.626] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CombatPants
+[21:04:34.409] [Sky Co-op REBORN] HandleStateUpdated e4898915-cc8f-4aef-bd31-0d899aa618bc Hook.m_HookState Empty
+[21:04:36.822] [SERVER] Doing auto save...
+[21:04:36.830] [SERVER] Next auto-save in 300 seconds
+[21:04:38.678] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:39.618] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:49.163] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CombatPants
+[21:04:49.715] [Sky Co-op REBORN] SaveGame name autosave Seed 1566385814 ServerName uzbek
+[21:04:49.716] [Sky Co-op REBORN] LoadSceneWithLoadingScreen
+[21:04:50.040] [Sky Co-op REBORN] Start loading scenes...
+[21:04:50.041] [Sky Co-op REBORN] ClientSend.SendNewScene Empty
+[21:04:50.041] [Sky Co-op REBORN] m_Hat1  0
+[21:04:50.042] [Sky Co-op REBORN] m_Hat2  0
+[21:04:50.042] [Sky Co-op REBORN] m_Body  0
+[21:04:50.042] [Sky Co-op REBORN] m_Gloves  0
+[21:04:50.042] [Sky Co-op REBORN] m_Pants  0
+[21:04:50.042] [Sky Co-op REBORN] m_Boots  0
+[21:04:50.042] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:04:50.088] [SERVER] RUNE transitions from GreyMothersHouseA to Empty Should unload GreyMothersHouseA ? False
+[21:04:50.088] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Unassigned
+[21:04:50.674] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:51.141] [ModComponent] Registering pending sound banks.
+[21:04:51.678] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:52.301] [Sky Co-op REBORN] Scenes loaded
+[21:04:52.305] [GearSpawner] Spawning items for scene 'MountainTownRegion' ...
+[21:04:52.305] [GearSpawner] Could not find any spawn entries for 'mountaintownregion'
+[21:04:52.305] [GearSpawner] Spawned 'Voyager' items for scene 'MountainTownRegion' in 0 ms
+[21:04:52.340] [Sky Co-op REBORN] Gear GEAR_Jeans triggered s_ForceUpdateClothing
+[21:04:52.340] [Sky Co-op REBORN] Gear GEAR_LongUnderwear triggered s_ForceUpdateClothing
+[21:04:52.344] [Sky Co-op REBORN] Gear GEAR_WorkBoots triggered s_ForceUpdateClothing
+[21:04:52.345] [Sky Co-op REBORN] Gear GEAR_PlaidShirt triggered s_ForceUpdateClothing
+[21:04:52.345] [Sky Co-op REBORN] Gear GEAR_WorkGloves triggered s_ForceUpdateClothing
+[21:04:52.348] [Sky Co-op REBORN] Gear GEAR_Toque triggered s_ForceUpdateClothing
+[21:04:52.349] [Sky Co-op REBORN] Gear GEAR_CottonSocks triggered s_ForceUpdateClothing
+[21:04:52.352] [Sky Co-op REBORN] Gear GEAR_JerseyHockeyA triggered s_ForceUpdateClothing
+[21:04:52.364] [Sky Co-op REBORN] Gear GEAR_CombatPants triggered s_ForceUpdateClothing
+[21:04:52.382] [Sky Co-op REBORN] [CustomSaves] Keys save have:
+[21:04:52.382] [Sky Co-op REBORN] boot
+[21:04:52.383] [Sky Co-op REBORN] global
+[21:04:52.383] [Sky Co-op REBORN] MountainTownRegion
+[21:04:52.383] [Sky Co-op REBORN] info
+[21:04:52.383] [Sky Co-op REBORN] sandbox_global
+[21:04:52.383] [Sky Co-op REBORN] skycoop_dupes
+[21:04:52.383] [Sky Co-op REBORN] skycoop_books
+[21:04:52.383] [Sky Co-op REBORN] GreyMothersHouseA
+[21:04:52.488] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.63894916
+[21:04:52.488] [Sky Co-op REBORN] m_Hat2  0
+[21:04:52.489] [Sky Co-op REBORN] m_Body GEAR_JerseyHockeyA 0.70529234
+[21:04:52.489] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.52474093
+[21:04:52.489] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.21862888
+[21:04:52.489] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48366642
+[21:04:52.490] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:04:52.573] [Sky Co-op REBORN] ClientSend.SendNewScene MountainTownRegion
+[21:04:52.603] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.63894916
+[21:04:52.603] [Sky Co-op REBORN] m_Hat2  0
+[21:04:52.604] [Sky Co-op REBORN] m_Body GEAR_JerseyHockeyA 0.70529234
+[21:04:52.604] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.52474093
+[21:04:52.604] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.21862888
+[21:04:52.604] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48366642
+[21:04:52.605] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:04:52.605] [SERVER] RUNE transitions from Empty to MountainTownRegion Should unload Empty ? True
+[21:04:52.605] [SERVER] Loading scene MountainTownRegion for RUNE
+[21:04:52.605] [SERVER] Trying to load Scene MountainTownRegion
+[21:04:52.605] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/Scenes/MountainTownRegion
+[21:04:52.619] [SERVER] Harvestable 5c276f7f-4a5c-458f-a905-84ea8f1451e2 going to respawn
+[21:04:52.619] [SERVER] MountainTownRegion has been restored from file
+[21:04:54.219] [Sky Co-op REBORN] HandleStateUpdated e48fb365-e70c-4045-aad0-ae94a1b03e9b Hook.m_HookState Empty
+[21:04:54.220] [Sky Co-op REBORN] (ClientSceneNotification) Player ID 1 Visible False
+[21:04:54.220] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 0 Icon  Prefix  Afix 
+[21:04:54.220] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 1 Icon  Prefix  Afix 
+[21:04:54.220] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 2 Icon  Prefix  Afix 
+[21:04:54.221] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 3 Icon  Prefix  Afix 
+[21:04:54.286] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Alive
+[21:04:54.418] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:04:55.234] [SERVER] WILDLIFE_Rabbit 88a6bdbe-c5f7-4ce0-a2d7-3a67d8248bd2 active
+[21:04:55.234] [SERVER] WILDLIFE_Rabbit e885c93d-18f7-49ed-94b3-7eaf268fea8f active
+[21:04:55.235] [SERVER] WILDLIFE_Rabbit fa724281-7f22-4958-8cc1-a7c841481844 active
+[21:04:55.235] [SERVER] WILDLIFE_Rabbit c427a341-2857-4259-b1d3-e1fde5075d47 active
+[21:04:55.235] [SERVER] WILDLIFE_Doe 803eefe9-ce52-4029-8b96-94ca36d19486 active
+[21:04:55.257] [Sky Co-op REBORN] WILDLIFE_Rabbit 88a6bdbe-c5f7-4ce0-a2d7-3a67d8248bd2 spawned
+[21:04:55.269] [Sky Co-op REBORN] WILDLIFE_Rabbit e885c93d-18f7-49ed-94b3-7eaf268fea8f spawned
+[21:04:55.271] [Sky Co-op REBORN] WILDLIFE_Rabbit fa724281-7f22-4958-8cc1-a7c841481844 spawned
+[21:04:55.273] [Sky Co-op REBORN] WILDLIFE_Rabbit c427a341-2857-4259-b1d3-e1fde5075d47 spawned
+[21:04:55.293] [Sky Co-op REBORN] WILDLIFE_Doe 803eefe9-ce52-4029-8b96-94ca36d19486 spawned
+[21:04:58.255] [SERVER] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 active
+[21:04:58.271] [Sky Co-op REBORN] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 spawned
+[21:04:58.838] [SERVER] RUNE (2) transitions from GreyMothersHouseA to Empty Should unload GreyMothersHouseA ? True
+[21:04:58.843] [SERVER] GreyMothersHouseA has been unloaded
+[21:04:58.843] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Unassigned
+[21:05:00.263] [SERVER] WILDLIFE_Rabbit be971ccc-5e0c-4346-9ea6-b4253aa974b7 moved to random point after 4.43336 hours of being inactive.
+[21:05:00.263] [SERVER] WILDLIFE_Rabbit be971ccc-5e0c-4346-9ea6-b4253aa974b7 active
+[21:05:00.276] [Sky Co-op REBORN] WILDLIFE_Rabbit be971ccc-5e0c-4346-9ea6-b4253aa974b7 spawned
+[21:05:01.267] [SERVER] WILDLIFE_Rabbit 469528aa-0f74-44d9-8ad2-c44975da3353 moved to random point after 4.4366937 hours of being inactive.
+[21:05:01.268] [SERVER] WILDLIFE_Rabbit 469528aa-0f74-44d9-8ad2-c44975da3353 active
+[21:05:01.283] [Sky Co-op REBORN] WILDLIFE_Rabbit 469528aa-0f74-44d9-8ad2-c44975da3353 spawned
+[21:05:01.324] [SERVER] RUNE (2) transitions from Empty to MountainTownRegion Should unload Empty ? True
+[21:05:01.334] [Sky Co-op REBORN] (ClientSceneNotification) Player ID 1 Visible True
+[21:05:03.259] [Sky Co-op REBORN] SaveGame name autosave Seed 1566385814 ServerName uzbek
+[21:05:03.260] [Sky Co-op REBORN] LoadSceneWithLoadingScreen
+[21:05:03.959] [Sky Co-op REBORN] Start loading scenes...
+[21:05:03.959] [Sky Co-op REBORN] ClientSend.SendNewScene Empty
+[21:05:03.960] [Sky Co-op REBORN] m_Hat1  0
+[21:05:03.960] [Sky Co-op REBORN] m_Hat2  0
+[21:05:03.960] [Sky Co-op REBORN] m_Body  0
+[21:05:03.960] [Sky Co-op REBORN] m_Gloves  0
+[21:05:03.961] [Sky Co-op REBORN] m_Pants  0
+[21:05:03.961] [Sky Co-op REBORN] m_Boots  0
+[21:05:03.961] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:05:03.961] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Alive
+[21:05:04.036] [Sky Co-op REBORN] WILDLIFE_Rabbit 469528aa-0f74-44d9-8ad2-c44975da3353 spawned
+[21:05:04.039] [Sky Co-op REBORN] WILDLIFE_Rabbit be971ccc-5e0c-4346-9ea6-b4253aa974b7 spawned
+[21:05:04.041] [Sky Co-op REBORN] WILDLIFE_Rabbit 88a6bdbe-c5f7-4ce0-a2d7-3a67d8248bd2 spawned
+[21:05:04.043] [Sky Co-op REBORN] WILDLIFE_Rabbit e885c93d-18f7-49ed-94b3-7eaf268fea8f spawned
+[21:05:04.044] [Sky Co-op REBORN] WILDLIFE_Rabbit fa724281-7f22-4958-8cc1-a7c841481844 spawned
+[21:05:04.046] [Sky Co-op REBORN] WILDLIFE_Rabbit c427a341-2857-4259-b1d3-e1fde5075d47 spawned
+[21:05:04.047] [Sky Co-op REBORN] WILDLIFE_Doe 803eefe9-ce52-4029-8b96-94ca36d19486 spawned
+[21:05:04.049] [Sky Co-op REBORN] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 spawned
+[21:05:04.049] [SERVER] RUNE transitions from MountainTownRegion to Empty Should unload MountainTownRegion ? False
+[21:05:04.049] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Unassigned
+[21:05:04.285] [ModComponent] Registering pending sound banks.
+[21:05:04.550] [Sky Co-op REBORN] Scenes loaded
+[21:05:04.550] [GearSpawner] Spawning items for scene 'BankA' ...
+[21:05:04.551] [GearSpawner] Could not find any spawn entries for 'banka'
+[21:05:04.551] [GearSpawner] Spawned 'Voyager' items for scene 'BankA' in 0 ms
+[21:05:04.557] [Sky Co-op REBORN] Gear GEAR_Jeans triggered s_ForceUpdateClothing
+[21:05:04.558] [Sky Co-op REBORN] Gear GEAR_LongUnderwear triggered s_ForceUpdateClothing
+[21:05:04.561] [Sky Co-op REBORN] Gear GEAR_WorkBoots triggered s_ForceUpdateClothing
+[21:05:04.562] [Sky Co-op REBORN] Gear GEAR_PlaidShirt triggered s_ForceUpdateClothing
+[21:05:04.563] [Sky Co-op REBORN] Gear GEAR_WorkGloves triggered s_ForceUpdateClothing
+[21:05:04.565] [Sky Co-op REBORN] Gear GEAR_Toque triggered s_ForceUpdateClothing
+[21:05:04.566] [Sky Co-op REBORN] Gear GEAR_CottonSocks triggered s_ForceUpdateClothing
+[21:05:04.569] [Sky Co-op REBORN] Gear GEAR_JerseyHockeyA triggered s_ForceUpdateClothing
+[21:05:04.582] [Sky Co-op REBORN] Gear GEAR_CombatPants triggered s_ForceUpdateClothing
+[21:05:04.592] [Sky Co-op REBORN] [CustomSaves] Keys save have:
+[21:05:04.592] [Sky Co-op REBORN] boot
+[21:05:04.592] [Sky Co-op REBORN] global
+[21:05:04.592] [Sky Co-op REBORN] MountainTownRegion
+[21:05:04.592] [Sky Co-op REBORN] info
+[21:05:04.593] [Sky Co-op REBORN] sandbox_global
+[21:05:04.593] [Sky Co-op REBORN] skycoop_dupes
+[21:05:04.593] [Sky Co-op REBORN] skycoop_books
+[21:05:04.593] [Sky Co-op REBORN] GreyMothersHouseA
+[21:05:04.610] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6389721
+[21:05:04.611] [Sky Co-op REBORN] m_Hat2  0
+[21:05:04.611] [Sky Co-op REBORN] m_Body GEAR_JerseyHockeyA 0.7052969
+[21:05:04.611] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5247524
+[21:05:04.611] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.21864021
+[21:05:04.611] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48367494
+[21:05:04.611] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:05:04.648] [Sky Co-op REBORN] ClientSend.SendNewScene BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl
+[21:05:04.707] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6389721
+[21:05:04.707] [Sky Co-op REBORN] m_Hat2  0
+[21:05:04.708] [Sky Co-op REBORN] m_Body GEAR_JerseyHockeyA 0.7052969
+[21:05:04.708] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5247524
+[21:05:04.708] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.21864021
+[21:05:04.708] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48367494
+[21:05:04.708] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:05:04.709] [SERVER] RUNE transitions from Empty to BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl Should unload Empty ? True
+[21:05:04.709] [SERVER] Loading scene BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl for RUNE
+[21:05:04.709] [SERVER] Trying to load Scene BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl
+[21:05:04.709] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/Scenes/BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl
+[21:05:04.709] [SERVER] [FilesManager] File C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/Scenes/BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl not exist
+[21:05:04.756] [Sky Co-op REBORN] (ClientSceneNotification) Player ID 1 Visible False
+[21:05:04.756] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 0 Icon  Prefix  Afix 
+[21:05:04.757] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 1 Icon  Prefix  Afix 
+[21:05:04.757] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 2 Icon  Prefix  Afix 
+[21:05:04.757] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 3 Icon  Prefix  Afix 
+[21:05:04.777] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Alive
+[21:05:04.824] [Sky Co-op REBORN] SaveGame name sandbox10 Seed 1566385814 ServerName uzbek
+[21:05:04.964] [SERVER] WILDLIFE_Rabbit 469528aa-0f74-44d9-8ad2-c44975da3353 inactive
+[21:05:04.965] [SERVER] WILDLIFE_Rabbit be971ccc-5e0c-4346-9ea6-b4253aa974b7 inactive
+[21:05:06.972] [SERVER] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 inactive
+[21:05:07.034] [Sky Co-op REBORN] ClientSend.SendGearPickUp bac13226-f2bc-4e54-a1dc-2a34600e9af8
+[21:05:07.050] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:05:07.084] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_EnergyBar CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID bac13226-f2bc-4e54-a1dc-2a34600e9af8
+[21:05:07.086] [Sky Co-op REBORN] EnterInspectGearMode GEAR_EnergyBar
+[21:05:07.419] [Sky Co-op REBORN] ExitInspectGearMode GEAR_EnergyBar
+[21:05:10.081] [Sky Co-op REBORN] ExitInspectGearMode GEAR_EnergyBar
+[21:05:10.081] [Sky Co-op REBORN] ClientSend.SendGearPickUp 8bfff736-3e76-4491-8a87-8fa81baec4a2
+[21:05:10.089] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:05:10.112] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CoffeeTin CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 8bfff736-3e76-4491-8a87-8fa81baec4a2
+[21:05:10.113] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CoffeeTin
+[21:05:10.426] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeTin
+[21:05:11.291] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeTin
+[21:05:11.291] [Sky Co-op REBORN] ClientSend.SendGearPickUp 764baeeb-e5a0-413e-bb66-e61ebf0ed841
+[21:05:11.299] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:05:11.343] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Water500ml CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 764baeeb-e5a0-413e-bb66-e61ebf0ed841
+[21:05:11.345] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Water500ml
+[21:05:11.698] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Water500ml
+[21:05:15.090] [Sky Co-op REBORN] ClientSend.SendGearPickUp 62637f3e-30a6-4150-8227-a0caa65e8b00
+[21:05:15.095] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:05:15.122] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_GreenTeaCup CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 62637f3e-30a6-4150-8227-a0caa65e8b00
+[21:05:15.124] [Sky Co-op REBORN] EnterInspectGearMode GEAR_GreenTeaCup
+[21:05:15.228] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GreenTeaCup
+[21:05:17.962] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GreenTeaCup
+[21:05:17.962] [Sky Co-op REBORN] ClientSend.SendGearPickUp ed465b56-d86c-43f7-a46f-51d199aa996f
+[21:05:17.979] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:05:18.005] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Accelerant CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID ed465b56-d86c-43f7-a46f-51d199aa996f
+[21:05:18.006] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Accelerant
+[21:05:18.370] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Accelerant
+[21:05:21.998] [SERVER] New TOD status AfternoonToDusk
+[21:05:44.981] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Cloth
+[21:05:45.410] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Cloth
+[21:05:45.414] [Sky Co-op REBORN] SendContainerState 81ddc151-303e-41d6-ba4a-c7b09995bf03 2
+[21:05:45.443] [Sky Co-op REBORN] HandleStateUpdated 81ddc151-303e-41d6-ba4a-c7b09995bf03 Hook.m_HookState Empty
+[21:05:47.817] [Sky Co-op REBORN] ClientSend.SendGearPickUp f9c52d9d-166d-471a-8998-40d429b0aa71
+[21:05:47.828] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:05:47.852] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Knife CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID f9c52d9d-166d-471a-8998-40d429b0aa71
+[21:05:47.858] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Knife
+[21:05:47.963] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Knife
+[21:05:48.762] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Knife
+[21:05:50.763] [Sky Co-op REBORN] EnterInspectGearMode GEAR_PaperStack
+[21:05:51.091] [Sky Co-op REBORN] ExitInspectGearMode GEAR_PaperStack
+[21:05:51.096] [Sky Co-op REBORN] SendContainerState 625e08c3-51c1-4ade-92ad-501fe4dad26b 2
+[21:05:51.119] [Sky Co-op REBORN] HandleStateUpdated 625e08c3-51c1-4ade-92ad-501fe4dad26b Hook.m_HookState Empty
+[21:05:51.794] [Sky Co-op REBORN] ExitInspectGearMode GEAR_PaperStack
+[21:05:53.798] [Sky Co-op REBORN] EnterInspectGearMode GEAR_WoodMatches
+[21:05:54.130] [Sky Co-op REBORN] ExitInspectGearMode GEAR_WoodMatches
+[21:05:54.134] [Sky Co-op REBORN] SendContainerState 27bbf10a-4c3e-4464-8565-dac90fd02e0e 2
+[21:05:54.159] [Sky Co-op REBORN] HandleStateUpdated 27bbf10a-4c3e-4464-8565-dac90fd02e0e Hook.m_HookState Empty
+[21:05:54.721] [Sky Co-op REBORN] ExitInspectGearMode GEAR_WoodMatches
+[21:05:56.724] [Sky Co-op REBORN] SendContainerState a84dfda4-14bf-4791-8a52-de69c42ef38a 2
+[21:05:56.746] [Sky Co-op REBORN] HandleStateUpdated a84dfda4-14bf-4791-8a52-de69c42ef38a Hook.m_HookState Empty
+[21:05:57.226] [Sky Co-op REBORN] ExitInspectGearMode GEAR_WoodMatches
+[21:05:59.230] [Sky Co-op REBORN] EnterInspectGearMode GEAR_FilmBoxBW
+[21:05:59.577] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FilmBoxBW
+[21:05:59.581] [Sky Co-op REBORN] SendContainerState e013ee64-b3fe-444a-8bec-ad52eb8da376 2
+[21:05:59.607] [Sky Co-op REBORN] HandleStateUpdated e013ee64-b3fe-444a-8bec-ad52eb8da376 Hook.m_HookState Empty
+[21:06:01.737] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FilmBoxBW
+[21:06:01.738] [Sky Co-op REBORN] ClientSend.SendGearPickUp 589084df-f963-44a1-9a9a-ef428fe455ef
+[21:06:01.743] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:01.774] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_SodaOrange CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 589084df-f963-44a1-9a9a-ef428fe455ef
+[21:06:01.776] [Sky Co-op REBORN] EnterInspectGearMode GEAR_SodaOrange
+[21:06:02.138] [Sky Co-op REBORN] ExitInspectGearMode GEAR_SodaOrange
+[21:06:07.928] [Sky Co-op REBORN] ExitInspectGearMode GEAR_SodaOrange
+[21:06:07.928] [Sky Co-op REBORN] ClientSend.SendGearPickUp 002cf69c-69a4-45bf-add9-f83879219cb5
+[21:06:07.937] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:07.985] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CoffeeCup CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 002cf69c-69a4-45bf-add9-f83879219cb5
+[21:06:07.986] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CoffeeCup
+[21:06:08.348] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeCup
+[21:06:12.095] [SERVER] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 active
+[21:06:12.176] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeCup
+[21:06:14.180] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CandyBar
+[21:06:14.570] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BookH
+[21:06:14.570] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BookH
+[21:06:14.844] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BookH
+[21:06:14.850] [Sky Co-op REBORN] SendContainerState 1367dc92-e8f5-4471-b718-05af0cf77164 2
+[21:06:14.872] [Sky Co-op REBORN] HandleStateUpdated 1367dc92-e8f5-4471-b718-05af0cf77164 Hook.m_HookState Empty
+[21:06:16.584] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BookH
+[21:06:18.587] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CannedBeans
+[21:06:18.963] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BottlePainKillers
+[21:06:18.964] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:06:19.243] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:06:19.247] [Sky Co-op REBORN] SendContainerState 726c0155-56bf-417a-94db-940d47ca3cc3 2
+[21:06:19.271] [Sky Co-op REBORN] HandleStateUpdated 726c0155-56bf-417a-94db-940d47ca3cc3 Hook.m_HookState Empty
+[21:06:21.033] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:06:23.036] [Sky Co-op REBORN] EnterInspectGearMode GEAR_InsulatedVest
+[21:06:23.442] [Sky Co-op REBORN] ExitInspectGearMode GEAR_InsulatedVest
+[21:06:23.446] [Sky Co-op REBORN] SendContainerState 226af83a-198b-47d1-9a39-21f354c98f5f 2
+[21:06:23.464] [Sky Co-op REBORN] HandleStateUpdated 226af83a-198b-47d1-9a39-21f354c98f5f Hook.m_HookState Empty
+[21:06:25.117] [SERVER] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 inactive
+[21:06:25.239] [Sky Co-op REBORN] ExitInspectGearMode GEAR_InsulatedVest
+[21:06:26.118] [SERVER] WILDLIFE_Rabbit be971ccc-5e0c-4346-9ea6-b4253aa974b7 active
+[21:06:26.118] [SERVER] WILDLIFE_Doe 8a56b393-95ad-4463-b2d3-41bd1eb38a81 active
+[21:06:27.244] [Sky Co-op REBORN] EnterInspectGearMode GEAR_HeavyBandage
+[21:06:27.666] [Sky Co-op REBORN] ExitInspectGearMode GEAR_HeavyBandage
+[21:06:27.670] [Sky Co-op REBORN] SendContainerState 05e97e1f-5e37-452b-9514-f42dd821232d 2
+[21:06:27.700] [Sky Co-op REBORN] HandleStateUpdated 05e97e1f-5e37-452b-9514-f42dd821232d Hook.m_HookState Empty
+[21:06:30.081] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.6390131
+[21:06:30.081] [Sky Co-op REBORN] m_Hat2  0
+[21:06:30.082] [Sky Co-op REBORN] m_Body GEAR_JerseyHockeyA 0.7053057
+[21:06:30.082] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5247934
+[21:06:30.082] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.21866208
+[21:06:30.082] [Sky Co-op REBORN] m_Boots GEAR_WorkBoots 0.48369133
+[21:06:30.082] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:06:30.328] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:32.922] [Sky Co-op REBORN] ClientSend.SendGearPickUp 4cda477e-ec24-4f91-8e72-a85bec40563d
+[21:06:32.939] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:32.982] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_Cloth CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 4cda477e-ec24-4f91-8e72-a85bec40563d
+[21:06:32.984] [Sky Co-op REBORN] EnterInspectGearMode GEAR_Cloth
+[21:06:33.128] [SERVER] WILDLIFE_Rabbit 469528aa-0f74-44d9-8ad2-c44975da3353 active
+[21:06:33.336] [Sky Co-op REBORN] ExitInspectGearMode GEAR_Cloth
+[21:06:36.609] [Sky Co-op REBORN] ClientSend.SendGearPickUp 659008ef-5519-4017-bbcb-d83667b7670e
+[21:06:36.623] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:36.644] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_BottleAntibiotics CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 659008ef-5519-4017-bbcb-d83667b7670e
+[21:06:36.645] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BottleAntibiotics
+[21:06:36.760] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottleAntibiotics
+[21:06:40.329] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottleAntibiotics
+[21:06:42.333] [Sky Co-op REBORN] SendContainerState 0bd0c142-af04-4bc8-abe5-1d39841b540e 2
+[21:06:42.343] [SERVER] RUNE (2) transitions from MountainTownRegion to Empty Should unload MountainTownRegion ? True
+[21:06:42.357] [SERVER] MountainTownRegion has been unloaded
+[21:06:42.358] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Unassigned
+[21:06:42.377] [Sky Co-op REBORN] HandleStateUpdated 0bd0c142-af04-4bc8-abe5-1d39841b540e Hook.m_HookState Empty
+[21:06:42.984] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottleAntibiotics
+[21:06:42.997] [SERVER] RUNE (2) transitions from Empty to BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl Should unload Empty ? True
+[21:06:43.011] [Sky Co-op REBORN] (ClientSceneNotification) Player ID 1 Visible True
+[21:06:43.078] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Alive
+[21:06:44.823] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:44.990] [Sky Co-op REBORN] SendContainerState 7cad85e6-d861-46f3-8a09-cceb18efcdac 2
+[21:06:45.016] [Sky Co-op REBORN] HandleStateUpdated 7cad85e6-d861-46f3-8a09-cceb18efcdac Hook.m_HookState Empty
+[21:06:45.994] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottleAntibiotics
+[21:06:45.995] [Sky Co-op REBORN] ClientSend.SendGearPickUp 303498b8-cf88-4ac1-b6f6-9831c66579fd
+[21:06:46.006] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:46.033] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_GreenTeaPackage CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 303498b8-cf88-4ac1-b6f6-9831c66579fd
+[21:06:46.035] [Sky Co-op REBORN] EnterInspectGearMode GEAR_GreenTeaPackage
+[21:06:46.137] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GreenTeaPackage
+[21:06:47.146] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:48.360] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GreenTeaPackage
+[21:06:48.361] [Sky Co-op REBORN] ClientSend.SendGearPickUp eb57d72f-a78b-47b8-a260-1485ce4e580a
+[21:06:48.366] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:48.402] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CandyBar CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID eb57d72f-a78b-47b8-a260-1485ce4e580a
+[21:06:48.404] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CandyBar
+[21:06:48.874] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CandyBar
+[21:06:49.897] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:50.664] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CandyBar
+[21:06:52.668] [Sky Co-op REBORN] EnterInspectGearMode GEAR_KetchupChips
+[21:06:53.057] [Sky Co-op REBORN] EnterInspectGearMode GEAR_GranolaBar
+[21:06:53.057] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GranolaBar
+[21:06:53.409] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GranolaBar
+[21:06:53.414] [Sky Co-op REBORN] SendContainerState 3e6b1962-e7fd-44af-901f-17b547757ab7 2
+[21:06:53.433] [Sky Co-op REBORN] HandleStateUpdated 3e6b1962-e7fd-44af-901f-17b547757ab7 Hook.m_HookState Empty
+[21:06:54.959] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GranolaBar
+[21:06:56.963] [Sky Co-op REBORN] SendContainerState 2179baea-8bbc-42c9-881c-dee1873fc8cf 2
+[21:06:56.981] [Sky Co-op REBORN] HandleStateUpdated 2179baea-8bbc-42c9-881c-dee1873fc8cf Hook.m_HookState Empty
+[21:06:57.737] [Sky Co-op REBORN] ExitInspectGearMode GEAR_GranolaBar
+[21:06:58.948] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:06:59.741] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BottlePainKillers
+[21:07:00.104] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:07:00.109] [Sky Co-op REBORN] SendContainerState 8b3559c0-c2f8-4a8e-a368-2404c0ebf303 2
+[21:07:00.133] [Sky Co-op REBORN] HandleStateUpdated 8b3559c0-c2f8-4a8e-a368-2404c0ebf303 Hook.m_HookState Empty
+[21:07:00.552] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:07:01.250] [Sky Co-op REBORN] HandleStateUpdated 726c0155-56bf-417a-94db-940d47ca3cc3 Hook.m_HookState Empty
+[21:07:02.558] [Sky Co-op REBORN] SendContainerState e79ef3e7-bc93-43fd-8712-aaa6b7a68124 2
+[21:07:02.581] [Sky Co-op REBORN] HandleStateUpdated e79ef3e7-bc93-43fd-8712-aaa6b7a68124 Hook.m_HookState Empty
+[21:07:02.904] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:07:04.908] [Sky Co-op REBORN] SendContainerState fde7ed4f-309f-40b1-88f7-288f290116f9 2
+[21:07:04.929] [Sky Co-op REBORN] HandleStateUpdated fde7ed4f-309f-40b1-88f7-288f290116f9 Hook.m_HookState Empty
+[21:07:05.813] [Sky Co-op REBORN] HandleStateUpdated 05e97e1f-5e37-452b-9514-f42dd821232d Hook.m_HookState Empty
+[21:07:05.824] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:07:06.327] [Sky Co-op REBORN] SendOpenableState 1a6d5cec-6730-46a9-9442-e14201fe1815 True
+[21:07:07.255] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BottlePainKillers
+[21:07:07.255] [Sky Co-op REBORN] ClientSend.SendGearPickUp 027b94a1-0ea9-49fd-aea0-5c1999c12001
+[21:07:07.273] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:07:07.303] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_CoffeeCup CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 027b94a1-0ea9-49fd-aea0-5c1999c12001
+[21:07:07.305] [Sky Co-op REBORN] EnterInspectGearMode GEAR_CoffeeCup
+[21:07:07.418] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeCup
+[21:07:08.287] [Sky Co-op REBORN] ExitInspectGearMode GEAR_CoffeeCup
+[21:07:10.122] [Sky Co-op REBORN] HandleStateUpdated 1b34ce41-55d8-4116-a504-6450469c3c47 Hook.m_HookState Empty
+[21:07:10.290] [Sky Co-op REBORN] EnterInspectGearMode GEAR_DogFood
+[21:07:10.641] [Sky Co-op REBORN] ExitInspectGearMode GEAR_DogFood
+[21:07:10.645] [Sky Co-op REBORN] SendContainerState 70e3bc08-d547-4dcf-a8fa-701ba1fda259 2
+[21:07:10.663] [Sky Co-op REBORN] HandleStateUpdated 70e3bc08-d547-4dcf-a8fa-701ba1fda259 Hook.m_HookState Empty
+[21:07:13.130] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:07:15.047] [Sky Co-op REBORN] ExitInspectGearMode GEAR_DogFood
+[21:07:15.047] [Sky Co-op REBORN] ClientSend.SendGearPickUp 3c549d08-a68c-484a-a3f2-b7094f3a5345
+[21:07:15.064] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:07:15.105] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_BasicBoots CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 3c549d08-a68c-484a-a3f2-b7094f3a5345
+[21:07:15.106] [Sky Co-op REBORN] EnterInspectGearMode GEAR_BasicBoots
+[21:07:15.522] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BasicBoots
+[21:07:19.521] [Sky Co-op REBORN] [UseInventoryItem] GEAR_WorkBoots
+[21:07:19.521] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.63903695
+[21:07:19.522] [Sky Co-op REBORN] m_Hat2  0
+[21:07:19.522] [Sky Co-op REBORN] m_Body GEAR_JerseyHockeyA 0.7053107
+[21:07:19.522] [Sky Co-op REBORN] m_Gloves GEAR_WorkGloves 0.5248172
+[21:07:19.522] [Sky Co-op REBORN] m_Pants GEAR_CombatPants 0.21867484
+[21:07:19.522] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.36201727
+[21:07:19.522] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[21:07:22.351] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BasicBoots
+[21:07:24.355] [Sky Co-op REBORN] SendContainerState 2ea0d072-d1ca-4006-8c10-c571088dc8dd 2
+[21:07:24.372] [Sky Co-op REBORN] HandleStateUpdated 2ea0d072-d1ca-4006-8c10-c571088dc8dd Hook.m_HookState Empty
+[21:07:24.881] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BasicBoots
+[21:07:26.885] [Sky Co-op REBORN] SendContainerState 825a9024-8a4f-4ae3-af42-43fad716f158 2
+[21:07:26.910] [Sky Co-op REBORN] HandleStateUpdated 825a9024-8a4f-4ae3-af42-43fad716f158 Hook.m_HookState Empty
+[21:07:27.360] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:07:31.549] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:07:34.623] [Sky Co-op REBORN] Melee hits Player 1  to the Chest
+[21:07:34.624] [Sky Co-op REBORN] Bullet hit surface Flesh
+[21:07:35.407] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:07:36.913] [Sky Co-op REBORN] Melee hits Player 1  to the Chest
+[21:07:36.913] [Sky Co-op REBORN] Bullet hit surface Flesh
+[21:07:37.698] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:07:39.202] [Sky Co-op REBORN] Melee hits Player 1  to the Chest
+[21:07:39.203] [Sky Co-op REBORN] Bullet hit surface Flesh
+[21:07:39.280] [SERVER] [ServerHandle] ClientDied Knife Knocked False HeadShot False
+[21:07:39.281] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Dead
+[21:07:39.282] [SERVER] [DataStr] 0. PlayerID 0 Damage: 51 Type Knife
+[21:07:39.283] [SERVER] [ServerSend] SendKillFeed
+- m_Killer: 0
+- m_Victim: 1
+- m_Assist: -1
+ - m_DeathReason: Knife
+- m_Flags:
+
+[21:07:39.288] [Sky Co-op REBORN] KillFeedMessage
+[21:07:39.288] [Sky Co-op REBORN] - m_Killer0
+[21:07:39.288] [Sky Co-op REBORN] - m_Victim1
+[21:07:39.288] [Sky Co-op REBORN] - m_Assist-1
+[21:07:39.288] [Sky Co-op REBORN] - m_DeathReasonKnife
+[21:07:39.288] [Sky Co-op REBORN] - m_Flags:
+[21:07:39.337] [SERVER] [ServerHandle] ClientDied Knife Knocked False HeadShot False
+[21:07:39.987] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:07:41.391] [Sky Co-op REBORN] Container PerformHold 0e559e0f-2c94-44da-a100-160daa45ee94
+[21:07:43.624] [Sky Co-op REBORN] Container PerformHold 666c8300-2da3-420a-834b-0b47a7286a5b
+[21:07:46.222] [Sky Co-op REBORN] Container PerformHold 0e559e0f-2c94-44da-a100-160daa45ee94
+[21:07:48.751] [Sky Co-op REBORN] Melee hits Player 1  to the Chest
+[21:07:48.751] [Sky Co-op REBORN] Bullet hit surface Flesh
+[21:07:49.534] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:08:02.792] [Sky Co-op REBORN] Bullet hit surface Stone
+[21:08:03.576] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:08:05.095] [Sky Co-op REBORN] Container PerformHold 7cad85e6-d861-46f3-8a09-cceb18efcdac
+[21:08:05.560] [Sky Co-op REBORN] SendContainerState 7cad85e6-d861-46f3-8a09-cceb18efcdac 2
+[21:08:05.585] [Sky Co-op REBORN] HandleStateUpdated 7cad85e6-d861-46f3-8a09-cceb18efcdac Hook.m_HookState Empty
+[21:08:05.901] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Alive
+[21:08:06.582] [SERVER] RUNE (2) transitions from BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl to Empty Should unload BankA_jEmcCtKN-DGYt0-DFGSQ-bgs3d-hj1DdVaax7cl ? False
+[21:08:06.582] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Unassigned
+[21:08:06.593] [Sky Co-op REBORN] (ClientSceneNotification) Player ID 1 Visible False
+[21:08:12.776] [SERVER] RUNE (2) transitions from Empty to MountainTownRegion Should unload Empty ? True
+[21:08:12.776] [SERVER] Loading scene MountainTownRegion for RUNE (2)
+[21:08:12.777] [SERVER] Trying to load Scene MountainTownRegion
+[21:08:12.777] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/Scenes/MountainTownRegion
+[21:08:12.787] [SERVER] WILDLIFE_Doe 4b369e6d-23dc-4fda-ba7b-88087139b9ed despawned, spawner inactive
+[21:08:12.787] [SERVER] WILDLIFE_Stag 4eae306e-3f26-45ac-975d-4b8313d93bc3 despawned, spawner inactive
+[21:08:12.787] [SERVER] WILDLIFE_Doe 2360f831-7279-4efc-8590-5dec67202348 despawned, spawner inactive
+[21:08:12.788] [SERVER] WILDLIFE_Stag 064310ed-b69b-4646-aca1-4d500ee22215 despawned, spawner inactive
+[21:08:12.788] [SERVER] WILDLIFE_Stag 4b5ab991-aa53-4ef3-876c-7d21be83174b despawned, spawner inactive
+[21:08:12.788] [SERVER] WILDLIFE_Doe 8371a305-2d7d-4afe-8cc0-ad7bd631daf2 despawned, spawner inactive
+[21:08:12.788] [SERVER] WILDLIFE_Doe 15d11dbd-1011-4f24-9b8b-947530470efb despawned, spawner inactive
+[21:08:12.788] [SERVER] WILDLIFE_Doe 8a8aef7f-f795-4f72-b7eb-315ec6ee7274 despawned, spawner inactive
+[21:08:12.789] [SERVER] WILDLIFE_Doe 64f15c6f-04e7-47c6-81f8-b3b477125d56 despawned, spawner inactive
+[21:08:12.789] [SERVER] WILDLIFE_Wolf 49fbbcba-bd42-4641-b2a1-9a727f709ec8 despawned, spawner inactive
+[21:08:12.789] [SERVER] WILDLIFE_Ptarmigan 9b718107-c092-49d5-af6c-1c02033f8074 despawned, spawner inactive
+[21:08:12.789] [SERVER] WILDLIFE_Ptarmigan d55c577b-41ce-4281-a0d9-f14dd590ba41 despawned, spawner inactive
+[21:08:12.789] [SERVER] WILDLIFE_Ptarmigan 23401497-5981-408d-b9ec-8afe787c3ec1 despawned, spawner inactive
+[21:08:12.789] [SERVER] WILDLIFE_Ptarmigan def8d797-52f1-4805-91a2-004bfa44c4f6 despawned, spawner inactive
+[21:08:12.789] [SERVER] MountainTownRegion has been restored from file
+[21:08:12.948] [Sky Co-op REBORN] Bullet hit surface Metal
+[21:08:13.732] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[21:08:14.791] [Sky Co-op REBORN] ExitInspectGearMode GEAR_BasicBoots
+[21:08:15.194] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Alive
+[21:08:15.296] [SERVER] WILDLIFE_Bear d516b615-68a4-4460-ad91-8e86a386c431 moved to random point after 5.0800724 hours of being inactive.
+[21:08:15.297] [SERVER] WILDLIFE_Bear d516b615-68a4-4460-ad91-8e86a386c431 active
+[21:08:16.795] [Sky Co-op REBORN] EnterInspectGearMode GEAR_FlareGunAmmoSingle
+[21:08:17.279] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FlareGunAmmoSingle
+[21:08:17.283] [Sky Co-op REBORN] SendContainerState 708e1183-5d43-4b8d-8b2a-aeb740da34bf 2
+[21:08:17.314] [Sky Co-op REBORN] HandleStateUpdated 708e1183-5d43-4b8d-8b2a-aeb740da34bf Hook.m_HookState Empty
+[21:08:19.437] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FlareGunAmmoSingle
+[21:08:21.442] [Sky Co-op REBORN] SendContainerState 911f3bfd-f758-4b05-a373-9789b6a869c2 2
+[21:08:21.464] [Sky Co-op REBORN] HandleStateUpdated 911f3bfd-f758-4b05-a373-9789b6a869c2 Hook.m_HookState Empty
+[21:08:24.264] [Sky Co-op REBORN] ExitInspectGearMode GEAR_FlareGunAmmoSingle
+[21:08:40.334] [SERVER] WILDLIFE_Rabbit 9a782801-82d8-4c64-92ad-2f3dc8cfb71b moved to random point after 5.1634116 hours of being inactive.
+[21:08:40.334] [SERVER] WILDLIFE_Rabbit 9a782801-82d8-4c64-92ad-2f3dc8cfb71b active
+[21:08:42.337] [SERVER] WILDLIFE_Rabbit db73639c-106e-4980-ad90-5ff6938c2db7 moved to random point after 5.1700788 hours of being inactive.
+[21:08:42.337] [SERVER] WILDLIFE_Rabbit db73639c-106e-4980-ad90-5ff6938c2db7 active
+[21:08:43.338] [SERVER] WILDLIFE_Rabbit 22ecb6e5-08e6-4c81-b8c8-47a844994afb moved to random point after 5.1734123 hours of being inactive.
+[21:08:43.339] [SERVER] WILDLIFE_Rabbit 22ecb6e5-08e6-4c81-b8c8-47a844994afb active
+[21:08:43.339] [SERVER] WILDLIFE_Rabbit db73639c-106e-4980-ad90-5ff6938c2db7 inactive
+[21:08:44.340] [SERVER] WILDLIFE_Rabbit db73639c-106e-4980-ad90-5ff6938c2db7 moved to random point after 5.176746 hours of being inactive.
+[21:08:44.341] [SERVER] WILDLIFE_Rabbit db73639c-106e-4980-ad90-5ff6938c2db7 active
+[21:09:30.660] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[21:09:37.513] [SERVER] [Server] Stopping Server
+[21:09:42.383] Preferences Saved!

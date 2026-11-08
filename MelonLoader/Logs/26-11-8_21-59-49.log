@@ -1,0 +1,709 @@
+[21:59:49.253] [MelonLoader.Bootstrap] Using HostFXR Path: C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll
+[21:59:49.255] [MelonLoader.Bootstrap] Using .NET runtime: 'C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll'
+
+[21:59:49.509] ------------------------------
+[21:59:49.511] MelonLoader v0.7.3 Open-Beta
+[21:59:49.512] OS: Windows 11
+[21:59:49.512] Hash Code: BDD43DC0F3893C208C95389B863AB61C967AE14204DA0DD8051647E754C8709B
+[21:59:49.512] ------------------------------
+[21:59:49.512] Game Type: Il2cpp
+[21:59:49.512] Game Arch: x64
+[21:59:49.512] ------------------------------
+[21:59:49.513] Command-Line: 
+[21:59:49.513] ------------------------------
+[21:59:49.513] Core::BasePath = C:\games\The Long Dark
+[21:59:49.514] Game::BasePath = C:\games\The Long Dark
+[21:59:49.514] Game::DataPath = C:\games\The Long Dark\tld_Data
+[21:59:49.514] Game::ApplicationPath = C:\games\The Long Dark\tld.exe
+[21:59:49.514] Runtime Type: net6
+[21:59:49.573] ------------------------------
+[21:59:49.573] Game Name: TheLongDark
+[21:59:49.574] Game Developer: Hinterland
+[21:59:49.575] Unity Version: 6000.0.60f1
+[21:59:49.575] Game Version: 2.59
+[21:59:49.575] ------------------------------
+
+[21:59:50.077] Preferences Loaded!
+
+[21:59:50.089] Loading UserLibs...
+[21:59:50.107] ------------------------------
+[21:59:50.110] Melon Assembly loaded: '.\UserLibs\LiteNetLib.dll'
+[21:59:50.110] SHA256 Hash: 'DA5529085572DF7D3398A0C47AB6D8DE7982C2E06EE4CC17CB475E174A51C168'
+[21:59:50.112] Melon Assembly loaded: '.\UserLibs\Mono.Nat.dll'
+[21:59:50.113] SHA256 Hash: 'A4BEDACA52C52D4DB7AA00533937225C0169C00C29A2BFE6F3C3D63AB3F5148B'
+[21:59:50.116] Melon Assembly loaded: '.\UserLibs\NAudio.Core.dll'
+[21:59:50.116] SHA256 Hash: 'FCF493FC47A2F478A65303886B975FBDBF714CBB1F2D79F7FCE97E4BB16B01A8'
+[21:59:50.117] Melon Assembly loaded: '.\UserLibs\NAudio.WinMM.dll'
+[21:59:50.118] SHA256 Hash: '749A01EBBB5EDD8B1A03C5263B04DE6ACADECF52E4CC84D7412BC6E93F180958'
+[21:59:50.119] Melon Assembly loaded: '.\UserLibs\OpenVoiceSharp.dll'
+[21:59:50.120] SHA256 Hash: '4D3593A390765742CAE12C590D165A4B8C9F80B8008CD00D39944D6490C1434F'
+[21:59:50.121] Melon Assembly loaded: '.\UserLibs\OpusDotNet.dll'
+[21:59:50.121] SHA256 Hash: 'C84A9D5E0F9A1C9A8DDD5515C91F97CDCEB26BD1754BB5214DC91BD1E422057F'
+[21:59:50.122] Melon Assembly loaded: '.\UserLibs\RNNoise.NET.dll'
+[21:59:50.122] SHA256 Hash: 'FFE582224EA821C45E6F9025C56BEC800B905A7A08D90D0186F8A88CDB46C5AD'
+[21:59:50.123] Melon Assembly loaded: '.\UserLibs\WebRtcVadSharp.dll'
+[21:59:50.123] SHA256 Hash: '8FCB7C0752E1C67CB5AF67597DDAF8E77F94A3C3BABA0AB690772D30D94A35C7'
+[21:59:50.123] ------------------------------
+[21:59:50.123] 0 UserLibs loaded.
+
+[21:59:50.123] Loading Plugins...
+[21:59:50.135] ------------------------------
+[21:59:50.136] Melon Assembly loaded: '.\Plugins\AudioCore.dll'
+[21:59:50.136] SHA256 Hash: '36B2F3D44D8FB6CA5D4BAAD7FDCDF8EC73A488B1DE017CE3A1A26D1302D6E426'
+
+[21:59:50.163] ------------------------------
+[21:59:50.163] AudioCore v3.1.5
+[21:59:50.163] by Digitalzombie
+[21:59:50.164] Assembly: AudioCore.dll
+[21:59:50.164] ------------------------------
+[21:59:50.164] ------------------------------
+[21:59:50.164] 1 Plugin loaded.
+
+[21:59:50.168] [AudioCore] Attempting to enable Unity audio...
+[21:59:50.192] [AudioCore] Unity audio already enabled. Skipping ...
+[21:59:50.470] Loading Il2CppAssemblyGenerator...
+[21:59:50.503] [Il2CppAssemblyGenerator] Contacting RemoteAPI...
+[21:59:50.890] [Il2CppAssemblyGenerator] RemoteAPI.DumperVersion = null
+[21:59:50.891] [Il2CppAssemblyGenerator] RemoteAPI.ObfuscationRegex = null
+[21:59:50.891] [Il2CppAssemblyGenerator] RemoteAPI.MappingURL = null
+[21:59:50.891] [Il2CppAssemblyGenerator] RemoteAPI.MappingFileSHA512 = null
+[21:59:50.894] [Il2CppAssemblyGenerator] Using Cpp2IL Version: 2022.1.0-pre-release.21
+[21:59:50.895] [Il2CppAssemblyGenerator] Using Il2CppInterop Version = 1.5.1-ci.845+f03c8f4ae507d47ea814f3d11d1ec6b0391c1576
+[21:59:50.895] [Il2CppAssemblyGenerator] Using Unity Dependencies Version = 6000.0.60
+[21:59:50.895] [Il2CppAssemblyGenerator] Using Deobfuscation Regex = null
+[21:59:50.895] [Il2CppAssemblyGenerator] Cpp2IL is up to date.
+[21:59:50.895] [Il2CppAssemblyGenerator] Cpp2IL.Plugin.StrippedCodeRegSupport is up to date.
+[21:59:50.896] [Il2CppAssemblyGenerator] UnityDependencies is up to date.
+[21:59:50.896] [Il2CppAssemblyGenerator] Checking GameAssembly...
+[21:59:51.045] [Il2CppAssemblyGenerator] Assembly is up to date. No Generation Needed.
+
+[21:59:51.046] Loading Mods...
+[21:59:51.235] ------------------------------
+[21:59:51.239] Melon Assembly loaded: '.\Mods\ModComponent.dll'
+[21:59:51.239] SHA256 Hash: '72182038DD95EA231D562C5DDBCA67F4E608BA5B4DF4119B0844F41C9136AD3D'
+[21:59:51.247] Melon Assembly loaded: '.\Mods\ModSettings.dll'
+[21:59:51.247] SHA256 Hash: '2A688A034D26E4CAC469DD276E8BB966CBB80E806AF4B50EEA189E02A7E806F8'
+[21:59:51.251] Melon Assembly loaded: '.\Mods\SkyCoopClient.dll'
+[21:59:51.251] SHA256 Hash: 'C852C8BDD1F2134D0A58494368DF6F1EB419EDAE694CBB9C0A7443DB4A22486E'
+
+[21:59:51.708] ------------------------------
+[21:59:51.709] ModSettings v2.2.2
+[21:59:51.709] by Digitalzombie, zeobviouslyfakeacc
+[21:59:51.709] Assembly: ModSettings.dll
+[21:59:51.709] ------------------------------
+[21:59:51.713] ------------------------------
+[21:59:51.713] ModComponent v7.0.0
+[21:59:51.713] by STBlade
+[21:59:51.714] Assembly: ModComponent.dll
+[21:59:51.714] ------------------------------
+[21:59:51.717] ------------------------------
+[21:59:51.717] Sky Co-op REBORN v1.0.0
+[21:59:51.717] by Filigrani & REDcat
+[21:59:51.717] Assembly: SkyCoopClient.dll
+[21:59:51.717] ------------------------------
+[21:59:51.718] ------------------------------
+[21:59:51.718] 3 Mods loaded.
+
+[21:59:52.691] [WARNING] [Il2CppInterop] Class::Init signatures have been exhausted, using a substitute!
+[21:59:52.719] [Il2CppInterop] Registered mono type MelonLoader.Support.MonoEnumeratorWrapper in il2cpp domain
+[21:59:52.801] Support Module Loaded: C:\games\The Long Dark\MelonLoader\Dependencies\SupportModules\Il2Cpp.dll
+[21:59:52.855] [Il2CppInterop] Registered mono type ModSettings.ModSettingsGUI in il2cpp domain
+[21:59:57.687] [ModComponent] Release Compilation
+[21:59:57.698] [ModComponent] Reading zip file: 'SkyCoop.modcomponent'
+[21:59:57.766] [ModComponent] Found: SkyCoop  by Filigrani
+[21:59:57.983] [WARNING] [Il2CppInterop] Method Void SetClothing(ClothingData) on type SkyCoop.Comps+NetworkPlayer has unsupported parameter ClothingData Data of type SkyCoopServer.DataStr+ClothingData
+[21:59:57.995] [Il2CppInterop] Registered mono type SkyCoop.Comps+NetworkPlayer in il2cpp domain
+[21:59:57.996] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerGear in il2cpp domain
+[21:59:57.997] [Il2CppInterop] Registered mono type SkyCoop.Comps+PlayerDamageColider in il2cpp domain
+[21:59:57.999] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerBullet in il2cpp domain
+[21:59:58.000] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearThrownVisual in il2cpp domain
+[21:59:58.001] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerThrowHook in il2cpp domain
+[21:59:58.001] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerKillFeedHandle in il2cpp domain
+[21:59:58.002] [Il2CppInterop] Registered mono type SkyCoop.Comps+MeleeBulletHandler in il2cpp domain
+[21:59:58.007] [Il2CppInterop] Registered mono type SkyCoop.Comps+ArrowHook in il2cpp domain
+[21:59:58.008] [Il2CppInterop] Registered mono type SkyCoop.Comps+DroppedGearVisual in il2cpp domain
+[21:59:58.009] [Il2CppInterop] Registered mono type SkyCoop.Comps+BulletWallBangHook in il2cpp domain
+[21:59:58.010] [Il2CppInterop] Registered mono type SkyCoop.Comps+CameraAttention in il2cpp domain
+[21:59:58.011] [Il2CppInterop] Registered mono type SkyCoop.Comps+DeathPackComp in il2cpp domain
+[21:59:58.012] [Il2CppInterop] Registered mono type SkyCoop.Comps+ContainerDescriptorHook in il2cpp domain
+[21:59:58.013] [Il2CppInterop] Registered mono type SkyCoop.Comps+DangerCircleZone in il2cpp domain
+[21:59:58.015] [Il2CppInterop] Registered mono type SkyCoop.Comps+ForcedFire in il2cpp domain
+[21:59:58.016] [Il2CppInterop] Registered mono type SkyCoop.Comps+CardGameProp in il2cpp domain
+[21:59:58.016] [WARNING] [Il2CppInterop] Method System.Collections.Generic.List`1[System.Int32] GetBets() on type SkyCoop.Comps+TexasHoldEmProp has unsupported return type System.Collections.Generic.List`1[System.Int32]
+[21:59:58.018] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmProp in il2cpp domain
+[21:59:58.019] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlayer in il2cpp domain
+[21:59:58.020] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmJoin in il2cpp domain
+[21:59:58.021] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlay in il2cpp domain
+[21:59:58.023] [Il2CppInterop] Registered mono type SkyCoop.Comps+TalkingFish in il2cpp domain
+[21:59:58.024] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropsEditorVisuzlier in il2cpp domain
+[21:59:58.025] [Il2CppInterop] Registered mono type SkyCoop.Comps+GenericStatusBarSpawnerHook in il2cpp domain
+[21:59:58.026] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateBar in il2cpp domain
+[21:59:58.027] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateMapIcon in il2cpp domain
+[21:59:58.028] [Il2CppInterop] Registered mono type SkyCoop.Comps+ZoneMapIcon in il2cpp domain
+[21:59:58.029] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropMovemenetPredict in il2cpp domain
+[21:59:58.031] [Il2CppInterop] Registered mono type SkyCoop.Comps+ChatMessage in il2cpp domain
+[21:59:58.032] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingTarget in il2cpp domain
+[21:59:58.033] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingDummy in il2cpp domain
+[21:59:58.036] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingVisual in il2cpp domain
+[21:59:58.037] [Il2CppInterop] Registered mono type SkyCoop.Comps+CookingSlotVisual in il2cpp domain
+[21:59:58.037] [WARNING] [Il2CppInterop] Method Void SetAnimationData(AnimatorData) on type SkyCoop.Comps+BaseAiHook has unsupported parameter AnimatorData AnimatorData of type SkyCoopServer.DataStr+AnimatorData
+[21:59:58.038] [Il2CppInterop] Registered mono type SkyCoop.Comps+BaseAiHook in il2cpp domain
+[21:59:58.582] [Sky Co-op REBORN] Main Asset Bundle is loaded.
+[21:59:58.592] [Il2CppInterop] Registered mono type Il2CppInterop.Runtime.DelegateSupport+Il2CppToMonoDelegateReference in il2cpp domain
+[21:59:58.696] [Il2CppInterop] Registered mono type MelonLoader.Support.SM_Component in il2cpp domain
+[21:59:58.710] Registered mono icall UnityEngine.Transform::SetAsLastSibling in il2cpp domain
+[21:59:59.785] [Sky Co-op REBORN] uConsole has been reimplemented!
+[21:59:59.789] [SERVER] [FilesManager] Saves folder set to C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves
+[21:59:59.830] [Sky Co-op REBORN] Canvas UI created!
+[21:59:59.833] [Sky Co-op REBORN] KillFeedElement loaded!
+[21:59:59.834] [Sky Co-op REBORN] KillFeedElementKill loaded!
+[21:59:59.835] [Sky Co-op REBORN] KillFeedElementDead loaded!
+[21:59:59.835] [Sky Co-op REBORN] ChatMessagePrefab loaded!
+[22:00:00.278] [ModComponent] Panel_Crafting_Initialize
+[22:00:01.569] Building Mod Settings GUI
+[22:00:01.588] [Il2CppInterop] Registered mono type ModSettings.DescriptionHolder in il2cpp domain
+[22:00:01.606] [Il2CppInterop] Registered mono type ModSettings.CustomKeybinding in il2cpp domain
+[22:00:01.612] Building Custom Mode GUI
+[22:00:01.615] [Il2CppInterop] Registered mono type ModSettings.CustomModeGUIBuilder+HinterlandSettingVisibilityListener in il2cpp domain
+[22:00:01.638] Done! Took 69 ms. Have a nice day!
+[22:00:13.356] [ModComponent] Running Dependency Checks..
+[22:00:15.530] [ModComponent] Console Commands added. The waitlist is empty.
+[22:00:15.637] [ModComponent] Registering pending sound banks.
+[22:00:20.764] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[22:00:21.592] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer_Host
+[22:00:22.723] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride GameModes
+[22:00:22.727] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[22:00:22.734] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[22:00:23.267] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[22:00:23.355] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[22:00:23.356] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[22:00:23.356] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[22:00:24.643] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride Original
+[22:00:34.537] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride GameModes
+[22:00:34.538] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[22:00:34.539] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[22:00:35.046] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[22:00:35.128] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[22:00:35.128] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[22:00:35.129] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[22:00:39.697] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[22:00:39.698] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[22:00:40.206] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[22:00:40.289] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[22:00:40.289] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[22:00:40.290] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[22:00:40.342] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride Original
+[22:00:51.922] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/ServerData
+[22:00:51.922] [SERVER] [FilesManager] File C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/ServerData not exist
+[22:00:51.925] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[22:00:51.925] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[22:00:52.426] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[22:00:52.508] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[22:00:52.509] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[22:00:52.509] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[22:00:52.549] [SERVER] ChangeGameMode Sandbox
+[22:00:52.549] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[22:00:52.550] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[22:00:53.069] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[22:00:53.125] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[22:00:53.125] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[22:00:53.126] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[22:00:53.217] [SERVER] [Server] Starting server
+[22:00:53.220] [SERVER] [Server] Server is started port=37855
+[22:00:53.237] [Sky Co-op REBORN] Trying to connect to localhost:37855 with key: public1
+[22:00:53.238] [Sky Co-op REBORN] m_Instance.DisconnectTimeout 5000
+[22:00:53.245] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[22:00:53.253] [SERVER] Trying to load weather profile...
+[22:00:53.254] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/Weather/Default
+[22:00:53.260] [SERVER] Weather profile loaded!
+[22:00:53.268] [Sky Co-op REBORN] Pushing 77 to delay
+[22:00:53.269] [SERVER] [Server] We got connection: 127.0.0.1:54548 assigned them as 0
+[22:00:53.285] [Sky Co-op REBORN] Server welcomes me with my ID: 0
+[22:00:53.304] [SERVER] [ServerHandle] Сlient 0 connected under name: RUNE
+[22:00:53.318] [Sky Co-op REBORN] Server config
+[22:00:53.318] [Sky Co-op REBORN] ServerName: beta-test
+[22:00:53.318] [Sky Co-op REBORN] PlayersMax: 10
+[22:00:53.318] [Sky Co-op REBORN] Seed: 795822192
+[22:00:53.318] [Sky Co-op REBORN] ExperienceMode: Pilgrim
+[22:00:53.318] [Sky Co-op REBORN] VoicePort: 0
+[22:00:53.319] [Sky Co-op REBORN] SceneToSpawn: 
+[22:00:53.319] [Sky Co-op REBORN] GameMode: Sandbox
+[22:00:53.319] [Sky Co-op REBORN] CheatsAllowed: True
+[22:00:53.767] [Sky Co-op REBORN] Processing delayed package 77
+[22:00:53.771] [Sky Co-op REBORN] Looking for save with seed 795822192
+[22:00:53.772] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[22:00:53.780] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[22:00:53.781] [Sky Co-op REBORN] Player: RUNE with ID 0
+[22:00:54.250] [SERVER] New WeatherSet LightSnow that will last for 3.5940282 hours
+[22:00:54.251] [SERVER] New Wind seed -775086365 and direction 135 will last for 1.4567091 hours
+[22:00:56.186] [Sky Co-op REBORN] OnSelectSurvivor Male
+[22:00:56.190] [Sky Co-op REBORN] LoadSceneWithLoadingScreen
+[22:00:56.265] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[22:00:56.276] [Sky Co-op REBORN] Start loading scenes...
+[22:00:56.276] [Sky Co-op REBORN] ClientSend.SendNewScene Empty
+[22:00:56.293] [SERVER] RUNE transitions from  to Empty Should unload  ? True
+[22:00:56.294] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Unassigned
+[22:00:58.005] [ModComponent] Registering pending sound banks.
+[22:00:58.207] [Sky Co-op REBORN] Scenes loaded
+[22:00:58.565] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.72793627
+[22:00:58.565] [Sky Co-op REBORN] m_Hat2  0
+[22:00:58.566] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.22970045
+[22:00:58.566] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48692518
+[22:00:58.566] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[22:00:58.567] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19566244
+[22:00:58.567] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[22:00:58.568] [Sky Co-op REBORN] ClientSend.SendNewScene MountainTownRegion
+[22:00:58.644] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.72793627
+[22:00:58.644] [Sky Co-op REBORN] m_Hat2  0
+[22:00:58.645] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.22970045
+[22:00:58.645] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48692518
+[22:00:58.645] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[22:00:58.645] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19566244
+[22:00:58.645] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[22:00:58.646] [SERVER] RUNE transitions from Empty to MountainTownRegion Should unload Empty ? True
+[22:00:58.646] [SERVER] Loading scene MountainTownRegion for RUNE
+[22:00:58.646] [SERVER] Trying to load Scene MountainTownRegion
+[22:00:58.647] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/Scenes/MountainTownRegion
+[22:00:58.647] [SERVER] [FilesManager] File C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/Scenes/MountainTownRegion not exist
+[22:01:00.366] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 0 Icon  Prefix  Afix 
+[22:01:00.366] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 1 Icon  Prefix  Afix 
+[22:01:00.367] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 2 Icon  Prefix  Afix 
+[22:01:00.367] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 3 Icon  Prefix  Afix 
+[22:01:00.437] [SERVER] [Server] We got connection: 26.77.236.217:53030 assigned them as 1
+[22:01:00.438] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Alive
+[22:01:00.532] [SERVER] Client 1 trying to log in as RUNE, but name is already busy
+[22:01:00.532] [SERVER] Client 1 renamed to RUNE
+[22:01:00.533] [SERVER] [ServerHandle] Сlient 1 connected under name: RUNE (2)
+[22:01:00.547] [Sky Co-op REBORN] Player: RUNE (2) with ID 1
+[22:01:01.378] [SERVER] WILDLIFE_Wolf 528cf009-191f-4fc9-8b22-be4d7846737e active
+[22:01:01.378] [SERVER] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 active
+[22:01:01.379] [SERVER] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac active
+[22:01:01.379] [SERVER] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 active
+[22:01:01.524] [Sky Co-op REBORN] WILDLIFE_Wolf 528cf009-191f-4fc9-8b22-be4d7846737e spawned
+[22:01:01.705] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 spawned
+[22:01:01.722] [Sky Co-op REBORN] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac spawned
+[22:01:01.728] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 spawned
+[22:01:03.559] [GearSpawner] Spawning items for scene 'MountainTownRegion' ...
+[22:01:03.560] [GearSpawner] Could not find any spawn entries for 'mountaintownregion'
+[22:01:03.561] [GearSpawner] Spawned 'Pilgram' items for scene 'MountainTownRegion' in 0 ms
+[22:01:03.713] [Sky Co-op REBORN] Gear GEAR_Toque triggered s_ForceUpdateClothing
+[22:01:03.714] [Sky Co-op REBORN] Gear GEAR_PlaidShirt triggered s_ForceUpdateClothing
+[22:01:03.714] [Sky Co-op REBORN] Gear GEAR_BasicBoots triggered s_ForceUpdateClothing
+[22:01:03.715] [Sky Co-op REBORN] Gear GEAR_SkiJacket triggered s_ForceUpdateClothing
+[22:01:03.715] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.72793627
+[22:01:03.716] [Sky Co-op REBORN] m_Hat2  0
+[22:01:03.716] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.22970045
+[22:01:03.716] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48692518
+[22:01:03.716] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[22:01:03.716] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19566244
+[22:01:03.716] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[22:01:03.722] [Sky Co-op REBORN] Gear GEAR_FleeceMittens triggered s_ForceUpdateClothing
+[22:01:03.722] [Sky Co-op REBORN] Gear GEAR_WoolSocks triggered s_ForceUpdateClothing
+[22:01:03.723] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.72793627
+[22:01:03.723] [Sky Co-op REBORN] m_Hat2  0
+[22:01:03.723] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.22970045
+[22:01:03.723] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48692518
+[22:01:03.724] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[22:01:03.724] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19566244
+[22:01:03.724] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[22:01:04.932] [SERVER] RUNE (2) transitions from  to Empty Should unload  ? True
+[22:01:04.932] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Unassigned
+[22:01:06.588] [Sky Co-op REBORN] SaveGame name sandbox5 Seed 795822192 ServerName beta-test
+[22:01:07.960] [SERVER] RUNE (2) transitions from Empty to MountainTownRegion Should unload Empty ? True
+[22:01:07.979] [Sky Co-op REBORN] (ClientSceneNotification) Player ID 1 Visible True
+[22:01:10.157] [SERVER] [DataStr.PlayerData] Client RUNE (2) new gamepaly state Alive
+[22:01:16.430] [Sky Co-op REBORN] WILDLIFE_Wolf 528cf009-191f-4fc9-8b22-be4d7846737e become actor (retarget)
+[22:01:16.432] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 become actor (retarget)
+[22:01:16.433] [Sky Co-op REBORN] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac become actor (retarget)
+[22:01:16.433] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 become actor (retarget)
+[22:01:26.464] [Sky Co-op REBORN] WILDLIFE_Wolf 528cf009-191f-4fc9-8b22-be4d7846737e controlled now (retarget)
+[22:01:26.465] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 controlled now (retarget)
+[22:01:26.466] [Sky Co-op REBORN] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac controlled now (retarget)
+[22:01:26.466] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 controlled now (retarget)
+[22:01:36.502] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 become actor (retarget)
+[22:02:04.599] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 become actor (retarget)
+[22:02:39.017] [Il2CppInterop] Registered mono type ModSettings.SliderFixPatches+SliderBarDepthFixer in il2cpp domain
+[22:02:39.701] [SERVER] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 active
+[22:02:42.707] [SERVER] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b active
+[22:02:46.714] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 active
+[22:02:46.715] [SERVER] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 active
+[22:02:47.714] [SERVER] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 active
+[22:02:51.735] [SERVER] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac inactive
+[22:02:51.756] [Sky Co-op REBORN] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac removed (by server)
+[22:02:53.740] [SERVER] WILDLIFE_Wolf 528cf009-191f-4fc9-8b22-be4d7846737e inactive
+[22:02:53.747] [Sky Co-op REBORN] WILDLIFE_Wolf 528cf009-191f-4fc9-8b22-be4d7846737e removed (by server)
+[22:02:54.745] [SERVER] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 inactive
+[22:02:55.748] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 inactive
+[22:02:55.748] [SERVER] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 inactive
+[22:03:00.791] [Sky Co-op REBORN] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b spawned
+[22:03:01.796] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 spawned
+[22:03:02.797] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 controlled now (retarget)
+[22:03:03.789] [Sky Co-op REBORN] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b controlled now (retarget)
+[22:03:03.790] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:03:13.855] [Sky Co-op REBORN] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b become actor (retarget)
+[22:03:38.942] [Sky Co-op REBORN] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b controlled now (retarget)
+[22:03:42.951] [SERVER] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 active
+[22:03:42.962] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 spawned
+[22:03:43.951] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 active
+[22:03:43.952] [SERVER] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 active
+[22:03:43.971] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 spawned
+[22:03:43.973] [Sky Co-op REBORN] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 spawned
+[22:03:45.961] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 active
+[22:03:45.980] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 spawned
+[22:03:50.991] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 inactive
+[22:03:50.997] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 removed (by server)
+[22:03:56.017] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 active
+[22:03:56.028] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 spawned
+[22:04:04.851] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:04:04.868] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:08.432] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:04:08.438] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:11.360] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:12.096] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 controlled now (retarget)
+[22:04:14.301] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:04:14.305] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 controlled damaged 75 bleedOutMintues 0 damageSource Player collider capsule_Chest
+[22:04:14.309] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:14.589] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:17.384] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:04:17.390] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:21.109] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 inactive
+[22:04:21.116] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 removed (by server)
+[22:04:22.110] [SERVER] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b inactive
+[22:04:22.117] [Sky Co-op REBORN] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b removed (by server)
+[22:04:22.118] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 become actor (retarget)
+[22:04:22.633] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:04:22.639] [Sky Co-op REBORN] Bullet hit surface Wood
+[22:04:23.112] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 inactive
+[22:04:23.113] [SERVER] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 inactive
+[22:04:23.113] [SERVER] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 inactive
+[22:04:23.131] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 removed (by server)
+[22:04:23.131] [Sky Co-op REBORN] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 removed (by server)
+[22:04:23.131] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 removed (by server)
+[22:04:24.118] [SERVER] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 inactive
+[22:04:24.136] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 removed (by server)
+[22:04:25.135] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 become actor (retarget)
+[22:04:26.040] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:04:26.046] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:26.579] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:04:29.603] [Sky Co-op REBORN] Bullet hit surface Flesh
+[22:04:29.604] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 actor damaged 50 bleedOutMintues 0 damageSource Player collider capsule_Waist
+[22:04:32.495] [Sky Co-op REBORN] Bullet hit surface Flesh
+[22:04:32.495] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 actor damaged 75 bleedOutMintues 0 damageSource Player collider capsule_Chest
+[22:04:35.439] [Sky Co-op REBORN] Bullet hit surface Stone
+[22:04:38.422] [Sky Co-op REBORN] Bullet hit surface Stone
+[22:04:41.430] [Sky Co-op REBORN] Bullet hit surface Flesh
+[22:04:41.430] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 actor damaged 100 bleedOutMintues 0 damageSource Player collider capsule_Head
+[22:04:41.715] [SERVER] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 died
+[22:04:41.732] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 removed (death)
+[22:04:41.736] [Sky Co-op REBORN] WILDLIFE_CougarA 96d4a721-265e-48b9-b75c-ae0fb88e5571 corpse spawned with BodyHarvest
+[22:04:44.539] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:05:24.376] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 controlled now (retarget)
+[22:05:25.373] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 active
+[22:05:25.374] [SERVER] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 active
+[22:05:25.374] [SERVER] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 active
+[22:05:25.391] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 spawned
+[22:05:25.393] [Sky Co-op REBORN] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 spawned
+[22:05:25.395] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 spawned
+[22:05:26.378] [SERVER] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b active
+[22:05:26.378] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 active
+[22:05:26.379] [SERVER] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 active
+[22:05:26.391] [Sky Co-op REBORN] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b spawned
+[22:05:26.393] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 spawned
+[22:05:26.395] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 spawned
+[22:05:30.393] [SERVER] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc active
+[22:05:30.403] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc spawned
+[22:05:32.406] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 active
+[22:05:32.427] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 spawned
+[22:05:33.408] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 active
+[22:05:33.408] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 active
+[22:05:33.408] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 active
+[22:05:33.430] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 spawned
+[22:05:33.432] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 spawned
+[22:05:33.434] [Sky Co-op REBORN] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 spawned
+[22:05:34.415] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[22:05:34.426] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 spawned
+[22:05:36.040] [Sky Co-op REBORN] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 controlled damaged 1000 bleedOutMintues 0 damageSource Wolf collider AiOnAi
+[22:05:36.072] [SERVER] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 died
+[22:05:36.094] [Sky Co-op REBORN] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 removed (death)
+[22:05:36.095] [Sky Co-op REBORN] WILDLIFE_Rabbit ef47c467-72c4-41cf-95bf-de5715628563 corpse spawned with BodyHarvest
+[22:05:37.427] [SERVER] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b inactive
+[22:05:37.441] [Sky Co-op REBORN] WILDLIFE_Wolf 2b0e64fd-ee95-4488-af24-c7769d3a1d5b removed (by server)
+[22:05:40.336] [Sky Co-op REBORN] EnterInspectGearMode GEAR_RabbitCarcass
+[22:05:42.497] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RabbitCarcass
+[22:05:42.527] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RabbitCarcass
+[22:05:43.466] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RabbitCarcass
+[22:05:47.810] [Sky Co-op REBORN] EnterInspectGearMode GEAR_RabbitCarcass
+[22:05:48.400] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RabbitCarcass
+[22:05:55.492] [SERVER] Doing auto save...
+[22:05:55.531] [SERVER] Next auto-save in 300 seconds
+[22:05:56.497] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[22:05:56.497] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 inactive
+[22:05:56.511] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 removed (by server)
+[22:05:56.512] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 removed (by server)
+[22:05:59.865] [SERVER] ServerHandle.ClientSendGear GEAR_RabbitCarcass FireGUID  CookingSlot -1 CookpotGUID 
+[22:06:01.519] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[22:06:01.537] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 spawned
+[22:06:03.524] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[22:06:03.541] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 removed (by server)
+[22:06:09.110] [Sky Co-op REBORN] ClientSend.SendGearPickUp bba8174c-acb3-4080-a94b-7de339721ef4
+[22:06:09.129] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[22:06:09.151] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_RabbitCarcass CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID bba8174c-acb3-4080-a94b-7de339721ef4
+[22:06:09.154] [Sky Co-op REBORN] EnterInspectGearMode GEAR_RabbitCarcass
+[22:06:11.447] [Sky Co-op REBORN] Gear GEAR_RabbitCarcass refused
+[22:06:11.448] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RabbitCarcass
+[22:06:11.456] [SERVER] ServerHandle.ClientSendGear GEAR_RabbitCarcass FireGUID  CookingSlot -1 CookpotGUID 
+[22:06:12.123] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[22:06:13.562] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[22:06:13.573] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 spawned
+[22:06:13.774] [SERVER] ServerHandle.ClientSendGear GEAR_RabbitCarcass FireGUID  CookingSlot -1 CookpotGUID 
+[22:06:17.445] [Sky Co-op REBORN] ClientSend.SendGearPickUp 8501164c-20f1-4347-871e-9db52a2446c6
+[22:06:17.462] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[22:06:17.487] [Sky Co-op REBORN] ProcessGearPickUpQueue GEAR_RabbitCarcass CookingResult  TimeBeingCooked 0 Volume 0 Style 0 GUID 8501164c-20f1-4347-871e-9db52a2446c6
+[22:06:17.488] [Sky Co-op REBORN] EnterInspectGearMode GEAR_RabbitCarcass
+[22:06:17.936] [Sky Co-op REBORN] Gear GEAR_RabbitCarcass refused
+[22:06:17.936] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RabbitCarcass
+[22:06:17.955] [SERVER] ServerHandle.ClientSendGear GEAR_RabbitCarcass FireGUID  CookingSlot -1 CookpotGUID 
+[22:06:19.594] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[22:06:19.602] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 removed (by server)
+[22:06:20.172] [SERVER] [ServerHandle] (ClientPickUpGear) GearData.m_Visual.m_ProductGUID  
+[22:06:44.685] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[22:06:44.708] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 spawned
+[22:06:45.709] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 become actor (retarget)
+[22:06:49.718] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[22:06:49.728] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 removed (by server)
+[22:06:50.725] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[22:06:50.725] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 active
+[22:06:50.742] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 spawned
+[22:06:50.744] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 spawned
+[22:06:55.763] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 controlled now (retarget)
+[22:06:59.772] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:07:03.799] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:07:05.798] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:07:05.798] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 become actor (retarget)
+[22:07:09.353] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:07:14.843] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:07:15.627] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:07:20.888] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:07:23.888] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:07:24.906] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:07:24.906] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:07:29.919] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:07:30.926] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:07:36.948] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 controlled now (retarget)
+[22:08:15.111] [SERVER] New Wind seed -775086365 and direction 315 will last for 1.5014713 hours
+[22:08:16.118] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[22:08:16.119] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 inactive
+[22:08:16.119] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 inactive
+[22:08:16.119] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 inactive
+[22:08:16.120] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 inactive
+[22:08:16.133] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 removed (by server)
+[22:08:16.133] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 removed (by server)
+[22:08:16.134] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 removed (by server)
+[22:08:16.134] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 removed (by server)
+[22:08:16.134] [Sky Co-op REBORN] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 removed (by server)
+[22:08:24.147] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 inactive
+[22:08:24.164] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 removed (by server)
+[22:08:29.163] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 inactive
+[22:08:29.163] [SERVER] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 inactive
+[22:08:29.181] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 removed (by server)
+[22:08:29.181] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 removed (by server)
+[22:08:31.164] [SERVER] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc inactive
+[22:08:31.181] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc removed (by server)
+[22:09:37.389] [SERVER] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc active
+[22:09:37.401] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc spawned
+[22:09:38.393] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 active
+[22:09:38.394] [SERVER] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 active
+[22:09:38.410] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 spawned
+[22:09:38.412] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 spawned
+[22:09:42.412] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 active
+[22:09:42.427] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 spawned
+[22:09:47.454] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:09:48.454] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:09:49.455] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:09:52.478] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:09:52.479] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:09:55.483] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 become actor (retarget)
+[22:09:56.708] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:09:56.713] [Sky Co-op REBORN] Bullet hit surface Flesh
+[22:09:58.044] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:09:59.902] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:09:59.908] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:10:00.186] [SERVER] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 died
+[22:10:00.200] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 removed (death)
+[22:10:00.202] [Sky Co-op REBORN] WILDLIFE_Stag 0c57bbf8-e304-4263-a551-577374742f64 corpse spawned with BodyHarvest
+[22:10:01.223] [Sky Co-op REBORN] Bullet hit surface Flesh
+[22:10:47.706] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:10:47.706] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:10:47.707] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:10:47.707] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:10:49.715] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:10:56.721] [SERVER] Doing auto save...
+[22:10:56.741] [SERVER] Next auto-save in 300 seconds
+[22:11:06.758] [SERVER] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac active
+[22:11:07.760] [SERVER] WILDLIFE_Doe c8dfd7e0-6140-4e9c-be6a-1c39c97c60ac inactive
+[22:11:09.784] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:11:12.788] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:11:12.788] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:11:19.836] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:11:20.839] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:11:20.839] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:11:29.869] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:11:31.869] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 active
+[22:11:32.873] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[22:11:32.873] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 active
+[22:11:32.874] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 active
+[22:11:33.876] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 active
+[22:11:38.888] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[22:11:38.888] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 inactive
+[22:11:38.889] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 inactive
+[22:11:38.889] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 inactive
+[22:11:39.890] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 inactive
+[22:11:51.960] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:11:51.960] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:11:51.961] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:11:51.961] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:11:51.961] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:12:01.995] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:12:01.996] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:12:01.996] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:12:01.997] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:12:02.999] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:12:12.037] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:12:12.037] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:12:12.038] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:12:12.038] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:12:13.033] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:12:22.066] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:12:22.066] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:12:22.067] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:12:22.067] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:12:32.109] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:12:32.109] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:12:33.114] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:12:38.140] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:12:38.140] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:12:43.157] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:12:46.184] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:12:46.184] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:12:48.178] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:12:48.178] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:12:56.229] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:12:56.229] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:13:06.255] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:13:06.255] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:13:09.267] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:13:09.267] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:13:19.325] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:13:19.325] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:13:28.377] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:13:28.377] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:13:28.930] [SERVER] ServerHandle.ClientSendGear GEAR_RawMeatCougar FireGUID  CookingSlot -1 CookpotGUID 
+[22:13:29.379] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:13:29.380] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:13:37.076] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:13:37.084] [Sky Co-op REBORN] Сlothing blocked 4.9999995% of damaged, delt to Chest damage: 50 -> 47.5
+[22:13:37.086] [Sky Co-op REBORN] OtherPlayerDamageMe Damage: 47.5 from 1 to the Chest using GEAR_Rifle dealing damage type Rifle
+[22:13:37.087] [Sky Co-op REBORN] Gear GEAR_SkiJacket triggered s_ForceUpdateClothing
+[22:13:37.089] [Sky Co-op REBORN] m_Hat1 GEAR_Toque 0.7283999
+[22:13:37.089] [Sky Co-op REBORN] m_Hat2  0
+[22:13:37.089] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.54663205
+[22:13:37.089] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48738885
+[22:13:37.090] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[22:13:37.090] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19592738
+[22:13:37.090] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[22:13:37.093] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:13:41.466] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:13:41.471] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:13:48.705] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:13:48.711] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:13:53.899] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:13:53.902] [Sky Co-op REBORN] Сlothing blocked 2% of damaged, delt to Head damage: 75 -> 73.5
+[22:13:53.902] [Sky Co-op REBORN] OtherPlayerDamageMe Damage: 73.5 from 1 to the Head using GEAR_Rifle dealing damage type Rifle
+[22:13:53.903] [Sky Co-op REBORN] m_Hat1  0
+[22:13:53.904] [Sky Co-op REBORN] m_Hat2  0
+[22:13:53.904] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.5466369
+[22:13:53.904] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48739856
+[22:13:53.904] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[22:13:53.904] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19593275
+[22:13:53.904] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[22:13:53.909] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:13:58.309] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:13:58.311] [Sky Co-op REBORN] OtherPlayerDamageMe Damage: 75 from 1 to the Head using GEAR_Rifle dealing damage type Rifle
+[22:13:58.316] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:14:00.501] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:14:01.512] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:14:05.449] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:14:05.455] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:14:09.548] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:14:09.549] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:14:09.549] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:14:10.551] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 controlled now (retarget)
+[22:14:11.546] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:14:15.199] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:14:15.204] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:14:24.588] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:14:24.589] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 become actor (retarget)
+[22:14:53.201] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:14:53.206] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:14:56.798] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:14:56.803] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:14:56.933] [SERVER] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 died
+[22:14:56.946] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 removed (death)
+[22:14:56.947] [Sky Co-op REBORN] WILDLIFE_Rabbit b6935c1a-bec2-4a08-a13c-f161c5ffeed5 corpse spawned with BodyHarvest
+[22:14:59.795] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:02.221] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:15:02.226] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:05.660] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:06.204] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:15:06.207] [Sky Co-op REBORN] OtherPlayerDamageMe Damage: 75 from 1 to the Head using GEAR_Rifle dealing damage type Rifle
+[22:15:06.211] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:10.465] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:15:10.471] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:13.538] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:15:13.544] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:13.551] [Sky Co-op REBORN] OtherPlayerDamageMe Damage: 75 from 1 to the Head using GEAR_Rifle dealing damage type Rifle
+[22:15:16.502] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:17.250] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:15:17.253] [Sky Co-op REBORN] OtherPlayerDamageMe Damage: 75 from 1 to the Head using GEAR_Rifle dealing damage type Rifle
+[22:15:17.256] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:18.820] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:20.343] [Sky Co-op REBORN] Melee hits Player 1  to the RightArm
+[22:15:20.344] [Sky Co-op REBORN] Bullet hit surface Flesh
+[22:15:21.060] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:15:21.065] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:21.129] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:23.444] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:23.870] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 controlled now (retarget)
+[22:15:25.874] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 active
+[22:15:25.886] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 spawned
+[22:15:26.878] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 inactive
+[22:15:26.889] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 removed (by server)
+[22:15:27.617] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:27.892] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 controlled now (retarget)
+[22:15:27.892] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 controlled now (retarget)
+[22:15:27.893] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc controlled now (retarget)
+[22:15:31.783] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:32.639] [Sky Co-op REBORN] EnterInspectGearMode GEAR_RabbitCarcass
+[22:15:32.784] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RabbitCarcass
+[22:15:33.300] [Sky Co-op REBORN] Bullet hit surface Snow
+[22:15:34.083] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:35.882] [Sky Co-op REBORN] Melee hits Player 1  to the Head
+[22:15:35.882] [Sky Co-op REBORN] Bullet hit surface Flesh
+[22:15:36.669] [Sky Co-op REBORN] [UseInventoryItem] GEAR_Knife
+[22:15:38.930] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 become actor (retarget)
+[22:15:38.930] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 become actor (retarget)
+[22:15:38.931] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 become actor (retarget)
+[22:15:38.931] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc become actor (retarget)
+[22:15:39.240] [Sky Co-op REBORN] ClientProjectile Rifle
+[22:15:39.243] [Sky Co-op REBORN] OtherPlayerDamageMe Damage: 75 from 1 to the Head using GEAR_Rifle dealing damage type Rifle
+[22:15:39.246] [Sky Co-op REBORN] Bullet hit surface Metal
+[22:15:40.352] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[22:15:40.354] [SERVER] [GameServer] Client 0 disconnected RemoteConnectionClose
+[22:15:40.355] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 active
+[22:15:40.355] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 active
+[22:15:40.384] [Sky Co-op REBORN] Start loading scenes...
+[22:15:40.906] [ModComponent] Registering pending sound banks.
+[22:15:41.355] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 active
+[22:15:41.584] [Sky Co-op REBORN] Scenes loaded
+[22:15:43.677] [SERVER] [Server] Stopping Server
+[22:15:48.240] Preferences Saved!

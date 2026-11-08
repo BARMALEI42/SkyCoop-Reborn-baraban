@@ -1,0 +1,688 @@
+[14:03:07.299] [MelonLoader.Bootstrap] Using HostFXR Path: C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll
+[14:03:07.304] [MelonLoader.Bootstrap] Using .NET runtime: 'C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll'
+
+[14:03:07.586] ------------------------------
+[14:03:07.587] MelonLoader v0.7.3 Open-Beta
+[14:03:07.588] OS: Windows 11
+[14:03:07.588] Hash Code: BDD43DC0F3893C208C95389B863AB61C967AE14204DA0DD8051647E754C8709B
+[14:03:07.588] ------------------------------
+[14:03:07.588] Game Type: Il2cpp
+[14:03:07.588] Game Arch: x64
+[14:03:07.588] ------------------------------
+[14:03:07.589] Command-Line: 
+[14:03:07.589] ------------------------------
+[14:03:07.589] Core::BasePath = C:\games\The Long Dark
+[14:03:07.590] Game::BasePath = C:\games\The Long Dark
+[14:03:07.590] Game::DataPath = C:\games\The Long Dark\tld_Data
+[14:03:07.590] Game::ApplicationPath = C:\games\The Long Dark\tld.exe
+[14:03:07.591] Runtime Type: net6
+[14:03:07.674] ------------------------------
+[14:03:07.675] Game Name: TheLongDark
+[14:03:07.675] Game Developer: Hinterland
+[14:03:07.676] Unity Version: 6000.0.60f1
+[14:03:07.676] Game Version: 2.59
+[14:03:07.677] ------------------------------
+
+[14:03:08.199] Preferences Loaded!
+
+[14:03:08.212] Loading UserLibs...
+[14:03:08.234] ------------------------------
+[14:03:08.239] Melon Assembly loaded: '.\UserLibs\LiteNetLib.dll'
+[14:03:08.239] SHA256 Hash: 'DA5529085572DF7D3398A0C47AB6D8DE7982C2E06EE4CC17CB475E174A51C168'
+[14:03:08.241] Melon Assembly loaded: '.\UserLibs\Mono.Nat.dll'
+[14:03:08.241] SHA256 Hash: 'A4BEDACA52C52D4DB7AA00533937225C0169C00C29A2BFE6F3C3D63AB3F5148B'
+[14:03:08.245] Melon Assembly loaded: '.\UserLibs\NAudio.Core.dll'
+[14:03:08.245] SHA256 Hash: 'FCF493FC47A2F478A65303886B975FBDBF714CBB1F2D79F7FCE97E4BB16B01A8'
+[14:03:08.246] Melon Assembly loaded: '.\UserLibs\NAudio.WinMM.dll'
+[14:03:08.247] SHA256 Hash: '749A01EBBB5EDD8B1A03C5263B04DE6ACADECF52E4CC84D7412BC6E93F180958'
+[14:03:08.248] Melon Assembly loaded: '.\UserLibs\OpenVoiceSharp.dll'
+[14:03:08.248] SHA256 Hash: '4D3593A390765742CAE12C590D165A4B8C9F80B8008CD00D39944D6490C1434F'
+[14:03:08.249] Melon Assembly loaded: '.\UserLibs\OpusDotNet.dll'
+[14:03:08.249] SHA256 Hash: 'C84A9D5E0F9A1C9A8DDD5515C91F97CDCEB26BD1754BB5214DC91BD1E422057F'
+[14:03:08.250] Melon Assembly loaded: '.\UserLibs\RNNoise.NET.dll'
+[14:03:08.250] SHA256 Hash: 'FFE582224EA821C45E6F9025C56BEC800B905A7A08D90D0186F8A88CDB46C5AD'
+[14:03:08.251] Melon Assembly loaded: '.\UserLibs\WebRtcVadSharp.dll'
+[14:03:08.251] SHA256 Hash: '8FCB7C0752E1C67CB5AF67597DDAF8E77F94A3C3BABA0AB690772D30D94A35C7'
+[14:03:08.251] ------------------------------
+[14:03:08.251] 0 UserLibs loaded.
+
+[14:03:08.252] Loading Plugins...
+[14:03:08.263] ------------------------------
+[14:03:08.264] Melon Assembly loaded: '.\Plugins\AudioCore.dll'
+[14:03:08.264] SHA256 Hash: '36B2F3D44D8FB6CA5D4BAAD7FDCDF8EC73A488B1DE017CE3A1A26D1302D6E426'
+
+[14:03:08.295] ------------------------------
+[14:03:08.295] AudioCore v3.1.5
+[14:03:08.295] by Digitalzombie
+[14:03:08.296] Assembly: AudioCore.dll
+[14:03:08.296] ------------------------------
+[14:03:08.296] ------------------------------
+[14:03:08.296] 1 Plugin loaded.
+
+[14:03:08.301] [AudioCore] Attempting to enable Unity audio...
+[14:03:08.368] [AudioCore] Unity audio successfully enabled!
+[14:03:08.904] Loading Il2CppAssemblyGenerator...
+[14:03:08.936] [Il2CppAssemblyGenerator] Contacting RemoteAPI...
+[14:03:09.349] [Il2CppAssemblyGenerator] RemoteAPI.DumperVersion = null
+[14:03:09.349] [Il2CppAssemblyGenerator] RemoteAPI.ObfuscationRegex = null
+[14:03:09.349] [Il2CppAssemblyGenerator] RemoteAPI.MappingURL = null
+[14:03:09.349] [Il2CppAssemblyGenerator] RemoteAPI.MappingFileSHA512 = null
+[14:03:09.354] [Il2CppAssemblyGenerator] Using Cpp2IL Version: 2022.1.0-pre-release.21
+[14:03:09.354] [Il2CppAssemblyGenerator] Using Il2CppInterop Version = 1.5.1-ci.845+f03c8f4ae507d47ea814f3d11d1ec6b0391c1576
+[14:03:09.354] [Il2CppAssemblyGenerator] Using Unity Dependencies Version = 6000.0.60
+[14:03:09.354] [Il2CppAssemblyGenerator] Using Deobfuscation Regex = null
+[14:03:09.355] [Il2CppAssemblyGenerator] Downloading Cpp2IL...
+[14:03:09.355] [Il2CppAssemblyGenerator] Downloading https://github.com/SamboyCoding/Cpp2IL/releases/download/2022.1.0-pre-release.21/Cpp2IL-2022.1.0-pre-release.21-Windows.exe to C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\Cpp2IL.exe
+[14:03:10.925] [Il2CppAssemblyGenerator] Processing Cpp2IL...
+[14:03:10.929] [Il2CppAssemblyGenerator] Downloading Cpp2IL.Plugin.StrippedCodeRegSupport...
+[14:03:10.929] [Il2CppAssemblyGenerator] Downloading https://github.com/SamboyCoding/Cpp2IL/releases/download/2022.1.0-pre-release.21/Cpp2IL.Plugin.StrippedCodeRegSupport.dll to C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\Plugins\Cpp2IL.Plugin.StrippedCodeRegSupport.dll
+[14:03:11.381] [Il2CppAssemblyGenerator] Processing Cpp2IL.Plugin.StrippedCodeRegSupport...
+[14:03:11.381] [Il2CppAssemblyGenerator] Downloading UnityDependencies...
+[14:03:11.381] [Il2CppAssemblyGenerator] Downloading https://github.com/LavaGang/MelonLoader.UnityDependencies/releases/download/6000.0.60/Managed.zip to C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\UnityDependencies_6000.0.60.zip
+[14:03:11.848] [Il2CppAssemblyGenerator] Processing UnityDependencies...
+[14:03:11.848] [Il2CppAssemblyGenerator] Creating Directory C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\UnityDependencies
+[14:03:11.849] [Il2CppAssemblyGenerator] Extracting C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\UnityDependencies_6000.0.60.zip to C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\UnityDependencies
+[14:03:12.072] [Il2CppAssemblyGenerator] Checking GameAssembly...
+[14:03:12.353] [Il2CppAssemblyGenerator] Assembly Generation Needed!
+[14:03:12.359] [Il2CppAssemblyGenerator] Executing Cpp2IL...
+[14:03:12.361] [Il2CppAssemblyGenerator] "C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\Cpp2IL.exe" --game-path "C:\games\The Long Dark" --exe-name "tld" --output-as dummydll --use-processor attributeanalyzer attributeinjector
+[14:03:12.913] [Il2CppAssemblyGenerator] ===Cpp2IL by Samboy063===
+[14:03:12.913] [Il2CppAssemblyGenerator] A Tool to Reverse Unity's "il2cpp" Build Process.
+[14:03:12.914] [Il2CppAssemblyGenerator] Version 2022.1.0-pre-release.21+58fc404ac503f4e512055cafc48c03088fc6e224
+[14:03:12.914] [Il2CppAssemblyGenerator] 
+[14:03:12.923] [Il2CppAssemblyGenerator] [Warn] [Program] NO_COLOR set, disabling ANSI color codes as you requested.
+[14:03:12.928] [Il2CppAssemblyGenerator] [Info] [Program] Running on Win32NT
+[14:03:13.020] [Il2CppAssemblyGenerator] [Info] [Plugins] Loading plugins from C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\Plugins...
+[14:03:13.106] [Il2CppAssemblyGenerator] [Info] [Plugins] Using Plugin: Cpp2IL Built-In
+[14:03:13.107] [Il2CppAssemblyGenerator] [Info] [Plugins] Using Plugin: Stripped CodeReg Support
+[14:03:13.185] [Il2CppAssemblyGenerator] [Info] [Program] Determined game's unity version to be 6000.0.60f1
+[14:03:13.323] [Il2CppAssemblyGenerator] [Info] [Library] Initializing Metadata...
+[14:03:13.326] [Il2CppAssemblyGenerator] [Info] [Library] 	Using actual IL2CPP Metadata version 31,1
+[14:03:13.875] [Il2CppAssemblyGenerator] [Info] [Library] Initialized Metadata in 549ms
+[14:03:13.876] [Il2CppAssemblyGenerator] [Info] [Library] Using binary type Portable Executable (from LibCpp2IL)
+[14:03:13.876] [Il2CppAssemblyGenerator] [Info] [Library] Searching Binary for Required Data...
+[14:03:14.346] [Il2CppAssemblyGenerator] [Info] [Library] Got Binary codereg: 0x184369410, metareg: 0x184AB5EA0 in 470ms.
+[14:03:14.346] [Il2CppAssemblyGenerator] [Info] [Library] Initializing Binary...
+[14:03:14.535] [Il2CppAssemblyGenerator] [Info] [Library] Initialized Binary in 189ms
+[14:03:14.817] [Il2CppAssemblyGenerator] [Info] [Library] Mapping pointers to Il2CppMethodDefinitions...Processed 145189 OK (282ms)
+[14:03:14.831] [Il2CppAssemblyGenerator] [Info] [Program] Creating application model...
+[14:03:16.720] [Il2CppAssemblyGenerator] [Info] [Program] Application model created in 1888,5189ms
+[14:03:16.720] [Il2CppAssemblyGenerator] [Info] [Program] Pre-processing processing layers...
+[14:03:16.722] [Il2CppAssemblyGenerator] [Info] [Program]     CustomAttribute Analyzer...
+[14:03:16.722] [Il2CppAssemblyGenerator] [Info] [Program]     CustomAttribute Analyzer finished in 0,0698ms
+[14:03:16.722] [Il2CppAssemblyGenerator] [Info] [Program]     Attribute Injector...
+[14:03:16.722] [Il2CppAssemblyGenerator] [Info] [Program]     Attribute Injector finished in 0,0044ms
+[14:03:16.722] [Il2CppAssemblyGenerator] [Info] [Program] Invoking processing layers...
+[14:03:16.722] [Il2CppAssemblyGenerator] [Info] [Program]     CustomAttribute Analyzer...
+[14:03:16.822] [Il2CppAssemblyGenerator] [Info] [Program]     CustomAttribute Analyzer finished in 101,7278ms
+[14:03:16.822] [Il2CppAssemblyGenerator] [Info] [Program]     Attribute Injector...
+[14:03:17.319] [Il2CppAssemblyGenerator] [Info] [Program]     Attribute Injector finished in 496,5086ms
+[14:03:17.319] [Il2CppAssemblyGenerator] [Info] [Program] Outputting as DLL output format for backwards compatibility. to C:\games\The Long Dark\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\cpp2il_out...
+[14:03:23.660] [Il2CppAssemblyGenerator] [Info] [Program] Finished outputting in 6341,4453ms
+[14:03:24.007] [Il2CppAssemblyGenerator] [Info] [Program] Done. Total execution time: 10471,6026ms
+[14:03:24.009] [Il2CppAssemblyGenerator] Reading dumped assemblies for interop generation...
+[14:03:24.182] [Il2CppAssemblyGenerator] Generating Interop Assemblies...
+[14:03:24.192] [Il2CppAssemblyGenerator] Reading assemblies...
+[14:03:24.223] [Il2CppAssemblyGenerator] Done in 00:00:00.0311248
+[14:03:24.223] [Il2CppAssemblyGenerator] Reading unity assemblies...
+[14:03:24.288] [Il2CppAssemblyGenerator] Done in 00:00:00.0645286
+[14:03:24.288] [Il2CppAssemblyGenerator] Creating rewrite assemblies...
+[14:03:24.303] [Il2CppAssemblyGenerator] Done in 00:00:00.0144131
+[14:03:24.303] [Il2CppAssemblyGenerator] Computing renames...
+[14:03:24.379] [Il2CppAssemblyGenerator] Done in 00:00:00.0765737
+[14:03:24.379] [Il2CppAssemblyGenerator] Creating typedefs...
+[14:03:24.467] [Il2CppAssemblyGenerator] Done in 00:00:00.0873470
+[14:03:24.467] [Il2CppAssemblyGenerator] Computing struct blittability...
+[14:03:24.542] [Il2CppAssemblyGenerator] Done in 00:00:00.0752997
+[14:03:24.542] [Il2CppAssemblyGenerator] Filling typedefs...
+[14:03:24.730] [Il2CppAssemblyGenerator] Done in 00:00:00.1874456
+[14:03:24.730] [Il2CppAssemblyGenerator] Filling generic constraints...
+[14:03:24.740] [Il2CppAssemblyGenerator] Done in 00:00:00.0101704
+[14:03:24.740] [Il2CppAssemblyGenerator] Creating members...
+[14:03:27.243] [Il2CppAssemblyGenerator] Done in 00:00:02.5032567
+[14:03:27.244] [Il2CppAssemblyGenerator] Scanning method cross-references...
+[14:03:28.570] [Il2CppAssemblyGenerator] Done in 00:00:01.3268058
+[14:03:28.570] [Il2CppAssemblyGenerator] Finalizing method declarations...
+[14:03:32.811] [Il2CppAssemblyGenerator] Done in 00:00:04.2405991
+[14:03:32.811] [Il2CppAssemblyGenerator] 250 total potentially dead methods
+[14:03:32.811] [Il2CppAssemblyGenerator] Filling method parameters...
+[14:03:34.304] [Il2CppAssemblyGenerator] Done in 00:00:01.4932964
+[14:03:34.304] [Il2CppAssemblyGenerator] Creating static constructors...
+[14:03:35.219] [Il2CppAssemblyGenerator] Done in 00:00:00.9148959
+[14:03:35.219] [Il2CppAssemblyGenerator] Creating value type fields...
+[14:03:35.262] [Il2CppAssemblyGenerator] Done in 00:00:00.0424715
+[14:03:35.262] [Il2CppAssemblyGenerator] Creating enums...
+[14:03:35.426] [Il2CppAssemblyGenerator] Done in 00:00:00.1637331
+[14:03:35.426] [Il2CppAssemblyGenerator] Creating IntPtr constructors...
+[14:03:35.515] [Il2CppAssemblyGenerator] Done in 00:00:00.0882896
+[14:03:35.515] [Il2CppAssemblyGenerator] Creating non-blittable struct constructors...
+[14:03:35.521] [Il2CppAssemblyGenerator] Done in 00:00:00.0049804
+[14:03:35.521] [Il2CppAssemblyGenerator] Creating generic method static constructors...
+[14:03:35.627] [Il2CppAssemblyGenerator] Done in 00:00:00.1067209
+[14:03:35.628] [Il2CppAssemblyGenerator] Creating field accessors...
+[14:03:38.220] [Il2CppAssemblyGenerator] Done in 00:00:02.5923149
+[14:03:38.220] [Il2CppAssemblyGenerator] Filling methods...
+[14:03:39.888] [Il2CppAssemblyGenerator] Done in 00:00:01.6678456
+[14:03:39.888] [Il2CppAssemblyGenerator] Generating implicit conversions...
+[14:03:39.956] [Il2CppAssemblyGenerator] Done in 00:00:00.0675874
+[14:03:39.957] [Il2CppAssemblyGenerator] Implementing awaiters...
+[14:03:39.967] [Il2CppAssemblyGenerator] Done in 00:00:00.0101184
+[14:03:39.967] [Il2CppAssemblyGenerator] Creating properties...
+[14:03:40.295] [Il2CppAssemblyGenerator] Done in 00:00:00.3278630
+[14:03:40.295] [Il2CppAssemblyGenerator] Unstripping types...
+[14:03:40.346] [Il2CppAssemblyGenerator] Done in 00:00:00.0506864
+[14:03:40.346] [Il2CppAssemblyGenerator] Unstripping fields...
+[14:03:40.355] [Il2CppAssemblyGenerator] Restored 510 fields
+[14:03:40.355] [Il2CppAssemblyGenerator] Failed to restore 12 fields
+[14:03:40.355] [Il2CppAssemblyGenerator] Done in 00:00:00.0085974
+[14:03:40.355] [Il2CppAssemblyGenerator] Unstripping methods...
+[14:03:40.892] [Il2CppAssemblyGenerator] Restored 14028 methods
+[14:03:40.893] [Il2CppAssemblyGenerator] Failed to restore 923 methods
+[14:03:40.896] [Il2CppAssemblyGenerator] Done in 00:00:00.5409045
+[14:03:40.896] [Il2CppAssemblyGenerator] Unstripping method bodies...
+[14:03:41.248] [Il2CppAssemblyGenerator] IL unstrip statistics: 8772 successful, 1296 failed
+[14:03:41.248] [Il2CppAssemblyGenerator] Done in 00:00:00.3512469
+[14:03:41.257] [Il2CppAssemblyGenerator] Writing xref cache...
+[14:03:42.008] [Il2CppAssemblyGenerator] Done in 00:00:00.7504481
+[14:03:42.008] [Il2CppAssemblyGenerator] Writing assemblies...
+[14:03:48.267] [Il2CppAssemblyGenerator] Done in 00:00:06.2581399
+[14:03:48.267] [Il2CppAssemblyGenerator] Writing method pointer map...
+[14:03:48.320] [Il2CppAssemblyGenerator] Done in 00:00:00.0429807
+[14:03:48.320] [Il2CppAssemblyGenerator] Clearing static data...
+[14:03:48.322] [Il2CppAssemblyGenerator] Done in 00:00:00.0000080
+[14:03:48.322] [Il2CppAssemblyGenerator] Done!
+[14:03:48.323] [Il2CppAssemblyGenerator] Cleaning up...
+[14:03:48.323] [Il2CppAssemblyGenerator] Interop Generation Complete!
+[14:03:48.324] [Il2CppAssemblyGenerator] Moving Assembly-CSharp-firstpass.dll
+[14:03:48.325] [Il2CppAssemblyGenerator] Moving Assembly-CSharp.dll
+[14:03:48.326] [Il2CppAssemblyGenerator] Moving Il2CppAk.Wwise.Api.WAAPI.dll
+[14:03:48.327] [Il2CppAssemblyGenerator] Moving Il2CppAK.Wwise.Unity.API.dll
+[14:03:48.327] [Il2CppAssemblyGenerator] Moving Il2CppAK.Wwise.Unity.API.WwiseTypes.dll
+[14:03:48.327] [Il2CppAssemblyGenerator] Moving Il2CppAK.Wwise.Unity.Logging.dll
+[14:03:48.328] [Il2CppAssemblyGenerator] Moving Il2CppAK.Wwise.Unity.MonoBehaviour.dll
+[14:03:48.328] [Il2CppAssemblyGenerator] Moving Il2CppAK.Wwise.Unity.Timeline.dll
+[14:03:48.329] [Il2CppAssemblyGenerator] Moving Il2CppAmazingAssets.TerrainToMesh.dll
+[14:03:48.329] [Il2CppAssemblyGenerator] Moving Il2CppAmplifyBloom.Runtime.dll
+[14:03:48.329] [Il2CppAssemblyGenerator] Moving Il2CppCameraPath3.Runtime.dll
+[14:03:48.330] [Il2CppAssemblyGenerator] Moving Il2Cppcom.rlabrecque.steamworks.net.dll
+[14:03:48.330] [Il2CppAssemblyGenerator] Moving Il2CppDelaunayER.dll
+[14:03:48.331] [Il2CppAssemblyGenerator] Moving Il2CppEasyRoads3Dv3.dll
+[14:03:48.331] [Il2CppAssemblyGenerator] Moving Il2CppFluffyUnderware.DevTools.dll
+[14:03:48.332] [Il2CppAssemblyGenerator] Moving Il2CppGalaxyCSharp.dll
+[14:03:48.333] [Il2CppAssemblyGenerator] Moving Il2CppHint.MeshToSDFBaker.Runtime.dll
+[14:03:48.333] [Il2CppAssemblyGenerator] Moving Il2CppHOTween.dll
+[14:03:48.333] [Il2CppAssemblyGenerator] Moving Il2CppInfinityCode.MeshToTerrain.Runtime.dll
+[14:03:48.334] [Il2CppAssemblyGenerator] Moving Il2CppLibTessDotNet.dll
+[14:03:48.334] [Il2CppAssemblyGenerator] Moving Il2CppMegaWire.Runtime.dll
+[14:03:48.335] [Il2CppAssemblyGenerator] Moving Il2CppMeshBaker.Runtime.dll
+[14:03:48.335] [Il2CppAssemblyGenerator] Moving Il2CppMono.Security.dll
+[14:03:48.335] [Il2CppAssemblyGenerator] Moving Il2Cppmscorlib.dll
+[14:03:48.336] [Il2CppAssemblyGenerator] Moving Il2CppNewtonsoft.Json.dll
+[14:03:48.336] [Il2CppAssemblyGenerator] Moving Il2CppProCore.QuickBrush.Runtime.dll
+[14:03:48.337] [Il2CppAssemblyGenerator] Moving Il2CppRewindTools.Shared.Runtime.dll
+[14:03:48.337] [Il2CppAssemblyGenerator] Moving Il2CppRewired_Core.dll
+[14:03:48.337] [Il2CppAssemblyGenerator] Moving Il2CppRewired_Windows.dll
+[14:03:48.338] [Il2CppAssemblyGenerator] Moving Il2CppRewired_Windows_Functions.dll
+[14:03:48.338] [Il2CppAssemblyGenerator] Moving Il2CppSimpleLightProbePlacer.Runtime.dll
+[14:03:48.339] [Il2CppAssemblyGenerator] Moving Il2CppSimpleWaypointSystem.Runtime.dll
+[14:03:48.339] [Il2CppAssemblyGenerator] Moving Il2CppSuperSplines.Core.dll
+[14:03:48.339] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Configuration.dll
+[14:03:48.340] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Core.dll
+[14:03:48.340] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Data.dll
+[14:03:48.341] [Il2CppAssemblyGenerator] Moving Il2CppSystem.dll
+[14:03:48.341] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Drawing.dll
+[14:03:48.342] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Numerics.dll
+[14:03:48.342] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Runtime.Serialization.dll
+[14:03:48.344] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Xml.dll
+[14:03:48.349] [Il2CppAssemblyGenerator] Moving Il2CppSystem.Xml.Linq.dll
+[14:03:48.350] [Il2CppAssemblyGenerator] Moving Il2CppTaskThreads.dll
+[14:03:48.350] [Il2CppAssemblyGenerator] Moving Il2CppTerrainFormer.Runtime.dll
+[14:03:48.351] [Il2CppAssemblyGenerator] Moving Il2CppTerrainMountainRoadMaker.Runtime.dll
+[14:03:48.351] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Addressables.dll
+[14:03:48.352] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Encryption.dll
+[14:03:48.352] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Game.Events.Runtime.dll
+[14:03:48.353] [Il2CppAssemblyGenerator] Moving Il2CppTLD.GameplayTag.dll
+[14:03:48.353] [Il2CppAssemblyGenerator] Moving Il2CppTLD.IntBackedUnit.dll
+[14:03:48.353] [Il2CppAssemblyGenerator] Moving Il2CppTLD.IO.dll
+[14:03:48.354] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Logging.dll
+[14:03:48.354] [Il2CppAssemblyGenerator] Moving Il2CppTLD.OptionalContent.dll
+[14:03:48.355] [Il2CppAssemblyGenerator] Moving Il2CppTLD.PDID.dll
+[14:03:48.355] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Platform.dll
+[14:03:48.356] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Profiling.dll
+[14:03:48.357] [Il2CppAssemblyGenerator] Moving Il2CppTLD.RuntimeTest.dll
+[14:03:48.357] [Il2CppAssemblyGenerator] Moving Il2CppTLD.SaveState.dll
+[14:03:48.358] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Serialization.dll
+[14:03:48.358] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Stats.dll
+[14:03:48.358] [Il2CppAssemblyGenerator] Moving Il2CppTLD.TimeLib.dll
+[14:03:48.363] [Il2CppAssemblyGenerator] Moving Il2CppTLD.Trial.dll
+[14:03:48.363] [Il2CppAssemblyGenerator] Moving Il2CppTLD.UserGeneratedContent.dll
+[14:03:48.363] [Il2CppAssemblyGenerator] Moving Il2CppToolBuddy.ArraysPooling.dll
+[14:03:48.364] [Il2CppAssemblyGenerator] Moving Il2CppToolBuddy.Curvy.dll
+[14:03:48.364] [Il2CppAssemblyGenerator] Moving Il2CppToolBuddy.Curvy.Examples.dll
+[14:03:48.365] [Il2CppAssemblyGenerator] Moving Il2CppToolBuddy.Dependencies.VectorGraphics.dll
+[14:03:48.365] [Il2CppAssemblyGenerator] Moving Il2CppTotalBaker.Runtime.dll
+[14:03:48.366] [Il2CppAssemblyGenerator] Moving Il2CppUniStorm.Runtime.dll
+[14:03:48.366] [Il2CppAssemblyGenerator] Moving Il2Cppuniumlib.dll
+[14:03:48.367] [Il2CppAssemblyGenerator] Moving Il2CppVolumetricObjects.Runtime.dll
+[14:03:48.367] [Il2CppAssemblyGenerator] Moving Il2Cpp__Generated.dll
+[14:03:48.368] [Il2CppAssemblyGenerator] Moving MethodAddressToToken.db
+[14:03:48.368] [Il2CppAssemblyGenerator] Moving MethodXrefScanCache.db
+[14:03:48.369] [Il2CppAssemblyGenerator] Moving Unity.Addressables.dll
+[14:03:48.369] [Il2CppAssemblyGenerator] Moving Unity.AI.Navigation.dll
+[14:03:48.369] [Il2CppAssemblyGenerator] Moving Unity.Analytics.DataPrivacy.dll
+[14:03:48.370] [Il2CppAssemblyGenerator] Moving Unity.Burst.dll
+[14:03:48.370] [Il2CppAssemblyGenerator] Moving Unity.Burst.Unsafe.dll
+[14:03:48.370] [Il2CppAssemblyGenerator] Moving Unity.Collections.dll
+[14:03:48.371] [Il2CppAssemblyGenerator] Moving Unity.Mathematics.dll
+[14:03:48.371] [Il2CppAssemblyGenerator] Moving Unity.MemoryProfiler.dll
+[14:03:48.372] [Il2CppAssemblyGenerator] Moving Unity.Microsoft.GDK.dll
+[14:03:48.372] [Il2CppAssemblyGenerator] Moving Unity.RenderPipelines.Core.Runtime.dll
+[14:03:48.372] [Il2CppAssemblyGenerator] Moving Unity.ResourceManager.dll
+[14:03:48.373] [Il2CppAssemblyGenerator] Moving Unity.ScriptableBuildPipeline.dll
+[14:03:48.373] [Il2CppAssemblyGenerator] Moving Unity.Services.Analytics.dll
+[14:03:48.374] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Configuration.dll
+[14:03:48.374] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Device.dll
+[14:03:48.378] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.dll
+[14:03:48.379] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Environments.Internal.dll
+[14:03:48.379] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Internal.dll
+[14:03:48.380] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Registration.dll
+[14:03:48.380] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Scheduler.dll
+[14:03:48.381] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Telemetry.dll
+[14:03:48.382] [Il2CppAssemblyGenerator] Moving Unity.Services.Core.Threading.dll
+[14:03:48.382] [Il2CppAssemblyGenerator] Moving Unity.TextMeshPro.dll
+[14:03:48.383] [Il2CppAssemblyGenerator] Moving Unity.Timeline.dll
+[14:03:48.383] [Il2CppAssemblyGenerator] Moving UnityEngine.AccessibilityModule.dll
+[14:03:48.383] [Il2CppAssemblyGenerator] Moving UnityEngine.AIModule.dll
+[14:03:48.384] [Il2CppAssemblyGenerator] Moving UnityEngine.AndroidJNIModule.dll
+[14:03:48.384] [Il2CppAssemblyGenerator] Moving UnityEngine.AnimationModule.dll
+[14:03:48.385] [Il2CppAssemblyGenerator] Moving UnityEngine.ARModule.dll
+[14:03:48.385] [Il2CppAssemblyGenerator] Moving UnityEngine.AssetBundleModule.dll
+[14:03:48.385] [Il2CppAssemblyGenerator] Moving UnityEngine.AudioModule.dll
+[14:03:48.386] [Il2CppAssemblyGenerator] Moving UnityEngine.ClothModule.dll
+[14:03:48.386] [Il2CppAssemblyGenerator] Moving UnityEngine.ContentLoadModule.dll
+[14:03:48.387] [Il2CppAssemblyGenerator] Moving UnityEngine.CoreModule.dll
+[14:03:48.387] [Il2CppAssemblyGenerator] Moving UnityEngine.CrashReportingModule.dll
+[14:03:48.388] [Il2CppAssemblyGenerator] Moving UnityEngine.DirectorModule.dll
+[14:03:48.388] [Il2CppAssemblyGenerator] Moving UnityEngine.dll
+[14:03:48.388] [Il2CppAssemblyGenerator] Moving UnityEngine.DSPGraphModule.dll
+[14:03:48.389] [Il2CppAssemblyGenerator] Moving UnityEngine.GameCenterModule.dll
+[14:03:48.389] [Il2CppAssemblyGenerator] Moving UnityEngine.GIModule.dll
+[14:03:48.390] [Il2CppAssemblyGenerator] Moving UnityEngine.GraphicsStateCollectionSerializerModule.dll
+[14:03:48.394] [Il2CppAssemblyGenerator] Moving UnityEngine.GridModule.dll
+[14:03:48.395] [Il2CppAssemblyGenerator] Moving UnityEngine.HierarchyCoreModule.dll
+[14:03:48.395] [Il2CppAssemblyGenerator] Moving UnityEngine.HotReloadModule.dll
+[14:03:48.396] [Il2CppAssemblyGenerator] Moving UnityEngine.ImageConversionModule.dll
+[14:03:48.396] [Il2CppAssemblyGenerator] Moving UnityEngine.IMGUIModule.dll
+[14:03:48.397] [Il2CppAssemblyGenerator] Moving UnityEngine.InputForUIModule.dll
+[14:03:48.397] [Il2CppAssemblyGenerator] Moving UnityEngine.InputLegacyModule.dll
+[14:03:48.397] [Il2CppAssemblyGenerator] Moving UnityEngine.InputModule.dll
+[14:03:48.398] [Il2CppAssemblyGenerator] Moving UnityEngine.JSONSerializeModule.dll
+[14:03:48.398] [Il2CppAssemblyGenerator] Moving UnityEngine.LocalizationModule.dll
+[14:03:48.399] [Il2CppAssemblyGenerator] Moving UnityEngine.MarshallingModule.dll
+[14:03:48.399] [Il2CppAssemblyGenerator] Moving UnityEngine.MultiplayerModule.dll
+[14:03:48.400] [Il2CppAssemblyGenerator] Moving UnityEngine.ParticleSystemModule.dll
+[14:03:48.400] [Il2CppAssemblyGenerator] Moving UnityEngine.PerformanceReportingModule.dll
+[14:03:48.400] [Il2CppAssemblyGenerator] Moving UnityEngine.Physics2DModule.dll
+[14:03:48.401] [Il2CppAssemblyGenerator] Moving UnityEngine.PhysicsModule.dll
+[14:03:48.401] [Il2CppAssemblyGenerator] Moving UnityEngine.PropertiesModule.dll
+[14:03:48.402] [Il2CppAssemblyGenerator] Moving UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll
+[14:03:48.402] [Il2CppAssemblyGenerator] Moving UnityEngine.ScreenCaptureModule.dll
+[14:03:48.402] [Il2CppAssemblyGenerator] Moving UnityEngine.ShaderVariantAnalyticsModule.dll
+[14:03:48.403] [Il2CppAssemblyGenerator] Moving UnityEngine.SharedInternalsModule.dll
+[14:03:48.403] [Il2CppAssemblyGenerator] Moving UnityEngine.SpriteMaskModule.dll
+[14:03:48.404] [Il2CppAssemblyGenerator] Moving UnityEngine.SpriteShapeModule.dll
+[14:03:48.404] [Il2CppAssemblyGenerator] Moving UnityEngine.StreamingModule.dll
+[14:03:48.405] [Il2CppAssemblyGenerator] Moving UnityEngine.SubstanceModule.dll
+[14:03:48.409] [Il2CppAssemblyGenerator] Moving UnityEngine.SubsystemsModule.dll
+[14:03:48.410] [Il2CppAssemblyGenerator] Moving UnityEngine.TerrainModule.dll
+[14:03:48.410] [Il2CppAssemblyGenerator] Moving UnityEngine.TerrainPhysicsModule.dll
+[14:03:48.411] [Il2CppAssemblyGenerator] Moving UnityEngine.TextCoreFontEngineModule.dll
+[14:03:48.411] [Il2CppAssemblyGenerator] Moving UnityEngine.TextCoreTextEngineModule.dll
+[14:03:48.412] [Il2CppAssemblyGenerator] Moving UnityEngine.TextRenderingModule.dll
+[14:03:48.412] [Il2CppAssemblyGenerator] Moving UnityEngine.TilemapModule.dll
+[14:03:48.413] [Il2CppAssemblyGenerator] Moving UnityEngine.TLSModule.dll
+[14:03:48.413] [Il2CppAssemblyGenerator] Moving UnityEngine.UI.dll
+[14:03:48.414] [Il2CppAssemblyGenerator] Moving UnityEngine.UIElementsModule.dll
+[14:03:48.414] [Il2CppAssemblyGenerator] Moving UnityEngine.UIModule.dll
+[14:03:48.414] [Il2CppAssemblyGenerator] Moving UnityEngine.UmbraModule.dll
+[14:03:48.415] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityAnalyticsCommonModule.dll
+[14:03:48.415] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityAnalyticsModule.dll
+[14:03:48.416] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityConnectModule.dll
+[14:03:48.416] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityCurlModule.dll
+[14:03:48.416] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityTestProtocolModule.dll
+[14:03:48.417] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityWebRequestAssetBundleModule.dll
+[14:03:48.417] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityWebRequestAudioModule.dll
+[14:03:48.418] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityWebRequestModule.dll
+[14:03:48.418] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityWebRequestTextureModule.dll
+[14:03:48.418] [Il2CppAssemblyGenerator] Moving UnityEngine.UnityWebRequestWWWModule.dll
+[14:03:48.419] [Il2CppAssemblyGenerator] Moving UnityEngine.VehiclesModule.dll
+[14:03:48.419] [Il2CppAssemblyGenerator] Moving UnityEngine.VFXModule.dll
+[14:03:48.420] [Il2CppAssemblyGenerator] Moving UnityEngine.VideoModule.dll
+[14:03:48.420] [Il2CppAssemblyGenerator] Moving UnityEngine.VRModule.dll
+[14:03:48.421] [Il2CppAssemblyGenerator] Moving UnityEngine.WindModule.dll
+[14:03:48.427] [Il2CppAssemblyGenerator] Moving UnityEngine.XRModule.dll
+[14:03:48.431] [Il2CppAssemblyGenerator] Assembly Generation Successful!
+
+[14:03:48.440] Loading Mods...
+[14:03:48.449] ------------------------------
+[14:03:48.451] Melon Assembly loaded: '.\Mods\ModComponent.dll'
+[14:03:48.451] SHA256 Hash: '72182038DD95EA231D562C5DDBCA67F4E608BA5B4DF4119B0844F41C9136AD3D'
+[14:03:48.459] Melon Assembly loaded: '.\Mods\ModSettings.dll'
+[14:03:48.459] SHA256 Hash: '2A688A034D26E4CAC469DD276E8BB966CBB80E806AF4B50EEA189E02A7E806F8'
+[14:03:48.462] Melon Assembly loaded: '.\Mods\SkyCoopClient.dll'
+[14:03:48.463] SHA256 Hash: '0FC4E856457A547AF0116049C7C095B7F874B3058172CEABB1E9A87A97B573C6'
+
+[14:03:49.324] ------------------------------
+[14:03:49.324] ModSettings v2.2.2
+[14:03:49.326] by Digitalzombie, zeobviouslyfakeacc
+[14:03:49.326] Assembly: ModSettings.dll
+[14:03:49.326] ------------------------------
+[14:03:49.330] ------------------------------
+[14:03:49.330] ModComponent v7.0.0
+[14:03:49.330] by STBlade
+[14:03:49.330] Assembly: ModComponent.dll
+[14:03:49.330] ------------------------------
+[14:03:49.334] ------------------------------
+[14:03:49.334] Sky Co-op REBORN v1.0.0
+[14:03:49.334] by Filigrani & REDcat
+[14:03:49.334] Assembly: SkyCoopClient.dll
+[14:03:49.334] ------------------------------
+[14:03:49.334] ------------------------------
+[14:03:49.335] 3 Mods loaded.
+
+[14:03:50.629] [WARNING] [Il2CppInterop] Class::Init signatures have been exhausted, using a substitute!
+[14:03:50.662] [Il2CppInterop] Registered mono type MelonLoader.Support.MonoEnumeratorWrapper in il2cpp domain
+[14:03:50.833] Support Module Loaded: C:\games\The Long Dark\MelonLoader\Dependencies\SupportModules\Il2Cpp.dll
+[14:03:50.899] [Il2CppInterop] Registered mono type ModSettings.ModSettingsGUI in il2cpp domain
+[14:03:57.270] [ModComponent] Release Compilation
+[14:03:57.292] [ModComponent] Reading zip file: 'SkyCoop.modcomponent'
+[14:03:57.382] [ModComponent] Found: SkyCoop  by Filigrani
+[14:03:57.595] [WARNING] [Il2CppInterop] Method Void SetClothing(ClothingData) on type SkyCoop.Comps+NetworkPlayer has unsupported parameter ClothingData Data of type SkyCoopServer.DataStr+ClothingData
+[14:03:57.609] [Il2CppInterop] Registered mono type SkyCoop.Comps+NetworkPlayer in il2cpp domain
+[14:03:57.610] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerGear in il2cpp domain
+[14:03:57.611] [Il2CppInterop] Registered mono type SkyCoop.Comps+PlayerDamageColider in il2cpp domain
+[14:03:57.613] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerBullet in il2cpp domain
+[14:03:57.615] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearThrownVisual in il2cpp domain
+[14:03:57.616] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerThrowHook in il2cpp domain
+[14:03:57.616] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerKillFeedHandle in il2cpp domain
+[14:03:57.617] [Il2CppInterop] Registered mono type SkyCoop.Comps+MeleeBulletHandler in il2cpp domain
+[14:03:57.618] [Il2CppInterop] Registered mono type SkyCoop.Comps+ArrowHook in il2cpp domain
+[14:03:57.619] [Il2CppInterop] Registered mono type SkyCoop.Comps+DroppedGearVisual in il2cpp domain
+[14:03:57.620] [Il2CppInterop] Registered mono type SkyCoop.Comps+BulletWallBangHook in il2cpp domain
+[14:03:57.621] [Il2CppInterop] Registered mono type SkyCoop.Comps+CameraAttention in il2cpp domain
+[14:03:57.622] [Il2CppInterop] Registered mono type SkyCoop.Comps+DeathPackComp in il2cpp domain
+[14:03:57.632] [Il2CppInterop] Registered mono type SkyCoop.Comps+ContainerDescriptorHook in il2cpp domain
+[14:03:57.633] [Il2CppInterop] Registered mono type SkyCoop.Comps+DangerCircleZone in il2cpp domain
+[14:03:57.634] [Il2CppInterop] Registered mono type SkyCoop.Comps+ForcedFire in il2cpp domain
+[14:03:57.636] [Il2CppInterop] Registered mono type SkyCoop.Comps+CardGameProp in il2cpp domain
+[14:03:57.636] [WARNING] [Il2CppInterop] Method System.Collections.Generic.List`1[System.Int32] GetBets() on type SkyCoop.Comps+TexasHoldEmProp has unsupported return type System.Collections.Generic.List`1[System.Int32]
+[14:03:57.637] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmProp in il2cpp domain
+[14:03:57.639] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlayer in il2cpp domain
+[14:03:57.640] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmJoin in il2cpp domain
+[14:03:57.641] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlay in il2cpp domain
+[14:03:57.642] [Il2CppInterop] Registered mono type SkyCoop.Comps+TalkingFish in il2cpp domain
+[14:03:57.643] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropsEditorVisuzlier in il2cpp domain
+[14:03:57.646] [Il2CppInterop] Registered mono type SkyCoop.Comps+GenericStatusBarSpawnerHook in il2cpp domain
+[14:03:57.647] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateBar in il2cpp domain
+[14:03:57.648] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateMapIcon in il2cpp domain
+[14:03:57.649] [Il2CppInterop] Registered mono type SkyCoop.Comps+ZoneMapIcon in il2cpp domain
+[14:03:57.650] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropMovemenetPredict in il2cpp domain
+[14:03:57.651] [Il2CppInterop] Registered mono type SkyCoop.Comps+ChatMessage in il2cpp domain
+[14:03:57.652] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingTarget in il2cpp domain
+[14:03:57.653] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingDummy in il2cpp domain
+[14:03:57.656] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingVisual in il2cpp domain
+[14:03:57.657] [Il2CppInterop] Registered mono type SkyCoop.Comps+CookingSlotVisual in il2cpp domain
+[14:03:57.657] [WARNING] [Il2CppInterop] Method Void SetAnimationData(AnimatorData) on type SkyCoop.Comps+BaseAiHook has unsupported parameter AnimatorData AnimatorData of type SkyCoopServer.DataStr+AnimatorData
+[14:03:57.658] [Il2CppInterop] Registered mono type SkyCoop.Comps+BaseAiHook in il2cpp domain
+[14:03:58.210] [Sky Co-op REBORN] Main Asset Bundle is loaded.
+[14:03:58.222] [Il2CppInterop] Registered mono type Il2CppInterop.Runtime.DelegateSupport+Il2CppToMonoDelegateReference in il2cpp domain
+[14:03:58.357] [Il2CppInterop] Registered mono type MelonLoader.Support.SM_Component in il2cpp domain
+[14:03:58.372] Registered mono icall UnityEngine.Transform::SetAsLastSibling in il2cpp domain
+[14:04:00.317] [Sky Co-op REBORN] uConsole has been reimplemented!
+[14:04:00.330] [SERVER] [FilesManager] Saves folder set to C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves
+[14:04:00.380] [Sky Co-op REBORN] Canvas UI created!
+[14:04:00.384] [Sky Co-op REBORN] KillFeedElement loaded!
+[14:04:00.385] [Sky Co-op REBORN] KillFeedElementKill loaded!
+[14:04:00.386] [Sky Co-op REBORN] KillFeedElementDead loaded!
+[14:04:00.386] [Sky Co-op REBORN] ChatMessagePrefab loaded!
+[14:05:21.064] [ModComponent] Panel_Crafting_Initialize
+[14:05:22.403] Building Mod Settings GUI
+[14:05:22.424] [Il2CppInterop] Registered mono type ModSettings.DescriptionHolder in il2cpp domain
+[14:05:22.443] [Il2CppInterop] Registered mono type ModSettings.CustomKeybinding in il2cpp domain
+[14:05:22.448] Building Custom Mode GUI
+[14:05:22.452] [Il2CppInterop] Registered mono type ModSettings.CustomModeGUIBuilder+HinterlandSettingVisibilityListener in il2cpp domain
+[14:05:22.477] Done! Took 74 ms. Have a nice day!
+[14:05:30.028] [ModComponent] Running Dependency Checks..
+[14:05:32.465] [ModComponent] Console Commands added. The waitlist is empty.
+[14:05:32.605] [ModComponent] Registering pending sound banks.
+[14:05:38.944] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[14:05:41.269] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer_Host
+[14:05:42.327] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride GameModes
+[14:05:42.332] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[14:05:42.339] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[14:05:42.920] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[14:05:43.024] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[14:05:43.025] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[14:05:43.026] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[14:05:46.157] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[14:05:46.158] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[14:05:46.711] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[14:05:46.777] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[14:05:46.778] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[14:05:46.779] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[14:05:46.839] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride Original
+[14:05:50.143] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/ServerData
+[14:05:50.143] [SERVER] [FilesManager] File C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/ServerData not exist
+[14:05:50.147] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[14:05:50.147] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[14:05:50.680] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[14:05:50.750] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[14:05:50.751] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[14:05:50.752] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[14:05:50.819] [SERVER] ChangeGameMode Sandbox
+[14:05:50.819] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[14:05:50.821] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[14:05:51.385] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[14:05:51.482] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[14:05:51.483] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[14:05:51.484] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[14:05:51.576] [SERVER] [Server] Starting server
+[14:05:51.579] [SERVER] [Server] Server is started port=37855
+[14:05:51.597] [Sky Co-op REBORN] Trying to connect to localhost:37855 with key: public1
+[14:05:51.597] [Sky Co-op REBORN] m_Instance.DisconnectTimeout 5000
+[14:05:51.605] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[14:05:51.614] [SERVER] Trying to load weather profile...
+[14:05:51.615] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/Weather/Default
+[14:05:51.622] [SERVER] Weather profile loaded!
+[14:05:51.631] [Sky Co-op REBORN] Pushing 77 to delay
+[14:05:51.632] [SERVER] [Server] We got connection: 127.0.0.1:56285 assigned them as 0
+[14:05:51.644] [Sky Co-op REBORN] Server welcomes me with my ID: 0
+[14:05:51.661] [SERVER] [ServerHandle] Сlient 0 connected under name: RUNE
+[14:05:51.677] [Sky Co-op REBORN] Server config
+[14:05:51.678] [Sky Co-op REBORN] ServerName: Dogma
+[14:05:51.678] [Sky Co-op REBORN] PlayersMax: 10
+[14:05:51.678] [Sky Co-op REBORN] Seed: -1017150283
+[14:05:51.678] [Sky Co-op REBORN] ExperienceMode: Pilgrim
+[14:05:51.678] [Sky Co-op REBORN] VoicePort: 0
+[14:05:51.678] [Sky Co-op REBORN] SceneToSpawn: 
+[14:05:51.678] [Sky Co-op REBORN] GameMode: Sandbox
+[14:05:51.679] [Sky Co-op REBORN] CheatsAllowed: True
+[14:05:52.527] [Sky Co-op REBORN] Processing delayed package 77
+[14:05:52.533] [Sky Co-op REBORN] Looking for save with seed -1017150283
+[14:05:52.535] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[14:05:52.543] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[14:05:52.543] [Sky Co-op REBORN] Player: RUNE with ID 0
+[14:05:52.612] [SERVER] New WeatherSet LightSnow that will last for 3.9948306 hours
+[14:05:52.613] [SERVER] New Wind seed 172570625 and direction 0 will last for 1.6326443 hours
+[14:05:55.996] [Sky Co-op REBORN] OnSelectSurvivor Male
+[14:05:56.005] [Sky Co-op REBORN] LoadSceneWithLoadingScreen
+[14:05:56.074] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[14:05:56.090] [Sky Co-op REBORN] Start loading scenes...
+[14:05:56.090] [Sky Co-op REBORN] ClientSend.SendNewScene Empty
+[14:05:56.107] [SERVER] RUNE transitions from  to Empty Should unload  ? True
+[14:05:56.109] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Unassigned
+[14:05:58.133] [ModComponent] Registering pending sound banks.
+[14:05:58.335] [Sky Co-op REBORN] Scenes loaded
+[14:05:58.708] [Sky Co-op REBORN] m_Hat1 GEAR_BasicWoolHat 0.46319908
+[14:05:58.708] [Sky Co-op REBORN] m_Hat2  0
+[14:05:58.710] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.30372435
+[14:05:58.710] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.6141281
+[14:05:58.710] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[14:05:58.710] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.4429348
+[14:05:58.711] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[14:05:58.711] [Sky Co-op REBORN] ClientSend.SendNewScene MountainTownRegion
+[14:05:58.781] [Sky Co-op REBORN] m_Hat1 GEAR_BasicWoolHat 0.46319908
+[14:05:58.781] [Sky Co-op REBORN] m_Hat2  0
+[14:05:58.784] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.30372435
+[14:05:58.785] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.6141281
+[14:05:58.785] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[14:05:58.785] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.4429348
+[14:05:58.785] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[14:05:58.786] [SERVER] RUNE transitions from Empty to MountainTownRegion Should unload Empty ? True
+[14:05:58.786] [SERVER] Loading scene MountainTownRegion for RUNE
+[14:05:58.787] [SERVER] Trying to load Scene MountainTownRegion
+[14:05:58.787] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/Scenes/MountainTownRegion
+[14:05:58.787] [SERVER] [FilesManager] File C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/Scenes/MountainTownRegion not exist
+[14:06:00.549] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 0 Icon  Prefix  Afix 
+[14:06:00.549] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 1 Icon  Prefix  Afix 
+[14:06:00.551] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 2 Icon  Prefix  Afix 
+[14:06:00.551] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 3 Icon  Prefix  Afix 
+[14:06:00.614] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Alive
+[14:06:01.557] [SERVER] WILDLIFE_Bear 165fbbdf-a0e2-422c-9607-e39273fce832 active
+[14:06:01.557] [SERVER] WILDLIFE_Ptarmigan 02bc0295-2918-471c-adc0-0248e4cfaff2 active
+[14:06:01.559] [SERVER] WILDLIFE_Ptarmigan be41289f-f820-4c20-a771-f59e98724f82 active
+[14:06:01.559] [SERVER] WILDLIFE_Ptarmigan 54a06572-d99d-4a8b-8d09-d0b8ab688dfe active
+[14:06:01.559] [SERVER] WILDLIFE_Ptarmigan da51206b-53f8-4be8-b652-a807543560cd active
+[14:06:01.559] [SERVER] WILDLIFE_Ptarmigan 77c0cc0e-ddd0-4b2c-af57-3374975997eb active
+[14:06:01.616] [Sky Co-op REBORN] WILDLIFE_Bear 165fbbdf-a0e2-422c-9607-e39273fce832 spawned
+[14:06:01.629] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 02bc0295-2918-471c-adc0-0248e4cfaff2 spawned
+[14:06:01.630] [Sky Co-op REBORN] WILDLIFE_Ptarmigan be41289f-f820-4c20-a771-f59e98724f82 spawned
+[14:06:01.631] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 54a06572-d99d-4a8b-8d09-d0b8ab688dfe spawned
+[14:06:01.632] [Sky Co-op REBORN] WILDLIFE_Ptarmigan da51206b-53f8-4be8-b652-a807543560cd spawned
+[14:06:01.634] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 77c0cc0e-ddd0-4b2c-af57-3374975997eb spawned
+[14:06:04.034] [GearSpawner] Spawning items for scene 'MountainTownRegion' ...
+[14:06:04.035] [GearSpawner] Could not find any spawn entries for 'mountaintownregion'
+[14:06:04.036] [GearSpawner] Spawned 'Pilgram' items for scene 'MountainTownRegion' in 1 ms
+[14:06:04.162] [Sky Co-op REBORN] Gear GEAR_BasicWoolHat triggered s_ForceUpdateClothing
+[14:06:04.162] [Sky Co-op REBORN] Gear GEAR_PlaidShirt triggered s_ForceUpdateClothing
+[14:06:04.164] [Sky Co-op REBORN] Gear GEAR_BasicBoots triggered s_ForceUpdateClothing
+[14:06:04.164] [Sky Co-op REBORN] Gear GEAR_SkiJacket triggered s_ForceUpdateClothing
+[14:06:04.165] [Sky Co-op REBORN] m_Hat1 GEAR_BasicWoolHat 0.46319908
+[14:06:04.165] [Sky Co-op REBORN] m_Hat2  0
+[14:06:04.165] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.30372435
+[14:06:04.165] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.6141281
+[14:06:04.165] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[14:06:04.166] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.4429348
+[14:06:04.166] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[14:06:04.178] [Sky Co-op REBORN] Gear GEAR_FleeceMittens triggered s_ForceUpdateClothing
+[14:06:04.178] [Sky Co-op REBORN] Gear GEAR_WoolSocks triggered s_ForceUpdateClothing
+[14:06:04.178] [Sky Co-op REBORN] m_Hat1 GEAR_BasicWoolHat 0.46319908
+[14:06:04.179] [Sky Co-op REBORN] m_Hat2  0
+[14:06:04.179] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.30372435
+[14:06:04.179] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.6141281
+[14:06:04.179] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[14:06:04.179] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.4429348
+[14:06:04.179] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[14:06:07.554] [Sky Co-op REBORN] SaveGame name sandbox7 Seed -1017150283 ServerName Dogma
+[14:06:10.810] [SERVER] [NetworkHelper] External IP: 2.62.241.100
+[14:06:10.821] [SERVER] [NetworkHelper] Create upnp port: Udp:37855
+[14:06:32.247] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[14:06:32.249] [SERVER] [GameServer] Client 0 disconnected RemoteConnectionClose
+[14:06:32.277] [Sky Co-op REBORN] Start loading scenes...
+[14:06:32.735] [ModComponent] Registering pending sound banks.
+[14:06:33.053] [SERVER] WILDLIFE_Bear 165fbbdf-a0e2-422c-9607-e39273fce832 inactive
+[14:06:33.053] [SERVER] WILDLIFE_Ptarmigan 02bc0295-2918-471c-adc0-0248e4cfaff2 inactive
+[14:06:33.055] [SERVER] WILDLIFE_Ptarmigan be41289f-f820-4c20-a771-f59e98724f82 inactive
+[14:06:33.055] [SERVER] WILDLIFE_Ptarmigan 54a06572-d99d-4a8b-8d09-d0b8ab688dfe inactive
+[14:06:33.056] [SERVER] WILDLIFE_Ptarmigan da51206b-53f8-4be8-b652-a807543560cd inactive
+[14:06:33.056] [SERVER] WILDLIFE_Ptarmigan 77c0cc0e-ddd0-4b2c-af57-3374975997eb inactive
+[14:06:33.349] [Sky Co-op REBORN] Scenes loaded
+[14:06:37.536] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[14:06:40.415] [Sky Co-op REBORN] Trying to connect to 127.0.0.1:37855 with key: public1
+[14:06:40.415] [Sky Co-op REBORN] m_Instance.DisconnectTimeout 5000
+[14:06:40.425] [SERVER] [Server] We got connection: 127.0.0.1:50458 assigned them as 0
+[14:06:40.438] [Sky Co-op REBORN] Server welcomes me with my ID: 0
+[14:06:40.453] [SERVER] [ServerHandle] Сlient 0 connected under name: RUNE
+[14:06:40.473] [Sky Co-op REBORN] Server config
+[14:06:40.473] [Sky Co-op REBORN] ServerName: Dogma
+[14:06:40.473] [Sky Co-op REBORN] PlayersMax: 10
+[14:06:40.473] [Sky Co-op REBORN] Seed: -1017150283
+[14:06:40.473] [Sky Co-op REBORN] ExperienceMode: Pilgrim
+[14:06:40.473] [Sky Co-op REBORN] VoicePort: 0
+[14:06:40.474] [Sky Co-op REBORN] SceneToSpawn: 
+[14:06:40.474] [Sky Co-op REBORN] GameMode: Sandbox
+[14:06:40.474] [Sky Co-op REBORN] CheatsAllowed: True
+[14:06:40.920] [Sky Co-op REBORN] Looking for save with seed -1017150283
+[14:06:40.938] [Sky Co-op REBORN] LoadSceneWithLoadingScreen
+[14:06:40.998] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[14:06:40.998] [Sky Co-op REBORN] Player: RUNE with ID 0
+[14:06:41.017] [Sky Co-op REBORN] Start loading scenes...
+[14:06:41.018] [Sky Co-op REBORN] ClientSend.SendNewScene Empty
+[14:06:41.020] [SERVER] RUNE transitions from  to Empty Should unload  ? True
+[14:06:41.020] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Unassigned
+[14:06:42.045] [ModComponent] Registering pending sound banks.
+[14:06:42.770] [Sky Co-op REBORN] Scenes loaded
+[14:06:42.772] [GearSpawner] Spawning items for scene 'MountainTownRegion' ...
+[14:06:42.772] [GearSpawner] Could not find any spawn entries for 'mountaintownregion'
+[14:06:42.772] [GearSpawner] Spawned 'Pilgram' items for scene 'MountainTownRegion' in 0 ms
+[14:06:42.829] [Sky Co-op REBORN] Gear GEAR_Jeans triggered s_ForceUpdateClothing
+[14:06:42.830] [Sky Co-op REBORN] Gear GEAR_LongUnderwear triggered s_ForceUpdateClothing
+[14:06:42.839] [Sky Co-op REBORN] Gear GEAR_BasicWoolHat triggered s_ForceUpdateClothing
+[14:06:42.839] [Sky Co-op REBORN] Gear GEAR_PlaidShirt triggered s_ForceUpdateClothing
+[14:06:42.840] [Sky Co-op REBORN] Gear GEAR_BasicBoots triggered s_ForceUpdateClothing
+[14:06:42.841] [Sky Co-op REBORN] Gear GEAR_SkiJacket triggered s_ForceUpdateClothing
+[14:06:42.844] [Sky Co-op REBORN] Gear GEAR_FleeceMittens triggered s_ForceUpdateClothing
+[14:06:42.845] [Sky Co-op REBORN] Gear GEAR_WoolSocks triggered s_ForceUpdateClothing
+[14:06:42.866] [Sky Co-op REBORN] [CustomSaves] Keys save have:
+[14:06:42.866] [Sky Co-op REBORN] boot
+[14:06:42.866] [Sky Co-op REBORN] global
+[14:06:42.866] [Sky Co-op REBORN] MountainTownRegion
+[14:06:42.866] [Sky Co-op REBORN] info
+[14:06:42.866] [Sky Co-op REBORN] sandbox_global
+[14:06:42.995] [Sky Co-op REBORN] m_Hat1 GEAR_BasicWoolHat 0.46322232
+[14:06:42.995] [Sky Co-op REBORN] m_Hat2  0
+[14:06:42.997] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.30373287
+[14:06:42.997] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.6141436
+[14:06:42.997] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[14:06:42.997] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.4429434
+[14:06:42.997] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[14:06:43.591] [Sky Co-op REBORN] ClientSend.SendNewScene MountainTownRegion
+[14:06:43.674] [Sky Co-op REBORN] m_Hat1 GEAR_BasicWoolHat 0.46322322
+[14:06:43.674] [Sky Co-op REBORN] m_Hat2  0
+[14:06:43.676] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.30373317
+[14:06:43.676] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.6141436
+[14:06:43.676] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[14:06:43.676] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.4429437
+[14:06:43.677] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[14:06:43.677] [SERVER] RUNE transitions from Empty to MountainTownRegion Should unload Empty ? True
+[14:06:45.718] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 0 Icon  Prefix  Afix 
+[14:06:45.719] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 1 Icon  Prefix  Afix 
+[14:06:45.720] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 2 Icon  Prefix  Afix 
+[14:06:45.720] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 3 Icon  Prefix  Afix 
+[14:06:45.792] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Alive
+[14:06:46.724] [SERVER] WILDLIFE_Bear 165fbbdf-a0e2-422c-9607-e39273fce832 active
+[14:06:46.724] [SERVER] WILDLIFE_Ptarmigan 02bc0295-2918-471c-adc0-0248e4cfaff2 active
+[14:06:46.725] [SERVER] WILDLIFE_Ptarmigan be41289f-f820-4c20-a771-f59e98724f82 active
+[14:06:46.726] [SERVER] WILDLIFE_Ptarmigan 54a06572-d99d-4a8b-8d09-d0b8ab688dfe active
+[14:06:46.726] [SERVER] WILDLIFE_Ptarmigan da51206b-53f8-4be8-b652-a807543560cd active
+[14:06:46.726] [SERVER] WILDLIFE_Ptarmigan 77c0cc0e-ddd0-4b2c-af57-3374975997eb active
+[14:06:46.742] [Sky Co-op REBORN] WILDLIFE_Bear 165fbbdf-a0e2-422c-9607-e39273fce832 spawned
+[14:06:46.745] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 02bc0295-2918-471c-adc0-0248e4cfaff2 spawned
+[14:06:46.746] [Sky Co-op REBORN] WILDLIFE_Ptarmigan be41289f-f820-4c20-a771-f59e98724f82 spawned
+[14:06:46.748] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 54a06572-d99d-4a8b-8d09-d0b8ab688dfe spawned
+[14:06:46.750] [Sky Co-op REBORN] WILDLIFE_Ptarmigan da51206b-53f8-4be8-b652-a807543560cd spawned
+[14:06:46.753] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 77c0cc0e-ddd0-4b2c-af57-3374975997eb spawned
+[14:06:50.179] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[14:06:50.182] [SERVER] [GameServer] Client 0 disconnected RemoteConnectionClose
+[14:06:50.209] [Sky Co-op REBORN] Start loading scenes...
+[14:06:50.658] [ModComponent] Registering pending sound banks.
+[14:06:50.950] [SERVER] WILDLIFE_Bear 165fbbdf-a0e2-422c-9607-e39273fce832 inactive
+[14:06:50.950] [SERVER] WILDLIFE_Ptarmigan 02bc0295-2918-471c-adc0-0248e4cfaff2 inactive
+[14:06:50.952] [SERVER] WILDLIFE_Ptarmigan be41289f-f820-4c20-a771-f59e98724f82 inactive
+[14:06:50.952] [SERVER] WILDLIFE_Ptarmigan 54a06572-d99d-4a8b-8d09-d0b8ab688dfe inactive
+[14:06:50.953] [SERVER] WILDLIFE_Ptarmigan da51206b-53f8-4be8-b652-a807543560cd inactive
+[14:06:50.953] [SERVER] WILDLIFE_Ptarmigan 77c0cc0e-ddd0-4b2c-af57-3374975997eb inactive
+[14:06:51.262] [Sky Co-op REBORN] Scenes loaded
+[14:06:53.745] [SERVER] [Server] Stopping Server
+[14:06:53.754] [SERVER] [NetworkHelper] Deleting upnp port: Udp:37855
+[14:06:57.736] Preferences Saved!

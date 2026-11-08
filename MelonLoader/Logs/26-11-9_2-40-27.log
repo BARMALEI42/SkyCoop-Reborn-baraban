@@ -1,0 +1,395 @@
+[02:40:27.723] [MelonLoader.Bootstrap] Using HostFXR Path: C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll
+[02:40:27.725] [MelonLoader.Bootstrap] Using .NET runtime: 'C:\Program Files\dotnet\host\fxr\10.0.14\hostfxr.dll'
+
+[02:40:28.562] ------------------------------
+[02:40:28.564] MelonLoader v0.7.3 Open-Beta
+[02:40:28.565] OS: Windows 11
+[02:40:28.565] Hash Code: BDD43DC0F3893C208C95389B863AB61C967AE14204DA0DD8051647E754C8709B
+[02:40:28.565] ------------------------------
+[02:40:28.565] Game Type: Il2cpp
+[02:40:28.565] Game Arch: x64
+[02:40:28.565] ------------------------------
+[02:40:28.565] Command-Line: 
+[02:40:28.566] ------------------------------
+[02:40:28.566] Core::BasePath = C:\games\The Long Dark
+[02:40:28.566] Game::BasePath = C:\games\The Long Dark
+[02:40:28.567] Game::DataPath = C:\games\The Long Dark\tld_Data
+[02:40:28.567] Game::ApplicationPath = C:\games\The Long Dark\tld.exe
+[02:40:28.567] Runtime Type: net6
+[02:40:28.725] ------------------------------
+[02:40:28.725] Game Name: TheLongDark
+[02:40:28.725] Game Developer: Hinterland
+[02:40:28.727] Unity Version: 6000.0.60f1
+[02:40:28.727] Game Version: 2.59
+[02:40:28.727] ------------------------------
+
+[02:40:29.755] Preferences Loaded!
+
+[02:40:29.831] Loading UserLibs...
+[02:40:30.243] ------------------------------
+[02:40:30.247] Melon Assembly loaded: '.\UserLibs\LiteNetLib.dll'
+[02:40:30.247] SHA256 Hash: 'DA5529085572DF7D3398A0C47AB6D8DE7982C2E06EE4CC17CB475E174A51C168'
+[02:40:30.249] Melon Assembly loaded: '.\UserLibs\Mono.Nat.dll'
+[02:40:30.249] SHA256 Hash: 'A4BEDACA52C52D4DB7AA00533937225C0169C00C29A2BFE6F3C3D63AB3F5148B'
+[02:40:30.252] Melon Assembly loaded: '.\UserLibs\NAudio.Core.dll'
+[02:40:30.252] SHA256 Hash: 'FCF493FC47A2F478A65303886B975FBDBF714CBB1F2D79F7FCE97E4BB16B01A8'
+[02:40:30.254] Melon Assembly loaded: '.\UserLibs\NAudio.WinMM.dll'
+[02:40:30.254] SHA256 Hash: '749A01EBBB5EDD8B1A03C5263B04DE6ACADECF52E4CC84D7412BC6E93F180958'
+[02:40:30.255] Melon Assembly loaded: '.\UserLibs\OpenVoiceSharp.dll'
+[02:40:30.255] SHA256 Hash: '4D3593A390765742CAE12C590D165A4B8C9F80B8008CD00D39944D6490C1434F'
+[02:40:30.256] Melon Assembly loaded: '.\UserLibs\OpusDotNet.dll'
+[02:40:30.256] SHA256 Hash: 'C84A9D5E0F9A1C9A8DDD5515C91F97CDCEB26BD1754BB5214DC91BD1E422057F'
+[02:40:30.257] Melon Assembly loaded: '.\UserLibs\RNNoise.NET.dll'
+[02:40:30.257] SHA256 Hash: 'FFE582224EA821C45E6F9025C56BEC800B905A7A08D90D0186F8A88CDB46C5AD'
+[02:40:30.258] Melon Assembly loaded: '.\UserLibs\WebRtcVadSharp.dll'
+[02:40:30.258] SHA256 Hash: '8FCB7C0752E1C67CB5AF67597DDAF8E77F94A3C3BABA0AB690772D30D94A35C7'
+[02:40:30.258] ------------------------------
+[02:40:30.258] 0 UserLibs loaded.
+
+[02:40:30.259] Loading Plugins...
+[02:40:30.296] ------------------------------
+[02:40:30.297] Melon Assembly loaded: '.\Plugins\AudioCore.dll'
+[02:40:30.298] SHA256 Hash: '36B2F3D44D8FB6CA5D4BAAD7FDCDF8EC73A488B1DE017CE3A1A26D1302D6E426'
+
+[02:40:30.325] ------------------------------
+[02:40:30.325] AudioCore v3.1.5
+[02:40:30.325] by Digitalzombie
+[02:40:30.325] Assembly: AudioCore.dll
+[02:40:30.325] ------------------------------
+[02:40:30.326] ------------------------------
+[02:40:30.326] 1 Plugin loaded.
+
+[02:40:30.330] [AudioCore] Attempting to enable Unity audio...
+[02:40:30.357] [AudioCore] Unity audio already enabled. Skipping ...
+[02:40:30.698] Loading Il2CppAssemblyGenerator...
+[02:40:30.848] [Il2CppAssemblyGenerator] Contacting RemoteAPI...
+[02:40:31.277] [Il2CppAssemblyGenerator] RemoteAPI.DumperVersion = null
+[02:40:31.277] [Il2CppAssemblyGenerator] RemoteAPI.ObfuscationRegex = null
+[02:40:31.278] [Il2CppAssemblyGenerator] RemoteAPI.MappingURL = null
+[02:40:31.278] [Il2CppAssemblyGenerator] RemoteAPI.MappingFileSHA512 = null
+[02:40:31.281] [Il2CppAssemblyGenerator] Using Cpp2IL Version: 2022.1.0-pre-release.21
+[02:40:31.281] [Il2CppAssemblyGenerator] Using Il2CppInterop Version = 1.5.1-ci.845+f03c8f4ae507d47ea814f3d11d1ec6b0391c1576
+[02:40:31.281] [Il2CppAssemblyGenerator] Using Unity Dependencies Version = 6000.0.60
+[02:40:31.281] [Il2CppAssemblyGenerator] Using Deobfuscation Regex = null
+[02:40:31.281] [Il2CppAssemblyGenerator] Cpp2IL is up to date.
+[02:40:31.282] [Il2CppAssemblyGenerator] Cpp2IL.Plugin.StrippedCodeRegSupport is up to date.
+[02:40:31.282] [Il2CppAssemblyGenerator] UnityDependencies is up to date.
+[02:40:31.282] [Il2CppAssemblyGenerator] Checking GameAssembly...
+[02:40:31.427] [Il2CppAssemblyGenerator] Assembly is up to date. No Generation Needed.
+
+[02:40:31.428] Loading Mods...
+[02:40:31.917] ------------------------------
+[02:40:31.921] Melon Assembly loaded: '.\Mods\ModComponent.dll'
+[02:40:31.921] SHA256 Hash: '72182038DD95EA231D562C5DDBCA67F4E608BA5B4DF4119B0844F41C9136AD3D'
+[02:40:31.929] Melon Assembly loaded: '.\Mods\ModSettings.dll'
+[02:40:31.930] SHA256 Hash: '2A688A034D26E4CAC469DD276E8BB966CBB80E806AF4B50EEA189E02A7E806F8'
+[02:40:31.935] Melon Assembly loaded: '.\Mods\SkyCoopClient.dll'
+[02:40:31.935] SHA256 Hash: 'C852C8BDD1F2134D0A58494368DF6F1EB419EDAE694CBB9C0A7443DB4A22486E'
+
+[02:40:35.050] ------------------------------
+[02:40:35.050] ModSettings v2.2.2
+[02:40:35.051] by Digitalzombie, zeobviouslyfakeacc
+[02:40:35.051] Assembly: ModSettings.dll
+[02:40:35.051] ------------------------------
+[02:40:35.054] ------------------------------
+[02:40:35.055] ModComponent v7.0.0
+[02:40:35.055] by STBlade
+[02:40:35.055] Assembly: ModComponent.dll
+[02:40:35.055] ------------------------------
+[02:40:35.058] ------------------------------
+[02:40:35.058] Sky Co-op REBORN v1.0.0
+[02:40:35.058] by Filigrani & REDcat
+[02:40:35.058] Assembly: SkyCoopClient.dll
+[02:40:35.059] ------------------------------
+[02:40:35.059] ------------------------------
+[02:40:35.059] 3 Mods loaded.
+
+[02:40:41.915] [WARNING] [Il2CppInterop] Class::Init signatures have been exhausted, using a substitute!
+[02:40:41.945] [Il2CppInterop] Registered mono type MelonLoader.Support.MonoEnumeratorWrapper in il2cpp domain
+[02:40:42.019] Support Module Loaded: C:\games\The Long Dark\MelonLoader\Dependencies\SupportModules\Il2Cpp.dll
+[02:40:42.078] [Il2CppInterop] Registered mono type ModSettings.ModSettingsGUI in il2cpp domain
+[02:40:46.474] [ModComponent] Release Compilation
+[02:40:46.493] [ModComponent] Reading zip file: 'SkyCoop.modcomponent'
+[02:40:46.561] [ModComponent] Found: SkyCoop  by Filigrani
+[02:40:46.793] [WARNING] [Il2CppInterop] Method Void SetClothing(ClothingData) on type SkyCoop.Comps+NetworkPlayer has unsupported parameter ClothingData Data of type SkyCoopServer.DataStr+ClothingData
+[02:40:46.803] [Il2CppInterop] Registered mono type SkyCoop.Comps+NetworkPlayer in il2cpp domain
+[02:40:46.805] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerGear in il2cpp domain
+[02:40:46.806] [Il2CppInterop] Registered mono type SkyCoop.Comps+PlayerDamageColider in il2cpp domain
+[02:40:46.807] [Il2CppInterop] Registered mono type SkyCoop.Comps+OtherPlayerBullet in il2cpp domain
+[02:40:46.808] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearThrownVisual in il2cpp domain
+[02:40:46.809] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerThrowHook in il2cpp domain
+[02:40:46.810] [Il2CppInterop] Registered mono type SkyCoop.Comps+NoiseMakerKillFeedHandle in il2cpp domain
+[02:40:46.811] [Il2CppInterop] Registered mono type SkyCoop.Comps+MeleeBulletHandler in il2cpp domain
+[02:40:46.812] [Il2CppInterop] Registered mono type SkyCoop.Comps+ArrowHook in il2cpp domain
+[02:40:46.813] [Il2CppInterop] Registered mono type SkyCoop.Comps+DroppedGearVisual in il2cpp domain
+[02:40:46.813] [Il2CppInterop] Registered mono type SkyCoop.Comps+BulletWallBangHook in il2cpp domain
+[02:40:46.814] [Il2CppInterop] Registered mono type SkyCoop.Comps+CameraAttention in il2cpp domain
+[02:40:46.815] [Il2CppInterop] Registered mono type SkyCoop.Comps+DeathPackComp in il2cpp domain
+[02:40:46.816] [Il2CppInterop] Registered mono type SkyCoop.Comps+ContainerDescriptorHook in il2cpp domain
+[02:40:46.817] [Il2CppInterop] Registered mono type SkyCoop.Comps+DangerCircleZone in il2cpp domain
+[02:40:46.818] [Il2CppInterop] Registered mono type SkyCoop.Comps+ForcedFire in il2cpp domain
+[02:40:46.819] [Il2CppInterop] Registered mono type SkyCoop.Comps+CardGameProp in il2cpp domain
+[02:40:46.820] [WARNING] [Il2CppInterop] Method System.Collections.Generic.List`1[System.Int32] GetBets() on type SkyCoop.Comps+TexasHoldEmProp has unsupported return type System.Collections.Generic.List`1[System.Int32]
+[02:40:46.821] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmProp in il2cpp domain
+[02:40:46.822] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlayer in il2cpp domain
+[02:40:46.824] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmJoin in il2cpp domain
+[02:40:46.826] [Il2CppInterop] Registered mono type SkyCoop.Comps+TexasHoldEmPlay in il2cpp domain
+[02:40:46.827] [Il2CppInterop] Registered mono type SkyCoop.Comps+TalkingFish in il2cpp domain
+[02:40:46.828] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropsEditorVisuzlier in il2cpp domain
+[02:40:46.828] [Il2CppInterop] Registered mono type SkyCoop.Comps+GenericStatusBarSpawnerHook in il2cpp domain
+[02:40:46.829] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateBar in il2cpp domain
+[02:40:46.830] [Il2CppInterop] Registered mono type SkyCoop.Comps+TeammateMapIcon in il2cpp domain
+[02:40:46.831] [Il2CppInterop] Registered mono type SkyCoop.Comps+ZoneMapIcon in il2cpp domain
+[02:40:46.832] [Il2CppInterop] Registered mono type SkyCoop.Comps+PropMovemenetPredict in il2cpp domain
+[02:40:46.833] [Il2CppInterop] Registered mono type SkyCoop.Comps+ChatMessage in il2cpp domain
+[02:40:46.834] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingTarget in il2cpp domain
+[02:40:46.835] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingDummy in il2cpp domain
+[02:40:46.838] [Il2CppInterop] Registered mono type SkyCoop.Comps+GearCookingVisual in il2cpp domain
+[02:40:46.839] [Il2CppInterop] Registered mono type SkyCoop.Comps+CookingSlotVisual in il2cpp domain
+[02:40:46.840] [WARNING] [Il2CppInterop] Method Void SetAnimationData(AnimatorData) on type SkyCoop.Comps+BaseAiHook has unsupported parameter AnimatorData AnimatorData of type SkyCoopServer.DataStr+AnimatorData
+[02:40:46.841] [Il2CppInterop] Registered mono type SkyCoop.Comps+BaseAiHook in il2cpp domain
+[02:40:47.406] [Sky Co-op REBORN] Main Asset Bundle is loaded.
+[02:40:47.416] [Il2CppInterop] Registered mono type Il2CppInterop.Runtime.DelegateSupport+Il2CppToMonoDelegateReference in il2cpp domain
+[02:40:47.545] [Il2CppInterop] Registered mono type MelonLoader.Support.SM_Component in il2cpp domain
+[02:40:47.554] Registered mono icall UnityEngine.Transform::SetAsLastSibling in il2cpp domain
+[02:40:49.706] [Sky Co-op REBORN] uConsole has been reimplemented!
+[02:40:49.716] [SERVER] [FilesManager] Saves folder set to C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves
+[02:40:49.764] [Sky Co-op REBORN] Canvas UI created!
+[02:40:49.767] [Sky Co-op REBORN] KillFeedElement loaded!
+[02:40:49.768] [Sky Co-op REBORN] KillFeedElementKill loaded!
+[02:40:49.768] [Sky Co-op REBORN] KillFeedElementDead loaded!
+[02:40:49.769] [Sky Co-op REBORN] ChatMessagePrefab loaded!
+[02:40:50.399] [ModComponent] Panel_Crafting_Initialize
+[02:40:51.758] Building Mod Settings GUI
+[02:40:51.777] [Il2CppInterop] Registered mono type ModSettings.DescriptionHolder in il2cpp domain
+[02:40:51.796] [Il2CppInterop] Registered mono type ModSettings.CustomKeybinding in il2cpp domain
+[02:40:51.802] Building Custom Mode GUI
+[02:40:51.805] [Il2CppInterop] Registered mono type ModSettings.CustomModeGUIBuilder+HinterlandSettingVisibilityListener in il2cpp domain
+[02:40:51.831] Done! Took 72 ms. Have a nice day!
+[02:41:19.670] [ModComponent] Running Dependency Checks..
+[02:41:22.136] [ModComponent] Console Commands added. The waitlist is empty.
+[02:41:22.288] [ModComponent] Registering pending sound banks.
+[02:41:27.002] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[02:41:27.670] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer_Host
+[02:41:28.725] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride MultiplayerSaves
+[02:41:28.729] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/ServerData
+[02:41:28.751] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1798717520/ServerData
+[02:41:28.757] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-765986939/ServerData
+[02:41:28.757] [SERVER] [FilesManager] File C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-765986939/ServerData not exist
+[02:41:28.758] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1061268846/ServerData
+[02:41:28.764] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/ServerData
+[02:41:28.769] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1833966262/ServerData
+[02:41:28.774] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1902859874/ServerData
+[02:41:28.780] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/ServerData
+[02:41:32.841] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1017150283/ServerData
+[02:41:32.841] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-1798717520/ServerData
+[02:41:32.842] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-765986939/ServerData
+[02:41:32.842] [SERVER] [FilesManager] File C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/-765986939/ServerData not exist
+[02:41:32.842] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1061268846/ServerData
+[02:41:32.843] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1566385814/ServerData
+[02:41:32.843] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1833966262/ServerData
+[02:41:32.843] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/1902859874/ServerData
+[02:41:32.844] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/ServerData
+[02:41:32.844] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetSavesOverride Original
+[02:41:32.846] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/ServerData
+[02:41:32.851] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[02:41:32.866] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[02:41:33.417] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[02:41:33.518] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[02:41:33.525] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[02:41:33.531] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[02:41:33.578] [SERVER] ChangeGameMode Sandbox
+[02:41:33.578] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GameModes/Sandbox
+[02:41:33.579] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/Sandbox
+[02:41:34.104] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/GearSpawns/TLDev
+[02:41:34.187] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Naratives
+[02:41:34.187] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/DupeLists/Special
+[02:41:34.188] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/WildlifeSpawns/Sandbox
+[02:41:34.279] [SERVER] [Server] Starting server
+[02:41:34.282] [SERVER] [Server] Server is started port=37855
+[02:41:34.300] [Sky Co-op REBORN] Trying to connect to localhost:37855 with key: public1
+[02:41:34.300] [Sky Co-op REBORN] m_Instance.DisconnectTimeout 5000
+[02:41:34.307] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Multiplayer
+[02:41:34.311] [SERVER] Trying to load weather profile...
+[02:41:34.311] [SERVER] [FilesManager] Loading file C:\games\The Long Dark\Mods/SkyModData/Weather/Default
+[02:41:34.325] [SERVER] Weather profile loaded!
+[02:41:34.342] [SERVER] [Server] We got connection: 127.0.0.1:61932 assigned them as 0
+[02:41:34.353] [Sky Co-op REBORN] Server welcomes me with my ID: 0
+[02:41:34.367] [SERVER] [ServerHandle] Сlient 0 connected under name: RUNE
+[02:41:34.380] [Sky Co-op REBORN] Server config
+[02:41:34.380] [Sky Co-op REBORN] ServerName: beta-test
+[02:41:34.380] [Sky Co-op REBORN] PlayersMax: 10
+[02:41:34.381] [Sky Co-op REBORN] Seed: 795822192
+[02:41:34.381] [Sky Co-op REBORN] ExperienceMode: Pilgrim
+[02:41:34.381] [Sky Co-op REBORN] VoicePort: 0
+[02:41:34.382] [Sky Co-op REBORN] SceneToSpawn: 
+[02:41:34.382] [Sky Co-op REBORN] GameMode: Sandbox
+[02:41:34.382] [Sky Co-op REBORN] CheatsAllowed: True
+[02:41:35.331] [Sky Co-op REBORN] Looking for save with seed 795822192
+[02:41:35.378] [Sky Co-op REBORN] LoadSceneWithLoadingScreen
+[02:41:35.440] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[02:41:35.441] [Sky Co-op REBORN] Player: RUNE with ID 0
+[02:41:35.465] [SERVER] New Wind seed -775086365 and direction 270 will last for 1.8448037 hours
+[02:41:35.486] [Sky Co-op REBORN] Start loading scenes...
+[02:41:35.486] [Sky Co-op REBORN] ClientSend.SendNewScene Empty
+[02:41:35.502] [SERVER] RUNE transitions from  to Empty Should unload  ? True
+[02:41:35.505] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Unassigned
+[02:41:37.461] [ModComponent] Registering pending sound banks.
+[02:41:37.837] [Sky Co-op REBORN] Scenes loaded
+[02:41:37.840] [GearSpawner] Spawning items for scene 'MountainTownRegion' ...
+[02:41:37.841] [GearSpawner] Could not find any spawn entries for 'mountaintownregion'
+[02:41:37.842] [GearSpawner] Spawned 'Pilgram' items for scene 'MountainTownRegion' in 0 ms
+[02:41:37.910] [Sky Co-op REBORN] Gear GEAR_Jeans triggered s_ForceUpdateClothing
+[02:41:37.916] [Sky Co-op REBORN] Gear GEAR_LongUnderwear triggered s_ForceUpdateClothing
+[02:41:37.939] [Sky Co-op REBORN] Gear GEAR_PlaidShirt triggered s_ForceUpdateClothing
+[02:41:37.940] [Sky Co-op REBORN] Gear GEAR_BasicBoots triggered s_ForceUpdateClothing
+[02:41:37.941] [Sky Co-op REBORN] Gear GEAR_SkiJacket triggered s_ForceUpdateClothing
+[02:41:37.945] [Sky Co-op REBORN] Gear GEAR_FleeceMittens triggered s_ForceUpdateClothing
+[02:41:37.946] [Sky Co-op REBORN] Gear GEAR_WoolSocks triggered s_ForceUpdateClothing
+[02:41:38.106] [Sky Co-op REBORN] [CustomSaves] Keys save have:
+[02:41:38.107] [Sky Co-op REBORN] boot
+[02:41:38.107] [Sky Co-op REBORN] global
+[02:41:38.107] [Sky Co-op REBORN] MountainTownRegion
+[02:41:38.107] [Sky Co-op REBORN] info
+[02:41:38.107] [Sky Co-op REBORN] sandbox_global
+[02:41:38.593] [Sky Co-op REBORN] m_Hat1  0
+[02:41:38.593] [Sky Co-op REBORN] m_Hat2  0
+[02:41:38.594] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.54668164
+[02:41:38.594] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48749137
+[02:41:38.594] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[02:41:38.594] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19598693
+[02:41:38.595] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[02:41:39.259] [Sky Co-op REBORN] ClientSend.SendNewScene MountainTownRegion
+[02:41:39.356] [Sky Co-op REBORN] m_Hat1  0
+[02:41:39.356] [Sky Co-op REBORN] m_Hat2  0
+[02:41:39.358] [Sky Co-op REBORN] m_Body GEAR_SkiJacket 0.54668194
+[02:41:39.358] [Sky Co-op REBORN] m_Gloves GEAR_FleeceMittens 0.48749137
+[02:41:39.358] [Sky Co-op REBORN] m_Pants GEAR_Jeans 0
+[02:41:39.358] [Sky Co-op REBORN] m_Boots GEAR_BasicBoots 0.19598728
+[02:41:39.358] [Sky Co-op REBORN] m_LocalPlayerData SendClothing
+[02:41:39.359] [SERVER] RUNE transitions from Empty to MountainTownRegion Should unload Empty ? True
+[02:41:39.359] [SERVER] Loading scene MountainTownRegion for RUNE
+[02:41:39.359] [SERVER] Trying to load Scene MountainTownRegion
+[02:41:39.360] [SERVER] [FilesManager] Loading file C:\Users\vizal\AppData\Local\Hinterland\TheLongDark/ServerSaves/795822192/Scenes/MountainTownRegion
+[02:41:39.399] [SERVER] MountainTownRegion has been restored from file
+[02:41:41.089] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 0 Icon  Prefix  Afix 
+[02:41:41.090] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 1 Icon  Prefix  Afix 
+[02:41:41.090] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 2 Icon  Prefix  Afix 
+[02:41:41.090] [Sky Co-op REBORN] ClientHUDSideBar() SideBarIndex 3 Icon  Prefix  Afix 
+[02:41:41.180] [SERVER] [DataStr.PlayerData] Client RUNE new gamepaly state Alive
+[02:41:42.099] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 active
+[02:41:42.100] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 active
+[02:41:42.100] [SERVER] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 active
+[02:41:42.100] [SERVER] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc active
+[02:41:42.101] [SERVER] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 moved to random point after 2.9699974 hours of being inactive.
+[02:41:42.101] [SERVER] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 active
+[02:41:42.124] [Sky Co-op REBORN] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 spawned
+[02:41:42.127] [Sky Co-op REBORN] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 spawned
+[02:41:42.129] [Sky Co-op REBORN] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 spawned
+[02:41:42.130] [Sky Co-op REBORN] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc spawned
+[02:41:42.152] [Sky Co-op REBORN] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 spawned
+[02:41:50.117] [SERVER] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 inactive
+[02:41:50.133] [Sky Co-op REBORN] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 removed (by server)
+[02:42:02.162] [SERVER] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 active
+[02:42:02.177] [Sky Co-op REBORN] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 spawned
+[02:42:06.175] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 active
+[02:42:06.211] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 spawned
+[02:42:07.175] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 active
+[02:42:07.188] [Sky Co-op REBORN] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 spawned
+[02:42:08.176] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 active
+[02:42:08.188] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 spawned
+[02:42:09.180] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[02:42:09.180] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 active
+[02:42:09.201] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 spawned
+[02:42:09.203] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 spawned
+[02:42:39.393] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:42:43.127] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:42:46.705] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:42:53.764] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:42:57.557] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:43:08.088] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:43:11.454] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:43:24.546] [SERVER] New Wind seed -775086365 and direction 90 will last for 1.022006 hours
+[02:44:15.721] [SERVER] WILDLIFE_Wolf 4b14d029-4ae9-480e-bbb4-227fdaf64432 moved to random point after 3.479997 hours of being inactive.
+[02:44:15.721] [SERVER] WILDLIFE_Wolf 4b14d029-4ae9-480e-bbb4-227fdaf64432 active
+[02:44:15.927] [Sky Co-op REBORN] WILDLIFE_Wolf 4b14d029-4ae9-480e-bbb4-227fdaf64432 spawned
+[02:44:18.733] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[02:44:18.733] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 inactive
+[02:44:18.734] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 inactive
+[02:44:18.734] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 inactive
+[02:44:18.742] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 removed (by server)
+[02:44:18.743] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 removed (by server)
+[02:44:18.743] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 removed (by server)
+[02:44:18.743] [Sky Co-op REBORN] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 removed (by server)
+[02:44:19.734] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 inactive
+[02:44:19.743] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 removed (by server)
+[02:44:22.739] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 moved to random point after 3.5033302 hours of being inactive.
+[02:44:22.739] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 active
+[02:44:22.756] [Sky Co-op REBORN] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 spawned
+[02:44:23.744] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 inactive
+[02:44:23.751] [Sky Co-op REBORN] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 removed (by server)
+[02:44:25.755] [SERVER] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a moved to random point after 3.5133302 hours of being inactive.
+[02:44:25.755] [SERVER] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a active
+[02:44:25.770] [Sky Co-op REBORN] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a spawned
+[02:44:28.765] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 moved to random point after 3.5233302 hours of being inactive.
+[02:44:28.766] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 active
+[02:44:28.777] [Sky Co-op REBORN] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 spawned
+[02:44:33.366] [Sky Co-op REBORN] Bullet hit surface Snow
+[02:44:37.057] [Sky Co-op REBORN] Bullet hit surface Flesh
+[02:44:37.060] [Sky Co-op REBORN] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 controlled damaged Infinity bleedOutMintues 45 damageSource Player collider capsule_torso
+[02:44:37.224] [SERVER] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 died
+[02:44:37.236] [Sky Co-op REBORN] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 removed (death)
+[02:44:37.239] [Sky Co-op REBORN] WILDLIFE_Doe 6f2d15c3-2339-44b6-ba69-a6ea0b967656 corpse spawned with BodyHarvest
+[02:44:52.855] [SERVER] New WeatherSet LightFog that will last for 2.731321 hours
+[02:45:38.019] [SERVER] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a inactive
+[02:45:38.019] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 inactive
+[02:45:38.026] [Sky Co-op REBORN] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a removed (by server)
+[02:45:38.026] [Sky Co-op REBORN] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 removed (by server)
+[02:46:37.263] [SERVER] Doing auto save...
+[02:46:37.294] [SERVER] Next auto-save in 300 seconds
+[02:47:40.525] [SERVER] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a active
+[02:47:40.526] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 active
+[02:47:40.542] [Sky Co-op REBORN] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a spawned
+[02:47:40.544] [Sky Co-op REBORN] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 spawned
+[02:47:50.142] [Sky Co-op REBORN] EnterInspectGearMode GEAR_RifleAmmoCasing
+[02:47:50.759] [Sky Co-op REBORN] Gear GEAR_RifleAmmoCasing refused
+[02:47:50.764] [Sky Co-op REBORN] ExitInspectGearMode GEAR_RifleAmmoCasing
+[02:47:50.770] [SERVER] ServerHandle.ClientSendGear GEAR_RifleAmmoCasing FireGUID  CookingSlot -1 CookpotGUID 
+[02:48:01.631] [SERVER] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a inactive
+[02:48:01.638] [Sky Co-op REBORN] WILDLIFE_Rabbit c5ed8413-803f-4943-8e33-871a58465d1a removed (by server)
+[02:48:02.633] [SERVER] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 inactive
+[02:48:02.640] [Sky Co-op REBORN] WILDLIFE_Rabbit da4472c7-c13c-4d26-aabd-46e98ee12250 removed (by server)
+[02:48:10.664] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 active
+[02:48:10.678] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 spawned
+[02:48:12.669] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 active
+[02:48:12.691] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 spawned
+[02:48:13.675] [SERVER] WILDLIFE_Wolf 4b14d029-4ae9-480e-bbb4-227fdaf64432 inactive
+[02:48:13.675] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 active
+[02:48:13.676] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 active
+[02:48:13.692] [Sky Co-op REBORN] WILDLIFE_Wolf 4b14d029-4ae9-480e-bbb4-227fdaf64432 removed (by server)
+[02:48:13.696] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 spawned
+[02:48:13.698] [Sky Co-op REBORN] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 spawned
+[02:48:15.685] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 active
+[02:48:15.707] [Sky Co-op REBORN] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 spawned
+[02:48:32.748] [SERVER] New Wind seed -775086365 and direction 135 will last for 2.657349 hours
+[02:49:23.971] [SERVER] New TOD status AfternoonToDusk
+[02:49:42.045] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 inactive
+[02:49:42.056] [Sky Co-op REBORN] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 removed (by server)
+[02:49:44.052] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 active
+[02:49:44.071] [Sky Co-op REBORN] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 spawned
+[02:49:49.713] [Sky Co-op REBORN] [UI] ChangeMenuItems s_CurrenetMenuOverride Original
+[02:49:49.715] [SERVER] [GameServer] Client 0 disconnected RemoteConnectionClose
+[02:49:49.744] [Sky Co-op REBORN] Start loading scenes...
+[02:49:50.331] [ModComponent] Registering pending sound banks.
+[02:49:50.708] [SERVER] WILDLIFE_Rabbit 8d02ed04-f6b7-4044-a830-88c5d97a4e47 inactive
+[02:49:50.708] [SERVER] WILDLIFE_Rabbit 4971057d-3b32-45c2-b0e4-2169373fc952 inactive
+[02:49:50.709] [SERVER] WILDLIFE_Rabbit 6ab9086f-3e24-44d3-ae10-9ca9e6fdd896 inactive
+[02:49:50.709] [SERVER] WILDLIFE_Rabbit 212202a3-7deb-4c81-9422-023f6465ecfc inactive
+[02:49:50.710] [SERVER] WILDLIFE_Ptarmigan 1341d111-96b8-41ca-94ca-8a1c43a417e9 inactive
+[02:49:50.710] [SERVER] WILDLIFE_Ptarmigan 945add75-3d9b-46f8-b452-fa8af8764491 inactive
+[02:49:50.710] [SERVER] WILDLIFE_Ptarmigan 55a11040-a6ee-49d3-b7d8-7677f2957c64 inactive
+[02:49:50.710] [SERVER] WILDLIFE_Ptarmigan 09393bf1-5bc0-4bae-9c39-8c3428e85ed3 inactive
+[02:49:50.710] [SERVER] WILDLIFE_Ptarmigan d993dd85-a577-4638-a12a-495e533c97f2 inactive
+[02:49:51.065] [Sky Co-op REBORN] Scenes loaded
+[02:49:53.340] [SERVER] [Server] Stopping Server
+[02:49:57.773] Preferences Saved!
