@@ -698,7 +698,7 @@ namespace SkyCoop
 
             SendToHost(writer);
         }
-        public static void SendAnimalSync(string GUID, Vector3 Position, Quaternion Rotation, int AitState, Animator Animator, bool IsBleeding, float Health, float BleedingOutMinutes, int PreviousState, Vector3 Velocity, float DeathOfBleedingMinutes, bool IsHolding)
+        public static void SendAnimalSync(string GUID, Vector3 Position, Quaternion Rotation, int AitState, Animator Animator, bool IsBleeding, float Health, float BleedingOutMinutes, int PreviousState, Vector3 Velocity, float DeathOfBleedingMinutes, bool IsHolding, bool IsHuntingPlayer)
         {
             NetDataWriter writer = new NetDataWriter();
             writer.Put((int)Packet.Type.ClientAnimalControlReply);
@@ -716,7 +716,7 @@ namespace SkyCoop
             writer.Put(DeathOfBleedingMinutes);
             writer.Put(IsHolding);
             writer.Put(IsHuntingPlayer);
-            bool IsHuntingPlayer
+
             SendToHost(writer);
         }
 
