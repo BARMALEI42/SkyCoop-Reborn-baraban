@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Channels;
 using System.Xml.Linq;
 using static SkyCoopServer.DataStr;
+using static SkyCoopServer.DataStr.SceneData;
 
 namespace SkyCoopServer
 {
@@ -1159,6 +1160,38 @@ namespace SkyCoopServer
             public List<RadialLootSpawner> m_RadialLootSpawners = new List<RadialLootSpawner>();
             public Dictionary<string, FallingProp> m_FallingProps = new Dictionary<string, FallingProp>();
             public Dictionary<string, AnimalEntity> m_Animals = new Dictionary<string, AnimalEntity>();
+
+            public Dictionary<string, AnimalCorpseData> m_AnimalCorpses =
+    new Dictionary<string, AnimalCorpseData>();
+
+            public class AnimalCorpseData
+            {
+                public string GUID { get; set; }
+                public string Prefab { get; set; }
+
+                public float PositionX { get; set; }
+                public float PositionY { get; set; }
+                public float PositionZ { get; set; }
+
+                public float RotationX { get; set; }
+                public float RotationY { get; set; }
+                public float RotationZ { get; set; }
+                public float RotationW { get; set; }
+
+                public float MeatAvailableKG { get; set; }
+                public int GutAvailableUnits { get; set; }
+                public int HideAvailableUnits { get; set; }
+
+                public bool GutIsAvailable { get; set; }
+                public bool HideIsAvailable { get; set; }
+                public bool Frozen { get; set; }
+                public bool Ravaged { get; set; }
+                public bool HasHarvested { get; set; }
+
+                public float Condition { get; set; }
+                public float PercentFrozen { get; set; }
+                public float LastHarvestTimeHours { get; set; }
+            }
             public Dictionary<string, SpawnRegionInstance> m_AnimalSpawners = new Dictionary<string, SpawnRegionInstance>();
 
             public DangerCircleConfig m_ZoneConfig = null;
@@ -1252,6 +1285,7 @@ namespace SkyCoopServer
                 {
                     data.Animals.Add(animal.Save());
                 }
+                data.AnimalCorpses = m_AnimalCorpses.Values.ToList();
                 return data;
             }
 
@@ -1366,6 +1400,7 @@ namespace SkyCoopServer
                 }
                 HandleAnimalSpawnersUpdate(ServerInstance);
             }
+
 
             public void SaveToFile(Server ServerInstance)
             {
@@ -2769,6 +2804,7 @@ namespace SkyCoopServer
                 public string Owner { get; set; }
                 public Vector3JSON Position { get; set; }
                 public QuaternionJSON Rotation { get; set; }
+                public List<AnimalCorpseData> AnimalCorpses { get; set; }
             }
 
             public SaveData Save()
