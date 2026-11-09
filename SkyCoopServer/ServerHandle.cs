@@ -1582,6 +1582,7 @@ namespace SkyCoopServer
                 Vector3 Velocity = Reader.GetVector3();
                 float DeathOfBleedingMinutes = Reader.GetFloat();
                 bool IsHolding = Reader.GetBool();
+                bool IsHuntingPlayer = Reader.GetBool();
 
                 SceneData Scene = ServerInstance.m_ScenesData.GetSceneData(Player.m_Scene);
                 if (Scene != null)
@@ -1597,6 +1598,7 @@ namespace SkyCoopServer
                             Animal.m_AiStatePrevious = PreviousState;
                             Animal.m_AnimatorData = AnimatorData;
                             Animal.m_IsBeingHeld = IsHolding;
+                            Animal.m_IsHuntingPlayer = IsHuntingPlayer && Health > 0;
                             float PreviousHealth = Animal.m_Health;
                             Animal.m_Health = Health;
                             if (PreviousHealth != 0 && Animal.m_Health <= 0)

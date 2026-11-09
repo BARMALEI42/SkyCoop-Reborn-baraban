@@ -715,7 +715,8 @@ namespace SkyCoop
             writer.Put(Velocity);
             writer.Put(DeathOfBleedingMinutes);
             writer.Put(IsHolding);
-
+            writer.Put(IsHuntingPlayer);
+            bool IsHuntingPlayer
             SendToHost(writer);
         }
 

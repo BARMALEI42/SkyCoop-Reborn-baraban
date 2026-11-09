@@ -3485,7 +3485,37 @@ namespace SkyCoop
                                 }
                             }
 
-                            ClientSend.SendAnimalSync(m_GUID, m_Position, m_Rotation, (int)m_Ai.GetAiMode(), m_Ai.m_Animator, m_Ai.IsBleedingOut(), Health, m_Ai.m_ElapsedBleedingOutMinutes, (int)m_Ai.GetPreviousAiMode(), m_Ai.GetVelocity(), m_Ai.m_DeathAfterBleeingOutMinutes, IsHolding);
+                            AiMode CurrentMode = m_Ai.GetAiMode();
+
+                            bool IsHuntingPlayer =
+                                CurrentMode == AiMode.Struggle ||
+                                (
+                                    (
+                                        CurrentMode == AiMode.Attack ||
+                                        CurrentMode == AiMode.Stalking ||
+                                        CurrentMode == AiMode.HoldGround ||
+                                        CurrentMode == AiMode.PassingAttack
+                                    )
+                                    &&
+                                    m_Ai.m_CurrentTarget != null &&
+                                    m_Ai.m_CurrentTarget.IsPlayer()
+                                );
+
+                            ClientSend.SendAnimalSync(
+                                m_GUID,
+                                m_Position,
+                                m_Rotation,
+                                (int)CurrentMode,
+                                m_Ai.m_Animator,
+                                m_Ai.IsBleedingOut(),
+                                Health,
+                                m_Ai.m_ElapsedBleedingOutMinutes,
+                                (int)m_Ai.GetPreviousAiMode(),
+                                m_Ai.GetVelocity(),
+                                m_Ai.m_DeathAfterBleeingOutMinutes,
+                                IsHolding,
+                                IsHuntingPlayer
+                            );
                         }
                         if(m_Ai.m_CurrentMode == AiMode.Stunned)
                         {
@@ -3502,8 +3532,13 @@ namespace SkyCoop
 
                         if (m_Ai.m_NavMeshAgent)
                         {
-                            m_Ai.m_NavMeshAgent.transform.position = Vector3.Lerp(transform.position, predicted, t);
-                            m_Ai.m_NavMeshAgent.transform.rotation = Quaternion.Slerp(transform.rotation, m_Rotation, t);
+                            Transform AgentTransform = m_Ai.m_NavMeshAgent.transform;
+
+                            AgentTransform.position =
+                                Vector3.Lerp(AgentTransform.position, predicted, t);
+
+                            AgentTransform.rotation =
+                                Quaternion.Slerp(AgentTransform.rotation, m_Rotation, t);
                         }
                         ProcessCurrentAiMode();
                         if (m_Item)

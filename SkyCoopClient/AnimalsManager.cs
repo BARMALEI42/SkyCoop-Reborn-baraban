@@ -439,6 +439,26 @@ namespace SkyCoopClient
                 return true;
             }
         }
+
+        [HarmonyLib.HarmonyPatch(typeof(SpawnRegionManager), "Deserialize")]
+        private static class SpawnRegionManager_Deserialize
+        {
+            private static bool Prefix()
+            {
+                if (!ModMain.IsMultiplayer())
+                {
+                    return true;
+                }
+
+                SkyCoop.Logger.Log(
+                    ConsoleColor.Yellow,
+                    "[Wildlife] Skipping local animal deserialization in multiplayer"
+                );
+
+                return false;
+            }
+        }
+
         [HarmonyLib.HarmonyPatch(typeof(BaseAi), "IgnoreAudioEvent")]
         private static class SpawnRegion_IgnoreAudioEvent
         {

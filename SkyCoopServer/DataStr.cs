@@ -4294,6 +4294,7 @@ namespace SkyCoopServer
 
             public bool m_IsBleeding = false;
             public bool m_IsBeingHeld = false;
+            public bool m_IsHuntingPlayer = false;
 
             public float m_LastUpdated = 0;
             public AnimatorData m_AnimatorData = new AnimatorData();
@@ -4520,6 +4521,19 @@ namespace SkyCoopServer
                     SetActive(ServerInstance, Scene, false);
                 }
 
+                if (m_IsHuntingPlayer && m_Owner != -1)
+                {
+                    PlayerData HuntingOwner =
+                        ServerInstance.m_PlayersData.GetPlayer(m_Owner);
+
+                    if (HuntingOwner == null ||
+                        HuntingOwner.m_GamePlayState != PlayerData.GamePlayState.Alive ||
+                        HuntingOwner.m_Scene != Scene.m_SceneName)
+                    {
+                        m_IsHuntingPlayer = false;
+                    }
+                }
+
                 if (m_Active)
                 {
                     if (ServerInstance.m_Timeline != null)
@@ -4535,7 +4549,9 @@ namespace SkyCoopServer
                     {
                         if (m_Owner != -1)
                         {
-                            if (m_RetakeCooldown == 0 && m_AiState != 14) // 14 - это Struggle
+                            if (m_RetakeCooldown == 0 &&
+    m_AiState != 14 &&
+    !m_IsHuntingPlayer) // 14 - это Struggle
                             {
                                 PlayerData CurrentOwner = ServerInstance.m_PlayersData.GetPlayer(m_Owner);
                                 PlayerData NewOwner = ServerInstance.m_PlayersData.GetPlayer(NewClosestPlayer);
@@ -4648,41 +4664,59 @@ namespace SkyCoopServer
             public void Death(Server ServerInstance, SceneData Scene)
             {
                 SpawnRegionInstance Spawner = null;
+
                 if (Scene.m_AnimalSpawners.TryGetValue(m_SpawnerGUID, out Spawner))
                 {
                     float CurrentTime = 0;
-                    if(ServerInstance.m_Timeline != null)
+
+                    if (ServerInstance.m_Timeline != null)
                     {
                         CurrentTime = ServerInstance.m_Timeline.m_ElapsedInGameHours;
                     }
+
                     if (!m_Summoned)
                     {
-                        Spawner.OnAnimalDied(CurrentTime, ServerInstance.m_Config.m_ExperienceMode);
+                        Spawner.OnAnimalDied(
+                            CurrentTime,
+                            ServerInstance.m_Config.m_ExperienceMode
+                        );
                     }
-                    bool IsAurora = false;
-                    if (ServerInstance.m_Weather != null)
+                }
+
+                bool IsAurora = false;
+
+                if (ServerInstance.m_Weather != null)
+                {
+                    IsAurora = ServerInstance.m_Weather.IsAurora();
+                }
+
+                List<NetPeer> peers = new List<NetPeer>();
+
+                ServerInstance.m_Instance.GetConnectedPeers(peers);
+
+                foreach (NetPeer peer in peers)
+                {
+                    PlayerData Player =
+                        ServerInstance.GetPlayerDataByNetPeer(peer);
+
+                    if (Player != null && Player.m_Scene == Scene.m_SceneName)
                     {
-                        IsAurora = ServerInstance.m_Weather.IsAurora();
-                    }
-                    List<NetPeer> peers = new List<NetPeer>();
-                    ServerInstance.m_Instance.GetConnectedPeers(peers);
-                    foreach (NetPeer peer in peers)
-                    {
-                        PlayerData Player = ServerInstance.GetPlayerDataByNetPeer(peer);
-                        if (Player != null && Player.m_Scene == Scene.m_SceneName)
-                        {
-                            ServerSend.SendAnimalCorpse(
+                        ServerSend.SendAnimalCorpse(
                             peer,
                             GetPrefabName(IsAurora),
                             m_GUID,
                             m_Position,
                             m_Rotation
                         );
-                        }
                     }
-                    Scene.m_Animals.Remove(m_GUID);
-                    Logger.Log(ConsoleColor.DarkRed, $"{m_Prefab} {m_GUID} died");
                 }
+
+                Scene.m_Animals.Remove(m_GUID);
+
+                Logger.Log(
+                    ConsoleColor.DarkRed,
+                    $"{m_Prefab} {m_GUID} died"
+                );
             }
         }
 
