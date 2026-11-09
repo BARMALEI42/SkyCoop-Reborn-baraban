@@ -18,6 +18,38 @@ namespace SkyCoopServer
             Client.Send(writer, DeliveryMethod.ReliableOrdered);
         }
 
+        public static void SendTraderState(NetPeer Client, string State)
+        {
+            if (Client == null || string.IsNullOrEmpty(State))
+                return;
+
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ServerTraderState);
+            writer.Put(State);
+
+            Client.Send(writer, DeliveryMethod.ReliableOrdered);
+        }
+
+        public static void BroadcastTraderState(string State, Server ServerInstance)
+        {
+            if (ServerInstance == null ||
+                ServerInstance.m_Instance == null ||
+                string.IsNullOrEmpty(State))
+                return;
+
+            NetDataWriter writer = new NetDataWriter();
+            writer.Put((int)Packet.Type.ServerTraderState);
+            writer.Put(State);
+
+            List<NetPeer> peers = new List<NetPeer>();
+            ServerInstance.m_Instance.GetConnectedPeers(peers);
+
+            foreach (NetPeer peer in peers.ToArray())
+            {
+                if (peer != null)
+                    peer.Send(writer, DeliveryMethod.ReliableOrdered);
+            }
+        }
         public static void ServerConfig(NetPeer Client, DataStr.ServerConfig CFG, DataStr.GameRules Rules)
         {
             NetDataWriter writer = new NetDataWriter();

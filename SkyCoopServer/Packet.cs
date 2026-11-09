@@ -112,6 +112,8 @@ namespace SkyCoopServer
             ClientAnimalAddArrow,
             ClientRequestAnimalArrows,
             ClientAnimalCorpse,
+
+            ServerTraderState,
         }
 
         public enum SquadResponce

@@ -22,6 +22,7 @@ namespace SkyCoopServer
         public int m_PendingGameModeOverTimer = 0;
         public string m_NextMapName = "";
         public string m_NextGameModeName = "";
+        public string m_TraderStateJson = "";
         public List<DataStr.MinimalPlayersAndGameMode> m_AvailableGameModes = new List<DataStr.MinimalPlayersAndGameMode>();
         public bool m_TimePaused = false;
 
@@ -151,8 +152,9 @@ namespace SkyCoopServer
                 m_Timeline = new Timeline(this, saveData.Timeline);
                 m_Weather = new WeatherManager(this, saveData.Weather);
                 m_Config.m_ExperienceMode = saveData.ExperienceMode;
+                m_TraderStateJson = saveData.TraderStateJson ?? "";
 
-                if(!string.IsNullOrEmpty(saveData.GameMode))
+                if (!string.IsNullOrEmpty(saveData.GameMode))
                 {
                     m_Config.m_GameMode = saveData.GameMode;
                 }
@@ -178,6 +180,7 @@ namespace SkyCoopServer
 
         public class SaveData
         {
+            public string TraderStateJson { get; set; } = "";
             public string ServerName { get; set; }
             public Timeline.SaveData Timeline { get; set; }
             public WeatherManager.SaveData Weather { get; set; }
@@ -200,6 +203,7 @@ namespace SkyCoopServer
             data.ServerName = m_Config.m_ServerName;
             data.GameMode = m_Config.m_GameMode;
 
+            data.TraderStateJson = m_TraderStateJson;
             return data;
         }
 

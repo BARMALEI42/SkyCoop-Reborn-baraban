@@ -13,6 +13,7 @@ namespace SkyCoopServer
     {
         public static void Welcome(NetPeer Client, NetDataReader Reader, Server ServerInstance)
         {
+
             string PlayerName = Reader.GetString();
             if(!ServerInstance.m_PlayersData.SetPlayerName(Client.Id, PlayerName))
             {
@@ -41,6 +42,10 @@ namespace SkyCoopServer
             }
             ServerSend.SendClientStatus(Client.Id, 1, ServerInstance);
             ServerSend.SendAssignSquad(Client, !string.IsNullOrEmpty(ServerInstance.m_PlayersData.GetPlayerNameSquadIn(Client.Id)));
+            if (!string.IsNullOrEmpty(ServerInstance.m_TraderStateJson))
+            {
+                ServerSend.SendTraderState(Client, ServerInstance.m_TraderStateJson);
+            }
         }
 
         public static void ClientPosition(NetPeer Client, NetDataReader Reader, Server ServerInstance)

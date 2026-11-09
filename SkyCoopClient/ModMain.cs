@@ -169,6 +169,7 @@ namespace SkyCoop
             }
 
             CanvasUI.Update();
+            TraderSync.Update();
 
             if (IsGameplayScene() && !GameManager.s_IsGameplaySuspended)
             {

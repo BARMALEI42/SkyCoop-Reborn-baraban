@@ -1136,5 +1136,10 @@ namespace SkyCoop
 
             AnimalsManager.HandleCorpse(GUID, PrefabName, Position, Rotation);
         }
+        public static void ServerTraderState(NetDataReader Reader)
+        {
+            string state = Reader.GetString();
+            TraderSync.Receive(state);
+        }
     }
 }
