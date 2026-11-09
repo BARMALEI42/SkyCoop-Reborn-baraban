@@ -12642,3 +12642,2290 @@ namespace Il2CppTLD.Trader
 	}
 }
 
+
+using System;
+using Il2Cpp;
+using Il2CppInterop.Common.Attributes;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.Runtime;
+using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
+using Il2CppTLD.Gear;
+using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+namespace Il2CppTLD.Trader
+{
+	// Token: 0x02000C35 RID: 3125
+	[Serializable]
+	public class TradeExchangeData : Il2CppSystem.Object
+	{
+		// Token: 0x060172C1 RID: 94913 RVA: 0x0052F5B4 File Offset: 0x0052D7B4
+		// Note: this type is marked as 'beforefieldinit'.
+		static TradeExchangeData()
+		{
+			Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr = IL2CPP.GetIl2CppClass("Assembly-CSharp.dll", "TLD.Trader", "TradeExchangeData");
+			IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr);
+			TradeExchangeData.NativeFieldInfoPtr_SPECIAL_REQUEST = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "SPECIAL_REQUEST");
+			TradeExchangeData.NativeFieldInfoPtr_m_Description = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_Description");
+			TradeExchangeData.NativeFieldInfoPtr_m_MaxExchangeInSingleTrade = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_MaxExchangeInSingleTrade");
+			TradeExchangeData.NativeFieldInfoPtr_m_GainedItem = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_GainedItem");
+			TradeExchangeData.NativeFieldInfoPtr_m_GainedItemAmount = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_GainedItemAmount");
+			TradeExchangeData.NativeFieldInfoPtr_m_UnlockedExchanges = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_UnlockedExchanges");
+			TradeExchangeData.NativeFieldInfoPtr_m_UnlockedConversations = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_UnlockedConversations");
+			TradeExchangeData.NativeFieldInfoPtr_m_ExchangeItems = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_ExchangeItems");
+			TradeExchangeData.NativeFieldInfoPtr_m_CheapExchangeItems = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_CheapExchangeItems");
+			TradeExchangeData.NativeFieldInfoPtr_m_TradeExchangeName = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_TradeExchangeName");
+			TradeExchangeData.NativeFieldInfoPtr_m_IsSpecialRequest = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_IsSpecialRequest");
+			TradeExchangeData.NativeFieldInfoPtr_m_GainedItemGearItemDataHandle = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_GainedItemGearItemDataHandle");
+			TradeExchangeData.NativeFieldInfoPtr_m_CachedTradeExchangeHeader = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_CachedTradeExchangeHeader");
+			TradeExchangeData.NativeFieldInfoPtr_m_CachedBaseItemCount = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, "m_CachedBaseItemCount");
+			TradeExchangeData.NativeMethodInfoPtr_Finalize_Protected_Virtual_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695744);
+			TradeExchangeData.NativeMethodInfoPtr_IsValidInCurrentGamemode_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695745);
+			TradeExchangeData.NativeMethodInfoPtr_IsGainedItemValidInCurrentGamemode_Private_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695746);
+			TradeExchangeData.NativeMethodInfoPtr_AreExchangeItemsValidInCurrentGamemode_Private_Boolean_List_1_ExchangeItem_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695747);
+			TradeExchangeData.NativeMethodInfoPtr_GetGainedItemData_Public_GearItemData_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695748);
+			TradeExchangeData.NativeMethodInfoPtr_GetGainedItemIcon_Public_Texture2D_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695749);
+			TradeExchangeData.NativeMethodInfoPtr_GetTradeExchangeHeader_Public_String_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695750);
+			TradeExchangeData.NativeMethodInfoPtr_CalculateBaseItemCount_Private_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695751);
+			TradeExchangeData.NativeMethodInfoPtr_BuildTradeExchangeHeader_Private_String_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695752);
+			TradeExchangeData.NativeMethodInfoPtr_GetActiveExchangeItems_Public_List_1_ExchangeItem_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695753);
+			TradeExchangeData.NativeMethodInfoPtr_IsFullyExchanged_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695754);
+			TradeExchangeData.NativeMethodInfoPtr_IsAnyExchanged_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695755);
+			TradeExchangeData.NativeMethodInfoPtr_UpdateExchanged_Public_Void_List_1_GearItemObject_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695756);
+			TradeExchangeData.NativeMethodInfoPtr_CalculateExchangedRatio_Public_Single_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695757);
+			TradeExchangeData.NativeMethodInfoPtr_FindExchangeItemMatch_Public_ExchangeItem_GearItem_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695758);
+			TradeExchangeData.NativeMethodInfoPtr_CloneForActiveTrade_Public_TradeExchangeData_Int32_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695759);
+			TradeExchangeData.NativeMethodInfoPtr_CloneExchangeItemsForActiveTrade_Private_List_1_ExchangeItem_List_1_ExchangeItem_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695760);
+			TradeExchangeData.NativeMethodInfoPtr_Equals_Public_Virtual_Boolean_Object_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695761);
+			TradeExchangeData.NativeMethodInfoPtr_Equals_Public_Virtual_Final_New_Boolean_TradeExchangeData_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695762);
+			TradeExchangeData.NativeMethodInfoPtr_GetHashCode_Public_Virtual_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695763);
+			TradeExchangeData.NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr, 100695764);
+		}
+
+		// Token: 0x060172C2 RID: 94914 RVA: 0x0052F8A0 File Offset: 0x0052DAA0
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550223, XrefRangeEnd = 550234, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public new unsafe void Finalize()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), TradeExchangeData.NativeMethodInfoPtr_Finalize_Protected_Virtual_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x060172C3 RID: 94915 RVA: 0x0052F8DC File Offset: 0x0052DADC
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550237, RefRangeEnd = 550238, XrefRangeStart = 550234, XrefRangeEnd = 550237, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool IsValidInCurrentGamemode()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_IsValidInCurrentGamemode_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172C4 RID: 94916 RVA: 0x0052F918 File Offset: 0x0052DB18
+		[CallerCount(3)]
+		[CachedScanResults(RefRangeStart = 550304, RefRangeEnd = 550307, XrefRangeStart = 550238, XrefRangeEnd = 550304, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool IsGainedItemValidInCurrentGamemode()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_IsGainedItemValidInCurrentGamemode_Private_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172C5 RID: 94917 RVA: 0x0052F954 File Offset: 0x0052DB54
+		[CallerCount(6)]
+		[CachedScanResults(RefRangeStart = 550317, RefRangeEnd = 550323, XrefRangeStart = 550307, XrefRangeEnd = 550317, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool AreExchangeItemsValidInCurrentGamemode(List<ExchangeItem> exchangeItems)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(exchangeItems);
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_AreExchangeItemsValidInCurrentGamemode_Private_Boolean_List_1_ExchangeItem_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172C6 RID: 94918 RVA: 0x0052F9A4 File Offset: 0x0052DBA4
+		[CallerCount(9)]
+		[CachedScanResults(RefRangeStart = 550334, RefRangeEnd = 550343, XrefRangeStart = 550323, XrefRangeEnd = 550334, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe GearItemData GetGainedItemData()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_GetGainedItemData_Public_GearItemData_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<GearItemData>(intPtr2) : null;
+		}
+
+		// Token: 0x060172C7 RID: 94919 RVA: 0x0052F9E4 File Offset: 0x0052DBE4
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 550348, RefRangeEnd = 550350, XrefRangeStart = 550343, XrefRangeEnd = 550348, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe Texture2D GetGainedItemIcon()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_GetGainedItemIcon_Public_Texture2D_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<Texture2D>(intPtr2) : null;
+		}
+
+		// Token: 0x060172C8 RID: 94920 RVA: 0x0052FA24 File Offset: 0x0052DC24
+		[CallerCount(6)]
+		[CachedScanResults(RefRangeStart = 550376, RefRangeEnd = 550382, XrefRangeStart = 550350, XrefRangeEnd = 550376, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe string GetTradeExchangeHeader(int multiplier = 1)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = ref multiplier;
+			IntPtr returnedException;
+			IntPtr il2CppString = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_GetTradeExchangeHeader_Public_String_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return IL2CPP.Il2CppStringToManaged(il2CppString);
+		}
+
+		// Token: 0x060172C9 RID: 94921 RVA: 0x0052FA68 File Offset: 0x0052DC68
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550408, RefRangeEnd = 550409, XrefRangeStart = 550382, XrefRangeEnd = 550408, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe int CalculateBaseItemCount()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_CalculateBaseItemCount_Private_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172CA RID: 94922 RVA: 0x0052FAA4 File Offset: 0x0052DCA4
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550409, XrefRangeEnd = 550423, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe string BuildTradeExchangeHeader()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr il2CppString = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_BuildTradeExchangeHeader_Private_String_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return IL2CPP.Il2CppStringToManaged(il2CppString);
+		}
+
+		// Token: 0x060172CB RID: 94923 RVA: 0x0052FADC File Offset: 0x0052DCDC
+		[CallerCount(0)]
+		public unsafe List<ExchangeItem> GetActiveExchangeItems()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_GetActiveExchangeItems_Public_List_1_ExchangeItem_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<ExchangeItem>>(intPtr2) : null;
+		}
+
+		// Token: 0x060172CC RID: 94924 RVA: 0x0052FB1C File Offset: 0x0052DD1C
+		[CallerCount(8)]
+		[CachedScanResults(RefRangeStart = 550433, RefRangeEnd = 550441, XrefRangeStart = 550423, XrefRangeEnd = 550433, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool IsFullyExchanged()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_IsFullyExchanged_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172CD RID: 94925 RVA: 0x0052FB58 File Offset: 0x0052DD58
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550441, XrefRangeEnd = 550457, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool IsAnyExchanged()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_IsAnyExchanged_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172CE RID: 94926 RVA: 0x0052FB94 File Offset: 0x0052DD94
+		[CallerCount(9)]
+		[CachedScanResults(RefRangeStart = 550473, RefRangeEnd = 550482, XrefRangeStart = 550457, XrefRangeEnd = 550473, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void UpdateExchanged(List<GearItemObject> exchangedItems)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(exchangedItems);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_UpdateExchanged_Public_Void_List_1_GearItemObject_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x060172CF RID: 94927 RVA: 0x0052FBD8 File Offset: 0x0052DDD8
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550503, RefRangeEnd = 550504, XrefRangeStart = 550482, XrefRangeEnd = 550503, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe float CalculateExchangedRatio()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_CalculateExchangedRatio_Public_Single_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172D0 RID: 94928 RVA: 0x0052FC14 File Offset: 0x0052DE14
+		[CallerCount(8)]
+		[CachedScanResults(RefRangeStart = 550512, RefRangeEnd = 550520, XrefRangeStart = 550504, XrefRangeEnd = 550512, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe ExchangeItem FindExchangeItemMatch(GearItem gearItem)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(gearItem);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_FindExchangeItemMatch_Public_ExchangeItem_GearItem_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<ExchangeItem>(intPtr2) : null;
+		}
+
+		// Token: 0x060172D1 RID: 94929 RVA: 0x0052FC64 File Offset: 0x0052DE64
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 550538, RefRangeEnd = 550540, XrefRangeStart = 550520, XrefRangeEnd = 550538, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe TradeExchangeData CloneForActiveTrade(int numExchangesMultiplier, bool useCheapItems)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = ref numExchangesMultiplier;
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref useCheapItems;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_CloneForActiveTrade_Public_TradeExchangeData_Int32_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<TradeExchangeData>(intPtr2) : null;
+		}
+
+		// Token: 0x060172D2 RID: 94930 RVA: 0x0052FCC0 File Offset: 0x0052DEC0
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 550561, RefRangeEnd = 550563, XrefRangeStart = 550540, XrefRangeEnd = 550561, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe List<ExchangeItem> CloneExchangeItemsForActiveTrade(List<ExchangeItem> sourceItems, int numExchangesMultiplier)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(sourceItems);
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref numExchangesMultiplier;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_CloneExchangeItemsForActiveTrade_Private_List_1_ExchangeItem_List_1_ExchangeItem_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<ExchangeItem>>(intPtr2) : null;
+		}
+
+		// Token: 0x060172D3 RID: 94931 RVA: 0x0052FD20 File Offset: 0x0052DF20
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550563, XrefRangeEnd = 550568, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe override bool Equals(Il2CppSystem.Object obj)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(obj);
+			IntPtr returnedException;
+			IntPtr obj2 = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), TradeExchangeData.NativeMethodInfoPtr_Equals_Public_Virtual_Boolean_Object_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj2);
+		}
+
+		// Token: 0x060172D4 RID: 94932 RVA: 0x0052FD78 File Offset: 0x0052DF78
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550582, RefRangeEnd = 550583, XrefRangeStart = 550568, XrefRangeEnd = 550582, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual bool Equals(TradeExchangeData other)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(other);
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr_Equals_Public_Virtual_Final_New_Boolean_TradeExchangeData_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172D5 RID: 94933 RVA: 0x0052FDC8 File Offset: 0x0052DFC8
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550583, XrefRangeEnd = 550590, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe override int GetHashCode()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), TradeExchangeData.NativeMethodInfoPtr_GetHashCode_Public_Virtual_Int32_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x060172D6 RID: 94934 RVA: 0x0052FE10 File Offset: 0x0052E010
+		[CallerCount(0)]
+		public unsafe TradeExchangeData() : this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<TradeExchangeData>.NativeClassPtr))
+		{
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TradeExchangeData.NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x060172D7 RID: 94935 RVA: 0x000C9B7E File Offset: 0x000C7D7E
+		public TradeExchangeData(IntPtr pointer) : base(pointer)
+		{
+		}
+
+		// Token: 0x17007F13 RID: 32531
+		// (get) Token: 0x060172D8 RID: 94936 RVA: 0x0052FE4C File Offset: 0x0052E04C
+		// (set) Token: 0x060172D9 RID: 94937 RVA: 0x000C9B87 File Offset: 0x000C7D87
+		public unsafe static string SPECIAL_REQUEST
+		{
+			get
+			{
+				IntPtr il2CppString;
+				IL2CPP.il2cpp_field_static_get_value(TradeExchangeData.NativeFieldInfoPtr_SPECIAL_REQUEST, (void*)(&il2CppString));
+				return IL2CPP.Il2CppStringToManaged(il2CppString);
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TradeExchangeData.NativeFieldInfoPtr_SPECIAL_REQUEST, IL2CPP.ManagedStringToIl2Cpp(value));
+			}
+		}
+
+		// Token: 0x17007F14 RID: 32532
+		// (get) Token: 0x060172DA RID: 94938 RVA: 0x0052FE6C File Offset: 0x0052E06C
+		// (set) Token: 0x060172DB RID: 94939 RVA: 0x000C9B99 File Offset: 0x000C7D99
+		public unsafe LocalizedString m_Description
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_Description);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<LocalizedString>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_Description), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F15 RID: 32533
+		// (get) Token: 0x060172DC RID: 94940 RVA: 0x0052FE9C File Offset: 0x0052E09C
+		// (set) Token: 0x060172DD RID: 94941 RVA: 0x000C9BB8 File Offset: 0x000C7DB8
+		public unsafe int m_MaxExchangeInSingleTrade
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_MaxExchangeInSingleTrade);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_MaxExchangeInSingleTrade)) = value;
+			}
+		}
+
+		// Token: 0x17007F16 RID: 32534
+		// (get) Token: 0x060172DE RID: 94942 RVA: 0x0052FEC4 File Offset: 0x0052E0C4
+		// (set) Token: 0x060172DF RID: 94943 RVA: 0x000C9BD3 File Offset: 0x000C7DD3
+		public unsafe AssetReferenceGearItemData m_GainedItem
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_GainedItem);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<AssetReferenceGearItemData>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_GainedItem), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F17 RID: 32535
+		// (get) Token: 0x060172E0 RID: 94944 RVA: 0x0052FEF4 File Offset: 0x0052E0F4
+		// (set) Token: 0x060172E1 RID: 94945 RVA: 0x000C9BF2 File Offset: 0x000C7DF2
+		public unsafe int m_GainedItemAmount
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_GainedItemAmount);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_GainedItemAmount)) = value;
+			}
+		}
+
+		// Token: 0x17007F18 RID: 32536
+		// (get) Token: 0x060172E2 RID: 94946 RVA: 0x0052FF1C File Offset: 0x0052E11C
+		// (set) Token: 0x060172E3 RID: 94947 RVA: 0x000C9C0D File Offset: 0x000C7E0D
+		public unsafe List<AssetReferenceTradeExchange> m_UnlockedExchanges
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_UnlockedExchanges);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<AssetReferenceTradeExchange>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_UnlockedExchanges), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F19 RID: 32537
+		// (get) Token: 0x060172E4 RID: 94948 RVA: 0x0052FF4C File Offset: 0x0052E14C
+		// (set) Token: 0x060172E5 RID: 94949 RVA: 0x000C9C2C File Offset: 0x000C7E2C
+		public unsafe List<AssetReferenceTraderConversation> m_UnlockedConversations
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_UnlockedConversations);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<AssetReferenceTraderConversation>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_UnlockedConversations), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F1A RID: 32538
+		// (get) Token: 0x060172E6 RID: 94950 RVA: 0x0052FF7C File Offset: 0x0052E17C
+		// (set) Token: 0x060172E7 RID: 94951 RVA: 0x000C9C4B File Offset: 0x000C7E4B
+		public unsafe List<ExchangeItem> m_ExchangeItems
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_ExchangeItems);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<ExchangeItem>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_ExchangeItems), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F1B RID: 32539
+		// (get) Token: 0x060172E8 RID: 94952 RVA: 0x0052FFAC File Offset: 0x0052E1AC
+		// (set) Token: 0x060172E9 RID: 94953 RVA: 0x000C9C6A File Offset: 0x000C7E6A
+		public unsafe List<ExchangeItem> m_CheapExchangeItems
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_CheapExchangeItems);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<ExchangeItem>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_CheapExchangeItems), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F1C RID: 32540
+		// (get) Token: 0x060172EA RID: 94954 RVA: 0x0052FFDC File Offset: 0x0052E1DC
+		// (set) Token: 0x060172EB RID: 94955 RVA: 0x000C9C89 File Offset: 0x000C7E89
+		public unsafe string m_TradeExchangeName
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_TradeExchangeName);
+				return IL2CPP.Il2CppStringToManaged(*intPtr);
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_TradeExchangeName), IL2CPP.ManagedStringToIl2Cpp(value));
+			}
+		}
+
+		// Token: 0x17007F1D RID: 32541
+		// (get) Token: 0x060172EC RID: 94956 RVA: 0x00530004 File Offset: 0x0052E204
+		// (set) Token: 0x060172ED RID: 94957 RVA: 0x000C9CA8 File Offset: 0x000C7EA8
+		public unsafe bool m_IsSpecialRequest
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_IsSpecialRequest);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_IsSpecialRequest)) = value;
+			}
+		}
+
+		// Token: 0x17007F1E RID: 32542
+		// (get) Token: 0x060172EE RID: 94958 RVA: 0x0053002C File Offset: 0x0052E22C
+		// (set) Token: 0x060172EF RID: 94959 RVA: 0x000C9CC3 File Offset: 0x000C7EC3
+		public AsyncOperationHandle<GearItemData> m_GainedItemGearItemDataHandle
+		{
+			get
+			{
+				IntPtr data = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_GainedItemGearItemDataHandle);
+				return new AsyncOperationHandle<GearItemData>(IL2CPP.il2cpp_value_box(Il2CppClassPointerStore<AsyncOperationHandle<GearItemData>>.NativeClassPtr, data));
+			}
+			set
+			{
+				cpblk(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_GainedItemGearItemDataHandle), IL2CPP.il2cpp_object_unbox(IL2CPP.Il2CppObjectBaseToPtr(value)), IL2CPP.il2cpp_class_value_size(Il2CppClassPointerStore<AsyncOperationHandle<GearItemData>>.NativeClassPtr, (UIntPtr)0));
+			}
+		}
+
+		// Token: 0x17007F1F RID: 32543
+		// (get) Token: 0x060172F0 RID: 94960 RVA: 0x0053005C File Offset: 0x0052E25C
+		// (set) Token: 0x060172F1 RID: 94961 RVA: 0x000C9CF1 File Offset: 0x000C7EF1
+		public unsafe string m_CachedTradeExchangeHeader
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_CachedTradeExchangeHeader);
+				return IL2CPP.Il2CppStringToManaged(*intPtr);
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_CachedTradeExchangeHeader), IL2CPP.ManagedStringToIl2Cpp(value));
+			}
+		}
+
+		// Token: 0x17007F20 RID: 32544
+		// (get) Token: 0x060172F2 RID: 94962 RVA: 0x00530084 File Offset: 0x0052E284
+		// (set) Token: 0x060172F3 RID: 94963 RVA: 0x000C9D10 File Offset: 0x000C7F10
+		public unsafe int m_CachedBaseItemCount
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_CachedBaseItemCount);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TradeExchangeData.NativeFieldInfoPtr_m_CachedBaseItemCount)) = value;
+			}
+		}
+
+		// Token: 0x0400EF25 RID: 61221
+		private static readonly IntPtr NativeFieldInfoPtr_SPECIAL_REQUEST;
+
+		// Token: 0x0400EF26 RID: 61222
+		private static readonly IntPtr NativeFieldInfoPtr_m_Description;
+
+		// Token: 0x0400EF27 RID: 61223
+		private static readonly IntPtr NativeFieldInfoPtr_m_MaxExchangeInSingleTrade;
+
+		// Token: 0x0400EF28 RID: 61224
+		private static readonly IntPtr NativeFieldInfoPtr_m_GainedItem;
+
+		// Token: 0x0400EF29 RID: 61225
+		private static readonly IntPtr NativeFieldInfoPtr_m_GainedItemAmount;
+
+		// Token: 0x0400EF2A RID: 61226
+		private static readonly IntPtr NativeFieldInfoPtr_m_UnlockedExchanges;
+
+		// Token: 0x0400EF2B RID: 61227
+		private static readonly IntPtr NativeFieldInfoPtr_m_UnlockedConversations;
+
+		// Token: 0x0400EF2C RID: 61228
+		private static readonly IntPtr NativeFieldInfoPtr_m_ExchangeItems;
+
+		// Token: 0x0400EF2D RID: 61229
+		private static readonly IntPtr NativeFieldInfoPtr_m_CheapExchangeItems;
+
+		// Token: 0x0400EF2E RID: 61230
+		private static readonly IntPtr NativeFieldInfoPtr_m_TradeExchangeName;
+
+		// Token: 0x0400EF2F RID: 61231
+		private static readonly IntPtr NativeFieldInfoPtr_m_IsSpecialRequest;
+
+		// Token: 0x0400EF30 RID: 61232
+		private static readonly IntPtr NativeFieldInfoPtr_m_GainedItemGearItemDataHandle;
+
+		// Token: 0x0400EF31 RID: 61233
+		private static readonly IntPtr NativeFieldInfoPtr_m_CachedTradeExchangeHeader;
+
+		// Token: 0x0400EF32 RID: 61234
+		private static readonly IntPtr NativeFieldInfoPtr_m_CachedBaseItemCount;
+
+		// Token: 0x0400EF33 RID: 61235
+		private static readonly IntPtr NativeMethodInfoPtr_Finalize_Protected_Virtual_Void_0;
+
+		// Token: 0x0400EF34 RID: 61236
+		private static readonly IntPtr NativeMethodInfoPtr_IsValidInCurrentGamemode_Public_Boolean_0;
+
+		// Token: 0x0400EF35 RID: 61237
+		private static readonly IntPtr NativeMethodInfoPtr_IsGainedItemValidInCurrentGamemode_Private_Boolean_0;
+
+		// Token: 0x0400EF36 RID: 61238
+		private static readonly IntPtr NativeMethodInfoPtr_AreExchangeItemsValidInCurrentGamemode_Private_Boolean_List_1_ExchangeItem_0;
+
+		// Token: 0x0400EF37 RID: 61239
+		private static readonly IntPtr NativeMethodInfoPtr_GetGainedItemData_Public_GearItemData_0;
+
+		// Token: 0x0400EF38 RID: 61240
+		private static readonly IntPtr NativeMethodInfoPtr_GetGainedItemIcon_Public_Texture2D_0;
+
+		// Token: 0x0400EF39 RID: 61241
+		private static readonly IntPtr NativeMethodInfoPtr_GetTradeExchangeHeader_Public_String_Int32_0;
+
+		// Token: 0x0400EF3A RID: 61242
+		private static readonly IntPtr NativeMethodInfoPtr_CalculateBaseItemCount_Private_Int32_0;
+
+		// Token: 0x0400EF3B RID: 61243
+		private static readonly IntPtr NativeMethodInfoPtr_BuildTradeExchangeHeader_Private_String_0;
+
+		// Token: 0x0400EF3C RID: 61244
+		private static readonly IntPtr NativeMethodInfoPtr_GetActiveExchangeItems_Public_List_1_ExchangeItem_0;
+
+		// Token: 0x0400EF3D RID: 61245
+		private static readonly IntPtr NativeMethodInfoPtr_IsFullyExchanged_Public_Boolean_0;
+
+		// Token: 0x0400EF3E RID: 61246
+		private static readonly IntPtr NativeMethodInfoPtr_IsAnyExchanged_Public_Boolean_0;
+
+		// Token: 0x0400EF3F RID: 61247
+		private static readonly IntPtr NativeMethodInfoPtr_UpdateExchanged_Public_Void_List_1_GearItemObject_0;
+
+		// Token: 0x0400EF40 RID: 61248
+		private static readonly IntPtr NativeMethodInfoPtr_CalculateExchangedRatio_Public_Single_0;
+
+		// Token: 0x0400EF41 RID: 61249
+		private static readonly IntPtr NativeMethodInfoPtr_FindExchangeItemMatch_Public_ExchangeItem_GearItem_0;
+
+		// Token: 0x0400EF42 RID: 61250
+		private static readonly IntPtr NativeMethodInfoPtr_CloneForActiveTrade_Public_TradeExchangeData_Int32_Boolean_0;
+
+		// Token: 0x0400EF43 RID: 61251
+		private static readonly IntPtr NativeMethodInfoPtr_CloneExchangeItemsForActiveTrade_Private_List_1_ExchangeItem_List_1_ExchangeItem_Int32_0;
+
+		// Token: 0x0400EF44 RID: 61252
+		private static readonly IntPtr NativeMethodInfoPtr_Equals_Public_Virtual_Boolean_Object_0;
+
+		// Token: 0x0400EF45 RID: 61253
+		private static readonly IntPtr NativeMethodInfoPtr_Equals_Public_Virtual_Final_New_Boolean_TradeExchangeData_0;
+
+		// Token: 0x0400EF46 RID: 61254
+		private static readonly IntPtr NativeMethodInfoPtr_GetHashCode_Public_Virtual_Int32_0;
+
+		// Token: 0x0400EF47 RID: 61255
+		private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+	}
+}
+
+using System;
+using Il2CppAK.Wwise;
+using Il2CppInterop.Common.Attributes;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.InteropTypes;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using Il2CppInterop.Runtime.Runtime;
+using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
+using Il2CppSystem.Reflection;
+using Il2CppTLD.Logging;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+namespace Il2CppTLD.Trader
+{
+	// Token: 0x02000C3A RID: 3130
+	public class TraderManager : MonoBehaviour
+	{
+		// Token: 0x06017345 RID: 95045 RVA: 0x00530E50 File Offset: 0x0052F050
+		// Note: this type is marked as 'beforefieldinit'.
+		static TraderManager()
+		{
+			Il2CppClassPointerStore<TraderManager>.NativeClassPtr = IL2CPP.GetIl2CppClass("Assembly-CSharp.dll", "TLD.Trader", "TraderManager");
+			IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<TraderManager>.NativeClassPtr);
+			TraderManager.NativeFieldInfoPtr_s_LogFilter = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_LogFilter");
+			TraderManager.NativeFieldInfoPtr_m_TradeExchangeLabel = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_TradeExchangeLabel");
+			TraderManager.NativeFieldInfoPtr_m_TradeActiveState = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_TradeActiveState");
+			TraderManager.NativeFieldInfoPtr_m_TradeInactiveState = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_TradeInactiveState");
+			TraderManager.NativeFieldInfoPtr_m_MaxExchangesInTrade = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_MaxExchangesInTrade");
+			TraderManager.NativeFieldInfoPtr_m_MinTrustLevel = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_MinTrustLevel");
+			TraderManager.NativeFieldInfoPtr_m_MaxTrustLevel = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_MaxTrustLevel");
+			TraderManager.NativeFieldInfoPtr_m_InitialTraderConversation = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_InitialTraderConversation");
+			TraderManager.NativeFieldInfoPtr_m_LastIntroductionConversation = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_LastIntroductionConversation");
+			TraderManager.NativeFieldInfoPtr_m_TradeExchangeUnlocks = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_TradeExchangeUnlocks");
+			TraderManager.NativeFieldInfoPtr_m_ConversationUnlocks = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_ConversationUnlocks");
+			TraderManager.NativeFieldInfoPtr_m_TraderImprovementUnlocks = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_TraderImprovementUnlocks");
+			TraderManager.NativeFieldInfoPtr_s_EnableInNewGame = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_EnableInNewGame");
+			TraderManager.NativeFieldInfoPtr_s_ToggleInExistingGame = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_ToggleInExistingGame");
+			TraderManager.NativeFieldInfoPtr_s_Debug = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_Debug");
+			TraderManager.NativeFieldInfoPtr_s_AllTradeExchanges = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_AllTradeExchanges");
+			TraderManager.NativeFieldInfoPtr_s_AllTraderConversations = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_AllTraderConversations");
+			TraderManager.NativeFieldInfoPtr_s_InitialTraderConversationHandle = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_InitialTraderConversationHandle");
+			TraderManager.NativeFieldInfoPtr_s_LastIntroductionConversationsHandle = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "s_LastIntroductionConversationsHandle");
+			TraderManager.NativeFieldInfoPtr_m_CurrentState = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_CurrentState");
+			TraderManager.NativeFieldInfoPtr__Tunables_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "<Tunables>k__BackingField");
+			TraderManager.NativeFieldInfoPtr_m_ExchangeBoxInScene = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "m_ExchangeBoxInScene");
+			TraderManager.NativeMethodInfoPtr_get_IsSystemEnabled_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695787);
+			TraderManager.NativeMethodInfoPtr_get_UseCheapPrices_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695788);
+			TraderManager.NativeMethodInfoPtr_get_MinTrust_Public_get_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695789);
+			TraderManager.NativeMethodInfoPtr_get_MaxTrust_Public_get_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695790);
+			TraderManager.NativeMethodInfoPtr_get_CurrentTrust_Public_get_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695791);
+			TraderManager.NativeMethodInfoPtr_get_MaxExchangesInTrade_Public_get_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695792);
+			TraderManager.NativeMethodInfoPtr_get_TradeIsActive_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695793);
+			TraderManager.NativeMethodInfoPtr_get_SpecialRequestActive_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695794);
+			TraderManager.NativeMethodInfoPtr_get_SpecialRequestHeaderText_Public_get_String_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695795);
+			TraderManager.NativeMethodInfoPtr_get_SpecialRequestDescriptionText_Public_get_String_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695796);
+			TraderManager.NativeMethodInfoPtr_get_Tunables_Public_get_TraderTunables_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695797);
+			TraderManager.NativeMethodInfoPtr_set_Tunables_Private_set_Void_TraderTunables_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695798);
+			TraderManager.NativeMethodInfoPtr_Awake_Private_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695799);
+			TraderManager.NativeMethodInfoPtr_GetTunables_Private_TraderTunables_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695800);
+			TraderManager.NativeMethodInfoPtr_GetAvailableTradeExchanges_Public_List_1_TradeExchangeData_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695801);
+			TraderManager.NativeMethodInfoPtr_GetSpecialRequests_Public_List_1_TradeExchangeData_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695802);
+			TraderManager.NativeMethodInfoPtr_RollExchanges_Private_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695803);
+			TraderManager.NativeMethodInfoPtr_AddTradeExchange_Private_Void_TradeExchange_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695804);
+			TraderManager.NativeMethodInfoPtr_GetPossibleExchanges_Private_List_1_TradeExchange_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695805);
+			TraderManager.NativeMethodInfoPtr_IsTraderAvailable_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695806);
+			TraderManager.NativeMethodInfoPtr_IsTraderOutForExchange_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695807);
+			TraderManager.NativeMethodInfoPtr_GetHasInterruptedPlayerPassingTime_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695808);
+			TraderManager.NativeMethodInfoPtr_SetHasInterruptedPlayerPassingTime_Public_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695809);
+			TraderManager.NativeMethodInfoPtr_ShouldHaveInitialTraderConversation_Public_Boolean_byref_TraderConversation_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695810);
+			TraderManager.NativeMethodInfoPtr_HaveHadAllIntroductionConversations_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695811);
+			TraderManager.NativeMethodInfoPtr_ContactTrader_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695812);
+			TraderManager.NativeMethodInfoPtr_GetAvailableConversations_Public_Void_List_1_TraderConversation_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695813);
+			TraderManager.NativeMethodInfoPtr_NotifyConversationHad_Public_Void_TraderConversation_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695814);
+			TraderManager.NativeMethodInfoPtr_HaveHadConversation_Public_Boolean_TraderConversation_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695815);
+			TraderManager.NativeMethodInfoPtr_InitiateTrade_Public_Void_List_1_TradeExchangeData_String_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695816);
+			TraderManager.NativeMethodInfoPtr_IsTradeFullyFilled_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695817);
+			TraderManager.NativeMethodInfoPtr_AnyTradesFilled_Public_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695818);
+			TraderManager.NativeMethodInfoPtr_CloseTrade_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695819);
+			TraderManager.NativeMethodInfoPtr_CompleteTrade_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695820);
+			TraderManager.NativeMethodInfoPtr_RemoveActiveTrade_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695821);
+			TraderManager.NativeMethodInfoPtr_CancelTrade_Public_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695822);
+			TraderManager.NativeMethodInfoPtr_MaybeReturnSpecialRequestItems_Private_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695823);
+			TraderManager.NativeMethodInfoPtr_GetActiveTrade_Public_ActiveTradeState_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695824);
+			TraderManager.NativeMethodInfoPtr_GetHoursSinceLastTradeComplete_Public_Single_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695825);
+			TraderManager.NativeMethodInfoPtr_IsExchangeInActiveTrade_Public_Boolean_TradeExchange_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695826);
+			TraderManager.NativeMethodInfoPtr_AddTrust_Public_Void_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695827);
+			TraderManager.NativeMethodInfoPtr_UnlockExchange_Public_Void_AssetReferenceTradeExchange_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695828);
+			TraderManager.NativeMethodInfoPtr_UnlockImprovement_Public_Void_TraderImprovement_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695829);
+			TraderManager.NativeMethodInfoPtr_UnlockConversation_Private_Void_AssetReferenceTraderConversation_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695830);
+			TraderManager.NativeMethodInfoPtr_GetUnlockNameFromReference_Private_String_AssetReferenceT_1_T_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695831);
+			TraderManager.NativeMethodInfoPtr_GetActiveExchangeBox_Private_ExchangeBox_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695832);
+			TraderManager.NativeMethodInfoPtr_SetSpecialRequest_Public_Void_String_String_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695833);
+			TraderManager.NativeMethodInfoPtr_Serialize_Public_TraderState_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695834);
+			TraderManager.NativeMethodInfoPtr_Deserialize_Public_Void_TraderState_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695835);
+			TraderManager.NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, 100695836);
+		}
+
+		// Token: 0x17007F58 RID: 32600
+		// (get) Token: 0x06017346 RID: 95046 RVA: 0x00531420 File Offset: 0x0052F620
+		public unsafe bool IsSystemEnabled
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_IsSystemEnabled_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F59 RID: 32601
+		// (get) Token: 0x06017347 RID: 95047 RVA: 0x0053145C File Offset: 0x0052F65C
+		public unsafe bool UseCheapPrices
+		{
+			[CallerCount(2)]
+			[CachedScanResults(RefRangeStart = 550595, RefRangeEnd = 550597, XrefRangeStart = 550594, XrefRangeEnd = 550595, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_UseCheapPrices_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F5A RID: 32602
+		// (get) Token: 0x06017348 RID: 95048 RVA: 0x00531498 File Offset: 0x0052F698
+		public unsafe int MinTrust
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_MinTrust_Public_get_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F5B RID: 32603
+		// (get) Token: 0x06017349 RID: 95049 RVA: 0x005314D4 File Offset: 0x0052F6D4
+		public unsafe int MaxTrust
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_MaxTrust_Public_get_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F5C RID: 32604
+		// (get) Token: 0x0601734A RID: 95050 RVA: 0x00531510 File Offset: 0x0052F710
+		public unsafe int CurrentTrust
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_CurrentTrust_Public_get_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F5D RID: 32605
+		// (get) Token: 0x0601734B RID: 95051 RVA: 0x0053154C File Offset: 0x0052F74C
+		public unsafe int MaxExchangesInTrade
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_MaxExchangesInTrade_Public_get_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F5E RID: 32606
+		// (get) Token: 0x0601734C RID: 95052 RVA: 0x00531588 File Offset: 0x0052F788
+		public unsafe bool TradeIsActive
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_TradeIsActive_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F5F RID: 32607
+		// (get) Token: 0x0601734D RID: 95053 RVA: 0x005315C4 File Offset: 0x0052F7C4
+		public unsafe bool SpecialRequestActive
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_SpecialRequestActive_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+		}
+
+		// Token: 0x17007F60 RID: 32608
+		// (get) Token: 0x0601734E RID: 95054 RVA: 0x00531600 File Offset: 0x0052F800
+		public unsafe string SpecialRequestHeaderText
+		{
+			[CallerCount(1)]
+			[CachedScanResults(RefRangeStart = 550602, RefRangeEnd = 550603, XrefRangeStart = 550597, XrefRangeEnd = 550602, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr il2CppString = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_SpecialRequestHeaderText_Public_get_String_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return IL2CPP.Il2CppStringToManaged(il2CppString);
+			}
+		}
+
+		// Token: 0x17007F61 RID: 32609
+		// (get) Token: 0x0601734F RID: 95055 RVA: 0x00531638 File Offset: 0x0052F838
+		public unsafe string SpecialRequestDescriptionText
+		{
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550603, XrefRangeEnd = 550608, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr il2CppString = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_SpecialRequestDescriptionText_Public_get_String_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return IL2CPP.Il2CppStringToManaged(il2CppString);
+			}
+		}
+
+		// Token: 0x17007F62 RID: 32610
+		// (get) Token: 0x06017350 RID: 95056 RVA: 0x00531670 File Offset: 0x0052F870
+		// (set) Token: 0x06017351 RID: 95057 RVA: 0x005316AC File Offset: 0x0052F8AC
+		public unsafe TraderTunables Tunables
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_get_Tunables_Public_get_TraderTunables_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+			[CallerCount(0)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+				*ptr = ref value;
+				IntPtr returnedException;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_set_Tunables_Private_set_Void_TraderTunables_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			}
+		}
+
+		// Token: 0x06017352 RID: 95058 RVA: 0x005316EC File Offset: 0x0052F8EC
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550608, XrefRangeEnd = 550619, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void Awake()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_Awake_Private_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017353 RID: 95059 RVA: 0x00531720 File Offset: 0x0052F920
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550648, RefRangeEnd = 550649, XrefRangeStart = 550619, XrefRangeEnd = 550648, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe TraderTunables GetTunables()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetTunables_Private_TraderTunables_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x06017354 RID: 95060 RVA: 0x0053175C File Offset: 0x0052F95C
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550675, RefRangeEnd = 550676, XrefRangeStart = 550649, XrefRangeEnd = 550675, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe List<TradeExchangeData> GetAvailableTradeExchanges()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetAvailableTradeExchanges_Public_List_1_TradeExchangeData_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<TradeExchangeData>>(intPtr2) : null;
+		}
+
+		// Token: 0x06017355 RID: 95061 RVA: 0x0053179C File Offset: 0x0052F99C
+		[CallerCount(0)]
+		public unsafe List<TradeExchangeData> GetSpecialRequests()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetSpecialRequests_Public_List_1_TradeExchangeData_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<TradeExchangeData>>(intPtr2) : null;
+		}
+
+		// Token: 0x06017356 RID: 95062 RVA: 0x005317DC File Offset: 0x0052F9DC
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550734, RefRangeEnd = 550735, XrefRangeStart = 550676, XrefRangeEnd = 550734, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void RollExchanges()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_RollExchanges_Private_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017357 RID: 95063 RVA: 0x00531810 File Offset: 0x0052FA10
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 550739, RefRangeEnd = 550741, XrefRangeStart = 550735, XrefRangeEnd = 550739, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void AddTradeExchange(TradeExchange tradeExchange)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(tradeExchange);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_AddTradeExchange_Private_Void_TradeExchange_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017358 RID: 95064 RVA: 0x00531854 File Offset: 0x0052FA54
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 550775, RefRangeEnd = 550777, XrefRangeStart = 550741, XrefRangeEnd = 550775, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe List<TradeExchange> GetPossibleExchanges()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetPossibleExchanges_Private_List_1_TradeExchange_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<TradeExchange>>(intPtr2) : null;
+		}
+
+		// Token: 0x06017359 RID: 95065 RVA: 0x00531894 File Offset: 0x0052FA94
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550781, RefRangeEnd = 550782, XrefRangeStart = 550777, XrefRangeEnd = 550781, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool IsTraderAvailable()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_IsTraderAvailable_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x0601735A RID: 95066 RVA: 0x005318D0 File Offset: 0x0052FAD0
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550782, XrefRangeEnd = 550786, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool IsTraderOutForExchange()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_IsTraderOutForExchange_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x0601735B RID: 95067 RVA: 0x0053190C File Offset: 0x0052FB0C
+		[CallerCount(0)]
+		public unsafe bool GetHasInterruptedPlayerPassingTime()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetHasInterruptedPlayerPassingTime_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x0601735C RID: 95068 RVA: 0x00531948 File Offset: 0x0052FB48
+		[CallerCount(0)]
+		public unsafe void SetHasInterruptedPlayerPassingTime(bool hasInterrupted)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = ref hasInterrupted;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_SetHasInterruptedPlayerPassingTime_Public_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x0601735D RID: 95069 RVA: 0x00531988 File Offset: 0x0052FB88
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 550820, RefRangeEnd = 550822, XrefRangeStart = 550786, XrefRangeEnd = 550820, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool ShouldHaveInitialTraderConversation(out TraderConversation initialConversation)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			ref IntPtr ptr2 = ref *ptr;
+			IntPtr intPtr = 0;
+			ptr2 = &intPtr;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_ShouldHaveInitialTraderConversation_Public_Boolean_byref_TraderConversation_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			initialConversation = ((intPtr2 == 0) ? null : new TraderConversation(intPtr2));
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x0601735E RID: 95070 RVA: 0x005319E8 File Offset: 0x0052FBE8
+		[CallerCount(4)]
+		[CachedScanResults(RefRangeStart = 550847, RefRangeEnd = 550851, XrefRangeStart = 550822, XrefRangeEnd = 550847, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool HaveHadAllIntroductionConversations()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_HaveHadAllIntroductionConversations_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x0601735F RID: 95071 RVA: 0x00531A24 File Offset: 0x0052FC24
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550851, XrefRangeEnd = 550858, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void ContactTrader()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_ContactTrader_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017360 RID: 95072 RVA: 0x00531A58 File Offset: 0x0052FC58
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 550928, RefRangeEnd = 550930, XrefRangeStart = 550858, XrefRangeEnd = 550928, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void GetAvailableConversations(List<TraderConversation> traderConversations)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(traderConversations);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetAvailableConversations_Public_Void_List_1_TraderConversation_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017361 RID: 95073 RVA: 0x00531A9C File Offset: 0x0052FC9C
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550955, RefRangeEnd = 550956, XrefRangeStart = 550930, XrefRangeEnd = 550955, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void NotifyConversationHad(TraderConversation traderConversation)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(traderConversation);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_NotifyConversationHad_Public_Void_TraderConversation_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017362 RID: 95074 RVA: 0x00531AE0 File Offset: 0x0052FCE0
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550956, XrefRangeEnd = 550958, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool HaveHadConversation(TraderConversation traderConversation)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(traderConversation);
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_HaveHadConversation_Public_Boolean_TraderConversation_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x06017363 RID: 95075 RVA: 0x00531B30 File Offset: 0x0052FD30
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 550996, RefRangeEnd = 550997, XrefRangeStart = 550958, XrefRangeEnd = 550996, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void InitiateTrade(List<TradeExchangeData> exchanges, string exchangeBoxScene)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(exchanges);
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.ManagedStringToIl2Cpp(exchangeBoxScene);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_InitiateTrade_Public_Void_List_1_TradeExchangeData_String_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017364 RID: 95076 RVA: 0x00531B84 File Offset: 0x0052FD84
+		[CallerCount(0)]
+		public unsafe bool IsTradeFullyFilled()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_IsTradeFullyFilled_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x06017365 RID: 95077 RVA: 0x00531BC0 File Offset: 0x0052FDC0
+		[CallerCount(0)]
+		public unsafe bool AnyTradesFilled()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_AnyTradesFilled_Public_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x06017366 RID: 95078 RVA: 0x00531BFC File Offset: 0x0052FDFC
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 551023, RefRangeEnd = 551025, XrefRangeStart = 550997, XrefRangeEnd = 551023, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void CloseTrade()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_CloseTrade_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017367 RID: 95079 RVA: 0x00531C30 File Offset: 0x0052FE30
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 551082, RefRangeEnd = 551083, XrefRangeStart = 551025, XrefRangeEnd = 551082, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void CompleteTrade()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_CompleteTrade_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017368 RID: 95080 RVA: 0x00531C64 File Offset: 0x0052FE64
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 551083, XrefRangeEnd = 551094, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void RemoveActiveTrade()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_RemoveActiveTrade_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017369 RID: 95081 RVA: 0x00531C98 File Offset: 0x0052FE98
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 551107, RefRangeEnd = 551109, XrefRangeStart = 551094, XrefRangeEnd = 551107, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void CancelTrade(bool disregardPenalties = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = ref disregardPenalties;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_CancelTrade_Public_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x0601736A RID: 95082 RVA: 0x00531CD8 File Offset: 0x0052FED8
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 551144, RefRangeEnd = 551146, XrefRangeStart = 551109, XrefRangeEnd = 551144, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void MaybeReturnSpecialRequestItems(bool cancelled)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = ref cancelled;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_MaybeReturnSpecialRequestItems_Private_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x0601736B RID: 95083 RVA: 0x00531D18 File Offset: 0x0052FF18
+		[CallerCount(0)]
+		public unsafe ActiveTradeState GetActiveTrade()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetActiveTrade_Public_ActiveTradeState_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<ActiveTradeState>(intPtr2) : null;
+		}
+
+		// Token: 0x0601736C RID: 95084 RVA: 0x00531D58 File Offset: 0x0052FF58
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 551146, XrefRangeEnd = 551147, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe float GetHoursSinceLastTradeComplete()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetHoursSinceLastTradeComplete_Public_Single_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x0601736D RID: 95085 RVA: 0x00531D94 File Offset: 0x0052FF94
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 551147, XrefRangeEnd = 551149, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool IsExchangeInActiveTrade(TradeExchange tradeExchange)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(tradeExchange);
+			IntPtr returnedException;
+			IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_IsExchangeInActiveTrade_Public_Boolean_TradeExchange_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return *IL2CPP.il2cpp_object_unbox(obj);
+		}
+
+		// Token: 0x0601736E RID: 95086 RVA: 0x00531DE4 File Offset: 0x0052FFE4
+		[CallerCount(5)]
+		[CachedScanResults(RefRangeStart = 551183, RefRangeEnd = 551188, XrefRangeStart = 551149, XrefRangeEnd = 551183, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void AddTrust(int trustChange)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = ref trustChange;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_AddTrust_Public_Void_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x0601736F RID: 95087 RVA: 0x00531E24 File Offset: 0x00530024
+		[CallerCount(3)]
+		[CachedScanResults(RefRangeStart = 551222, RefRangeEnd = 551225, XrefRangeStart = 551188, XrefRangeEnd = 551222, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void UnlockExchange(AssetReferenceTradeExchange tradeExchangeReference)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(tradeExchangeReference);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_UnlockExchange_Public_Void_AssetReferenceTradeExchange_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017370 RID: 95088 RVA: 0x00531E68 File Offset: 0x00530068
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 551251, RefRangeEnd = 551252, XrefRangeStart = 551225, XrefRangeEnd = 551251, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void UnlockImprovement(TraderImprovement improvement)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = ref improvement;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_UnlockImprovement_Public_Void_TraderImprovement_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017371 RID: 95089 RVA: 0x00531EA8 File Offset: 0x005300A8
+		[CallerCount(3)]
+		[CachedScanResults(RefRangeStart = 551275, RefRangeEnd = 551278, XrefRangeStart = 551252, XrefRangeEnd = 551275, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void UnlockConversation(AssetReferenceTraderConversation traderConversationReference, int trustThreshold)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(traderConversationReference);
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref trustThreshold;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_UnlockConversation_Private_Void_AssetReferenceTraderConversation_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017372 RID: 95090 RVA: 0x00531EF8 File Offset: 0x005300F8
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 551291, RefRangeEnd = 551292, XrefRangeStart = 551278, XrefRangeEnd = 551291, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe string GetUnlockNameFromReference<T>(AssetReferenceT<T> reference) where T : ScriptableObject
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(reference);
+			IntPtr returnedException;
+			IntPtr il2CppString = IL2CPP.il2cpp_runtime_invoke(TraderManager.MethodInfoStoreGeneric_GetUnlockNameFromReference_Private_String_AssetReferenceT_1_T_0<T>.Pointer, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			return IL2CPP.Il2CppStringToManaged(il2CppString);
+		}
+
+		// Token: 0x06017373 RID: 95091 RVA: 0x00531F40 File Offset: 0x00530140
+		[CallerCount(3)]
+		[CachedScanResults(RefRangeStart = 551315, RefRangeEnd = 551318, XrefRangeStart = 551292, XrefRangeEnd = 551315, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe ExchangeBox GetActiveExchangeBox()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_GetActiveExchangeBox_Private_ExchangeBox_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<ExchangeBox>(intPtr2) : null;
+		}
+
+		// Token: 0x06017374 RID: 95092 RVA: 0x00531F80 File Offset: 0x00530180
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 551318, RefRangeEnd = 551320, XrefRangeStart = 551318, XrefRangeEnd = 551318, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetSpecialRequest(string specialRequestHeaderLocID, string specialRequestDescriptionLocID)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.ManagedStringToIl2Cpp(specialRequestHeaderLocID);
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.ManagedStringToIl2Cpp(specialRequestDescriptionLocID);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_SetSpecialRequest_Public_Void_String_String_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017375 RID: 95093 RVA: 0x00531FD4 File Offset: 0x005301D4
+		[CallerCount(0)]
+		public unsafe TraderState Serialize()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_Serialize_Public_TraderState_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			IntPtr intPtr2 = intPtr;
+			return (intPtr2 != 0) ? Il2CppObjectPool.Get<TraderState>(intPtr2) : null;
+		}
+
+		// Token: 0x06017376 RID: 95094 RVA: 0x00532014 File Offset: 0x00530214
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 551339, RefRangeEnd = 551340, XrefRangeStart = 551320, XrefRangeEnd = 551339, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void Deserialize(TraderState state)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr))];
+			*ptr = IL2CPP.Il2CppObjectBaseToPtr(state);
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr_Deserialize_Public_Void_TraderState_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017377 RID: 95095 RVA: 0x00532058 File Offset: 0x00530258
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 0, XrefRangeEnd = 0, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe TraderManager() : this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<TraderManager>.NativeClassPtr))
+		{
+			IntPtr* param = null;
+			IntPtr returnedException;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+			Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+		}
+
+		// Token: 0x06017378 RID: 95096 RVA: 0x000CA024 File Offset: 0x000C8224
+		public TraderManager(IntPtr pointer) : base(pointer)
+		{
+		}
+
+		// Token: 0x17007F42 RID: 32578
+		// (get) Token: 0x06017379 RID: 95097 RVA: 0x00532094 File Offset: 0x00530294
+		// (set) Token: 0x0601737A RID: 95098 RVA: 0x000CA02D File Offset: 0x000C822D
+		public unsafe static LogFilter s_LogFilter
+		{
+			get
+			{
+				IntPtr intPtr;
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_LogFilter, (void*)(&intPtr));
+				IntPtr intPtr2 = intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<LogFilter>(intPtr2) : null;
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_LogFilter, IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F43 RID: 32579
+		// (get) Token: 0x0601737B RID: 95099 RVA: 0x005320BC File Offset: 0x005302BC
+		// (set) Token: 0x0601737C RID: 95100 RVA: 0x000CA03F File Offset: 0x000C823F
+		public unsafe AssetLabelReference m_TradeExchangeLabel
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeExchangeLabel);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<AssetLabelReference>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeExchangeLabel), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F44 RID: 32580
+		// (get) Token: 0x0601737D RID: 95101 RVA: 0x005320EC File Offset: 0x005302EC
+		// (set) Token: 0x0601737E RID: 95102 RVA: 0x000CA05E File Offset: 0x000C825E
+		public unsafe State m_TradeActiveState
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeActiveState);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<State>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeActiveState), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F45 RID: 32581
+		// (get) Token: 0x0601737F RID: 95103 RVA: 0x0053211C File Offset: 0x0053031C
+		// (set) Token: 0x06017380 RID: 95104 RVA: 0x000CA07D File Offset: 0x000C827D
+		public unsafe State m_TradeInactiveState
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeInactiveState);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<State>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeInactiveState), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F46 RID: 32582
+		// (get) Token: 0x06017381 RID: 95105 RVA: 0x0053214C File Offset: 0x0053034C
+		// (set) Token: 0x06017382 RID: 95106 RVA: 0x000CA09C File Offset: 0x000C829C
+		public unsafe int m_MaxExchangesInTrade
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_MaxExchangesInTrade);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_MaxExchangesInTrade)) = value;
+			}
+		}
+
+		// Token: 0x17007F47 RID: 32583
+		// (get) Token: 0x06017383 RID: 95107 RVA: 0x00532174 File Offset: 0x00530374
+		// (set) Token: 0x06017384 RID: 95108 RVA: 0x000CA0B7 File Offset: 0x000C82B7
+		public unsafe int m_MinTrustLevel
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_MinTrustLevel);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_MinTrustLevel)) = value;
+			}
+		}
+
+		// Token: 0x17007F48 RID: 32584
+		// (get) Token: 0x06017385 RID: 95109 RVA: 0x0053219C File Offset: 0x0053039C
+		// (set) Token: 0x06017386 RID: 95110 RVA: 0x000CA0D2 File Offset: 0x000C82D2
+		public unsafe int m_MaxTrustLevel
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_MaxTrustLevel);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_MaxTrustLevel)) = value;
+			}
+		}
+
+		// Token: 0x17007F49 RID: 32585
+		// (get) Token: 0x06017387 RID: 95111 RVA: 0x005321C4 File Offset: 0x005303C4
+		// (set) Token: 0x06017388 RID: 95112 RVA: 0x000CA0ED File Offset: 0x000C82ED
+		public unsafe AssetReferenceTraderConversation m_InitialTraderConversation
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_InitialTraderConversation);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<AssetReferenceTraderConversation>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_InitialTraderConversation), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F4A RID: 32586
+		// (get) Token: 0x06017389 RID: 95113 RVA: 0x005321F4 File Offset: 0x005303F4
+		// (set) Token: 0x0601738A RID: 95114 RVA: 0x000CA10C File Offset: 0x000C830C
+		public unsafe AssetReferenceTraderConversation m_LastIntroductionConversation
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_LastIntroductionConversation);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<AssetReferenceTraderConversation>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_LastIntroductionConversation), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F4B RID: 32587
+		// (get) Token: 0x0601738B RID: 95115 RVA: 0x00532224 File Offset: 0x00530424
+		// (set) Token: 0x0601738C RID: 95116 RVA: 0x000CA12B File Offset: 0x000C832B
+		public unsafe List<TraderManager.TrustUnlock<AssetReferenceTradeExchange>> m_TradeExchangeUnlocks
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeExchangeUnlocks);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<TraderManager.TrustUnlock<AssetReferenceTradeExchange>>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TradeExchangeUnlocks), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F4C RID: 32588
+		// (get) Token: 0x0601738D RID: 95117 RVA: 0x00532254 File Offset: 0x00530454
+		// (set) Token: 0x0601738E RID: 95118 RVA: 0x000CA14A File Offset: 0x000C834A
+		public unsafe List<TraderManager.TrustUnlock<AssetReferenceTraderConversation>> m_ConversationUnlocks
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_ConversationUnlocks);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<TraderManager.TrustUnlock<AssetReferenceTraderConversation>>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_ConversationUnlocks), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F4D RID: 32589
+		// (get) Token: 0x0601738F RID: 95119 RVA: 0x00532284 File Offset: 0x00530484
+		// (set) Token: 0x06017390 RID: 95120 RVA: 0x000CA169 File Offset: 0x000C8369
+		public unsafe List<TraderManager.TrustUnlock<TraderImprovement>> m_TraderImprovementUnlocks
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TraderImprovementUnlocks);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<TraderManager.TrustUnlock<TraderImprovement>>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_TraderImprovementUnlocks), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F4E RID: 32590
+		// (get) Token: 0x06017391 RID: 95121 RVA: 0x005322B4 File Offset: 0x005304B4
+		// (set) Token: 0x06017392 RID: 95122 RVA: 0x000CA188 File Offset: 0x000C8388
+		public unsafe static bool s_EnableInNewGame
+		{
+			get
+			{
+				bool result;
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_EnableInNewGame, (void*)(&result));
+				return result;
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_EnableInNewGame, (void*)(&value));
+			}
+		}
+
+		// Token: 0x17007F4F RID: 32591
+		// (get) Token: 0x06017393 RID: 95123 RVA: 0x005322D0 File Offset: 0x005304D0
+		// (set) Token: 0x06017394 RID: 95124 RVA: 0x000CA196 File Offset: 0x000C8396
+		public unsafe static bool s_ToggleInExistingGame
+		{
+			get
+			{
+				bool result;
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_ToggleInExistingGame, (void*)(&result));
+				return result;
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_ToggleInExistingGame, (void*)(&value));
+			}
+		}
+
+		// Token: 0x17007F50 RID: 32592
+		// (get) Token: 0x06017395 RID: 95125 RVA: 0x005322EC File Offset: 0x005304EC
+		// (set) Token: 0x06017396 RID: 95126 RVA: 0x000CA1A4 File Offset: 0x000C83A4
+		public unsafe static bool s_Debug
+		{
+			get
+			{
+				bool result;
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_Debug, (void*)(&result));
+				return result;
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_Debug, (void*)(&value));
+			}
+		}
+
+		// Token: 0x17007F51 RID: 32593
+		// (get) Token: 0x06017397 RID: 95127 RVA: 0x00532308 File Offset: 0x00530508
+		// (set) Token: 0x06017398 RID: 95128 RVA: 0x000CA1B2 File Offset: 0x000C83B2
+		public unsafe static AsyncOperationHandle<IList<TradeExchange>> s_AllTradeExchanges
+		{
+			get
+			{
+				IntPtr intPtr = stackalloc byte[(UIntPtr)IL2CPP.il2cpp_class_value_size(Il2CppClassPointerStore<AsyncOperationHandle<IList<TradeExchange>>>.NativeClassPtr, (UIntPtr)0)];
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_AllTradeExchanges, intPtr);
+				return new AsyncOperationHandle<IList<TradeExchange>>(IL2CPP.il2cpp_value_box(Il2CppClassPointerStore<AsyncOperationHandle<IList<TradeExchange>>>.NativeClassPtr, intPtr));
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_AllTradeExchanges, IL2CPP.il2cpp_object_unbox(IL2CPP.Il2CppObjectBaseToPtrNotNull(value)));
+			}
+		}
+
+		// Token: 0x17007F52 RID: 32594
+		// (get) Token: 0x06017399 RID: 95129 RVA: 0x00532344 File Offset: 0x00530544
+		// (set) Token: 0x0601739A RID: 95130 RVA: 0x000CA1C9 File Offset: 0x000C83C9
+		public unsafe static AsyncOperationHandle<IList<TraderConversation>> s_AllTraderConversations
+		{
+			get
+			{
+				IntPtr intPtr = stackalloc byte[(UIntPtr)IL2CPP.il2cpp_class_value_size(Il2CppClassPointerStore<AsyncOperationHandle<IList<TraderConversation>>>.NativeClassPtr, (UIntPtr)0)];
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_AllTraderConversations, intPtr);
+				return new AsyncOperationHandle<IList<TraderConversation>>(IL2CPP.il2cpp_value_box(Il2CppClassPointerStore<AsyncOperationHandle<IList<TraderConversation>>>.NativeClassPtr, intPtr));
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_AllTraderConversations, IL2CPP.il2cpp_object_unbox(IL2CPP.Il2CppObjectBaseToPtrNotNull(value)));
+			}
+		}
+
+		// Token: 0x17007F53 RID: 32595
+		// (get) Token: 0x0601739B RID: 95131 RVA: 0x00532380 File Offset: 0x00530580
+		// (set) Token: 0x0601739C RID: 95132 RVA: 0x000CA1E0 File Offset: 0x000C83E0
+		public unsafe static AsyncOperationHandle<TraderConversation> s_InitialTraderConversationHandle
+		{
+			get
+			{
+				IntPtr intPtr = stackalloc byte[(UIntPtr)IL2CPP.il2cpp_class_value_size(Il2CppClassPointerStore<AsyncOperationHandle<TraderConversation>>.NativeClassPtr, (UIntPtr)0)];
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_InitialTraderConversationHandle, intPtr);
+				return new AsyncOperationHandle<TraderConversation>(IL2CPP.il2cpp_value_box(Il2CppClassPointerStore<AsyncOperationHandle<TraderConversation>>.NativeClassPtr, intPtr));
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_InitialTraderConversationHandle, IL2CPP.il2cpp_object_unbox(IL2CPP.Il2CppObjectBaseToPtrNotNull(value)));
+			}
+		}
+
+		// Token: 0x17007F54 RID: 32596
+		// (get) Token: 0x0601739D RID: 95133 RVA: 0x005323BC File Offset: 0x005305BC
+		// (set) Token: 0x0601739E RID: 95134 RVA: 0x000CA1F7 File Offset: 0x000C83F7
+		public unsafe static AsyncOperationHandle<TraderConversation> s_LastIntroductionConversationsHandle
+		{
+			get
+			{
+				IntPtr intPtr = stackalloc byte[(UIntPtr)IL2CPP.il2cpp_class_value_size(Il2CppClassPointerStore<AsyncOperationHandle<TraderConversation>>.NativeClassPtr, (UIntPtr)0)];
+				IL2CPP.il2cpp_field_static_get_value(TraderManager.NativeFieldInfoPtr_s_LastIntroductionConversationsHandle, intPtr);
+				return new AsyncOperationHandle<TraderConversation>(IL2CPP.il2cpp_value_box(Il2CppClassPointerStore<AsyncOperationHandle<TraderConversation>>.NativeClassPtr, intPtr));
+			}
+			set
+			{
+				IL2CPP.il2cpp_field_static_set_value(TraderManager.NativeFieldInfoPtr_s_LastIntroductionConversationsHandle, IL2CPP.il2cpp_object_unbox(IL2CPP.Il2CppObjectBaseToPtrNotNull(value)));
+			}
+		}
+
+		// Token: 0x17007F55 RID: 32597
+		// (get) Token: 0x0601739F RID: 95135 RVA: 0x005323F8 File Offset: 0x005305F8
+		// (set) Token: 0x060173A0 RID: 95136 RVA: 0x000CA20E File Offset: 0x000C840E
+		public unsafe TraderState m_CurrentState
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_CurrentState);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<TraderState>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_CurrentState), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17007F56 RID: 32598
+		// (get) Token: 0x060173A1 RID: 95137 RVA: 0x00532428 File Offset: 0x00530628
+		// (set) Token: 0x060173A2 RID: 95138 RVA: 0x000CA22D File Offset: 0x000C842D
+		public unsafe TraderTunables _Tunables_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr__Tunables_k__BackingField);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr__Tunables_k__BackingField)) = value;
+			}
+		}
+
+		// Token: 0x17007F57 RID: 32599
+		// (get) Token: 0x060173A3 RID: 95139 RVA: 0x00532450 File Offset: 0x00530650
+		// (set) Token: 0x060173A4 RID: 95140 RVA: 0x000CA248 File Offset: 0x000C8448
+		public unsafe ExchangeBox m_ExchangeBoxInScene
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_ExchangeBoxInScene);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ExchangeBox>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.NativeFieldInfoPtr_m_ExchangeBoxInScene), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x0400EF77 RID: 61303
+		private static readonly IntPtr NativeFieldInfoPtr_s_LogFilter;
+
+		// Token: 0x0400EF78 RID: 61304
+		private static readonly IntPtr NativeFieldInfoPtr_m_TradeExchangeLabel;
+
+		// Token: 0x0400EF79 RID: 61305
+		private static readonly IntPtr NativeFieldInfoPtr_m_TradeActiveState;
+
+		// Token: 0x0400EF7A RID: 61306
+		private static readonly IntPtr NativeFieldInfoPtr_m_TradeInactiveState;
+
+		// Token: 0x0400EF7B RID: 61307
+		private static readonly IntPtr NativeFieldInfoPtr_m_MaxExchangesInTrade;
+
+		// Token: 0x0400EF7C RID: 61308
+		private static readonly IntPtr NativeFieldInfoPtr_m_MinTrustLevel;
+
+		// Token: 0x0400EF7D RID: 61309
+		private static readonly IntPtr NativeFieldInfoPtr_m_MaxTrustLevel;
+
+		// Token: 0x0400EF7E RID: 61310
+		private static readonly IntPtr NativeFieldInfoPtr_m_InitialTraderConversation;
+
+		// Token: 0x0400EF7F RID: 61311
+		private static readonly IntPtr NativeFieldInfoPtr_m_LastIntroductionConversation;
+
+		// Token: 0x0400EF80 RID: 61312
+		private static readonly IntPtr NativeFieldInfoPtr_m_TradeExchangeUnlocks;
+
+		// Token: 0x0400EF81 RID: 61313
+		private static readonly IntPtr NativeFieldInfoPtr_m_ConversationUnlocks;
+
+		// Token: 0x0400EF82 RID: 61314
+		private static readonly IntPtr NativeFieldInfoPtr_m_TraderImprovementUnlocks;
+
+		// Token: 0x0400EF83 RID: 61315
+		private static readonly IntPtr NativeFieldInfoPtr_s_EnableInNewGame;
+
+		// Token: 0x0400EF84 RID: 61316
+		private static readonly IntPtr NativeFieldInfoPtr_s_ToggleInExistingGame;
+
+		// Token: 0x0400EF85 RID: 61317
+		private static readonly IntPtr NativeFieldInfoPtr_s_Debug;
+
+		// Token: 0x0400EF86 RID: 61318
+		private static readonly IntPtr NativeFieldInfoPtr_s_AllTradeExchanges;
+
+		// Token: 0x0400EF87 RID: 61319
+		private static readonly IntPtr NativeFieldInfoPtr_s_AllTraderConversations;
+
+		// Token: 0x0400EF88 RID: 61320
+		private static readonly IntPtr NativeFieldInfoPtr_s_InitialTraderConversationHandle;
+
+		// Token: 0x0400EF89 RID: 61321
+		private static readonly IntPtr NativeFieldInfoPtr_s_LastIntroductionConversationsHandle;
+
+		// Token: 0x0400EF8A RID: 61322
+		private static readonly IntPtr NativeFieldInfoPtr_m_CurrentState;
+
+		// Token: 0x0400EF8B RID: 61323
+		private static readonly IntPtr NativeFieldInfoPtr__Tunables_k__BackingField;
+
+		// Token: 0x0400EF8C RID: 61324
+		private static readonly IntPtr NativeFieldInfoPtr_m_ExchangeBoxInScene;
+
+		// Token: 0x0400EF8D RID: 61325
+		private static readonly IntPtr NativeMethodInfoPtr_get_IsSystemEnabled_Public_get_Boolean_0;
+
+		// Token: 0x0400EF8E RID: 61326
+		private static readonly IntPtr NativeMethodInfoPtr_get_UseCheapPrices_Public_get_Boolean_0;
+
+		// Token: 0x0400EF8F RID: 61327
+		private static readonly IntPtr NativeMethodInfoPtr_get_MinTrust_Public_get_Int32_0;
+
+		// Token: 0x0400EF90 RID: 61328
+		private static readonly IntPtr NativeMethodInfoPtr_get_MaxTrust_Public_get_Int32_0;
+
+		// Token: 0x0400EF91 RID: 61329
+		private static readonly IntPtr NativeMethodInfoPtr_get_CurrentTrust_Public_get_Int32_0;
+
+		// Token: 0x0400EF92 RID: 61330
+		private static readonly IntPtr NativeMethodInfoPtr_get_MaxExchangesInTrade_Public_get_Int32_0;
+
+		// Token: 0x0400EF93 RID: 61331
+		private static readonly IntPtr NativeMethodInfoPtr_get_TradeIsActive_Public_get_Boolean_0;
+
+		// Token: 0x0400EF94 RID: 61332
+		private static readonly IntPtr NativeMethodInfoPtr_get_SpecialRequestActive_Public_get_Boolean_0;
+
+		// Token: 0x0400EF95 RID: 61333
+		private static readonly IntPtr NativeMethodInfoPtr_get_SpecialRequestHeaderText_Public_get_String_0;
+
+		// Token: 0x0400EF96 RID: 61334
+		private static readonly IntPtr NativeMethodInfoPtr_get_SpecialRequestDescriptionText_Public_get_String_0;
+
+		// Token: 0x0400EF97 RID: 61335
+		private static readonly IntPtr NativeMethodInfoPtr_get_Tunables_Public_get_TraderTunables_0;
+
+		// Token: 0x0400EF98 RID: 61336
+		private static readonly IntPtr NativeMethodInfoPtr_set_Tunables_Private_set_Void_TraderTunables_0;
+
+		// Token: 0x0400EF99 RID: 61337
+		private static readonly IntPtr NativeMethodInfoPtr_Awake_Private_Void_0;
+
+		// Token: 0x0400EF9A RID: 61338
+		private static readonly IntPtr NativeMethodInfoPtr_GetTunables_Private_TraderTunables_0;
+
+		// Token: 0x0400EF9B RID: 61339
+		private static readonly IntPtr NativeMethodInfoPtr_GetAvailableTradeExchanges_Public_List_1_TradeExchangeData_0;
+
+		// Token: 0x0400EF9C RID: 61340
+		private static readonly IntPtr NativeMethodInfoPtr_GetSpecialRequests_Public_List_1_TradeExchangeData_0;
+
+		// Token: 0x0400EF9D RID: 61341
+		private static readonly IntPtr NativeMethodInfoPtr_RollExchanges_Private_Void_0;
+
+		// Token: 0x0400EF9E RID: 61342
+		private static readonly IntPtr NativeMethodInfoPtr_AddTradeExchange_Private_Void_TradeExchange_0;
+
+		// Token: 0x0400EF9F RID: 61343
+		private static readonly IntPtr NativeMethodInfoPtr_GetPossibleExchanges_Private_List_1_TradeExchange_0;
+
+		// Token: 0x0400EFA0 RID: 61344
+		private static readonly IntPtr NativeMethodInfoPtr_IsTraderAvailable_Public_Boolean_0;
+
+		// Token: 0x0400EFA1 RID: 61345
+		private static readonly IntPtr NativeMethodInfoPtr_IsTraderOutForExchange_Public_Boolean_0;
+
+		// Token: 0x0400EFA2 RID: 61346
+		private static readonly IntPtr NativeMethodInfoPtr_GetHasInterruptedPlayerPassingTime_Public_Boolean_0;
+
+		// Token: 0x0400EFA3 RID: 61347
+		private static readonly IntPtr NativeMethodInfoPtr_SetHasInterruptedPlayerPassingTime_Public_Void_Boolean_0;
+
+		// Token: 0x0400EFA4 RID: 61348
+		private static readonly IntPtr NativeMethodInfoPtr_ShouldHaveInitialTraderConversation_Public_Boolean_byref_TraderConversation_0;
+
+		// Token: 0x0400EFA5 RID: 61349
+		private static readonly IntPtr NativeMethodInfoPtr_HaveHadAllIntroductionConversations_Public_Boolean_0;
+
+		// Token: 0x0400EFA6 RID: 61350
+		private static readonly IntPtr NativeMethodInfoPtr_ContactTrader_Public_Void_0;
+
+		// Token: 0x0400EFA7 RID: 61351
+		private static readonly IntPtr NativeMethodInfoPtr_GetAvailableConversations_Public_Void_List_1_TraderConversation_0;
+
+		// Token: 0x0400EFA8 RID: 61352
+		private static readonly IntPtr NativeMethodInfoPtr_NotifyConversationHad_Public_Void_TraderConversation_0;
+
+		// Token: 0x0400EFA9 RID: 61353
+		private static readonly IntPtr NativeMethodInfoPtr_HaveHadConversation_Public_Boolean_TraderConversation_0;
+
+		// Token: 0x0400EFAA RID: 61354
+		private static readonly IntPtr NativeMethodInfoPtr_InitiateTrade_Public_Void_List_1_TradeExchangeData_String_0;
+
+		// Token: 0x0400EFAB RID: 61355
+		private static readonly IntPtr NativeMethodInfoPtr_IsTradeFullyFilled_Public_Boolean_0;
+
+		// Token: 0x0400EFAC RID: 61356
+		private static readonly IntPtr NativeMethodInfoPtr_AnyTradesFilled_Public_Boolean_0;
+
+		// Token: 0x0400EFAD RID: 61357
+		private static readonly IntPtr NativeMethodInfoPtr_CloseTrade_Public_Void_0;
+
+		// Token: 0x0400EFAE RID: 61358
+		private static readonly IntPtr NativeMethodInfoPtr_CompleteTrade_Public_Void_0;
+
+		// Token: 0x0400EFAF RID: 61359
+		private static readonly IntPtr NativeMethodInfoPtr_RemoveActiveTrade_Public_Void_0;
+
+		// Token: 0x0400EFB0 RID: 61360
+		private static readonly IntPtr NativeMethodInfoPtr_CancelTrade_Public_Void_Boolean_0;
+
+		// Token: 0x0400EFB1 RID: 61361
+		private static readonly IntPtr NativeMethodInfoPtr_MaybeReturnSpecialRequestItems_Private_Void_Boolean_0;
+
+		// Token: 0x0400EFB2 RID: 61362
+		private static readonly IntPtr NativeMethodInfoPtr_GetActiveTrade_Public_ActiveTradeState_0;
+
+		// Token: 0x0400EFB3 RID: 61363
+		private static readonly IntPtr NativeMethodInfoPtr_GetHoursSinceLastTradeComplete_Public_Single_0;
+
+		// Token: 0x0400EFB4 RID: 61364
+		private static readonly IntPtr NativeMethodInfoPtr_IsExchangeInActiveTrade_Public_Boolean_TradeExchange_0;
+
+		// Token: 0x0400EFB5 RID: 61365
+		private static readonly IntPtr NativeMethodInfoPtr_AddTrust_Public_Void_Int32_0;
+
+		// Token: 0x0400EFB6 RID: 61366
+		private static readonly IntPtr NativeMethodInfoPtr_UnlockExchange_Public_Void_AssetReferenceTradeExchange_0;
+
+		// Token: 0x0400EFB7 RID: 61367
+		private static readonly IntPtr NativeMethodInfoPtr_UnlockImprovement_Public_Void_TraderImprovement_0;
+
+		// Token: 0x0400EFB8 RID: 61368
+		private static readonly IntPtr NativeMethodInfoPtr_UnlockConversation_Private_Void_AssetReferenceTraderConversation_Int32_0;
+
+		// Token: 0x0400EFB9 RID: 61369
+		private static readonly IntPtr NativeMethodInfoPtr_GetUnlockNameFromReference_Private_String_AssetReferenceT_1_T_0;
+
+		// Token: 0x0400EFBA RID: 61370
+		private static readonly IntPtr NativeMethodInfoPtr_GetActiveExchangeBox_Private_ExchangeBox_0;
+
+		// Token: 0x0400EFBB RID: 61371
+		private static readonly IntPtr NativeMethodInfoPtr_SetSpecialRequest_Public_Void_String_String_0;
+
+		// Token: 0x0400EFBC RID: 61372
+		private static readonly IntPtr NativeMethodInfoPtr_Serialize_Public_TraderState_0;
+
+		// Token: 0x0400EFBD RID: 61373
+		private static readonly IntPtr NativeMethodInfoPtr_Deserialize_Public_Void_TraderState_0;
+
+		// Token: 0x0400EFBE RID: 61374
+		private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+
+		// Token: 0x02001524 RID: 5412
+		[Serializable]
+		public sealed class TrustUnlock<T> : ValueType
+		{
+			// Token: 0x0601B98F RID: 113039 RVA: 0x005EFFAC File Offset: 0x005EE1AC
+			// Note: this type is marked as 'beforefieldinit'.
+			static TrustUnlock()
+			{
+				Il2CppClassPointerStore<TraderManager.TrustUnlock<T>>.NativeClassPtr = IL2CPP.il2cpp_class_from_type(Type.internal_from_handle(IL2CPP.il2cpp_class_get_type(IL2CPP.GetIl2CppNestedType(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "TrustUnlock`1"))).MakeGenericType(new Il2CppReferenceArray<Type>(new Type[]
+				{
+					Type.internal_from_handle(IL2CPP.il2cpp_class_get_type(Il2CppClassPointerStore<T>.NativeClassPtr))
+				})).TypeHandle.value);
+				IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<TraderManager.TrustUnlock<T>>.NativeClassPtr);
+				TraderManager.TrustUnlock<T>.NativeFieldInfoPtr_TrustThreshold = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager.TrustUnlock<T>>.NativeClassPtr, "TrustThreshold");
+				TraderManager.TrustUnlock<T>.NativeFieldInfoPtr_Unlock = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager.TrustUnlock<T>>.NativeClassPtr, "Unlock");
+			}
+
+			// Token: 0x0601B990 RID: 113040 RVA: 0x000F6D62 File Offset: 0x000F4F62
+			public TrustUnlock(IntPtr pointer) : base(pointer)
+			{
+			}
+
+			// Token: 0x0601B991 RID: 113041 RVA: 0x000F6D6B File Offset: 0x000F4F6B
+			public TrustUnlock() : base(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<TraderManager.TrustUnlock<T>>.NativeClassPtr))
+			{
+			}
+
+			// Token: 0x170092AB RID: 37547
+			// (get) Token: 0x0601B992 RID: 113042 RVA: 0x005F003C File Offset: 0x005EE23C
+			// (set) Token: 0x0601B993 RID: 113043 RVA: 0x000F6D7D File Offset: 0x000F4F7D
+			public unsafe int TrustThreshold
+			{
+				get
+				{
+					IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.TrustUnlock<T>.NativeFieldInfoPtr_TrustThreshold);
+					return *intPtr;
+				}
+				set
+				{
+					*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.TrustUnlock<T>.NativeFieldInfoPtr_TrustThreshold)) = value;
+				}
+			}
+
+			// Token: 0x170092AC RID: 37548
+			// (get) Token: 0x0601B994 RID: 113044 RVA: 0x005F0064 File Offset: 0x005EE264
+			// (set) Token: 0x0601B995 RID: 113045 RVA: 0x005F008C File Offset: 0x005EE28C
+			public unsafe T Unlock
+			{
+				get
+				{
+					IntPtr objectPointer = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.TrustUnlock<T>.NativeFieldInfoPtr_Unlock);
+					return IL2CPP.PointerToValueGeneric<T>(objectPointer, true, false);
+				}
+				set
+				{
+					IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+					IntPtr intPtr2 = intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(TraderManager.TrustUnlock<T>.NativeFieldInfoPtr_Unlock);
+					Type typeFromHandle = typeof(T);
+					if (!typeFromHandle.IsValueType)
+					{
+						if (!string.Equals(typeFromHandle.FullName, "System.String"))
+						{
+							IntPtr gcObj;
+							IntPtr intPtr3 = gcObj = IL2CPP.Il2CppObjectBaseToPtr(value as Il2CppObjectBase);
+							if (intPtr3 != 0)
+							{
+								gcObj = intPtr3;
+								if (IL2CPP.il2cpp_class_is_valuetype(IL2CPP.il2cpp_object_get_class(intPtr3)))
+								{
+									IntPtr obj = intPtr3;
+									cpblk(intPtr2, IL2CPP.il2cpp_object_unbox(intPtr3), IL2CPP.il2cpp_class_value_size(IL2CPP.il2cpp_object_get_class(obj), (UIntPtr)0));
+									return;
+								}
+							}
+							IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr2, gcObj);
+						}
+						else
+						{
+							IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr2, IL2CPP.ManagedStringToIl2Cpp(value as string));
+						}
+					}
+					else
+					{
+						*intPtr2 = value;
+					}
+				}
+			}
+
+			// Token: 0x04011F96 RID: 73622
+			private static readonly IntPtr NativeFieldInfoPtr_TrustThreshold;
+
+			// Token: 0x04011F97 RID: 73623
+			private static readonly IntPtr NativeFieldInfoPtr_Unlock;
+		}
+
+		// Token: 0x02001525 RID: 5413
+		[ObfuscatedName("TLD.Trader.TraderManager+<>c")]
+		[Serializable]
+		public sealed class __c : Il2CppSystem.Object
+		{
+			// Token: 0x0601B996 RID: 113046 RVA: 0x005F0134 File Offset: 0x005EE334
+			// Note: this type is marked as 'beforefieldinit'.
+			static __c()
+			{
+				Il2CppClassPointerStore<TraderManager.__c>.NativeClassPtr = IL2CPP.GetIl2CppNestedType(Il2CppClassPointerStore<TraderManager>.NativeClassPtr, "<>c");
+				IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<TraderManager.__c>.NativeClassPtr);
+				TraderManager.__c.NativeFieldInfoPtr___9 = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager.__c>.NativeClassPtr, "<>9");
+				TraderManager.__c.NativeFieldInfoPtr___9__60_0 = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<TraderManager.__c>.NativeClassPtr, "<>9__60_0");
+				TraderManager.__c.NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager.__c>.NativeClassPtr, 100695839);
+				TraderManager.__c.NativeMethodInfoPtr__GetAvailableConversations_b__60_0_Internal_Int32_TraderConversation_TraderConversation_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<TraderManager.__c>.NativeClassPtr, 100695840);
+			}
+
+			// Token: 0x0601B997 RID: 113047 RVA: 0x005F01B0 File Offset: 0x005EE3B0
+			[CallerCount(0)]
+			public unsafe __c() : this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<TraderManager.__c>.NativeClassPtr))
+			{
+				IntPtr* param = null;
+				IntPtr returnedException;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(TraderManager.__c.NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)param, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+			}
+
+			// Token: 0x0601B998 RID: 113048 RVA: 0x005F01EC File Offset: 0x005EE3EC
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 550592, XrefRangeEnd = 550594, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			public unsafe int _GetAvailableConversations_b__60_0(TraderConversation a, TraderConversation b)
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = stackalloc IntPtr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr))];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(a);
+				ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.Il2CppObjectBaseToPtr(b);
+				IntPtr returnedException;
+				IntPtr obj = IL2CPP.il2cpp_runtime_invoke(TraderManager.__c.NativeMethodInfoPtr__GetAvailableConversations_b__60_0_Internal_Int32_TraderConversation_TraderConversation_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref returnedException);
+				Il2CppInterop.Runtime.Il2CppException.RaiseExceptionIfNecessary(returnedException);
+				return *IL2CPP.il2cpp_object_unbox(obj);
+			}
+
+			// Token: 0x0601B999 RID: 113049 RVA: 0x000F6D98 File Offset: 0x000F4F98
+			public __c(IntPtr pointer) : base(pointer)
+			{
+			}
+
+			// Token: 0x170092AD RID: 37549
+			// (get) Token: 0x0601B99A RID: 113050 RVA: 0x005F024C File Offset: 0x005EE44C
+			// (set) Token: 0x0601B99B RID: 113051 RVA: 0x000F6DA1 File Offset: 0x000F4FA1
+			public unsafe static TraderManager.__c __9
+			{
+				get
+				{
+					IntPtr intPtr;
+					IL2CPP.il2cpp_field_static_get_value(TraderManager.__c.NativeFieldInfoPtr___9, (void*)(&intPtr));
+					IntPtr intPtr2 = intPtr;
+					return (intPtr2 != 0) ? Il2CppObjectPool.Get<TraderManager.__c>(intPtr2) : null;
+				}
+				set
+				{
+					IL2CPP.il2cpp_field_static_set_value(TraderManager.__c.NativeFieldInfoPtr___9, IL2CPP.Il2CppObjectBaseToPtr(value));
+				}
+			}
+
+			// Token: 0x170092AE RID: 37550
+			// (get) Token: 0x0601B99C RID: 113052 RVA: 0x005F0274 File Offset: 0x005EE474
+			// (set) Token: 0x0601B99D RID: 113053 RVA: 0x000F6DB3 File Offset: 0x000F4FB3
+			public unsafe static Comparison<TraderConversation> __9__60_0
+			{
+				get
+				{
+					IntPtr intPtr;
+					IL2CPP.il2cpp_field_static_get_value(TraderManager.__c.NativeFieldInfoPtr___9__60_0, (void*)(&intPtr));
+					IntPtr intPtr2 = intPtr;
+					return (intPtr2 != 0) ? Il2CppObjectPool.Get<Comparison<TraderConversation>>(intPtr2) : null;
+				}
+				set
+				{
+					IL2CPP.il2cpp_field_static_set_value(TraderManager.__c.NativeFieldInfoPtr___9__60_0, IL2CPP.Il2CppObjectBaseToPtr(value));
+				}
+			}
+
+			// Token: 0x04011F98 RID: 73624
+			private static readonly IntPtr NativeFieldInfoPtr___9;
+
+			// Token: 0x04011F99 RID: 73625
+			private static readonly IntPtr NativeFieldInfoPtr___9__60_0;
+
+			// Token: 0x04011F9A RID: 73626
+			private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+
+			// Token: 0x04011F9B RID: 73627
+			private static readonly IntPtr NativeMethodInfoPtr__GetAvailableConversations_b__60_0_Internal_Int32_TraderConversation_TraderConversation_0;
+		}
+
+		// Token: 0x02001526 RID: 5414
+		private sealed class MethodInfoStoreGeneric_GetUnlockNameFromReference_Private_String_AssetReferenceT_1_T_0<T>
+		{
+			// Token: 0x04011F9C RID: 73628
+			internal static IntPtr Pointer = IL2CPP.il2cpp_method_get_from_reflection(IL2CPP.Il2CppObjectBaseToPtrNotNull(new MethodInfo(IL2CPP.il2cpp_method_get_object(TraderManager.NativeMethodInfoPtr_GetUnlockNameFromReference_Private_String_AssetReferenceT_1_T_0, Il2CppClassPointerStore<TraderManager>.NativeClassPtr)).MakeGenericMethod(new Il2CppReferenceArray<Type>(new Type[]
+			{
+				Type.internal_from_handle(IL2CPP.il2cpp_class_get_type(Il2CppClassPointerStore<T>.NativeClassPtr))
+			}))));
+		}
+	}
+}
+
+
