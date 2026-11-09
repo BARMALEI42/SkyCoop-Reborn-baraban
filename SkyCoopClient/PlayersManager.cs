@@ -184,7 +184,7 @@ namespace SkyCoop
             Panel_Inventory_Examine Panel_Inventory_Examine = InterfaceManager.GetPanel<Panel_Inventory_Examine>();
             if (Panel_Inventory_Examine)
             {
-                if(Panel_Inventory_Examine.m_ActionInProgressWindow.activeSelf && !Panel_Inventory_Examine.IsReading())
+                if (Panel_Inventory_Examine.m_ActionInProgressWindow.activeSelf)
                 {
                     return true;
                 }

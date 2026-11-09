@@ -597,17 +597,24 @@ namespace SkyCoop
                             }
                             else
                             {
-                                //float ReadingMinutes = Panel.m_HoursToRead;
-                                //float RealTimeSeconds = (ReadingMinutes * 60) / 12;
-                                //if (Panel.m_ProgressBarTimeSeconds != RealTimeSeconds / (float)DataStr.c_SpeedUpTimeScale)
-                                //{
-                                //    float CurrentProgress = HUD.m_AccelTimePopup.m_Slider.value;
+                                float ReadingMinutes = Panel.m_HoursToRead;
+                                float RealTimeSeconds = (ReadingMinutes * 60) / 12;
 
-                                //    GameManager.GetTimeOfDayComponent().Accelerate(DataStr.c_SpeedUpRealSecondsDuration, DataStr.c_SpeedUpHours);
-                                //    Panel.m_ProgressBarTimeSeconds = RealTimeSeconds / (float)DataStr.c_SpeedUpTimeScale;
-                                //    Panel.m_ElapsedProgressBarSeconds = Panel.m_ProgressBarTimeSeconds * CurrentProgress;
-                                //    SkyCoop.Logger.Log($"Reading speedup");
-                                //}
+                                if (Panel.m_ProgressBarTimeSeconds != RealTimeSeconds / (float)DataStr.c_SpeedUpTimeScale)
+                                {
+                                    float CurrentProgress = HUD.m_AccelTimePopup.m_Slider.value;
+
+                                    GameManager.GetTimeOfDayComponent().Accelerate(
+                                        DataStr.c_SpeedUpRealSecondsDuration,
+                                        DataStr.c_SpeedUpHours,
+                                        true
+                                    );
+
+                                    Panel.m_ProgressBarTimeSeconds = RealTimeSeconds / (float)DataStr.c_SpeedUpTimeScale;
+                                    Panel.m_ElapsedProgressBarSeconds = Panel.m_ProgressBarTimeSeconds * CurrentProgress;
+
+                                    SkyCoop.Logger.Log("Reading speedup");
+                                }
                             }
                         }
                     }
@@ -677,17 +684,20 @@ namespace SkyCoop
                             }
                             else
                             {
-                                //float ReadingMinutes = Panel.m_HoursToRead;
-                                //float RealTimeSeconds = ((ReadingMinutes * 60) / 12) * 1.003f;
-                                //if (Panel.m_ProgressBarTimeSeconds != RealTimeSeconds)
-                                //{
-                                //    float CurrentProgress = HUD.m_AccelTimePopup.m_Slider.value;
+                                float ReadingMinutes = Panel.m_HoursToRead;
+                                float RealTimeSeconds = ((ReadingMinutes * 60) / 12) * 1.003f;
 
-                                //    Panel.m_ProgressBarTimeSeconds = RealTimeSeconds;
-                                //    Panel.m_ElapsedProgressBarSeconds = Panel.m_ProgressBarTimeSeconds * CurrentProgress;
-                                //    GameManager.GetTimeOfDayComponent().SetDayLengthScale(1f);
-                                //    SkyCoop.Logger.Log($"Reading slowdown");
-                                //}
+                                if (Panel.m_ProgressBarTimeSeconds != RealTimeSeconds)
+                                {
+                                    float CurrentProgress = HUD.m_AccelTimePopup.m_Slider.value;
+
+                                    Panel.m_ProgressBarTimeSeconds = RealTimeSeconds;
+                                    Panel.m_ElapsedProgressBarSeconds = Panel.m_ProgressBarTimeSeconds * CurrentProgress;
+
+                                    GameManager.GetTimeOfDayComponent().SetDayLengthScale(1f);
+
+                                    SkyCoop.Logger.Log("Reading slowdown");
+                                }
                             }
                         }
                     }

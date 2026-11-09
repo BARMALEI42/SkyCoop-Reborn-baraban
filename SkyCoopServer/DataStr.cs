@@ -1219,6 +1219,8 @@ namespace SkyCoopServer
                 public List<RadialSpawnSaveData> RadialSpawnsData { get; set; }
                 public List<SpawnRegionInstance.SaveData> SpawnRegions { get; set; }
                 public List<AnimalEntity.SaveData> Animals { get; set; }
+
+                public List<AnimalCorpseData> AnimalCorpses { get; set; }
             }
 
             public SaveData Save()
@@ -1396,6 +1398,19 @@ namespace SkyCoopServer
                     {
                         AnimalEntity Animal = new AnimalEntity(saveData);
                         m_Animals.Add(Animal.m_GUID, Animal);
+                    }
+                }
+
+                if (data.AnimalCorpses != null)
+                {
+                    foreach (AnimalCorpseData corpse in data.AnimalCorpses)
+                    {
+                        if (corpse != null &&
+                            !string.IsNullOrEmpty(corpse.GUID) &&
+                            !m_AnimalCorpses.ContainsKey(corpse.GUID))
+                        {
+                            m_AnimalCorpses.Add(corpse.GUID, corpse);
+                        }
                     }
                 }
                 HandleAnimalSpawnersUpdate(ServerInstance);
@@ -2805,6 +2820,8 @@ namespace SkyCoopServer
                 public Vector3JSON Position { get; set; }
                 public QuaternionJSON Rotation { get; set; }
                 public List<AnimalCorpseData> AnimalCorpses { get; set; }
+
+
             }
 
             public SaveData Save()

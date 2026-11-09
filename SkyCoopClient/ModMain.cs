@@ -172,6 +172,8 @@ namespace SkyCoop
 
             if (IsGameplayScene() && !GameManager.s_IsGameplaySuspended)
             {
+                EnsureMultiplayerScurvyEnabled();
+
                 PlayersManager.SpectatorControls();
 
                 if (!InputManager.m_InteractedWithItemThisFrame && InputManager.GetFirePressed(InputManager.m_CurrentContext))
@@ -295,6 +297,20 @@ namespace SkyCoop
             return true;
         }
 
+        private static void EnsureMultiplayerScurvyEnabled()
+        {
+            if (!IsMultiplayer())
+                return;
+
+            var scurvy = GameManager.GetScurvyComponent();
+
+            if (scurvy == null || scurvy.enabled)
+                return;
+
+            scurvy.enabled = true;
+
+            GameManager.SaveGameAndDisplayHUDMessage();
+        }
         public static void ChangeMap()
         {
             DataStr.ServerConfig CFG = Client.m_Config;
